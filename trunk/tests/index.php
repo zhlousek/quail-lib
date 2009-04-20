@@ -1505,6 +1505,27 @@ class TestOfTests extends UnitTestCase {
 		$results = $this->getTest('144-2.html', 'addressForAuthorMustBeValid');
 		$this->assertTrue(count($results) == 0); 
   }  
+  
+  //skipped 145-146 - redundant
+  
+  //147
+  function test147_linkUsedToDescribeNavigation() {
+		$results = $this->getTest('147-1.html', 'linkUsedToDescribeNavigation');
+		$this->assertTrue($results[0]->pass === false);  
+
+		$results = $this->getTest('147-2.html', 'linkUsedToDescribeNavigation');
+		$this->assertTrue(count($results) == 0);  
+  } 
+
+  //148
+  function test148_linkUsedForAlternateContent() {
+		$results = $this->getTest('148-1.html', 'linkUsedForAlternateContent');
+		$this->assertTrue($results[0]->pass === false);  
+
+		$results = $this->getTest('148-2.html', 'linkUsedForAlternateContent');
+		$this->assertTrue(count($results) == 0);  
+  } 
+
 }
 
 $tests = &new TestOfTests();
