@@ -1281,6 +1281,212 @@ class TestOfTests extends UnitTestCase {
 		$this->assertTrue(count($results) == 0);
 
   }
+  
+  //122
+    function test122_passwordLabelIsNearby() {
+		$results = $this->getTest('122-1.html', 'passwordLabelIsNearby');
+		$this->assertTrue($results[0]->element->tagName == 'input');  
+	
+		
+		$results = $this->getTest('122-2.html', 'passwordLabelIsNearby');
+		$this->assertTrue($results[0]->element->tagName == 'input');  
+
+
+  }  
+
+  //123
+    function test123_checkboxLabelIsNearby() {
+		$results = $this->getTest('123-1.html', 'checkboxLabelIsNearby');
+		$this->assertTrue($results[0]->element->tagName == 'input');  
+	
+		
+		$results = $this->getTest('123-2.html', 'checkboxLabelIsNearby');
+		$this->assertTrue($results[0]->element->tagName == 'input');  
+
+
+  } 
+
+  //124
+    function test124_fileLabelIsNearby() {
+		$results = $this->getTest('124-1.html', 'fileLabelIsNearby');
+		$this->assertTrue($results[0]->element->tagName == 'input');  
+	
+		
+		$results = $this->getTest('124-2.html', 'fileLabelIsNearby');
+		$this->assertTrue($results[0]->element->tagName == 'input');  
+
+
+  }   
+
+  //125
+    function test125_radioIsNearby() {
+		$results = $this->getTest('125-1.html', 'radioLabelIsNearby');
+		$this->assertTrue($results[0]->element->tagName == 'input');  
+	
+		
+		$results = $this->getTest('125-2.html', 'radioLabelIsNearby');
+		$this->assertTrue($results[0]->element->tagName == 'input');  
+  } 
+
+  //126
+    function test126_inputTextValueNotEmpty() {
+		$results = $this->getTest('126-1.html', 'inputTextValueNotEmpty');
+		$this->assertTrue($results[0]->element->tagName == 'input');  
+	
+		
+		$results = $this->getTest('126-2.html', 'inputTextValueNotEmpty');
+		$this->assertTrue(count($results) == 0);  
+  }
+  
+  //127 && 128
+    function test127_objectWithClassIDHasNoText() {
+		$results = $this->getTest('127-1.html', 'objectWithClassIDHasNoText');
+		$this->assertTrue($results[0]->element->tagName == 'object');  
+	
+		
+		$results = $this->getTest('127-2.html', 'objectWithClassIDHasNoText');
+		$this->assertTrue(count($results) == 0);  
+  } 
+  
+  //129
+  function test129_objectUIMustBeAccessible() {
+		$results = $this->getTest('128-1.html', 'objectUIMustBeAccessible');
+		$this->assertTrue($results[0]->element->tagName == 'object');  
+	
+		
+		$results = $this->getTest('128-2.html', 'objectUIMustBeAccessible');
+		$this->assertTrue($results[0]->element->tagName == 'object'); 
+  } 
+  
+  //131
+  function test131_blockquoteUseForQuotations() {
+		$results = $this->getTest('131-1.html', 'blockquoteUseForQuotations');
+		$this->assertTrue($results[0]->pass === false);  
+	
+		
+		$results = $this->getTest('131-2.html', 'blockquoteUseForQuotations');
+		$this->assertTrue(count($results) == 0); 
+  } 
+
+  //132
+  function test132_imageMapServerSide() {
+		$results = $this->getTest('132-1.html', 'imageMapServerSide');
+		$this->assertTrue($results[0]->element->tagName == 'img');  
+	
+		
+		$results = $this->getTest('132-2.html', 'imageMapServerSide');
+		$this->assertTrue($results[0]->element->tagName == 'img'); 
+  } 
+
+  //133
+  function test133_tableLayoutMakesSenseLinearized() {
+		$results = $this->getTest('133-1.html', 'tableLayoutMakesSenseLinearized');
+		$this->assertTrue($results[0]->element->tagName == 'table');  
+	
+		
+		$results = $this->getTest('133-2.html', 'tableLayoutMakesSenseLinearized');
+		$this->assertTrue($results[0]->element->tagName == 'table'); 
+  } 
+
+  //134
+  function test134_aLinksAreSeperatedByPrintableCharacters() {
+		$results = $this->getTest('134-1.html', 'aLinksAreSeperatedByPrintableCharacters');
+		$this->assertTrue($results[0]->element->tagName == 'a');  
+	
+		
+		$results = $this->getTest('134-2.html', 'aLinksAreSeperatedByPrintableCharacters');
+		$this->assertTrue(count($results) == 0); 
+  } 
+
+  //135
+  function test135_imgWithMathShouldHaveMathEquivalent() {
+		$results = $this->getTest('135-1.html', 'imgWithMathShouldHaveMathEquivalent');
+		$this->assertTrue($results[0]->element->tagName == 'img');  
+		
+		$results = $this->getTest('135-2.html', 'imgWithMathShouldHaveMathEquivalent');
+		$this->assertTrue(count($results) == 0); 
+
+		$results = $this->getTest('135-2.xhtml', 'imgWithMathShouldHaveMathEquivalent');
+		$this->assertTrue(count($results) == 0);
+  } 
+
+  //136
+  function test136_tableDataShouldHaveTh() {
+		$results = $this->getTest('136-1.html', 'tableDataShouldHaveTh');
+		$this->assertTrue($results[0]->element->tagName == 'table');  
+		
+		$results = $this->getTest('136-2.html', 'tableDataShouldHaveTh');
+		$this->assertTrue(count($results) == 0); 
+  }
+  
+//137
+  function test137_tableLayoutDataShouldNotHaveTh() {
+		$results = $this->getTest('137-1.html', 'tableLayoutDataShouldNotHaveTh');
+		$this->assertTrue($results[0]->element->tagName == 'table');  
+		
+		$results = $this->getTest('137-2.html', 'tableLayoutDataShouldNotHaveTh');
+		$this->assertTrue(count($results) == 0); 
+  }
+  
+//138
+  function test138_inputTextHasTabIndex() {
+		$results = $this->getTest('138-1.html', 'inputTextHasTabIndex');
+		$this->assertTrue($results[0]->element->tagName == 'input');  
+
+		$results = $this->getTest('138-2.html', 'inputTextHasTabIndex');
+		$this->assertTrue($results[0]->element->tagName == 'input');  
+		
+		$results = $this->getTest('138-3.html', 'inputTextHasTabIndex');
+		$this->assertTrue(count($results) == 0); 
+  }
+
+//139
+  function test139_inputRadioHasTabIndex() {
+		$results = $this->getTest('139-1.html', 'inputRadioHasTabIndex');
+		$this->assertTrue($results[0]->element->tagName == 'input');  
+
+		$results = $this->getTest('139-2.html', 'inputRadioHasTabIndex');
+		$this->assertTrue($results[0]->element->tagName == 'input');  
+		
+		$results = $this->getTest('139-3.html', 'inputRadioHasTabIndex');
+		$this->assertTrue(count($results) == 0); 
+  }
+
+//140
+  function test140_inputPasswordHasTabIndex() {
+		$results = $this->getTest('140-1.html', 'inputPasswordHasTabIndex');
+		$this->assertTrue($results[0]->element->tagName == 'input');  
+
+		$results = $this->getTest('140-2.html', 'inputPasswordHasTabIndex');
+		$this->assertTrue($results[0]->element->tagName == 'input');  
+		
+		$results = $this->getTest('140-3.html', 'inputPasswordHasTabIndex');
+		$this->assertTrue(count($results) == 0); 
+  }
+
+//141
+  function test141_inputCheckboxHasTabIndex() {
+		$results = $this->getTest('141-1.html', 'inputCheckboxHasTabIndex');
+		$this->assertTrue($results[0]->element->tagName == 'input');  
+
+		$results = $this->getTest('141-2.html', 'inputCheckboxHasTabIndex');
+		$this->assertTrue($results[0]->element->tagName == 'input');  
+		
+		$results = $this->getTest('141-3.html', 'inputCheckboxHasTabIndex');
+		$this->assertTrue(count($results) == 0); 
+  }
+
+//142
+  function test142_inputFileHasTabIndex() {
+		$results = $this->getTest('142-1.html', 'inputFileHasTabIndex');
+		$this->assertTrue($results[0]->element->tagName == 'input');  
+
+		$results = $this->getTest('142-2.html', 'inputFileHasTabIndex');
+		$this->assertTrue($results[0]->element->tagName == 'input');  
+		
+		$results = $this->getTest('142-3.html', 'inputFileHasTabIndex');
+		$this->assertTrue(count($results) == 0); 
+  }  
 }
 
 $tests = &new TestOfTests();
