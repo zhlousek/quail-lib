@@ -1536,6 +1536,85 @@ class TestOfTests extends UnitTestCase {
 		$results = $this->getTest('150-2.html', 'liDontUseImageForBullet');
 		$this->assertTrue(count($results) == 0);  
   }  
+
+  //151
+  function test151_tableUsesCaption() {
+		$results = $this->getTest('151-1.html', 'tableUsesCaption');
+		$this->assertTrue($results[0]->element->tagName == 'table');  
+
+		$results = $this->getTest('151-2.html', 'tableUsesCaption');
+		$this->assertTrue(count($results) == 0);  
+
+		$results = $this->getTest('151-3.html', 'tableUsesCaption');
+		$this->assertTrue($results[0]->element->tagName == 'table');  
+  }  
+  //152
+  function test152_tableUsesAbbreviationForHeader() {
+		$results = $this->getTest('152-1.html', 'tableUsesAbbreviationForHeader');
+		$this->assertTrue($results[0]->element->tagName == 'table');  
+
+		$results = $this->getTest('152-2.html', 'tableUsesAbbreviationForHeader');
+		$this->assertTrue(count($results) == 0); 
+ 
+		$results = $this->getTest('152-3.html', 'tableUsesAbbreviationForHeader');
+		$this->assertTrue(count($results) == 0); 
+  } 
+
+  //153
+  function test153_tableHeaderLabelMustBeTerse() {
+		$results = $this->getTest('153-1.html', 'tableHeaderLabelMustBeTerse');
+		$this->assertTrue($results[0]->element->tagName == 'th');  
+
+		$results = $this->getTest('153-2.html', 'tableHeaderLabelMustBeTerse');
+		$this->assertTrue(count($results) == 0); 
+  }
+
+  //154
+  function test154_preShouldNotBeUsedForTabularLayout() {
+		$results = $this->getTest('154-1.html', 'preShouldNotBeUsedForTabularLayout');
+		$this->assertTrue($results[0]->element->tagName == 'pre');  
+
+		$results = $this->getTest('154-2.html', 'preShouldNotBeUsedForTabularLayout');
+		$this->assertTrue(count($results) == 0); 
+  }
+  
+  //155-158 skipped
+  
+  //159
+  function test159_imgShouldNotHaveTitle() {
+		$results = $this->getTest('159-1.html', 'imgShouldNotHaveTitle');
+		$this->assertTrue($results[0]->element->tagName == 'img');  
+
+		$results = $this->getTest('159-2.html', 'imgShouldNotHaveTitle');
+		$this->assertTrue(count($results) == 0); 
+  }
+
+  //160
+  function test160_objectShouldHaveLongDescription() {
+		$results = $this->getTest('160-1.html', 'objectShouldHaveLongDescription');
+		$this->assertTrue($results[0]->element->tagName == 'object');  
+
+		$results = $this->getTest('160-2.html', 'objectShouldHaveLongDescription');
+		$this->assertTrue(count($results) == 0); 
+  }
+
+  //161
+  function test161_emoticonsExcessiveUse() {
+		$results = $this->getTest('161-1.html', 'emoticonsExcessiveUse');
+		$this->assertTrue($results[0]->pass === false);  
+
+		$results = $this->getTest('161-2.html', 'emoticonsExcessiveUse');
+		$this->assertTrue(count($results) == 0); 
+  }
+  
+  //162
+  function test162_emoticonsMissingAbbr() {
+		$results = $this->getTest('161-1.html', 'emoticonsMissingAbbr');
+		$this->assertTrue($results[0]->element->tagName == 'p');  
+
+		$results = $this->getTest('161-2.html', 'emoticonsMissingAbbr');
+		$this->assertTrue(count($results) == 0); 
+  }
 }
 
 $tests = &new TestOfTests();
