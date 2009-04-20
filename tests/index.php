@@ -1487,6 +1487,24 @@ class TestOfTests extends UnitTestCase {
 		$results = $this->getTest('142-3.html', 'inputFileHasTabIndex');
 		$this->assertTrue(count($results) == 0); 
   }  
+
+//143
+  function test143_addressForAuthor() {
+		$results = $this->getTest('143-1.html', 'addressForAuthor');
+		$this->assertTrue($results[0]->pass === false);  
+
+		$results = $this->getTest('143-2.html', 'addressForAuthor');
+		$this->assertTrue(count($results) == 0); 
+  }  
+
+//144
+  function test144_addressForAuthorMustBeValid() {
+		$results = $this->getTest('144-1.html', 'addressForAuthorMustBeValid');
+		$this->assertTrue($results[0]->pass === false);  
+
+		$results = $this->getTest('144-2.html', 'addressForAuthorMustBeValid');
+		$this->assertTrue(count($results) == 0); 
+  }  
 }
 
 $tests = &new TestOfTests();
