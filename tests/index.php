@@ -1526,6 +1526,16 @@ class TestOfTests extends UnitTestCase {
 		$this->assertTrue(count($results) == 0);  
   } 
 
+  //149 - SKIPPED
+  
+  //150
+  function test150_liDontUseImageForBullet() {
+		$results = $this->getTest('150-1.html', 'liDontUseImageForBullet');
+		$this->assertTrue($results[0]->element->tagName == 'li');  
+
+		$results = $this->getTest('150-2.html', 'liDontUseImageForBullet');
+		$this->assertTrue(count($results) == 0);  
+  }  
 }
 
 $tests = &new TestOfTests();
