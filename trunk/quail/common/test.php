@@ -56,6 +56,7 @@ class quailTest {
 		
 	}	
 	
+	
 	function getAllElements($tags = null, $options = false, $value = true) {
 		if(!is_array($tags))
 			$tags = array($tags);
@@ -100,6 +101,7 @@ class quailTest {
 	
 	function getNextElement($element) {
 		$parent = $element->parentNode;
+		
 		foreach($parent->childNodes as $child) {
 			if($next)
 				return $child;
@@ -175,6 +177,18 @@ class quailTableTest extends quailTest {
 		return array('rows' => $rows, 'columns' => $columns);
 	}
 	
+	function isData($table) {
+		foreach($table->childNodes as $child) {
+			if($child->tagName == 'tr') {
+				foreach($child->childNodes as $row_child) {
+					if($row_child->tagName == 'th')
+						return true;
+				}
+			}
+		}
+		return false;
+	}
+	
 }
 
 class inputHasLabel extends quailTest {
@@ -209,4 +223,22 @@ class inputHasLabel extends quailTest {
 		}
 	}
 
+}
+
+class inputTabIndex extends quailTest {
+
+	var $tag;
+	
+	var $type;
+	
+	var $no_type = false;
+	
+	function check() {
+		foreach($this->getAllElements($this->tag) as $element) {
+			if(($no_type || $element->getAttribute('type') == $this->type)
+					&& (!($element->hasAttribute('tabindex'))
+						 || !is_numeric($element->getAttribute('tabindex')))) 
+				$this->addReport($element);
+		}
+	}
 }
