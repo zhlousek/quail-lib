@@ -1686,7 +1686,19 @@ class TestOfTests extends UnitTestCase {
 
 		$results = $this->getTest('169-2.html', 'selectWithOptionsHasOptgroup');
 		$this->assertTrue(count($results) == 0); 
-  }  
+  } 
+  
+  //173
+  function test173_aSuspiciousLinkText() {
+		$results = $this->getTest('173-1.html', 'aSuspiciousLinkText');
+		$this->assertTrue($results[0]->element->tagName == 'a');  
+
+		$results = $this->getTest('173-2.html', 'aSuspiciousLinkText');
+		$this->assertTrue(count($results) == 0); 
+
+		$results = $this->getTest('173-3.html', 'aSuspiciousLinkText');
+		$this->assertTrue($results[0]->element->tagName == 'a'); 
+  } 
 }
 
 $tests = &new TestOfTests();
