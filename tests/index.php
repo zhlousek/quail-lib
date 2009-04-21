@@ -1615,6 +1615,78 @@ class TestOfTests extends UnitTestCase {
 		$results = $this->getTest('161-2.html', 'emoticonsMissingAbbr');
 		$this->assertTrue(count($results) == 0); 
   }
+  
+  //163
+  function test163_embedHasAssociatedNoEmbed() {
+		$results = $this->getTest('163-1.html', 'embedHasAssociatedNoEmbed');
+		$this->assertTrue($results[0]->element->tagName == 'embed');  
+
+		$results = $this->getTest('163-2.html', 'embedHasAssociatedNoEmbed');
+		$this->assertTrue(count($results) == 0); 
+ 
+		$results = $this->getTest('163-3.html', 'embedHasAssociatedNoEmbed');
+		$this->assertTrue(count($results) == 0); 
+  } 
+
+  //164
+  function test164_noembedHasEquivalentContent() {
+		$results = $this->getTest('164-1.html', 'noembedHasEquivalentContent');
+		$this->assertTrue($results[0]->element->tagName == 'noembed');  
+
+		$results = $this->getTest('164-2.html', 'noembedHasEquivalentContent');
+		$this->assertTrue(count($results) == 0); 
+  }
+
+  //165
+  function test165_embedMustHaveAltAttribute() {
+		$results = $this->getTest('165-1.html', 'embedMustHaveAltAttribute');
+		$this->assertTrue($results[0]->element->tagName == 'embed');  
+
+		$results = $this->getTest('165-2.html', 'embedMustHaveAltAttribute');
+		$this->assertTrue(count($results) == 0); 
+  }
+
+  //166
+  function test166_embedMustNotHaveEmptyAlt() {
+		$results = $this->getTest('166-1.html', 'embedMustNotHaveEmptyAlt');
+		$this->assertTrue($results[0]->element->tagName == 'embed');  
+
+		$results = $this->getTest('166-2.html', 'embedMustNotHaveEmptyAlt');
+		$this->assertTrue(count($results) == 0); 
+  }
+
+  //167
+  function test167_iframeMustNotHaveLongdesc() {
+		$results = $this->getTest('167-1.html', 'iframeMustNotHaveLongdesc');
+		$this->assertTrue($results[0]->element->tagName == 'iframe');  
+
+		$results = $this->getTest('167-2.html', 'iframeMustNotHaveLongdesc');
+		$this->assertTrue(count($results) == 0); 
+  }
+
+  //168
+  function test168_radioMarkedWithFieldgroupAndLegend() {
+		$results = $this->getTest('168-1.html', 'radioMarkedWithFieldgroupAndLegend');
+		$this->assertTrue($results[0]->element->tagName == 'input');  
+
+		$results = $this->getTest('168-2.html', 'radioMarkedWithFieldgroupAndLegend');
+		$this->assertTrue(count($results) == 0); 
+
+		$results = $this->getTest('168-3.html', 'radioMarkedWithFieldgroupAndLegend');
+		$this->assertTrue(count($results) == 0); 
+
+		$results = $this->getTest('168-4.html', 'radioMarkedWithFieldgroupAndLegend');
+		$this->assertTrue(count($results) == 0); 
+  }
+  
+  //169
+  function test169_selectWithOptionsHasOptgroup() {
+		$results = $this->getTest('169-1.html', 'selectWithOptionsHasOptgroup');
+		$this->assertTrue($results[0]->element->tagName == 'select');  
+
+		$results = $this->getTest('169-2.html', 'selectWithOptionsHasOptgroup');
+		$this->assertTrue(count($results) == 0); 
+  }  
 }
 
 $tests = &new TestOfTests();
