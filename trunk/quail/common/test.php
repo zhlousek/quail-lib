@@ -111,7 +111,17 @@ class quailTest {
 		}
 		return false;
 	}
-
+	
+	function getParent($element, $tagName, $limiter) {
+		while($element) {
+			if($element->tagName == $tagName)
+				return $element;
+			if($element->tagName == $limiter)
+				return false;
+			$element = $element->parentNode;
+		}
+		return false;
+	}
 }
 
 class quailTagTest extends quailTest { 
