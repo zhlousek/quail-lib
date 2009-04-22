@@ -224,7 +224,7 @@ class inputHasLabel extends quailTest {
 			if($input->getAttribute('type') == $this->type || $this->no_type) {
 				if(!$input->hasAttribute('title')) {
 					if(!$input_in_label[$input->getAttribute('name')]) {
-						if(!$labels[$input->getAttribute('id')])
+						if(!$labels[$input->getAttribute('id')] || trim($labels[$input->getAttribute('id')]->nodeValue) == '')
 							$this->addReport($input);
 					}
 				

@@ -1947,6 +1947,17 @@ class TestOfTests extends UnitTestCase {
 		$results = $this->getTest('202-2.html', 'frameTitlesNotPlaceholder');
 		$this->assertTrue(count($results) == 0);
    }
+
+   //203
+  function test203_tableSummaryDescribesTable() {
+		$results = $this->getTest('203-1.html', 'tableSummaryDescribesTable');
+		$this->assertTrue($results[0]->element->tagName == 'table');  
+
+		$results = $this->getTest('203-2.html', 'tableSummaryDescribesTable');
+		$this->assertTrue($results[0]->element->tagName == 'table');  
+   }
+
+   //204-220 skipped  -  already covered in previous tests
 }
 
 $tests = &new TestOfTests();
