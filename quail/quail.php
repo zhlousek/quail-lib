@@ -1,6 +1,6 @@
 <?php 
 
-define(QUAIL_PATH, '/usr/web/access/quail/');
+define(QUAIL_PATH, '');
 
 foreach (glob(QUAIL_PATH."common/*.php") as $filename) {
 	require_once($filename);

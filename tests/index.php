@@ -1699,6 +1699,106 @@ class TestOfTests extends UnitTestCase {
 		$results = $this->getTest('173-3.html', 'aSuspiciousLinkText');
 		$this->assertTrue($results[0]->element->tagName == 'a'); 
   } 
+  
+  //174
+  function test174_aMustContainText() {
+		$results = $this->getTest('174-1.html', 'aMustContainText');
+		$this->assertTrue($results[0]->element->tagName == 'a');  
+
+		$results = $this->getTest('174-2.html', 'aMustContainText');
+		$this->assertTrue(count($results) == 0); 
+
+		$results = $this->getTest('174-3.html', 'aMustContainText');
+		$this->assertTrue(count($results) == 0); 
+
+		$results = $this->getTest('174-4.html', 'aMustContainText');
+		$this->assertTrue(count($results) == 0); 
+
+  }   
+
+  
+  //175
+  function test175_aImgAltNotRepetative() {
+		$results = $this->getTest('175-1.html', 'aImgAltNotRepetative');
+		$this->assertTrue($results[0]->element->tagName == 'img');  
+
+		$results = $this->getTest('175-2.html', 'aImgAltNotRepetative');
+		$this->assertTrue(count($results) == 0); 
+   }
+
+  //176
+  function test176_basefontIsNotUsed() {
+		$results = $this->getTest('176-1.html', 'basefontIsNotUsed');
+		$this->assertTrue($results[0]->element->tagName == 'basefont');  
+
+		$results = $this->getTest('176-2.html', 'basefontIsNotUsed');
+		$this->assertTrue(count($results) == 0); 
+   }
+
+  //177
+  function test177_fontIsNotUsed() {
+		$results = $this->getTest('177-1.html', 'fontIsNotUsed');
+		$this->assertTrue($results[0]->element->tagName == 'font');  
+
+		$results = $this->getTest('177-2.html', 'fontIsNotUsed');
+		$this->assertTrue(count($results) == 0); 
+   }
+   
+   //Skipped 178-179
+
+  //180
+  function test180_aAdjacentWithSameResourceShouldBeCombined() {
+		$results = $this->getTest('180-1.html', 'aAdjacentWithSameResourceShouldBeCombined');
+		$this->assertTrue($results[0]->element->tagName == 'a');  
+
+		$results = $this->getTest('180-2.html', 'aAdjacentWithSameResourceShouldBeCombined');
+		$this->assertTrue(count($results) == 0); 
+   }   
+   
+  //181 
+  function test181_aMustNotHaveJavascriptHref() {
+		$results = $this->getTest('181-1.html', 'aMustNotHaveJavascriptHref');
+		$this->assertTrue($results[0]->element->tagName == 'a');  
+
+		$results = $this->getTest('181-2.html', 'aMustNotHaveJavascriptHref');
+		$this->assertTrue(count($results) == 0); 
+   }      
+
+  //182 
+  function test182_bodyMustNotHaveBackground() {
+		$results = $this->getTest('182-1.html', 'bodyMustNotHaveBackground');
+		$this->assertTrue($results[0]->pass === false);  
+
+		$results = $this->getTest('182-2.html', 'bodyMustNotHaveBackground');
+		$this->assertTrue(count($results) == 0); 
+   }      
+
+  //183
+  function test183_objectMustHaveEmbed() {
+		$results = $this->getTest('183-1.html', 'objectMustHaveEmbed');
+		$this->assertTrue($results[0]->element->tagName == 'object');  
+
+		$results = $this->getTest('183-2.html', 'objectMustHaveEmbed');
+		$this->assertTrue(count($results) == 0); 
+   }  
+
+  //184
+  function test184_siteMap() {
+		$results = $this->getTest('184-1.html', 'siteMap');
+		$this->assertTrue($results[0]->pass === false);  
+
+		$results = $this->getTest('184-2.html', 'siteMap');
+		$this->assertTrue(count($results) == 0); 
+   } 
+   
+   //185
+  function test185_documentIDsMustBeUnique() {
+		$results = $this->getTest('185-1.html', 'documentIDsMustBeUnique');
+		$this->assertTrue($results[0]->element->tagName == 'th');  
+
+		$results = $this->getTest('185-2.html', 'documentIDsMustBeUnique');
+		$this->assertTrue(count($results) == 0); 
+   } 
 }
 
 $tests = &new TestOfTests();
