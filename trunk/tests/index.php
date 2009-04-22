@@ -1958,6 +1958,53 @@ class TestOfTests extends UnitTestCase {
    }
 
    //204-220 skipped  -  already covered in previous tests
+   //221
+  function test221_bodyColorContrast() {
+		$results = $this->getTest('221-1.html', 'bodyColorContrast');
+		$this->assertTrue($results[0]->pass === false);  
+
+		$results = $this->getTest('221-2.html', 'bodyColorContrast');
+		$this->assertTrue(count($results) == 0);  
+
+		$results = $this->getTest('221-3.html', 'bodyColorContrast');
+		$this->assertTrue(count($results) == 0); 
+   }
+
+   //222
+  function test222_bodyLinkColorContrast() {
+		$results = $this->getTest('222-1.html', 'bodyLinkColorContrast');
+		$this->assertTrue($results[0]->pass === false);  
+
+		$results = $this->getTest('222-2.html', 'bodyLinkColorContrast');
+		$this->assertTrue(count($results) == 0);  
+
+		$results = $this->getTest('222-3.html', 'bodyLinkColorContrast');
+		$this->assertTrue(count($results) == 0); 
+   }
+
+   //223
+  function test223_bodyActiveLinkColorContrast() {
+		$results = $this->getTest('223-1.html', 'bodyActiveLinkColorContrast');
+		$this->assertTrue($results[0]->pass === false);  
+
+		$results = $this->getTest('223-2.html', 'bodyActiveLinkColorContrast');
+		$this->assertTrue(count($results) == 0);  
+
+		$results = $this->getTest('223-3.html', 'bodyActiveLinkColorContrast');
+		$this->assertTrue(count($results) == 0); 
+   }
+
+   //224
+  function test224_bodyVisitedLinkColorContrast() {
+		$results = $this->getTest('224-1.html', 'bodyVisitedLinkColorContrast');
+		$this->assertTrue($results[0]->pass === false);  
+
+		$results = $this->getTest('224-2.html', 'bodyVisitedLinkColorContrast');
+		$this->assertTrue(count($results) == 0);  
+
+		$results = $this->getTest('224-3.html', 'bodyVisitedLinkColorContrast');
+		$this->assertTrue(count($results) == 0); 
+   }
 }
 
 $tests = &new TestOfTests();
