@@ -1877,6 +1877,76 @@ class TestOfTests extends UnitTestCase {
 		$results = $this->getTest('194-2.html', 'areaAltRefersToText');
 		$this->assertTrue($results[0]->element->tagName == 'area');
    } 
+   
+   //195
+  function test195_aLinkTextDoesNotBeginWithRedundantWord() {
+		$results = $this->getTest('195-1.html', 'aLinkTextDoesNotBeginWithRedundantWord');
+		$this->assertTrue($results[0]->element->tagName == 'a');  
+
+		$results = $this->getTest('195-2.html', 'aLinkTextDoesNotBeginWithRedundantWord');
+		$this->assertTrue(count($results) == 0);
+
+		$results = $this->getTest('195-3.html', 'aLinkTextDoesNotBeginWithRedundantWord');
+		$this->assertTrue($results[0]->element->tagName == 'a');  
+
+		$results = $this->getTest('195-4.html', 'aLinkTextDoesNotBeginWithRedundantWord');
+		$this->assertTrue(count($results) == 0);
+   } 
+
+   //196
+  function test196_imgServerSideMapNotUsed() {
+		$results = $this->getTest('196-1.html', 'imgServerSideMapNotUsed');
+		$this->assertTrue($results[0]->element->tagName == 'img');  
+
+		$results = $this->getTest('196-2.html', 'imgServerSideMapNotUsed');
+		$this->assertTrue($results[0]->element->tagName == 'img');
+   } 
+
+	//Skipped 197
+   //198
+  function test198_legendDescribesListOfChoices() {
+		$results = $this->getTest('198-1.html', 'legendDescribesListOfChoices');
+		$this->assertTrue($results[0]->element->tagName == 'legend');  
+
+		$results = $this->getTest('198-2.html', 'legendDescribesListOfChoices');
+		$this->assertTrue($results[0]->element->tagName == 'legend');
+   }    
+
+   //199
+  function test199_legendTextNotEmpty() {
+		$results = $this->getTest('199-1.html', 'legendTextNotEmpty');
+		$this->assertTrue($results[0]->element->tagName == 'legend');  
+
+		$results = $this->getTest('199-2.html', 'legendTextNotEmpty');
+		$this->assertTrue(count($results) == 0);
+   } 
+
+   //200
+  function test200_legendTextNotPlaceholder() {
+		$results = $this->getTest('200-1.html', 'legendTextNotPlaceholder');
+		$this->assertTrue($results[0]->element->tagName == 'legend');  
+
+		$results = $this->getTest('200-2.html', 'legendTextNotPlaceholder');
+		$this->assertTrue(count($results) == 0);
+   }
+
+   //201
+  function test201_frameTitlesNotEmpty() {
+		$results = $this->getTest('201-1.html', 'frameTitlesNotEmpty');
+		$this->assertTrue($results[0]->element->tagName == 'frame');  
+
+		$results = $this->getTest('201-2.html', 'frameTitlesNotEmpty');
+		$this->assertTrue(count($results) == 0);
+   }
+
+   //202
+  function test202_frameTitlesNotPlaceholder() {
+		$results = $this->getTest('202-1.html', 'frameTitlesNotPlaceholder');
+		$this->assertTrue($results[0]->element->tagName == 'frame');  
+
+		$results = $this->getTest('202-2.html', 'frameTitlesNotPlaceholder');
+		$this->assertTrue(count($results) == 0);
+   }
 }
 
 $tests = &new TestOfTests();
