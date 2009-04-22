@@ -1799,6 +1799,84 @@ class TestOfTests extends UnitTestCase {
 		$results = $this->getTest('185-2.html', 'documentIDsMustBeUnique');
 		$this->assertTrue(count($results) == 0); 
    } 
+
+   //186
+  function test186_labelDoesNotContainInput() {
+		$results = $this->getTest('186-1.html', 'labelDoesNotContainInput');
+		$this->assertTrue($results[0]->element->tagName == 'label');  
+
+		$results = $this->getTest('186-2.html', 'labelDoesNotContainInput');
+		$this->assertTrue(count($results) == 0); 
+   } 
+
+   //187
+  function test187_labelMustBeUnique() {
+		$results = $this->getTest('187-1.html', 'labelMustBeUnique');
+		$this->assertTrue($results[0]->element->tagName == 'label');  
+
+		$results = $this->getTest('187-2.html', 'labelMustBeUnique');
+		$this->assertTrue(count($results) == 0); 
+   } 
+
+   //188
+  function test188_labelMustNotBeEmpty() {
+		$results = $this->getTest('188-1.html', 'labelMustNotBeEmpty');
+		$this->assertTrue($results[0]->element->tagName == 'label');  
+
+		$results = $this->getTest('188-2.html', 'labelMustNotBeEmpty');
+		$this->assertTrue(count($results) == 0); 
+
+		$results = $this->getTest('188-3.html', 'labelMustNotBeEmpty');
+		$this->assertTrue($results[0]->element->tagName == 'label');  
+
+		$results = $this->getTest('188-3.html', 'labelMustNotBeEmpty');
+		$this->assertTrue($results[0]->element->tagName == 'label');  
+   } 
+
+   //190
+  function test190_aMustHaveTitle() {
+		$results = $this->getTest('190-1.html', 'aMustHaveTitle');
+		$this->assertTrue($results[0]->element->tagName == 'a');  
+
+		$results = $this->getTest('190-2.html', 'aMustHaveTitle');
+		$this->assertTrue(count($results) == 0); 
+   } 
+
+   //191
+  function test191_aTitleDescribesDestination() {
+		$results = $this->getTest('191-1.html', 'aTitleDescribesDestination');
+		$this->assertTrue($results[0]->element->tagName == 'a');  
+
+		$results = $this->getTest('191-2.html', 'aTitleDescribesDestination');
+		$this->assertTrue($results[0]->element->tagName == 'a'); 
+   } 
+
+   //192
+  function test192_inputImageAltNotRedundant() {
+		$results = $this->getTest('192-1.html', 'inputImageAltNotRedundant');
+		$this->assertTrue($results[0]->element->tagName == 'input');  
+
+		$results = $this->getTest('192-2.html', 'inputImageAltNotRedundant');
+		$this->assertTrue(count($results) == 0);
+   } 
+
+   //193
+  function test193_inputImageNotDecorative() {
+		$results = $this->getTest('193-1.html', 'inputImageNotDecorative');
+		$this->assertTrue($results[0]->element->tagName == 'input');  
+
+		$results = $this->getTest('193-2.html', 'inputImageNotDecorative');
+		$this->assertTrue($results[0]->element->tagName == 'input');
+   } 
+
+   //194
+  function test194_areaAltRefersToText() {
+		$results = $this->getTest('194-1.html', 'areaAltRefersToText');
+		$this->assertTrue($results[0]->element->tagName == 'area');  
+
+		$results = $this->getTest('194-2.html', 'areaAltRefersToText');
+		$this->assertTrue($results[0]->element->tagName == 'area');
+   } 
 }
 
 $tests = &new TestOfTests();
