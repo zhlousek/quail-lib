@@ -300,6 +300,53 @@ class quailColorTest extends quailTest {
 		$results = array('r' => hexdec($c[0]), 'g' => hexdec($c[1]), 'b' => hexdec($c[2]));
 		return $results;
 	}
+	
+	function getWaiErtContrast($foreground, $background) {
+		$fore_rgb = $this->getRGB($foreground);
+		$back_rgb = $this->getRGB($background);
+		$diffs = $this->getWaiDiffs($fore_rgb, $back_rgb);
+		
+		return $diffs['red'] + $diffs['green'] + $diffs['blue'];
+	}
+	
+	function getWaiErtBrightness($foreground, $background) {
+		$fore_rgb = $this->getRGB($foreground);
+		$back_rgb = $this->getRGB($background);
+		$color = $this->getWaiDiffs($fore_rgb, $back_rgb);
+		return (($color['red'] * 299) + ($color['green'] * 587) + ($color['blue'] * 114)) / 1000;
+	}
+	
+	function getWaiDiffs($fore_rgb, $back_rgb) {
+		$red_diff = ($fore_rgb['r'] > $back_rgb['r']) 
+						? $fore_rgb['r'] - $back_rgb['r'] 
+						: $back_rgb['r'] - $fore_rgb['r'];
+		$green_diff = ($fore_rgb['g'] > $back_rgb['g']) 
+						? $fore_rgb['g'] - $back_rgb['g'] 
+						: $back_rgb['g'] - $fore_rgb['g'];		
+
+		$blue_diff = ($fore_rgb['b'] > $back_rgb['b']) 
+						? $fore_rgb['b'] - $back_rgb['b'] 
+						: $back_rgb['b'] - $fore_rgb['b'];
+		return array('red' => $red_diff, 'green' => $green_diff, 'blue' => $blue_diff);
+	}
+}
+
+class bodyWaiErtColorContrast extends quailColorTest {
+	var $background = 'bgcolor';
+	var $foreground = 'text';
+	
+	function check() {
+		$body = $this->getAllElements('body');
+		if(!$body)
+			return false;
+		$body = $body[0];
+		if($body->hasAttribute($this->foreground) && $body->hasAttribute($this->background))
+			if( $this->getWaiErtContrast($body->getAttribute($this->foreground), $body->getAttribute($this->background)) < 500)
+				$this->addReport(null, null, false);
+			elseif($this->getWaiErtBrightness($body->getAttribute($this->foreground), $body->getAttribute($this->background)) < 125)
+				$this->addReport(null, null, false);
+			
+	}
 
 }
 
