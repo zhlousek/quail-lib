@@ -2005,6 +2005,25 @@ class TestOfTests extends UnitTestCase {
 		$results = $this->getTest('224-3.html', 'bodyVisitedLinkColorContrast');
 		$this->assertTrue(count($results) == 0); 
    }
+
+   //225
+  function test225_documentStrictDocType() {
+
+		$results = $this->getTest('225-1.html', 'documentStrictDocType');
+		$this->assertTrue($results[0]->pass === false);  
+
+		$results = $this->getTest('225-2.html', 'documentStrictDocType');
+		$this->assertTrue(count($results) == 0);  
+
+		$results = $this->getTest('225-3.html', 'documentStrictDocType');
+		$this->assertTrue(count($results) == 0); 
+
+		$results = $this->getTest('225-4.html', 'documentStrictDocType');
+		$this->assertTrue($results[0]->pass === false);
+	
+		$results = $this->getTest('225-5.html', 'documentStrictDocType');
+		$this->assertTrue($results[0]->pass === false);
+   }
 }
 
 $tests = &new TestOfTests();
