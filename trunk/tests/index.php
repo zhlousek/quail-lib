@@ -2024,6 +2024,68 @@ class TestOfTests extends UnitTestCase {
 		$results = $this->getTest('225-5.html', 'documentStrictDocType');
 		$this->assertTrue($results[0]->pass === false);
    }
+
+   //226
+  function test226_documentColorWaiAlgorithim() {
+
+		$results = $this->getTest('226-1.html', 'documentColorWaiAlgorithim');
+		$this->assertTrue($results[0]->pass === false);  
+
+		$results = $this->getTest('226-2.html', 'documentColorWaiAlgorithim');
+		$this->assertTrue(count($results) == 0);  
+
+		$results = $this->getTest('226-3.html', 'documentColorWaiAlgorithim');
+		$this->assertTrue(count($results) == 0); 
+	}
+
+   //227
+  function test227_documentColorWaiLinkAlgorithim() {
+
+		$results = $this->getTest('227-1.html', 'documentColorWaiLinkAlgorithim');
+		$this->assertTrue($results[0]->pass === false);  
+
+		$results = $this->getTest('227-2.html', 'documentColorWaiLinkAlgorithim');
+		$this->assertTrue(count($results) == 0);  
+
+		$results = $this->getTest('227-3.html', 'documentColorWaiLinkAlgorithim');
+		$this->assertTrue(count($results) == 0); 
+	}
+
+   //228
+  function test228_documentColorWaiActiveLinkAlgorithim() {
+
+		$results = $this->getTest('228-1.html', 'documentColorWaiActiveLinkAlgorithim');
+		$this->assertTrue($results[0]->pass === false);  
+
+		$results = $this->getTest('228-2.html', 'documentColorWaiActiveLinkAlgorithim');
+		$this->assertTrue(count($results) == 0);  
+
+		$results = $this->getTest('228-3.html', 'documentColorWaiActiveLinkAlgorithim');
+		$this->assertTrue(count($results) == 0); 
+	}
+
+   //229
+  function test229_documentColorWaiVisitedLinkAlgorithim() {
+
+		$results = $this->getTest('229-1.html', 'documentColorWaiVisitedLinkAlgorithim');
+		$this->assertTrue($results[0]->pass === false);  
+
+		$results = $this->getTest('229-2.html', 'documentColorWaiVisitedLinkAlgorithim');
+		$this->assertTrue(count($results) == 0);  
+
+		$results = $this->getTest('229-3.html', 'documentColorWaiVisitedLinkAlgorithim');
+		$this->assertTrue(count($results) == 0); 
+	}
+
+   //230
+  function test230_tableIsGrouped() {
+
+		$results = $this->getTest('230-1.html', 'tableIsGrouped');
+		$this->assertTrue($results[0]->element->tagName == 'table');  
+
+		$results = $this->getTest('230-2.html', 'tableIsGrouped');
+		$this->assertTrue(count($results) == 0); 
+  }
 }
 
 $tests = &new TestOfTests();
