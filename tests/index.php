@@ -2086,6 +2086,85 @@ class TestOfTests extends UnitTestCase {
 		$results = $this->getTest('230-2.html', 'tableIsGrouped');
 		$this->assertTrue(count($results) == 0); 
   }
+
+   //231
+  function test231_tableUseColGroup() {
+
+		$results = $this->getTest('231-1.html', 'tableUseColGroup');
+		$this->assertTrue($results[0]->element->tagName == 'table');  
+
+		$results = $this->getTest('231-2.html', 'tableUseColGroup');
+		$this->assertTrue(count($results) == 0); 
+  }
+
+   //232
+  function test232_documentValidatesToDocType() {
+
+		$results = $this->getTest('232-1.html', 'documentValidatesToDocType');
+		$this->assertTrue($results[0]->pass === false);  
+
+		$results = $this->getTest('232-2.html', 'documentValidatesToDocType');
+		$this->assertTrue($results[0]->pass === false);  
+  }
+
+   //233
+  function test233_framesetIsNotUsed() {
+
+		$results = $this->getTest('233-1.html', 'framesetIsNotUsed');
+		$this->assertTrue($results[0]->element->tagName == 'frameset');  
+
+		$results = $this->getTest('232-2.html', 'framesetIsNotUsed');
+		$this->assertTrue(count($results) == 0); 
+  }
+
+   //234
+  function test234_frameIsNotUsed() {
+
+		$results = $this->getTest('234-1.html', 'frameIsNotUsed');
+		$this->assertTrue($results[0]->element->tagName == 'frame');  
+
+		$results = $this->getTest('234-2.html', 'frameIsNotUsed');
+		$this->assertTrue(count($results) == 0); 
+  }
+
+   //235
+  function test235_documentReadingDirection() {
+
+		$results = $this->getTest('235-1.html', 'documentReadingDirection');
+		$this->assertTrue($results[0]->element->tagName == 'blockquote');  
+
+		$results = $this->getTest('235-2.html', 'documentReadingDirection');
+		$this->assertTrue(count($results) == 0); 
+  }
+
+   //236
+  function test236_aAdjacentDontPointToSameResource() {
+
+		$results = $this->getTest('236-1.html', 'aAdjacentWithSameResourceShouldBeCombined');
+		$this->assertTrue($results[0]->element->tagName == 'a');  
+
+		$results = $this->getTest('236-2.html', 'aAdjacentWithSameResourceShouldBeCombined');
+		$this->assertTrue(count($results) == 0); 
+
+		$results = $this->getTest('236-1.html', 'aAdjacentWithSameResourceShouldBeCombined');
+		$this->assertTrue($results[0]->element->tagName == 'a'); 
+  }
+  
+  //skipped 237
+  
+    //238
+  function test238_inputElementsDontHaveAlt() {
+
+		$results = $this->getTest('238-1.html', 'inputElementsDontHaveAlt');
+		$this->assertTrue($results[0]->element->tagName == 'input');  
+
+		$results = $this->getTest('238-2.html', 'inputElementsDontHaveAlt');
+		$this->assertTrue(count($results) == 0);  
+  }
+  
+  //skipped 239
+  
+  
 }
 
 $tests = &new TestOfTests();
