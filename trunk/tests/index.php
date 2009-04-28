@@ -2162,8 +2162,38 @@ class TestOfTests extends UnitTestCase {
 		$this->assertTrue(count($results) == 0);  
   }
   
-  //skipped 239
+  //skipped 239 & 240
   
+  
+  //241
+  function test241_tabularDataIsInTable() {
+
+		$results = $this->getTest('241-1.html', 'tabularDataIsInTable');
+		$this->assertTrue($results[0]->element->tagName == 'pre');  
+
+		$results = $this->getTest('241-2.html', 'tabularDataIsInTable');
+		$this->assertTrue(count($results) == 0);  
+  } 
+
+  //242
+  function test242_tableCaptionIdentifiesTable() {
+
+		$results = $this->getTest('242-1.html', 'tableCaptionIdentifiesTable');
+		$this->assertTrue($results[0]->element->tagName == 'caption');  
+
+		$results = $this->getTest('242-2.html', 'tableCaptionIdentifiesTable');
+		$this->assertTrue($results[0]->element->tagName == 'caption'); 
+  } 
+
+  //243
+  function test243_tableSummaryDoesNotDuplicateCaption() {
+
+		$results = $this->getTest('243-1.html', 'tableSummaryDoesNotDuplicateCaption');
+		$this->assertTrue($results[0]->element->tagName == 'table');  
+
+		$results = $this->getTest('243-2.html', 'tableSummaryDoesNotDuplicateCaption');
+		$this->assertTrue(count($results) == 0);  
+  } 
   
 }
 
