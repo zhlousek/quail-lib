@@ -1,6 +1,7 @@
 <?php
 /**
-*	http://checker.atrc.utoronto.ca/servlet/ShowCheck?check=1&lang=eng
+*   All img elements have an alt attribute.
+*
 */
 class imgHasAlt extends quailTest {
 
