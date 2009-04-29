@@ -2194,6 +2194,113 @@ class TestOfTests extends UnitTestCase {
 		$results = $this->getTest('243-2.html', 'tableSummaryDoesNotDuplicateCaption');
 		$this->assertTrue(count($results) == 0);  
   } 
+
+  //244
+  function test244_tableWithBothHeadersUseScope() {
+
+		$results = $this->getTest('244-1.html', 'tableWithBothHeadersUseScope');
+		$this->assertTrue($results[0]->element->tagName == 'table');  
+
+		$results = $this->getTest('244-2.html', 'tableWithBothHeadersUseScope');
+		$this->assertTrue(count($results) == 0);  
+  } 
+
+  //245
+  function test245_tableWithMoreHeadersUseID() {
+
+		$results = $this->getTest('245-1.html', 'tableWithMoreHeadersUseID');
+		$this->assertTrue($results[0]->element->tagName == 'table');  
+
+		$results = $this->getTest('245-2.html', 'tableWithMoreHeadersUseID');
+		$this->assertTrue(count($results) == 0);  
+  } 
+
+  //246
+  function test246_formWithRequiredLabel() {
+
+		$results = $this->getTest('246-1.html', 'formWithRequiredLabel');
+		$this->assertTrue($results[0]->element->tagName == 'form');  
+
+		$results = $this->getTest('246-2.html', 'formWithRequiredLabel');
+		$this->assertTrue($results[0]->element->tagName == 'form');   
+  } 
+
+  //247
+  function test247_inputCheckboxRequiresFieldset() {
+
+		$results = $this->getTest('247-1.html', 'inputCheckboxRequiresFieldset');
+		$this->assertTrue($results[0]->element->tagName == 'input');  
+
+		$results = $this->getTest('247-2.html', 'inputCheckboxRequiresFieldset');
+		$this->assertTrue(count($results) == 0);  
+  } 
+
+  //248
+  function test248_documentVisualListsAreMarkedUp() {
+
+		$results = $this->getTest('248-1.html', 'documentVisualListsAreMarkedUp');
+		$this->assertTrue($results[0]->element->tagName == 'p');  
+
+		$results = $this->getTest('248-2.html', 'documentVisualListsAreMarkedUp');
+		$this->assertTrue(count($results) == 0);  
+  } 
+
+   //skipped 249 - 250 - 251 
+   
+   //252
+  function test252_documentAllColorsAreSet() {
+
+		$results = $this->getTest('252-1.html', 'documentAllColorsAreSet');
+		$this->assertTrue($results[0]->pass === false);  
+
+		$results = $this->getTest('252-2.html', 'documentAllColorsAreSet');
+		$this->assertTrue(count($results) == 0);  
+
+		$results = $this->getTest('252-3.html', 'documentAllColorsAreSet');
+		$this->assertTrue(count($results) == 0); 
+  }    
+   
+  //258
+  function test258_appletProvidesMechanismToReturnToParent() {
+
+		$results = $this->getTest('258-1.html', 'appletProvidesMechanismToReturnToParent');
+		$this->assertTrue($results[0]->element->tagName == 'applet');     
+
+		$results = $this->getTest('258-2.html', 'appletProvidesMechanismToReturnToParent');
+		$this->assertTrue($results[0]->element->tagName == 'applet');
+   } 
+
+  //259
+  function test259_objectProvidesMechanismToReturnToParent() {
+
+		$results = $this->getTest('259-1.html', 'objectProvidesMechanismToReturnToParent');
+		$this->assertTrue($results[0]->element->tagName == 'object');     
+
+		$results = $this->getTest('259-2.html', 'objectProvidesMechanismToReturnToParent');
+		$this->assertTrue($results[0]->element->tagName == 'object');
+   } 
+
+  //260
+  function test260_embedProvidesMechanismToReturnToParent() {
+
+		$results = $this->getTest('260-1.html', 'embedProvidesMechanismToReturnToParent');
+		$this->assertTrue($results[0]->element->tagName == 'embed');     
+
+		$results = $this->getTest('260-2.html', 'embedProvidesMechanismToReturnToParent');
+		$this->assertTrue($results[0]->element->tagName == 'embed');
+   } 
+
+
+
+  //261
+  function test261_headersUseToMarkSections() {
+
+		$results = $this->getTest('261-1.html', 'headersUseToMarkSections');
+		$this->assertTrue($results[0]->element->tagName == 'p');     
+
+		$results = $this->getTest('261-2.html', 'headersUseToMarkSections');
+		$this->assertTrue(count($results) == 0 );
+   } 
   
 }
 
