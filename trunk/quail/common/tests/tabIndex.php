@@ -30,3 +30,9 @@ class inputFileHasTabIndex extends inputTabIndex {
 	
 	var $type = 'file';
 }
+
+class inputSubmitHasTabIndex extends inputTabIndex {
+	var $tag = 'input';
+	
+	var $type = 'submit';
+}

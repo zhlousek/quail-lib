@@ -2301,6 +2301,86 @@ class TestOfTests extends UnitTestCase {
 		$results = $this->getTest('261-2.html', 'headersUseToMarkSections');
 		$this->assertTrue(count($results) == 0 );
    } 
+   //skipped 262-263
+   
+  //264
+  function test264_inputSubmitHasTabIndex() {
+
+		$results = $this->getTest('264-1.html', 'inputSubmitHasTabIndex');
+		$this->assertTrue($results[0]->element->tagName == 'input');     
+
+		$results = $this->getTest('264-2.html', 'inputSubmitHasTabIndex');
+		$this->assertTrue($results[0]->element->tagName == 'input');     
+
+		$results = $this->getTest('264-3.html', 'inputSubmitHasTabIndex');
+		$this->assertTrue(count($results) == 0 );
+   }   
+  
+  //265
+  function test264_tabIndexFollowsLogicalOrder() {
+
+		$results = $this->getTest('265-1.html', 'tabIndexFollowsLogicalOrder');
+		$this->assertTrue($results[0]->element->tagName == 'input');     
+
+		$results = $this->getTest('265-2.html', 'tabIndexFollowsLogicalOrder');
+		$this->assertTrue(count($results) == 0 );
+  }
+  
+  //267
+  
+  //268
+  function test268_formHasGoodErrorMessage() {
+
+		$results = $this->getTest('268-1.html', 'formHasGoodErrorMessage');
+		$this->assertTrue($results[0]->element->tagName == 'form');     
+
+		$results = $this->getTest('268-2.html', 'formHasGoodErrorMessage');
+		$this->assertTrue($results[0]->element->tagName == 'form');     
+  }
+
+  //269
+  function test269_formErrorMessageHelpsUser() {
+
+		$results = $this->getTest('269-1.html', 'formErrorMessageHelpsUser');
+		$this->assertTrue($results[0]->element->tagName == 'form');     
+
+		$results = $this->getTest('269-2.html', 'formErrorMessageHelpsUser');
+		$this->assertTrue($results[0]->element->tagName == 'form');     
+  }
+
+  //270
+  function test270_formAllowsCheckIfIrreversable() {
+
+		$results = $this->getTest('269-1.html', 'formAllowsCheckIfIrreversable');
+		$this->assertTrue($results[0]->element->tagName == 'form');     
+
+		$results = $this->getTest('269-2.html', 'formAllowsCheckIfIrreversable');
+		$this->assertTrue($results[0]->element->tagName == 'form');     
+  }
+  
+  //skipped 271
+
+  //271
+  function test271_documentReadingDirection() {
+
+		$results = $this->getTest('271-1.html', 'documentReadingDirection');
+		$this->assertTrue($results[0]->element->tagName == 'span');     
+
+		$results = $this->getTest('271-2.html', 'documentReadingDirection');
+		$this->assertTrue(count($results) == 0);     
+  }
+
+  //272
+  function test272_formDeleteIsReversable() {
+
+		$results = $this->getTest('272-1.html', 'formDeleteIsReversable');
+		$this->assertTrue($results[0]->element->tagName == 'form');     
+
+		$results = $this->getTest('272-2.html', 'formDeleteIsReversable');
+		$this->assertTrue($results[0]->element->tagName == 'form');     
+  }
+
+  //273 - 276 skipped
   
 }
 
