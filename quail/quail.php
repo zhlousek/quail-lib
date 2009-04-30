@@ -14,9 +14,13 @@ class quail {
 	
 	var $uri;
 	
+	var $domain;
+	
 	var $guideline_name = 'wcag';
 	
-	var $reporter = 'static';
+	var $reporter_name = 'static';
+	
+	var $reporter;
 	
 	var $guideline;
 	
@@ -34,7 +38,9 @@ class quail {
 		$this->dom = new DOMDocument();
 		$this->type = $type;
 		$this->uri = $value;
+		$this->domain = $domain;
 		$this->guideline_name = $guideline;
+		$this->reporter_name = $reporter;
 		switch($type) {
 			case 'string':
 				@$this->dom->loadHTML($value);
@@ -48,7 +54,7 @@ class quail {
 		}
 		$this->prepareBaseUrl($value, $type);
 		$this->loadImageLibrary();
-		$this->loadReporter($reporter, $domain);
+
 	}
 	
 	function __set($var, $value) {
@@ -84,10 +90,10 @@ class quail {
 		return $this->reporter->getError($error);
 	}
 	
-	function loadReporter($reporter, $domain) {
-		require_once('reporter.'. $reporter .'.php');
-		$classname = 'report'.ucfirst($reporter);
-		$this->reporter = new $classname($this->guideline_name, $domain);
+	function loadReporter() {
+		require_once('reporters/reporter.'. $this->reporter_name .'.php');
+		$classname = 'report'.ucfirst($this->reporter_name);
+		$this->reporter = new $classname($this->dom, $this->css, $this->guideline, $this->domain);
 	}
 	
 	function getTechnique($type, $technique) {
@@ -105,7 +111,7 @@ class quail {
 			return false;
 		$this->getCSSObject();
 		require_once('guidelines/'. $this->guideline_name .'.php');
-		$classname = 'quail'.ucfirst(strtolower($this->guideline_name));
+		$classname = ucfirst(strtolower($this->guideline_name)).'Guideline';
 		$this->guideline = new $classname($this->dom, $this->css, $this->path);
 	}
 	
@@ -115,7 +121,9 @@ class quail {
 	}
 	
 	function getReport() {
-		return $this->guideline->getReport();
+		if(!$this->reporter)
+			$this->loadReporter();
+		return $this->reporter->getReport();
 	}
 	
 	function getTest($test) {
@@ -125,10 +133,6 @@ class quail {
 	
 	function getReportOnCheckpoint($guideline, $checkpoint) {
 		return $this->guideline->getReport($guideline, $checkpoint);
-	}
-	
-	function getCheckpointDescription($guideline, $checkpoint) {
-		return $this->guideline->getDescription($guideline, $checkpoint);
 	}
 	
 
@@ -307,11 +311,35 @@ class quailCSS {
 	
 }
 
-class quailReport {
+class quailReporter {
 
-	function getError($error) {
+	var $dom;
 	
+	var $css;
+	
+	var $translation_file;
+	
+	var $report;
+	
+	function __construct(&$dom, &$css, &$guideline, $domain) {
+		$this->dom = $dom;
+		$this->css = $css;
+		$this->guideline = $guideline;
+		$this->loadTranslationFile($domain);
 	}
+	
+	function loadTranslationFile($domain) {
+		$translations = file(QUAIL_PATH.'reporters/translations/'. $domain .'.php');
+		foreach($translations as $translation) {
+			$ex = explode("\t", $translation);
+			if($ex[0]) {
+				$this->translation[$ex[0]] = $ex[1];
+			}
+		}
+
+	}
+	
+
 }
 
 class quailReportItem {
@@ -345,4 +373,34 @@ class quailReportItem {
 	
 	}
 	
+}
+
+
+class quailGuideline {
+	
+	var $dom;
+	
+	var $css;
+	
+	var $path;
+	
+	var $report;
+	
+	function __construct(&$dom, &$css, &$path) {
+		$this->dom = $dom;
+		$this->css = $css;
+		$this->path = $path;
+		$this->run();
+	}
+	
+	function run() {
+		foreach($this->tests as $test) {
+			$$test = new $test($this->dom, $this->css, $this->path);
+			$this->report[$test] = $$test->getReport();
+		}
+	}
+	
+	function getReport(){
+		return $this->report;
+	}
 }
