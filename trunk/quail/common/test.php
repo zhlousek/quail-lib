@@ -1,9 +1,7 @@
 <?php
 
 
-foreach (glob(QUAIL_PATH."common/tests/*.php") as $filename) {
-	require_once($filename);
-}
+
 
 class quailTest {
 
@@ -27,7 +25,11 @@ class quailTest {
 		$this->check();
 	}
 	
-	function addReport($element = null, $message = null, $pass = null) {
+	function getReport() {
+		return $this->report;
+	}
+	
+	function addReport(&$element = null, $message = null, $pass = null) {
 		$report = new quailReportItem();
 		if($element)
 			$report->element = $element;
@@ -195,6 +197,8 @@ class quailTableTest extends quailTest {
 						return true;
 				}
 			}
+			if($child->tagName == 'thead')
+				return true;
 		}
 		return false;
 	}
