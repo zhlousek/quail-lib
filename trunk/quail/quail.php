@@ -1,6 +1,6 @@
 <?php 
 
-define(QUAIL_PATH, '');
+define(QUAIL_PATH, '/usr/web/access/quail/');
 
 foreach (glob(QUAIL_PATH."common/*.php") as $filename) {
 	require_once($filename);
@@ -71,7 +71,27 @@ class quail {
 			array_pop($path);
 			$this->path = $path;
 		}
+		if($type == 'uri') {
+			$parts = explode('://', $value);
+			$this->path[] = $parts[0] .':/';
+			if(is_array($parts[1])) {
+				foreach(explode('/', $this->getBaseFromFile($parts[1])) as $part) {
+					$this->path[] = $part;
+				}
+			}
+			else { 
+				$this->path[] = $parts[1] .'/';
+			}
+		}
 	}
+	
+	 function getBaseFromFile($file) {  
+		 $find = '/';  
+		 $after_find = substr(strrchr($file, $find), 1);  
+		 $strlen_str = strlen($after_find);  
+		 $result = substr($file, 0, -$strlen_str);  
+		 return $result;  
+	 }
 	
 	function loadImageLibrary() {
 		if(function_exists('gd_info')) {
@@ -93,7 +113,7 @@ class quail {
 	function loadReporter() {
 		require_once('reporters/reporter.'. $this->reporter_name .'.php');
 		$classname = 'report'.ucfirst($this->reporter_name);
-		$this->reporter = new $classname($this->dom, $this->css, $this->guideline, $this->domain);
+		$this->reporter = new $classname($this->dom, $this->css, $this->guideline, $this->domain, $this->path);
 	}
 	
 	function getTechnique($type, $technique) {
@@ -321,9 +341,14 @@ class quailReporter {
 	
 	var $report;
 	
-	function __construct(&$dom, &$css, &$guideline, $domain) {
+	var $path;
+	
+	var $absolute_attributes = array('src', 'href');
+	
+	function __construct(&$dom, &$css, &$guideline, $domain, $path = '') {
 		$this->dom = $dom;
 		$this->css = $css;
+		$this->path = $path;
 		$this->guideline = $guideline;
 		$this->loadTranslationFile($domain);
 	}
@@ -336,10 +361,32 @@ class quailReporter {
 				$this->translation[$ex[0]] = $ex[1];
 			}
 		}
-
 	}
 	
-
+	function setAbsolutePath(&$element) {
+		foreach($this->absolute_attributes as $attribute) {
+			if($element->hasAttribute($attribute)) 
+				$attr = $attribute;
+		}
+		
+		if($attr) {
+			$item = $element->getAttribute($attr);
+			//We are ignoring items with absolute URLs
+			if(strpos($item, '://') === false) {
+				
+				$item = implode('/', $this->path) . ltrim($item, '/');
+				$element->setAttribute($attr, $item);
+				print $item .'<br>';
+			}
+		}
+		if($element->tagName == 'style') {
+			if(strpos($element->nodeValue, '@import') !== false) {
+				
+			
+			}
+		}
+	}
+	
 }
 
 class quailReportItem {
