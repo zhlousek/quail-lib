@@ -442,6 +442,7 @@ class quailGuideline {
 	
 	function run() {
 		foreach($this->tests as $test) {
+			require_once('common/tests/'.$test.'.php');
 			$$test = new $test($this->dom, $this->css, $this->path);
 			$this->report[$test] = $$test->getReport();
 		}
