@@ -29,7 +29,7 @@ class quailTest {
 		return $this->report;
 	}
 	
-	function addReport(&$element = null, $message = null, $pass = null) {
+	function addReport($element = null, $message = null, $pass = null) {
 		$report = new quailReportItem();
 		if($element)
 			$report->element = $element;
