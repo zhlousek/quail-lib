@@ -3,7 +3,7 @@
 class WcagGuideline extends quailGuideline{
 	
 	var $tests = array(
-		'imgHasAlt',
-		'aSuspiciousLinkText',
+		'imgHasAlt' => array('severity' => QUAIL_TEST_SEVERE),
+		'aSuspiciousLinkText' => array('severity' => QUAIL_TEST_SEVERE),
 	);
 }

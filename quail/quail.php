@@ -2,10 +2,21 @@
 
 define(QUAIL_PATH, '/usr/web/access/quail/');
 
+/**
+*	@var int A severe failure
+*/	
+define(QUAIL_TEST_SEVERE, 1);
+define(QUAIL_TEST_MODERATE, 2);
+define(QUAIL_TEST_SUGGESTION, 3);
+
 foreach (glob(QUAIL_PATH."common/*.php") as $filename) {
 	require_once($filename);
 }
 
+/**
+*	The main interface class for quail. 
+*
+*/
 class quail {
 
 	var $dom;
@@ -147,6 +158,7 @@ class quail {
 	}
 	
 	function getTest($test) {
+		require_once('common/tests/'. $test .'.php');
 		$test_class = new $test($this->dom, $this->css, $this->path);
 		return $test_class->report;
 	}
@@ -441,14 +453,18 @@ class quailGuideline {
 	}
 	
 	function run() {
-		foreach($this->tests as $test) {
-			require_once('common/tests/'.$test.'.php');
-			$$test = new $test($this->dom, $this->css, $this->path);
-			$this->report[$test] = $$test->getReport();
+		foreach($this->tests as $testname => $test) {
+			require_once('common/tests/'.$testname.'.php');
+			$$testname = new $testname($this->dom, $this->css, $this->path);
+			$this->report[$testname] = $$testname->getReport();	
 		}
 	}
 	
 	function getReport(){
 		return $this->report;
+	}
+	
+	function getSeverity($testname) {
+		return $this->tests[$testname]['severity'];
 	}
 }

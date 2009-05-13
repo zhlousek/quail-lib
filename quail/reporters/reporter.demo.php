@@ -1,10 +1,16 @@
 <?php
 
 
-
+/**
+*	Returns the entire document marked-up to highlight problems.
+*/
 class reportDemo extends quailReporter {
 	
-	
+	/**
+	*	The getReport method - we iterate through every test item and
+	*	add additional attributes to build the report UI.
+	*	@return string A fully-formed HTML document.
+	*/
 	function getReport() {
 		
 		foreach($this->guideline->getReport() as $testname => $test) {
@@ -13,31 +19,32 @@ class reportDemo extends quailReporter {
 					$existing = $problem->element->getAttribute('style');
 					$problem->element->setAttribute('style', 
 						$existing .'; border: 2px solid red;');
-					
+					$problem->nodeValue .= $this->guideline->getSeverity($k);
 				}
 			}
 		}
 		
-		//$this->addAbsolutes();
+
 		return $this->completeURLs($this->dom->saveHTML(), implode('/', $this->path));
 	}
 	
-	/*function addAbsolutes() {
-		$xpath = new DOMXPath($this->dom);
-		$entries = $xpath->query('//*');
-		foreach($entries as $element) {
-			$this->setAbsolutePath($element);
-		}	
-	}*/
-
+	
+	/**
+	*	Finds the final postion of a needle in the haystack
+	*/
 	function strnpos($haystack, $needle, $occurance, $pos = 0) {	
 		for ($i = 1; $i <= $occurance; $i++) {
-		$pos = strpos($haystack, $needle, $pos) + 1;
+			$pos = strpos($haystack, $needle, $pos) + 1;
 		}
 		return $pos - 1;
 	}
-	function parseURL($url)
-	{
+	
+	/**
+	*	A helper function for completeURLs. Parses a URL into an the scheme, host, and path
+	*	@param string $url The URL to parse
+	*	@return array An array that includes the scheme, host, and path of the URL
+	*/
+	function parseURL($url) {
 	//protocol(1), auth user(2), auth password(3), hostname(4), path(5), filename(6), file extension(7) and query(8)
 	$pattern = "/^(?:(http[s]?):\/\/(?:(.*):(.*)@)?([^\/]+))?((?:[\/])?(?:[^\.]*?)?(?:[\/])?)?(?:([^\/^\.]+)\.([^\?]+))?(?:\?(.+))?$/i";
 	preg_match($pattern, $url, $matches);
@@ -48,6 +55,13 @@ class reportDemo extends quailReporter {
 	
 	return $URI_PARTS;
 	}
+	
+	/**
+	*	Turns all relative links to absolute links so that the page can be rendered correctly.
+	*	@param string $HTML A complete HTML document
+	*	@param string $url The absolute URL to the document
+	*	@return string A HTML document with all the relative links converted to absolute links
+	*/
 	function completeURLs($HTML, $url) {
 		$URI_PARTS = $this->parseURL($url);
 		$path = trim($URI_PARTS["path"], "/");
