@@ -1,6 +1,6 @@
 <?php 
 
-define(QUAIL_PATH, '/usr/web/access/quail/');
+define(QUAIL_PATH, '');
 
 /**
 *	@var int A severe failure
