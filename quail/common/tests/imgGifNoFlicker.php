@@ -3,6 +3,8 @@
 *	http://checker.atrc.utoronto.ca/servlet/ShowCheck?check=1&lang=eng
 */
 class imgGifNoFlicker extends quailTest {
+
+	var $default_severity = QUAIL_TEST_SEVERE;
 	
 	var $gif_control_extension = "/21f904[0-9a-f]{2}([0-9a-f]{4})[0-9a-f]{2}00/";
 	

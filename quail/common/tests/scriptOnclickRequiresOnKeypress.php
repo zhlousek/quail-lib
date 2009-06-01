@@ -2,6 +2,8 @@
 
 class scriptOnclickRequiresOnKeypress extends quailTest {
 
+	var $default_severity = QUAIL_TEST_SEVERE;
+
 	var $click_value = 'onclick';
 	
 	var $key_value = 'onkeypress';

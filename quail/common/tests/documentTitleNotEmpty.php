@@ -5,6 +5,8 @@
 */
 class documentTitleNotEmpty extends quailTest {
 
+	var $default_severity = QUAIL_TEST_SEVERE;
+
 	function check() {
 		
 		$element = $this->dom->getElementsByTagName('title');

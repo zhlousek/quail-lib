@@ -4,6 +4,8 @@
 *	http://checker.atrc.utoronto.ca/servlet/ShowCheck?check=2&lang=eng
 */
 class aLinksToSoundFilesNeedTranscripts extends quailTest {
+
+	var $default_severity = QUAIL_TEST_SUGGESTION;
 	
 	var $extensions = array('wav', 'snd', 'mp3', 'iff', 'svx', 'sam', 'smp', 'vce', 'vox', 'pcm', 'aif');
 	

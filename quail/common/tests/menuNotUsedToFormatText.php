@@ -2,6 +2,8 @@
 
 class menuNotUsedToFormatText extends quailTest {
 
+	var $default_severity = QUAIL_TEST_SUGGESTION;
+
 	function check() {
 		foreach($this->getAllElements('menu') as $menu) {
 			$list_items = 0;

@@ -1,6 +1,8 @@
 <?php
 
 class documentAbbrIsUsed extends quailTest {
+
+	var $default_severity = QUAIL_TEST_MODERATE;
 	
 	var $acronym_tag = 'abbr';
 	

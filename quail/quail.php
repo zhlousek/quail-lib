@@ -1,6 +1,6 @@
 <?php 
 
-define(QUAIL_PATH, '');
+define(QUAIL_PATH, '/usr/web/access/quail/');
 
 /**
 *	@var int A severe failure
@@ -249,7 +249,16 @@ class quail {
 		return $test_class->report;
 	}
 	
-
+	/**
+	*	Retrieves the default severity of a test
+	*	@pararm string $test The name of the test to run
+	*	@reutrn object The severity level of the test
+	*/
+	function getTestSeverity($test) {
+		require_once('common/tests/'. $test .'.php');
+		$test_class = new $test($this->dom, $this->css, $this->path);
+		return $test_class->getSeverity();
+	}
 	
 
 }

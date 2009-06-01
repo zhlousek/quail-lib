@@ -1,6 +1,8 @@
 <?php
 
 class labelMustBeUnique extends quailTest {
+
+	var $default_severity = QUAIL_TEST_SEVERE;
 	
 	function check() {
 		foreach($this->getAllElements('label') as $label) {

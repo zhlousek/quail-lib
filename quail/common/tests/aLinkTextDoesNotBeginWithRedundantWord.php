@@ -1,6 +1,8 @@
 <?php
 
 class aLinkTextDoesNotBeginWithRedundantWord extends quailTest {
+
+	var $default_severity = QUAIL_TEST_SEVERE;
 	
 	var $problem_words = array('link to', 'go to');
 	

@@ -4,6 +4,8 @@
 *	http://checker.atrc.utoronto.ca/servlet/ShowCheck?check=2&lang=eng
 */
 class skipToContentLinkProvided extends quailTest {
+
+	var $default_severity = QUAIL_TEST_MODERATE;
 	
 	var $search_words = array('navigation', 'skip', 'content');
 	

@@ -2,6 +2,8 @@
 
 class bodyMustNotHaveBackground extends quailTest {
 
+	var $default_severity = QUAIL_TEST_SEVERE;
+
 	function check() {
 		$body = $this->getAllElements('body');
 		if(!$body)

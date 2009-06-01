@@ -2,6 +2,8 @@
 
 class scriptOnmousemove extends quailTest {
 
+	var $default_severity = QUAIL_TEST_SEVERE;
+
 	var $click_value = 'onmousemove';
 	
 	var $key_value = 'onkeypress';

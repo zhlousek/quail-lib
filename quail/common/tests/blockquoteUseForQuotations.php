@@ -2,6 +2,8 @@
 
 class blockquoteUseForQuotations extends quailTest {
 
+	var $default_severity = QUAIL_TEST_MODERATE;
+
 	function check() {
 		$body = $this->getAllelements('body');
 		$body = $body[0];

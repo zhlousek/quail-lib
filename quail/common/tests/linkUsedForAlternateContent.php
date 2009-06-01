@@ -2,6 +2,8 @@
 
 class linkUsedForAlternateContent extends quailTest {
 
+	var $default_severity = QUAIL_TEST_SUGGESTION;
+
 	function check() {
 		$head = $this->getAllElements('head');
 		$head = $head[0];

@@ -5,6 +5,8 @@
 
 
 class aMultimediaTextAlternative extends quailTest {
+
+	var $default_severity = QUAIL_TEST_SUGGESTION;
 	
 	var $extensions = array('wmv', 'wav',  'mpg', 'mov', 'ram', 'aif');
 	

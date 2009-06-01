@@ -1,6 +1,8 @@
 <?php
 
 class addressForAuthorMustBeValid extends quailTest {
+
+	var $default_severity = QUAIL_TEST_MODERATE;
 	
 	var $checkDomain = true;
 	
