@@ -2,7 +2,9 @@
 
 class documentVisualListsAreMarkedUp extends quailTest {
 
-	var $list_cues = array('*', '<br>*', '¥', '&#8226');
+	var $default_severity = QUAIL_TEST_SEVERE;
+
+	var $list_cues = array('*', '<br>*', '•', '&#8226');
 	
 	function check() {
 		foreach($this->getAllElements(null, 'text') as $text) {

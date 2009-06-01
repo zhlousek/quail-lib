@@ -1,6 +1,8 @@
 <?php
 
 class documentIDsMustBeUnique extends quailTest {
+
+	var $default_severity = QUAIL_TEST_SEVERE;
 	
 	function check() {
 		$xpath = new DOMXPath($this->dom);

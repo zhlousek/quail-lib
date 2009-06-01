@@ -1,6 +1,8 @@
 <?php
 
 class formDeleteIsReversable extends quailTest {
+
+	var $default_severity = QUAIL_TEST_SUGGESTION;
 	
 	var $watch_words = array('delete', 'remove', 'erase');
 	

@@ -2,6 +2,8 @@
 
 class inputImageAltNotRedundant extends quailTest {
 
+	var $default_severity = QUAIL_TEST_SEVERE;
+
 	var $problem_words = array('submit', 'button');
 
 	function check() {

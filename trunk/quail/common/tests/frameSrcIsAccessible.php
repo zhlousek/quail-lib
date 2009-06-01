@@ -4,7 +4,8 @@
 *	http://checker.atrc.utoronto.ca/servlet/ShowCheck?check=2&lang=eng
 */
 class frameSrcIsAccessible extends quailTest {
-	
+
+	var $default_severity = QUAIL_TEST_SUGGESTION;
 	
 	function check() {
 		foreach($this->getAllElements('frame') as $frame) {

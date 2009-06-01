@@ -4,6 +4,8 @@
 *	http://checker.atrc.utoronto.ca/servlet/ShowCheck?check=2&lang=eng
 */
 class aLinksToMultiMediaRequireTranscript extends quailTest {
+
+	var $default_severity = QUAIL_TEST_SUGGESTION;
 	
 	var $extensions = array('wmv', 'mpg', 'mov', 'ram', 'aif');
 	

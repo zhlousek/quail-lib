@@ -4,6 +4,8 @@
 *	http://checker.atrc.utoronto.ca/servlet/ShowCheck?check=2&lang=eng
 */
 class aLinksMakeSenseOutOfContext extends quailTest {
+
+	var $default_severity = QUAIL_TEST_SUGGESTION;
 	
 	var $allowed_targets = array('_self', '_parent', '_top');
 	

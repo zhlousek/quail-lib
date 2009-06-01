@@ -1,6 +1,8 @@
 <?php
 
 class headersUseToMarkSections extends quailTest {
+
+	var $default_severity = QUAIL_TEST_MODERATE;
 	
 	var $non_header_tags = array('strong', 'b', 'em', 'i');
 	

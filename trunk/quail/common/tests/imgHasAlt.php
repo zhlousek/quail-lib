@@ -12,6 +12,8 @@
 *	
 */
 class imgHasAlt extends quailTest {
+
+	var $default_severity = QUAIL_TEST_SEVERE;
 	
 	/**
 	*	@var int The OAC test Number

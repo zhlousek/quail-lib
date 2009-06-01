@@ -4,6 +4,8 @@
 
 class objectMustHaveValidTitle extends quailTest {
 
+	var $default_severity = QUAIL_TEST_SEVERE;
+
 	var $placeholders = array('nbsp', '&nbsp;', 'object', 'an object', 'spacer', 'image', 'img', 'photo', ' ');
 
 	function check() {

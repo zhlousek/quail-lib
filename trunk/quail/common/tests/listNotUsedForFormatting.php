@@ -2,6 +2,8 @@
 
 class listNotUsedForFormatting extends quailTest {
 
+	var $default_severity = QUAIL_TEST_SUGGESTION;
+
 	function check() {
 		foreach($this->getAllElements(array('ul', 'ol')) as $list) {
 			$li_count = 0;

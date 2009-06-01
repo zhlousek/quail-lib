@@ -2,6 +2,8 @@
 
 class frameTitlesNotEmpty extends quailTest {
 
+	var $default_severity = QUAIL_TEST_SEVERE;
+
 	function check() {
 		foreach($this->getAllElements('frame') as $frame) {
 			if(!$frame->hasAttribute('title') || trim($frame->getAttribute('title')) == '')

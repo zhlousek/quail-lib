@@ -5,6 +5,8 @@
 */
 class appletContainsTextEquivalentInAlt extends quailTest {
 
+	var $default_severity = QUAIL_TEST_MODERATE;
+
 	
 	function check() {
 		foreach($this->getAllElements('applet') as $applet) {

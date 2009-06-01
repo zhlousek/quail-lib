@@ -2,6 +2,8 @@
 
 class frameTitlesNotPlaceholder extends quailTest {
 
+	var $default_severity = QUAIL_TEST_SEVERE;
+
 	var $placeholders = array('title', 'frame', 'frame title', 'the title');
 	
 	function check() {

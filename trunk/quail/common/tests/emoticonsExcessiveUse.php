@@ -2,6 +2,8 @@
 
 class emoticonsExcessiveUse extends quailTest {
 
+	var $default_severity = QUAIL_TEST_SEVERE;
+
 	function check() {
 		$emoticons = file(QUAIL_PATH.'/common/resources/emoticons.txt', FILE_IGNORE_NEW_LINES);
 		$count = 0;

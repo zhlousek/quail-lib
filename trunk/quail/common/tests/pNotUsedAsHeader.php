@@ -2,6 +2,8 @@
 
 class pNotUsedAsHeader extends quailTest {
 
+	var $default_severity = QUAIL_TEST_SEVERE;
+
 	var $head_tags = array('strong', 'span', 'em', 'font', 'i', 'b', 'u');
 	
 	function check() {

@@ -2,6 +2,8 @@
 
 class aSuspiciousLinkText extends quailTest {
 
+	var $default_severity = QUAIL_TEST_SEVERE;
+
 	var $suspicious = array(
 		'click here', 'click', 'more', 'here',
 	);

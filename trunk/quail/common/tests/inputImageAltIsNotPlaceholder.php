@@ -3,6 +3,8 @@
 *	http://checker.atrc.utoronto.ca/servlet/ShowCheck?check=1&lang=eng
 */
 class inputImageAltIsNotPlaceholder extends quailTest {
+
+	var $default_severity = QUAIL_TEST_SEVERE;
 	
 	var $placeholders = array('nbsp', '&nbsp;', 'input', 'spacer', 'image', 'img', 'photo', ' ');
 	
