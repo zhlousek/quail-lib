@@ -7,6 +7,14 @@
 class reportDemo extends quailReporter {
 	
 	/**
+	*	@var array An array of the classnames to be associated with items
+	*/	
+	var $classnames = array(QUAIL_TEST_SEVERE => 'quail_severe',
+							QUAIL_TEST_MODERATE => 'quail_moderate',
+							QUAIL_TEST_SUGGESTION => 'quail_suggestion',
+							);
+	
+	/**
 	*	The getReport method - we iterate through every test item and
 	*	add additional attributes to build the report UI.
 	*	@return string A fully-formed HTML document.
@@ -14,12 +22,14 @@ class reportDemo extends quailReporter {
 	function getReport() {
 		
 		foreach($this->guideline->getReport() as $testname => $test) {
-			foreach($test as $k => $problem) {
-				if($problem->element) {
-					$existing = $problem->element->getAttribute('style');
-					$problem->element->setAttribute('style', 
-						$existing .'; border: 2px solid red;');
-					$problem->nodeValue .= $this->guideline->getSeverity($k);
+			if(!isset($this->options->display_level) || $this->options->display_level >= $test['severity']) {
+				foreach($test as $k => $problem) {
+					if($problem->element) {
+						$existing = $problem->element->getAttribute('style');
+						$problem->element->setAttribute('style', 
+							$existing .'; border: 2px solid red;');
+						$problem->nodeValue .= $this->guideline->getSeverity($k);
+					}
 				}
 			}
 		}

@@ -31,6 +31,8 @@ class quailTest {
 	*/
 	var $report;
 	
+	var $default_severity = QUAIL_TEST_SUGGESTION;
+	
 	/**
 	*	@var array An array of all the extensions that are images
 	*/
@@ -56,9 +58,17 @@ class quailTest {
 	*	@return array An array of QuailReportItem objects
 	*/
 	function getReport() {
+		$this->report['severity'] = $this->default_severity;
 		return $this->report;
 	}
 	
+	/**
+	*	Returns the default severity of the test
+	*	@return int The severity level
+	*/
+	function getSeverity() {
+		return $this->default_severity;
+	}	
 	/**
 	*	Adds a new QuailReportItem to this current tests collection of reports.
 	*	Most reports pertain to a particular element (like an IMG with no Alt attribute); 
@@ -97,8 +107,9 @@ class quailTest {
 			else
 				$file_path[] = $directory;
 		}
-		return implode('/', $path) .'/'. implode('/'. $file_path);
-		
+
+			return implode('/', $path) .'/'. implode('/', $file_path);
+
 	}	
 	
 	/**

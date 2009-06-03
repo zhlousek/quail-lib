@@ -188,11 +188,14 @@ class quail {
 	
 	/**
 	*	A local method to load the required file for a reporter and set it for the current QUAIL object
+	*	@param array $options An array of options for the reporter
 	*/
-	function loadReporter() {
+	function loadReporter($options = array()) {
 		require_once('reporters/reporter.'. $this->reporter_name .'.php');
 		$classname = 'report'.ucfirst($this->reporter_name);
 		$this->reporter = new $classname($this->dom, $this->css, $this->guideline, $this->domain, $this->path);
+		if(count($options))
+			$this->reporter->setOptions($options);
 	}
 	
 
@@ -230,11 +233,12 @@ class quail {
 	
 	/**
 	*	Returns a formatted report from the current reporter.
+	*	@param array $options An array of all the options
 	*	@return mixed See the documentation on your reporter's getReport method.
 	*/
-	function getReport() {
+	function getReport($options = array()) {
 		if(!$this->reporter)
-			$this->loadReporter();
+			$this->loadReporter($options);
 		return $this->reporter->getReport();
 	}
 	
@@ -294,6 +298,11 @@ class quailReporter {
 	var $path;
 	
 	/**
+	*	@var object Additional options for this reporter
+	*/
+	var $options;
+	
+	/**
 	*	@var array An array of attributes to search for to turn into absolute paths rather than
 	*			   relative paths
 	*/
@@ -311,6 +320,7 @@ class quailReporter {
 		$this->dom = $dom;
 		$this->css = $css;
 		$this->path = $path;
+		$this->options = new stdClass;
 		$this->guideline = $guideline;
 		$this->loadTranslationFile($domain);
 	}
@@ -326,6 +336,16 @@ class quailReporter {
 			if($ex[0]) {
 				$this->translation[$ex[0]] = $ex[1];
 			}
+		}
+	}
+	
+	/**
+	*	Sets options for the reporter
+	*	@param array $options an array of options
+	*/
+	function setOptions($options) {
+		foreach($options as $key => $value) {
+			$this->options->$key = $value;
 		}
 	}
 	
@@ -457,7 +477,7 @@ class quailGuideline {
 	*	Iteates through each test string, makes a new test object, and runs it against the current DOM
 	*/
 	function run() {
-		foreach($this->tests as $testname => $test) {
+		foreach($this->tests as $testname) {
 			require_once('common/tests/'.$testname.'.php');
 			$$testname = new $testname($this->dom, $this->css, $this->path);
 			$this->report[$testname] = $$testname->getReport();	
