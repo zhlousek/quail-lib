@@ -1,0 +1,14 @@
+#summary To-Do list before a formal release of Quail
+#labels Phase-Design
+
+= To-Do =
+
+This is just a scratch-pad of all the ideas we'd like to roll into Quail before we get to a .1 release:
+
+== Building a Virtual Browser ==
+
+The 'Virtual browser' layer is currently just using PHP's DOMDocument model; however, we should really work on a more robust layer which parses the CSS on the page to take a look at things like display attributes and color contrast.
+
+== Allowing overrides of how Translations are grabbed ==
+
+Currently translations are only text files, but a developer should be able to override this with their own class that implements a single method to get a translation for a test.
