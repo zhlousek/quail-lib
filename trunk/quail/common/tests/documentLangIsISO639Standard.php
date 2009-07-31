@@ -7,6 +7,8 @@ class documentLangIsISO639Standard extends quailTest {
 
 	var $default_severity = QUAIL_TEST_SEVERE;
 
+	var $cms = false;
+	
 	function check() {
 		$languages = file(QUAIL_PATH.'/common/resources/iso639.txt');
 		

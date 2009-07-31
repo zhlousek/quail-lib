@@ -6,7 +6,9 @@
 class frameTitlesDescribeFunction extends quailTest {
 
 	var $default_severity = QUAIL_TEST_SUGGESTION;	
-	
+
+	var $cms = false;
+		
 	function check() {
 		foreach($this->getAllElements('frame') as $frame) {
 			if($frame->hasAttribute('title'))

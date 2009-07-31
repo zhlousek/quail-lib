@@ -7,6 +7,8 @@ class documentTitleIsShort extends quailTest {
 
 	var $default_severity = QUAIL_TEST_MODERATE;
 
+	var $cms = false;
+	
 	function check() {
 		
 		$element = $this->dom->getElementsByTagName('title');

@@ -6,7 +6,9 @@
 class frameRelationshipsMustBeDescribed extends quailTest {
 
 	var $default_severity = QUAIL_TEST_MODERATE;
-	
+
+	var $cms = false;
+		
 	
 	function check() {
 		foreach($this->getAllElements('frameset') as $frameset) {

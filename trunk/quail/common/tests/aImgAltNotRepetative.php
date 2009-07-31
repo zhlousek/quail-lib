@@ -4,6 +4,7 @@ class aImgAltNotRepetative extends quailTest {
 
 	var $default_severity = QUAIL_TEST_SEVERE;
 
+
 	function check() {
 		foreach($this->getAllElements('a') as $a) {
 			foreach($a->childNodes as $child) {
