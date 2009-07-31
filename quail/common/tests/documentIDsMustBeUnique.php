@@ -3,7 +3,9 @@
 class documentIDsMustBeUnique extends quailTest {
 
 	var $default_severity = QUAIL_TEST_SEVERE;
-	
+
+	var $cms = false;
+		
 	function check() {
 		$xpath = new DOMXPath($this->dom);
 		$entries = $xpath->query('//*');

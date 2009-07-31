@@ -22,6 +22,12 @@ class quailTest {
 	var $path;
 	
 	/**
+	*	@var bool Whether the test can be used in a CMS (content without HTML head)
+	*/
+	
+	var $cms = true;
+	
+	/**
 	*	@var string The base path for this request
 	*/
 	var $base_path;

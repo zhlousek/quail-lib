@@ -7,6 +7,8 @@ class documentHasTitleElement extends quailTest {
 
 	var $default_severity = QUAIL_TEST_SEVERE;
 
+	var $cms = false;
+	
 	function check() {
 		
 		$element = $this->dom->getElementsByTagName('title');

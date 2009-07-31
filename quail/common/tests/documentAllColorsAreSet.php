@@ -3,7 +3,9 @@
 class documentAllColorsAreSet extends quailTest {
 
 	var $default_severity = QUAIL_TEST_SEVERE;
-	
+
+	var $cms = false;
+		
 	var $color_attributes = array('text', 'bgcolor', 'link', 'alink', 'vlink');
 	
 	function check() {

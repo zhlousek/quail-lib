@@ -6,7 +6,9 @@
 class framesetMustHaveNoFramesSection extends quailTest {
 
 	var $default_severity = QUAIL_TEST_SEVERE;
-	
+
+	var $cms = false;
+		
 	function check() {
 		foreach($this->getAllElements('frameset') as $frameset) {
 			if(!$this->elementHasChild($frameset, 'noframes'))

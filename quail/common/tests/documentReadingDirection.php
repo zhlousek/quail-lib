@@ -5,6 +5,8 @@ class documentReadingDirection extends quailTest {
 
 	var $default_severity = QUAIL_TEST_MODERATE;
 
+	var $cms = false;
+	
 	var $right_to_left = array('he', 'ar');
 	function check() {
 		$xpath = new DOMXPath($this->dom);
