@@ -14,7 +14,8 @@ class documentLangIsISO639Standard extends quailTest {
 		
 		$element = $this->dom->getElementsByTagName('html');
 		$html = $element->item(0);
-		
+		if(!$html)
+			return null;
 		if($html->hasAttribute('lang'))
 			if(in_array(strtolower($html->getAttribute('lang')), $languages))
 				$this->addReport(null, null, false);
