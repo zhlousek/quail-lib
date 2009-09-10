@@ -93,7 +93,7 @@ class quail {
 	*/
 	function __construct($value, $guideline = 'wcag', $type = 'string', $reporter = 'static', $domain = 'en') {
 		$this->dom = new DOMDocument();
-		$this->dom->registerNodeClass('DOMElement', 'QuailDOMElement');
+		//$this->dom->registerNodeClass('DOMElement', 'QuailDOMElement');
 		$this->type = $type;
 		$this->uri = $value;
 		$this->domain = $domain;
@@ -334,7 +334,7 @@ class quailReporter {
 		foreach($translations as $translation) {
 			$ex = explode("\t", $translation);
 			if($ex[0]) {
-				$this->translation[$ex[0]] = $ex[1];
+				$this->translation[trim($ex[0])] = trim($ex[1]);
 			}
 		}
 	}
@@ -411,7 +411,8 @@ class quailReportItem {
 	*	@return string An HTML string version of the provided DOMElement object
 	*/
 	function getHTML($extra_attributes = array()) {
-		
+		if(!$this->element)
+			return '';
 		$result_dom = new DOMDocument();
 		try {
 			$result_element = $result_dom->createElement($this->element->tagName);
@@ -425,7 +426,7 @@ class quailReportItem {
 		foreach($extra_attributes as $name => $value) {
 			$result_element->setAttribute($name, $value);
 		}
-		$result_element->nodeValue = $this->element->nodeValue;
+		$result_element->nodeValue = htmlentities($this->element->nodeValue);
 		$result_dom->appendChild($result_element);
 		return $result_dom->saveHTML();
 	
