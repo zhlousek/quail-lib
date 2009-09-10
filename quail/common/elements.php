@@ -5,6 +5,7 @@ class htmlElements {
 	static $html_elements = array(
 		'img' 	 => array('text' => false),
 		'p' 	 => array('text' => true),
+		'pre' 	 => array('text' => true),
 		'span' 	 => array('text' => true),
 		'div' 	 => array('text' => true),
 		'applet' => array('text' => false),
@@ -28,7 +29,6 @@ class htmlElements {
 		'acronym' => array('acronym' => true, 'text' => true),
 		'abbr'   => array('acronym' => true, 'text' => true),
 		'input'  => array('form' => true),
-		'checkbox' => array('form' => true),
 		'select' => array('form' => true),
 		'textarea' => array('form' => true),
 		
