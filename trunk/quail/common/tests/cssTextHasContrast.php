@@ -13,15 +13,19 @@ class cssTextHasContrast extends quailColorTest {
 		$entries = $xpath->query('//*');
 		foreach($entries as $element) {
 			$style = $this->css->getStyle($element);
-			if(($style['background'] || $style['background-color']) && $style['color']) {
-				$background = ($style['background'])
+			if(($style['background'] || $style['background-color']) && $style['color'] && $element->nodeValue) {
+				$background = ($style['background-color'])
 							   ? $style['background-color']
 							   : $style['background'];
+				if(!$background) {
+					$background = '#ffffff';
+				}
 				$luminosity = $this->getLuminosity(
-								trim($background, '#'), 
-								trim($style['color'], '#'));
+								$style['color'],
+								$background
+								);
 				if($luminosity < 5) {
-					$this->addReport($element, null, false);
+					$this->addReport($element, 'background: '. $background .' fore: '. $style['color'] . ' lum: '. $luminosity, false);
 				}
 			}
 		}	

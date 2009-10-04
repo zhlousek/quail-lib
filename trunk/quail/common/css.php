@@ -193,10 +193,13 @@ class quailCSS {
 			$parent_style = $this->getNodeStyle($element);
 			if(is_array($parent_style)) {
 				foreach($parent_style as $k => $v) {
-					if(!$style[$k]) {
+					if(!isset($style[$k])) {
 						$style[$k] = $v;
 					}
 				}
+				/*if($element->hasAttribute('bgcolor') && !$style['background-color'] && !$style['background']) {
+					$style['background-color'] = $element->getAttribute('bgcolor');
+				}*/
 			}
 		}
 		return $style;
