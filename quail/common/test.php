@@ -87,7 +87,7 @@ class quailTest {
 		$report = new quailReportItem();
 		if($element)
 			$report->element = $element;
-		if($error)
+		if($message)
 			$report->message = $message;
 		if(!is_null($pass))
 			$report->pass = $pass;
@@ -649,9 +649,7 @@ class quailColorTest extends quailTest {
 	*	@return array An array where 'r' is the Red value, 'g' is Green, and 'b' is Blue
 	*/
 	function getRGB($color) {
-
 		$color =  $this->convertColor($color);
-		
 		$c = str_split($color, 2);
 		$results = array('r' => hexdec($c[0]), 'g' => hexdec($c[1]), 'b' => hexdec($c[2]));
 		return $results;

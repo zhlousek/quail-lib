@@ -214,13 +214,15 @@ class quail {
 	*	Starts running automated checks. Loads the CSS file parser
 	*	and the guideline object.
 	*/
-	function runCheck() {
+	function runCheck($options = null) {
 		if(!$this->isValid())
 			return false;
 		$this->getCSSObject();
-		require_once('guidelines/'. $this->guideline_name .'.php');
 		$classname = ucfirst(strtolower($this->guideline_name)).'Guideline';
-		$this->guideline = new $classname($this->dom, $this->css, $this->path);
+		if(!class_exists($classname)) {		
+			require_once('guidelines/'. $this->guideline_name .'.php');
+		}
+		$this->guideline = new $classname($this->dom, $this->css, $this->path, $options);
 	}
 	
 	/**
@@ -239,6 +241,9 @@ class quail {
 	function getReport($options = array()) {
 		if(!$this->reporter)
 			$this->loadReporter($options);
+		if($options) {
+			$this->reporter->setOptions($options);
+		}
 		return $this->reporter->getReport();
 	}
 	
@@ -405,6 +410,13 @@ class quailReportItem {
 	*/
 	var $pass;
 	
+	function getLine() {
+		if(is_object($this->element) && method_exists($this->element, 'getLineNo')) {
+			return $this->element->getLineNo();
+		}
+		return 0;
+	}
+	
 	/**
 	*	Returns the current element in plain HTML form
 	*	@param array $extra_attributes An array of extra attributes to add to the element
@@ -467,18 +479,18 @@ class quailGuideline {
 	*	@param string $path The current path
 	*/
 
-	function __construct(&$dom, &$css, &$path) {
+	function __construct(&$dom, &$css, &$path, $arg = null) {
 		$this->dom = $dom;
 		$this->css = $css;
 		$this->path = $path;
-		$this->run();
+		$this->run($arg);
 	}
 	
 	/**
 	*	Iteates through each test string, makes a new test object, and runs it against the current DOM
 	*/
-	function run() {
-		foreach($this->tests as $testname) {
+	function run($arg = null) {
+		foreach($this->tests as $testname => $options) {
 			require_once('common/tests/'.$testname.'.php');
 			$$testname = new $testname($this->dom, $this->css, $this->path);
 			$this->report[$testname] = $$testname->getReport();	

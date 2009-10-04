@@ -10,10 +10,9 @@ class skipToContentLinkProvided extends quailTest {
 	var $search_words = array('navigation', 'skip', 'content');
 	
 	function check() {
-		$body = $this->getAllElements('body');
 		$first_link = $this->getAllElements('a');
 		if(!$first_link) {
-			$this->addReport($body[0]);
+			$this->addReport($first_link[0]);
 			return false;
 		}
 		$a = $first_link[0];
@@ -33,12 +32,12 @@ class skipToContentLinkProvided extends quailTest {
 					}
 				}
 				if($report)
-					$this->addReport($body[0]);
+					$this->addReport(null, null, false);
 			}
 		
 		}
 		else
-			$this->addReport($body[0]);
+			$this->addReport(null, null, false);
 
 	}
 
