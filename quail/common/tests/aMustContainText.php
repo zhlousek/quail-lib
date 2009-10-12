@@ -6,7 +6,8 @@ class aMustContainText extends quailTest {
 
 	function check() {
 		foreach($this->getAllElements('a') as $a) {
-			if(!$a->nodeValue && !$a->hasAttribute('title')) {
+			if((!$a->nodeValue || trim(html_entity_decode($a->nodeValue)) == '')
+				&& !$a->hasAttribute('title')) {
 				$fail = true;
 				$child = true;
 				foreach($a->childNodes as $child) {
