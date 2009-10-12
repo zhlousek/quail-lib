@@ -8,7 +8,7 @@ class imgImportantNoSpacerAlt extends quailTest {
 
 	function check() {
 		foreach($this->getAllElements('img') as $img) {
-			if($img->hasAttribute('src') && trim($img->getAttribute('alt')) == '') {
+			if($img->hasAttribute('src') && $img->hasAttribute('alt') && trim($img->getAttribute('alt')) == '') {
 				if($img->getAttribute('width') > 25 || $img->getAttribute('height') > 25)
 					$this->addReport($img);
 				elseif(IMAGECLASS_EXISTS) {
