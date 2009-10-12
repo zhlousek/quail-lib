@@ -12,10 +12,23 @@ class reportArray extends quailReporter {
 	*	@return array A nested array of tests and problems with Report Item objects
 	*/
 	function getReport() {
-		foreach($this->guideline->getReport() as $testname => $test) {
+		$results = $this->guideline->getReport();
+		if(!is_array($results))
+			return null;
+		foreach($results as $testname => $test) {
 			$output[$testname]['severity'] = $this->guideline->getSeverity($testname);
 			$output[$testname]['title'] =  $this->translation[$testname];
-			$output[$testname]['problems'] = $test;
+			$output[$testname]['body'] = $this->guideline->getTranslation($testname);
+			foreach($test as $k => $problem) {
+				if(is_object($problem)) {
+					$output[$testname]['problems'][$k]['element'] =  htmlentities($problem->getHtml());
+					$output[$testname]['problems'][$k]['line'] =  $problem->getLine();
+					if($problem->message) {
+						$output[$testname]['problems']['message'] = $problem->message;
+					}
+					$output[$testname]['problems']['pass'] = $problem->pass;
+				}
+			}
 		}
 		return $output;
 	}

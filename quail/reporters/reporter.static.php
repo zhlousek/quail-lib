@@ -13,25 +13,28 @@ class reportStatic extends quailReporter {
 	*/
 	function getReport() {
 		foreach($this->guideline->getReport() as $testname => $test) {
-			$severity = $this->guideline->getSeverity($testname);
-			$output .= '<div><h3>'. $this->translation[$testname] .'</h3>';
-			foreach($test as $k => $problem) {
-				$output .= '<p><strong>'.($k+1).'</strong><pre>'. htmlentities($problem->getHtml()) .'</pre></p>';
-				
+			if(count($test) > 0) {
+				$severity = $this->guideline->getSeverity($testname);
+				$output .= '<div><h3>'. $this->translation[$testname] .'</h3>';
+				foreach($test as $k => $problem) {
+					if(is_object($problem))
+						$output .= '<p><strong>'.($k+1).'</strong><pre>'. htmlentities($problem->getHtml()) .'</pre></p>';
+					
+				}
+				$output .='</p>';
+				switch($severity) {
+					case QUAIL_TEST_SEVERE:
+						$output .= 'Severe error';
+						break;
+					case QUAIL_TEST_MODERATE:
+						$output .= 'Moderate error';
+						break;
+					case QUAIL_TEST_SUGGESTION:
+						$output .= 'Suggestion';
+						break;
+				}
+				$output .='</p></div>';
 			}
-			$output .='</p>';
-			switch($severity) {
-				case QUAIL_TEST_SEVERE:
-					$output .= 'Severe error';
-					break;
-				case QUAIL_TEST_MODERATE:
-					$output .= 'Moderate error';
-					break;
-				case QUAIL_TEST_SUGGESTION:
-					$output .= 'Suggestion';
-					break;
-			}
-			$output .='</p></div>';
 		}
 		return $output;
 	}

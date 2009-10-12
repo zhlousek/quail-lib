@@ -20,20 +20,31 @@ class reportDemo extends quailReporter {
 	*	@return string A fully-formed HTML document.
 	*/
 	function getReport() {
-		
-		foreach($this->guideline->getReport() as $testname => $test) {
-			if(!isset($this->options->display_level) || $this->options->display_level >= $test['severity']) {
-				foreach($test as $k => $problem) {
-					if($problem->element) {
-						$existing = $problem->element->getAttribute('style');
-						$problem->element->setAttribute('style', 
-							$existing .'; border: 2px solid red;');
-						$problem->nodeValue .= $this->guideline->getSeverity($k);
+		$problems = $this->guideline->getReport();
+		if(is_array($problems)) {
+			foreach($problems as $testname => $test) {
+				if(!isset($this->options->display_level) || $this->options->display_level >= $test['severity']) {
+					foreach($test as $k => $problem) {
+						if($problem->element) {
+							$existing = $problem->element->getAttribute('style');
+							$problem->element->setAttribute('style', 
+								$existing .'; border: 2px solid red;');
+							if($this->options->image_url) {
+								$image = $this->dom->createElement('img');
+								$image = $problem->element->parentNode->insertBefore($image, $problem->element);
+								$image->setAttribute('alt', $testname);
+								if($problem->message) {
+									$image->setAttribute('title', $problem->message);
+								}
+								$image->setAttribute('src', $this->options->image_url);
+								
+							}
+							//$problem->nodeValue .= $this->guideline->getSeverity($k);
+						}
 					}
 				}
 			}
-		}
-		
+		}		
 
 		return $this->completeURLs($this->dom->saveHTML(), implode('/', $this->path));
 	}
