@@ -29,6 +29,11 @@ class quail {
 	var $type;
 	
 	/**
+	*	@var string The value of the request. Either HTML, a URI, or the path to a file
+	*/
+	var $value;
+	
+	/**
 	*	@var string The base URI of the current request (used to rebuild page if necessary)
 	*/	
 	var $uri;
@@ -84,6 +89,15 @@ class quail {
 	var $css;
 	
 	/**
+	*	@var array An array of additional options
+	*/
+	var $options = array(
+					'cms_mode' => false,
+					'start_element' => 0,
+					'end_element' => 0,
+					'cms_template' => array());
+	
+	/**
 	*	The class constructor
 	*	@param string $value Either the HTML string to check or the file/uri of the request
 	*	@param string $guideline The name of the guideline
@@ -95,26 +109,72 @@ class quail {
 		$this->dom = new DOMDocument();
 		//$this->dom->registerNodeClass('DOMElement', 'QuailDOMElement');
 		$this->type = $type;
-		$this->uri = $value;
+		if($type == 'uri') {
+			$this->uri = $value;
+		}
 		$this->domain = $domain;
 		$this->guideline_name = $guideline;
 		$this->reporter_name = $reporter;
-		switch($type) {
-			case 'string':
-				@$this->dom->loadHTML($value);
-				break;
-			case 'file':
-				@$this->dom->loadHTMLFile($value);
-				break;
-			case 'uri':
-				@$this->dom->loadHTML(file_get_contents($value));
-				break;
-		}
-		$this->prepareBaseUrl($value, $type);
-		$this->loadImageLibrary();
+		$this->value = $value;
 
 	}
 	
+	/**
+	*	Preapres the DOMDocument object for quail. It loads based on the file type
+	*	declaration and first scrubs the value using prepareValue()
+	*/
+	function prepareDOM() {
+		$this->prepareValue();
+		@$this->dom->loadHTML($this->value);
+		$this->prepareBaseUrl($this->value, $this->type);
+		$this->loadImageLibrary();
+	}
+	
+	/**
+	*	If the CMS mode options are set, then we remove some items fromt the
+	*	HTML value before sending it back.
+	*
+	*/
+	function prepareValue() {
+		
+		//We ignore the 'string' type because it would mean the value already contains HTML		
+		if($this->type == 'file' || $this->type == 'uri') {
+			$this->value = file_get_contents($this->value);
+		}
+		if($this->options['cms_mode']) {
+			$this->prepareCMSTemplate();
+		}
+	}
+	
+	/**
+	*	Scrubs the file of the CMS template
+	*
+	*/
+	function prepareCMSTemplate() {
+		if(is_array($this->options['cms_template'])) {
+			foreach($this->options['cms_template'] as $type => $template_pattern) {
+				$this->value = preg_replace($template_pattern, '<!-- '. $type .' replaced -->', $this->value);
+			}
+		}
+	
+	}
+	
+	/**
+	*	Set global predefined options for QUAIL. First we check that the 
+	*	array key has been defined.
+	*	@param mixed $variable Either an array of values, or a variable name of the option
+	*	@param mixed $value If this is a single option, the value of the option
+	*/
+	function setOption($variable, $value = null) {
+		if(!is_array($variable)) {
+			$variable = array($variable => $value);
+		}
+		foreach($variable as $k => $value) {
+			if(isset($this->options[$k])) {
+				$this->options[$k] = $value;
+			}
+		}
+	}
 	
 	/**
 	*	Formats the base URL for either a file or uri request. We are essentially
@@ -130,7 +190,8 @@ class quail {
 			$this->path = $path;
 		}
 		if($type == 'uri') {
-			$parts = explode('://', $value);
+			
+			$parts = explode('://', $this->uri);
 			$this->path[] = $parts[0] .':/';
 			if(is_array($parts[1])) {
 				foreach(explode('/', $this->getBaseFromFile($parts[1])) as $part) {
@@ -215,6 +276,7 @@ class quail {
 	*	and the guideline object.
 	*/
 	function runCheck($options = null) {
+		$this->prepareDOM();
 		if(!$this->isValid())
 			return false;
 		$this->getCSSObject();
@@ -427,7 +489,8 @@ class quailReportItem {
 			return '';
 		$result_dom = new DOMDocument();
 		try {
-			$result_element = $result_dom->createElement($this->element->tagName);
+
+			$result_element = $result_dom->createElement(utf8_encode($this->element->tagName));
 		}
 		catch (Exception $e) {
 			return false;
@@ -439,8 +502,10 @@ class quailReportItem {
 			$result_element->setAttribute($name, $value);
 		}
 		$result_element->nodeValue = htmlentities($this->element->nodeValue);
-		$result_dom->appendChild($result_element);
-		return $result_dom->saveHTML();
+			//We utf8 encode per http://us2.php.net/manual/en/domdocument.save.php#67952
+		//$result_dom->appendChild(utf8_encode($result_element));
+		@$result_dom->appendChild($result_element);
+		return @$result_dom->saveHTML();
 	
 	}
 	
