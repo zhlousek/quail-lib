@@ -1,6 +1,6 @@
 <?php 
 
-define(QUAIL_PATH, '/usr/web/access/quail/');
+define(QUAIL_PATH, '/Applications/MAMP/htdocs/d/sites/all/modules/accessible_content/quail/');
 
 /**
 *	@var int A severe failure
@@ -222,8 +222,7 @@ class quail {
 	*	to see if the class is available or not.
 	*/
 	function loadImageLibrary() {
-		if(function_exists('gd_info')) {
-			require_once('lib/wideimage/WideImage.inc.php');
+		if(function_exists('gd_info') && @include_once('lib/wideimage/WideImage.inc.php')) {
 			define('IMAGECLASS_EXISTS', true);
 		}
 		else
