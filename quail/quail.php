@@ -251,8 +251,10 @@ class quail {
 	*	@param array $options An array of options for the reporter
 	*/
 	function loadReporter($options = array()) {
-		require_once('reporters/reporter.'. $this->reporter_name .'.php');
 		$classname = 'report'.ucfirst($this->reporter_name);
+		if(!class_exists($classname)) {
+			require_once('reporters/reporter.'. $this->reporter_name .'.php');
+		}
 		$this->reporter = new $classname($this->dom, $this->css, $this->guideline, $this->domain, $this->path);
 		if(count($options))
 			$this->reporter->setOptions($options);
