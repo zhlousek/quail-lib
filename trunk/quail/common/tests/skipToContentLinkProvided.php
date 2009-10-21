@@ -23,11 +23,13 @@ class skipToContentLinkProvided extends quailTest {
 			if(!in_array($this->search_words, $link_text)) {
 				$report = true;
 				foreach($a->childNodes as $child) {
-					if($child->hasAttribute('alt')) {
-						$alt = explode(' ', strtolower($child->getAttribute('alt') . $child->nodeValue));
-						foreach($this->search_words as $word) {
-							if(in_array($word, $alt)) 
-								$report = false;
+					if(method_exists($child, 'hasAttribute')) {
+						if($child->hasAttribute('alt')) {
+							$alt = explode(' ', strtolower($child->getAttribute('alt') . $child->nodeValue));
+							foreach($this->search_words as $word) {
+								if(in_array($word, $alt)) 
+									$report = false;
+							}
 						}
 					}
 				}
