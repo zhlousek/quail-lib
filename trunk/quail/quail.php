@@ -1,6 +1,6 @@
 <?php 
 
-define(QUAIL_PATH, '/Applications/MAMP/htdocs/d/sites/all/modules/accessible_content/quail/');
+define(QUAIL_PATH, dirname(__FILE__));
 
 /**
 *	@var int A severe failure
@@ -9,7 +9,7 @@ define(QUAIL_TEST_SEVERE, 1);
 define(QUAIL_TEST_MODERATE, 2);
 define(QUAIL_TEST_SUGGESTION, 3);
 
-foreach (glob(QUAIL_PATH."common/*.php") as $filename) {
+foreach (glob(dirname(__FILE__)."/common/*.php") as $filename) {
 	require_once($filename);
 }
 
@@ -398,7 +398,7 @@ class quailReporter {
 	*	@param string $domain The translation domain
 	*/
 	function loadTranslationFile($domain) {
-		$translations = file(QUAIL_PATH.'reporters/translations/'. $domain .'.php');
+		$translations = file(dirname(__FILE__).'/reporters/translations/'. $domain .'.php');
 		foreach($translations as $translation) {
 			$ex = explode("\t", $translation);
 			if($ex[0]) {
