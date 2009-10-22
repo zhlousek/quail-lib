@@ -51,8 +51,6 @@ class AllTestsGuideline extends quailGuideline{
 		'boldIsNotUsed',
 		'checkboxHasLabel',
 		'checkboxLabelIsNearby',
-		'cssDocumentMakesSenseStyleTurnedOff',
-		'cssTextHasContrast',
 		'doctypeProvided',
 		'documentAbbrIsUsed',
 		'documentAcronymsHaveElement',
