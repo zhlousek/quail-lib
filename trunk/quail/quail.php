@@ -189,7 +189,7 @@ class quail {
 			array_pop($path);
 			$this->path = $path;
 		}
-		if($type == 'uri') {
+		if($type == 'uri' || $this->uri) {
 			
 			$parts = explode('://', $this->uri);
 			$this->path[] = $parts[0] .':/';
