@@ -36,7 +36,7 @@ class reportDemo extends quailReporter {
 								if($problem->message) {
 									$image->setAttribute('title', $problem->message);
 								}
-								$image->setAttribute('src', $this->options->image_url);
+								$image->setAttribute('src', $this->options->image_url[$test['severity']]);
 								
 							}
 							//$problem->nodeValue .= $this->guideline->getSeverity($k);
