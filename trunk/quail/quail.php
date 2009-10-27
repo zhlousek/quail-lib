@@ -177,6 +177,17 @@ class quail {
 	}
 	
 	/**
+	*	Sets the URI if this is for a string or to change where 
+	*	QUAIL will look for resources like CSS files
+	*	@param string $uri The URI to set
+	*/
+	function setUri($uri) {
+		if(parse_url($uri)) {
+			$this->uri = $uri;
+		}
+	}
+	
+	/**
 	*	Formats the base URL for either a file or uri request. We are essentially
 	*	formatting a base url for future reporters to use to find CSS files or
 	*	for tests that use external resources (images, objects, etc) to run tests on them.
