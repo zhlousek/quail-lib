@@ -1,6 +1,5 @@
 <?php 
 
-define(QUAIL_PATH, dirname(__FILE__));
 
 /**
 *	@var int A severe failure
@@ -9,9 +8,15 @@ define(QUAIL_TEST_SEVERE, 1);
 define(QUAIL_TEST_MODERATE, 2);
 define(QUAIL_TEST_SUGGESTION, 3);
 
-foreach (glob(dirname(__FILE__)."/common/*.php") as $filename) {
-	require_once($filename);
-}
+/**
+*
+*
+*/
+require_once('common/test.php');
+require_once('common/css.php');
+require_once('common/elements.php');
+require_once('common/domExtensions.php');
+require_once('common/accessibility_tests.php');
 
 /**
 *	The main interface class for quail. 
@@ -327,7 +332,9 @@ class quail {
 	*	@reutrn object The QuailReportItem returned from the test
 	*/
 	function getTest($test) {
-		require_once('common/tests/'. $test .'.php');
+		if(!class_exists($test)) {
+			return false;
+		}
 		$test_class = new $test($this->dom, $this->css, $this->path);
 		return $test_class->report;
 	}
@@ -568,9 +575,13 @@ class quailGuideline {
 	*/
 	function run($arg = null) {
 		foreach($this->tests as $testname => $options) {
-			require_once('common/tests/'.$testname.'.php');
-			$$testname = new $testname($this->dom, $this->css, $this->path);
-			$this->report[$testname] = $$testname->getReport();	
+			if(class_exists($testname)) {
+				$$testname = new $testname($this->dom, $this->css, $this->path);
+				$this->report[$testname] = $$testname->getReport();	
+			}
+			else {
+				$this->report[$testname] = false;
+			}
 		}
 	}
 	
