@@ -1,5 +1,4 @@
 <?php
-
 /**
 *	The base class for all QUAIL tests. This handles importing DOM objects, adding items
 *	to the report and provides a few DOM-traversing methods
