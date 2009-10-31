@@ -144,7 +144,7 @@ class quail {
 		
 		//We ignore the 'string' type because it would mean the value already contains HTML		
 		if($this->type == 'file' || $this->type == 'uri') {
-			$this->value = file_get_contents($this->value);
+			$this->value = @file_get_contents($this->value);
 		}
 		if($this->options['cms_mode']) {
 			$this->prepareCMSTemplate();

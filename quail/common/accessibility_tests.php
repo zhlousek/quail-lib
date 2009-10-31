@@ -821,7 +821,7 @@ class documentLangIsISO639Standard extends quailTest {
 	var $cms = false;
 	
 	function check() {
-		$languages = file(QUAIL_PATH.'/common/resources/iso639.txt');
+		$languages = file(dirname(__FILE__).'/resources/iso639.txt');
 		
 		$element = $this->dom->getElementsByTagName('html');
 		$html = $element->item(0);
@@ -913,7 +913,7 @@ class documentTitleDescribesDocument extends quailTest {
 	var $cms = false;
 	
 	function check() {
-		$placeholders = file(QUAIL_PATH.'/common/resources/placeholder.txt');		
+		$placeholders = file(dirname(__FILE__).'/resources/placeholder.txt');		
 		$element = $this->dom->getElementsByTagName('title');
 		$title = $element->item(0);
 		if($title) {
@@ -932,7 +932,7 @@ class documentTitleIsNotPlaceholder extends quailTest {
 	var $cms = false;
 	
 	function check() {
-		$placeholders = file(QUAIL_PATH.'/common/resources/placeholder.txt');		
+		$placeholders = file(dirname(__FILE__).'/resources/placeholder.txt');		
 		$element = $this->dom->getElementsByTagName('title');
 		$title = $element->item(0);
 		if($title) {
@@ -1078,7 +1078,7 @@ class emoticonsExcessiveUse extends quailTest {
 	var $default_severity = QUAIL_TEST_SEVERE;
 
 	function check() {
-		$emoticons = file(QUAIL_PATH.'/common/resources/emoticons.txt', FILE_IGNORE_NEW_LINES);
+		$emoticons = file(dirname(__FILE__).'/resources/emoticons.txt', FILE_IGNORE_NEW_LINES);
 		$count = 0;
 		foreach($this->getAllElements(null, 'text') as $element) {
 			if(strlen($element->nodeValue < 2)) {
@@ -1104,7 +1104,7 @@ class emoticonsMissingAbbr extends quailTest {
 	var $default_severity = QUAIL_TEST_SEVERE;
 
 	function check() {
-		$emoticons = file(QUAIL_PATH.'/common/resources/emoticons.txt', FILE_IGNORE_NEW_LINES);
+		$emoticons = file(dirname(__FILE__).'/resources/emoticons.txt', FILE_IGNORE_NEW_LINES);
 		$count = 0;
 		foreach($this->getAllElements('abbr') as $abbr) {
 			$abbreviated[$abbr->nodeValue] = $abbr->getAttribute('title');
@@ -1604,8 +1604,9 @@ class imgGifNoFlicker extends quailTest {
 		foreach($this->getAllElements('img') as $img) {
 			
 			if(substr($img->getAttribute('src'), -4, 4) == '.gif') {
-
-				$file = file_get_contents($this->getPath($img->getAttribute('src')));
+				
+				$file = @file_get_contents($this->getPath($img->getAttribute('src')));
+				if($file) {
 					  $file = bin2hex($file);
 					
 					  // sum all frame delays
@@ -1623,7 +1624,7 @@ class imgGifNoFlicker extends quailTest {
 					 
 					 if($total_delay > 0)
 					 	$this->addReport($img);
-	
+				}
 			}
 		}
 	
@@ -2745,8 +2746,7 @@ class skipToContentLinkProvided extends quailTest {
 	function check() {
 		$first_link = $this->getAllElements('a');
 		if(!$first_link) {
-			$this->addReport($first_link[0]);
-			return false;
+			$this->addReport(null, null, false);
 		}
 		$a = $first_link[0];
 		
@@ -2760,14 +2760,16 @@ class skipToContentLinkProvided extends quailTest {
 						if($child->hasAttribute('alt')) {
 							$alt = explode(' ', strtolower($child->getAttribute('alt') . $child->nodeValue));
 							foreach($this->search_words as $word) {
-								if(in_array($word, $alt)) 
+								if(in_array($word, $alt)) {
 									$report = false;
+								}
 							}
 						}
 					}
 				}
-				if($report)
+				if($report) {
 					$this->addReport(null, null, false);
+				}
 			}
 		
 		}

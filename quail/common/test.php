@@ -84,12 +84,9 @@ class quailTest {
 	*/
 	function addReport($element = null, $message = null, $pass = null) {
 		$report = new quailReportItem();
-		if($element)
-			$report->element = $element;
-		if($message)
-			$report->message = $message;
-		if(!is_null($pass))
-			$report->pass = $pass;
+		$report->element = $element;
+		$report->message = $message;
+		$report->pass = $pass;
 		$this->report[] = $report;
 	}
 	
