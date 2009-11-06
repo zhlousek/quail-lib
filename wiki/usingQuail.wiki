@@ -19,7 +19,23 @@ $quail = new quail('http://example.com/', 'wcag', 'uri', 'demo');
 $quail = new quail('<img src="rex.jpg">', 'wcag', 'string', 'demo');
 
 $quail->runCheck();
-print $auil->getReport();
+print $quail->getReport();
 
+
+}}}
+
+== CMS Integration: Adding CSS Files ==
+
+Many folks trying to integrate quail with a CMS will find it easier to toss Quail all your CSS files or a string of your stored CSS sytlesheet. To do this, just create an array of file names and use the AddCSS method:
+
+{{{
+require_once('quail/quail.php');
+
+//Checking a string (maybe the body area of a page)
+$quail = new quail($body, 'wcag', 'string', 'array');
+//Adding CSS information:
+$quail->addCSS(array('/path/to/css/file.css', 'http://example.com/style/style.css'));
+$quail->runCheck();
+print_r($quail->getReport());
 
 }}}
