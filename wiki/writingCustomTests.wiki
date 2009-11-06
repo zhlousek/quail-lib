@@ -10,12 +10,12 @@ Once you have created your test and loaded it, you then need to add it to a guid
 
 Once you have your class created, it must implement the method `check()`. That is the only required method which Quail will use to run a test. Test classes inherit the following variables:
 
-* `dom` : Includes a full DOMDocument object of the page we are running tests against
-* `css` : An instance of the `QuailCSS` object, which you can use to get CSS information about a element. Typically the only helper method used is `getStyle($dom_element)`.
-* `path` : An array of path information. If this is a test run against a local file or a URL, this will contain an array of the heirarchy to that path.
-* `base_path` : The string representation of the above `path` variable.
-* `report` : An empty report array which will contain the results of your test. You shouldn't need to touch this.
-* `default_severity` : The severity level of the test
+  * `dom` : Includes a full DOMDocument object of the page we are running tests against
+  * `css` : An instance of the `QuailCSS` object, which you can use to get CSS information about a element. Typically the only helper method used is `getStyle($dom_element)`.
+  * `path` : An array of path information. If this is a test run against a local file or a URL, this will contain an array of the heirarchy to that path.
+  * `base_path` : The string representation of the above `path` variable.
+  * `report` : An empty report array which will contain the results of your test. You shouldn't need to touch this.
+  * `default_severity` : The severity level of the test
 
 
 ==Adding to a report==
