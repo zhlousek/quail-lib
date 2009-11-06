@@ -114,7 +114,7 @@ class quail {
 		$this->dom = new DOMDocument();
 		//$this->dom->registerNodeClass('DOMElement', 'QuailDOMElement');
 		$this->type = $type;
-		if($type == 'uri') {
+		if($type == 'uri' || $type == 'file') {
 			$this->uri = $value;
 		}
 		$this->domain = $domain;
@@ -201,7 +201,7 @@ class quail {
 	*/
 	function prepareBaseUrl($value, $type) {
 		if($type == 'file') {
-			$path = explode('/', $value);
+			$path = explode('/', $this->uri);
 			array_pop($path);
 			$this->path = $path;
 		}
@@ -309,7 +309,7 @@ class quail {
 	*/
 	function getCSSObject() {
 		if(!$this->cms_mode)
-			$this->css = new quailCSS($this->dom, $this->uri, $this->type);
+			$this->css = new quailCSS($this->dom, $this->uri, $this->type, $this->path);
 	}
 	
 	/**

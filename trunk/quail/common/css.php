@@ -58,10 +58,11 @@ class quailCSS {
 	*	@param bool $cms_mode Whether we are running in CMS mode
 	*	@param array $css_files An array of additional CSS files to load
 	*/
-	function __construct(&$dom, $uri, $type, $cms_mode = false, $css_files = array()) {
+	function __construct(&$dom, $uri, $type, $path, $cms_mode = false, $css_files = array()) {
 		$this->dom =& $dom;
 		$this->type = $type;
 		$this->uri = $uri;
+		$this->path = $path;
 		$this->cms_mode = $cms_mode;
 		$this->css_files = $css_files;
 		$this->loadCSS();
@@ -157,7 +158,9 @@ class quailCSS {
 	*	@return array An array of style information (can be empty)
 	*/
 	public function getStyle($element) {
+		
 		$style = $this->getNodeStyle($element);
+		
 		return $this->walkUpTreeForInheritance($element, $style);
 	}
 	
@@ -173,7 +176,7 @@ class quailCSS {
 	private function getNodeStyle($element) {
 		if(is_array($this->dom_index[$element->tagName])) {
 			foreach($this->dom_index[$element->tagName] as $css_tag) {
-				if($css_tag['element'] == $element) {
+				if($element == $css_tag['element']) {
 					return $css_tag['style'];
 				}
 			}
@@ -191,6 +194,7 @@ class quailCSS {
 		while($element->parentNode->tagName) {
 			$element = $element->parentNode;
 			$parent_style = $this->getNodeStyle($element);
+			
 			if(is_array($parent_style)) {
 				foreach($parent_style as $k => $v) {
 					if(!isset($style[$k])) {
@@ -215,8 +219,9 @@ class quailCSS {
 			$uri = $rel;
 		else
 			$uri = substr($this->uri, 0, strrpos($this->uri, '/')) .'/'.$rel;
-			
+		
 		$this->css_string .= @file_get_contents($uri);
+		
 	}
 	
 	/**
@@ -494,4 +499,292 @@ class quailCSS {
 		return $queries;
 	}
 	
+}
+
+class CssSelector {
+ protected $dom = null;
+
+ public function __construct(&$dom)
+ {
+   $this->dom = $dom;
+ }
+
+ public function getTexts($selector)
+ {
+   $texts = array();
+   foreach ($this->getElements($selector) as $element)
+   {
+     $texts[] = $element->nodeValue;
+   }
+
+   return $texts;
+ }
+
+ public function getElements($selector)
+ {
+   $all_nodes = array();
+   foreach ($this->tokenize_selectors($selector) as $selector)
+   {
+     $nodes = array($this->dom);
+     foreach ($this->tokenize($selector) as $token)
+     {
+       $combinator = $token['combinator'];
+       $token = trim($token['name']);
+       $pos = strpos($token, '#');
+       if (false !== $pos && preg_match('/^[A-Za-z0-9]*$/', substr($token, 0, $pos)))
+       {
+         // Token is an ID selector
+         $tagName = substr($token, 0, $pos);
+         $id = substr($token, $pos + 1);
+         $xpath = new DomXPath($this->dom);
+         $element = $xpath->query(sprintf("//*[@id = '%s']", $id))->item(0);
+         if (!$element || ($tagName && strtolower($element->nodeName) != $tagName))
+         {
+           // tag with that ID not found
+           return array();
+         }
+
+         // Set nodes to contain just this element
+         $nodes = array($element);
+
+         continue; // Skip to next token
+       }
+
+       $pos = strpos($token, '.');
+       if (false !== $pos && preg_match('/^[A-Za-z0-9]*$/', substr($token, 0, $pos)))
+       {
+         // Token contains a class selector
+         $tagName = substr($token, 0, $pos);
+         if (!$tagName)
+         {
+           $tagName = '*';
+         }
+         $className = substr($token, $pos + 1);
+
+         // Get elements matching tag, filter them for class selector
+         $founds = $this->getElementsByTagName($nodes, $tagName, $combinator);
+         $nodes = array();
+         foreach ($founds as $found)
+         {
+           if (preg_match('/\b'.$className.'\b/', $found->getAttribute('class')))
+           {
+             $nodes[] = $found;
+           }
+         }
+
+         continue; // Skip to next token
+       }
+
+       // Code to deal with attribute selectors
+       if (preg_match('/^(\w*)(\[.+\])$/', $token, $matches))
+       {
+         $tagName = $matches[1] ? $matches[1] : '*';
+         preg_match_all('/
+           \[
+             (\w+)                 # attribute
+             ([=~\|\^\$\*]?)       # modifier (optional)
+             =?                    # equal (optional)
+             (
+               "([^"]*)"           # quoted value (optional)
+               |
+               ([^\]]*)            # non quoted value (optional)
+             )
+           \]
+         /x', $matches[2], $matches, PREG_SET_ORDER);
+
+         // Grab all of the tagName elements within current node
+         $founds = $this->getElementsByTagName($nodes, $tagName, $combinator);
+         $nodes = array();
+         foreach ($founds as $found)
+         {
+           $ok = false;
+           foreach ($matches as $match)
+           {
+             $attrName = $match[1];
+             $attrOperator = $match[2];
+             $attrValue = $match[4];
+
+             switch ($attrOperator)
+             {
+               case '=': // Equality
+                 $ok = $found->getAttribute($attrName) == $attrValue;
+                 break;
+               case '~': // Match one of space seperated words
+                 $ok = preg_match('/\b'.preg_quote($attrValue, '/').'\b/', $found->getAttribute($attrName));
+                 break;
+               case '|': // Match start with value followed by optional hyphen
+                 $ok = preg_match('/^'.preg_quote($attrValue, '/').'-?/', $found->getAttribute($attrName));
+                 break;
+               case '^': // Match starts with value
+                 $ok = 0 === strpos($found->getAttribute($attrName), $attrValue);
+                 break;
+               case '$': // Match ends with value
+                 $ok = $attrValue == substr($found->getAttribute($attrName), -strlen($attrValue));
+                 break;
+               case '*': // Match ends with value
+                 $ok = false !== strpos($found->getAttribute($attrName), $attrValue);
+                 break;
+               default :
+                 // Just test for existence of attribute
+                 $ok = $found->hasAttribute($attrName);
+             }
+
+             if (false == $ok)
+             {
+               break;
+             }
+           }
+
+           if ($ok)
+           {
+             $nodes[] = $found;
+           }
+         }
+
+         continue; // Skip to next token
+       }
+
+       if (preg_match('/^(\w*)(:first-child)$/', $token, $matches)) {
+         $token = $matches[1] ? $matches[1] : '*';
+         $combinator = $matches[2] ? $matches[2] : '';
+       }
+       
+       // If we get here, token is JUST an element (not a class or ID selector)
+       $nodes = $this->getElementsByTagName($nodes, $token, $combinator);
+     }
+
+     foreach ($nodes as $node)
+     {
+       if (!$node->getAttribute('sf_matched'))
+       {
+         $node->setAttribute('sf_matched', true);
+         $all_nodes[] = $node;
+       }
+     }
+   }
+
+   foreach ($all_nodes as $node)
+   {
+     $node->removeAttribute('sf_matched');
+   }
+
+   return $all_nodes;
+ }
+
+ protected function getElementsByTagName($nodes, $tagName, $combinator = ' ')
+ {
+   $founds = array();
+   foreach ($nodes as $node)
+   {
+     switch ($combinator)
+     {
+       case ' ':
+         foreach ($node->getElementsByTagName($tagName) as $element)
+         {
+           $founds[] = $element;
+         }
+         break;
+       case '>':
+         foreach ($node->childNodes as $element)
+         {
+           if ($tagName == $element->nodeName)
+           {
+             $founds[] = $element;
+           }
+         }
+         break;
+       case '+':
+           $element = $node->nextSibling;
+           if (isset($element->nodeName) and $element->nodeName == "#text") {
+               $element = $element->nextSibling;
+           }
+           if ($element && $tagName == $element->nodeName) {
+               $founds[] = $element;
+           }
+           break;
+       case ':first-child':
+         foreach ($node->getElementsByTagName($tagName) as $element) {
+           if (count($founds) == 0) {
+             $founds[] = $element;
+           }
+         }
+         break;
+     }
+   }
+
+   return $founds;
+ }
+
+ protected function tokenize_selectors($selector)
+ {
+   // split tokens by , except in an attribute selector
+   $tokens = array();
+   $quoted = false;
+   $token = '';
+   for ($i = 0, $max = strlen($selector); $i < $max; $i++)
+   {
+     if (',' == $selector[$i] && !$quoted)
+     {
+       $tokens[] = trim($token);
+       $token = '';
+     }
+     else if ('"' == $selector[$i])
+     {
+       $token .= $selector[$i];
+       $quoted = $quoted ? false : true;
+     }
+     else
+     {
+       $token .= $selector[$i];
+     }
+   }
+   if ($token)
+   {
+     $tokens[] = trim($token);
+   }
+
+   return $tokens;
+ }
+
+ protected function tokenize($selector)
+ {
+   // split tokens by space except if space is in an attribute selector
+   $tokens = array();
+   $combinators = array(' ', '>', '+');
+   $quoted = false;
+   $token = array('combinator' => ' ', 'name' => '');
+   for ($i = 0, $max = strlen($selector); $i < $max; $i++)
+   {
+     if (in_array($selector[$i], $combinators) && !$quoted)
+     {
+       // remove all whitespaces around the combinator
+       $combinator = $selector[$i];
+       while (in_array($selector[$i + 1], $combinators))
+       {
+         if (' ' != $selector[++$i])
+         {
+           $combinator = $selector[$i];
+         }
+       }
+
+       $tokens[] = $token;
+       $token = array('combinator' => $combinator, 'name' => '');
+     }
+     else if ('"' == $selector[$i])
+     {
+       $token['name'] .= $selector[$i];
+       $quoted = $quoted ? false : true;
+     }
+     else
+     {
+       $token['name'] .= $selector[$i];
+     }
+   }
+   if ($token['name'])
+   {
+     $tokens[] = $token;
+   }
+
+   return $tokens;
+ }
 }
