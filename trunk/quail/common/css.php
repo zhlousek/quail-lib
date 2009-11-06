@@ -73,7 +73,7 @@ class quailCSS {
 	*	Loads all the CSS files from the document using LINK elements or @import commands
 	*/
 	function loadCSS() {
-		if($this->cms_mode) {
+		if(count($this->css_files) > 0) {
 			$css = $this->css_files;
 		}
 		else {
@@ -97,12 +97,12 @@ class quailCSS {
 			foreach($css as $sheet) {
 				if($this->type == 'uri')
 					$this->loadUri($sheet);
-				if($this->type == 'file') 
+				if($this->type == 'file' || $this->type == 'string') 
 					$this->loadUri($sheet);
 			}
 			
 		}
-
+		
 		$this->formatCSS();
 	}
 	
@@ -132,6 +132,7 @@ class quailCSS {
 	
 	*/
 	private function buildIndexEntry($entry, $style) {
+		
 		if(!is_array($this->dom_index[$entry->tagName])) {
 			$this->dom_index[$entry->tagName] = array();
 		}

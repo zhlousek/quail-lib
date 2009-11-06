@@ -250,7 +250,12 @@ class quail {
 	*	@param string $css The URI or file path to a CSS file
 	*/
 	function addCSS($css) {
-		$this->css_files[] = $css;
+		if(is_array($css)) {
+			$this->css_files = $css;
+		}
+		else {
+			$this->css_files[] = $css;
+		}
 	}
 	
 	/**
@@ -308,8 +313,7 @@ class quail {
 	*	Loads the quailCSS object
 	*/
 	function getCSSObject() {
-		if(!$this->cms_mode)
-			$this->css = new quailCSS($this->dom, $this->uri, $this->type, $this->path);
+		$this->css = new quailCSS($this->dom, $this->uri, $this->type, $this->path, false, $this->css_files);
 	}
 	
 	/**
