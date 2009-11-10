@@ -1775,8 +1775,6 @@ class frameIsNotUsed extends quailTagTest {
 	
 }
 
-f
-
 /**
 *  OAC # 33
 *  Relationship between frames must be described.
