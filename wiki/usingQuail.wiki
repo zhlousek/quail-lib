@@ -1,5 +1,5 @@
 #summary A quick example of how to use quail
-#labels example
+#labels example,Featured
 
 = Setup of QUAIL =
 
