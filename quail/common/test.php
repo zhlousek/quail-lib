@@ -96,7 +96,7 @@ class quailTest {
 	*	@return string The absolute path to the file.
 	*/	
 	function getPath($file) {
-		if(substr($file, 0, 7) == 'http://')
+		if(substr($file, 0, 7) == 'http://' || substr($file, 0, 8) == 'https://')
 			return $file;
 		$file = explode('/', $file);
 		if(count($file) == 1)
