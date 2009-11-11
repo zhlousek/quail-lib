@@ -132,7 +132,6 @@ class quail {
 		$this->prepareValue();
 		@$this->dom->loadHTML($this->value);
 		$this->prepareBaseUrl($this->value, $this->type);
-		$this->loadImageLibrary();
 	}
 	
 	/**
@@ -233,17 +232,7 @@ class quail {
 		 return $result;  
 	 }
 	
-	/**
-	*	Loads a copy of the WideImage library and sets using a global var
-	*	to see if the class is available or not.
-	*/
-	function loadImageLibrary() {
-		if(function_exists('gd_info') && @include_once('lib/wideimage/WideImage.inc.php')) {
-			define('IMAGECLASS_EXISTS', true);
-		}
-		else
-			define('IMAGECLASS_EXISTS', false);
-	}
+
 	
 	/**
 	*	Helper method to add an additional CSS file

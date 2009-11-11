@@ -2524,18 +2524,14 @@ class imgImportantNoSpacerAlt extends quailTest {
 	function check() {
 		foreach($this->getAllElements('img') as $img) {
 			if($img->hasAttribute('src') && $img->hasAttribute('alt') && trim($img->getAttribute('alt')) == '') {
-				if($img->getAttribute('width') > 25 || $img->getAttribute('height') > 25)
+				if($img->getAttribute('width') > 25 || $img->getAttribute('height') > 25) {
 					$this->addReport($img);
-				elseif(IMAGECLASS_EXISTS) {
-					try {
-						$img_file = wiImage::load($img->getAttribute('src'));
-						
-						
-						if($img_file->getWidth() > 25 || $img_file->getHeight() > 25)
+				}
+				elseif(function_exists('gd_info') && (!$img->hasAttribute('width') || !$img->hasAttribute('height'))) {
+					$img_file = getimagesize($this->getPath($img->getAttribute('src')));
+					if($img_file) {
+						if($img_file[0] > 25 || $img_file[0] > 25)
 							$this->addReport($img);
-					}
-					catch(Exception $e) {
-					
 					}
 				}
 			}
