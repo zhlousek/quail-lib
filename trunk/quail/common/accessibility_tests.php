@@ -1,5 +1,9 @@
 <?php
 
+/**
+*	\defgroup tests Accessibility Tests
+*/
+/*@{*/
 
 
 /**
@@ -4752,3 +4756,5 @@ class textareaLabelPositionedClose extends quailTagTest {
 
 	var $tag = 'textarea';
 }
+
+/*@}*/
