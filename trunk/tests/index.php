@@ -3,14 +3,14 @@
 require_once('../quail/quail.php');
 require_once('simpletest/unit_tester.php');
 require_once('simpletest/reporter.php');
-//require_once('cssTests.php');
+require_once('cssTests.php');
 class TestOfTests extends UnitTestCase {
  
  function getTest($file, $test) {
  		$name = explode('-', $file);
  		
  		$filename = 'testfiles/oac/'. $file;
-        $quail = new quail($filename, 'wcag', 'file');
+        $quail = new quail($filename, 'wcag1a', 'file');
 		$quail->runCheck();
 	
 		return $quail->getTest($test);

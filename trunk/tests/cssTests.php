@@ -6,7 +6,7 @@ class TestOfCSSTests extends UnitTestCase {
  
  function getTest($file, $test) {
  		$filename = 'testfiles/css/'. $file;
-        $quail = new quail($filename, 'wcag', 'file');
+        $quail = new quail($filename, 'wcag1a', 'file');
 
 		$quail->runCheck();
 		return $quail->getTest($test); 	
