@@ -564,11 +564,18 @@ class quailGuideline {
 	}
 	
 	/**
+	*	Returns an array of all the tests associated with the current guideline
+	*	@return array
+	*/
+	function getTests() {
+		return $this->tests;
+	}
+	/**
 	*	Iteates through each test string, makes a new test object, and runs it against the current DOM
 	*/
 	function run($arg = null) {
 		foreach($this->tests as $testname => $options) {
-			if(class_exists($testname)) {
+			if(class_exists($testname) && $this->dom) {
 				$$testname = new $testname($this->dom, $this->css, $this->path);
 				$this->report[$testname] = $$testname->getReport();	
 			}
