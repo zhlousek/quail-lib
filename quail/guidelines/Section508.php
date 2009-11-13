@@ -7,7 +7,7 @@
  */
 
 
-class 508Guideline extends quailGuideline{
+class Section508Guideline extends quailGuideline{
 
 	var $tests = array(
 		'imgHasAlt',
