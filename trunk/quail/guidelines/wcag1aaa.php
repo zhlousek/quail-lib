@@ -1,6 +1,6 @@
 <?php 
 
-class Wcag1aaGuideline extends quailGuideline{
+class Wcag1aaaGuideline extends quailGuideline{
 	
 	var $tests = array(
 		'imgHasAlt',
