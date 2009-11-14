@@ -15,11 +15,13 @@ class reportStatic extends quailReporter {
 		foreach($this->guideline->getReport() as $testname => $test) {
 			if(count($test) > 0) {
 				$severity = $this->guideline->getSeverity($testname);
-				$output .= '<div><h3>'. $this->translation[$testname] .'</h3>';
-				foreach($test as $k => $problem) {
-					if(is_object($problem))
-						$output .= '<p><strong>'.($k+1).'</strong><pre>'. htmlentities($problem->getHtml()) .'</pre></p>';
-					
+				$output .= '<div><h3>'. $this->guideline->getTranslation($testname) .'</h3>';
+				if(is_array($test)) {
+					foreach($test as $k => $problem) {
+						if(is_object($problem))
+							$output .= '<p><strong>'.($k+1).'</strong><pre>'. htmlentities($problem->getHtml()) .'</pre></p>';
+						
+					}
 				}
 				$output .='</p>';
 				switch($severity) {

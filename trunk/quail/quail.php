@@ -112,7 +112,6 @@ class quail {
 	*/
 	function __construct($value, $guideline = 'wcag', $type = 'string', $reporter = 'static', $domain = 'en') {
 		$this->dom = new DOMDocument();
-		//$this->dom->registerNodeClass('DOMElement', 'QuailDOMElement');
 		$this->type = $type;
 		if($type == 'uri' || $type == 'file') {
 			$this->uri = $value;
@@ -265,7 +264,7 @@ class quail {
 		if(!class_exists($classname)) {
 			require_once('reporters/reporter.'. $this->reporter_name .'.php');
 		}
-		$this->reporter = new $classname($this->dom, $this->css, $this->guideline, $this->domain, $this->path);
+		$this->reporter = new $classname($this->dom, $this->css, $this->guideline, $this->path);
 		if(count($options))
 			$this->reporter->setOptions($options);
 	}
@@ -295,7 +294,7 @@ class quail {
 		if(!class_exists($classname)) {		
 			require_once('guidelines/'. $this->guideline_name .'.php');
 		}
-		$this->guideline = new $classname($this->dom, $this->css, $this->path, $options);
+		$this->guideline = new $classname($this->dom, $this->css, $this->path, $options, $this->domain);
 	}
 	
 	/**
@@ -395,28 +394,15 @@ class quailReporter {
 	*	@param string $domain The current translation domain
 	*	@param string $path The current path
 	*/
-	function __construct(&$dom, &$css, &$guideline, $domain, $path = '') {
+	function __construct(&$dom, &$css, &$guideline, $path = '') {
 		$this->dom = $dom;
 		$this->css = $css;
 		$this->path = $path;
 		$this->options = new stdClass;
 		$this->guideline = $guideline;
-		$this->loadTranslationFile($domain);
 	}
 	
-	/**
-	*	Finds the translation file and loads it into the local translation array
-	*	@param string $domain The translation domain
-	*/
-	function loadTranslationFile($domain) {
-		$translations = file(dirname(__FILE__).'/reporters/translations/'. $domain .'.php');
-		foreach($translations as $translation) {
-			$ex = explode("\t", $translation);
-			if($ex[0]) {
-				$this->translation[trim($ex[0])] = trim($ex[1]);
-			}
-		}
-	}
+
 	
 	/**
 	*	Sets options for the reporter
@@ -550,16 +536,24 @@ class quailGuideline {
 	var $report;
 	
 	/**
+	*	@var array An array of translations for all this guideline's tests
+	*/
+	var $translations;
+	/**
+	*	@var string The translation domain
+	*/
+	/**
 	*	The class constructor
 	*	@param object $dom The current DOMDocument object
 	*	@param object $css The current QuailCSS object
 	*	@param string $path The current path
 	*/
 
-	function __construct(&$dom, &$css, &$path, $arg = null) {
+	function __construct(&$dom, &$css, &$path, $arg = null, $domain = 'en') {
 		$this->dom = $dom;
 		$this->css = $css;
 		$this->path = $path;
+		$this->loadTranslations($domain);
 		$this->run($arg);
 	}
 	
@@ -570,11 +564,35 @@ class quailGuideline {
 	function getTests() {
 		return $this->tests;
 	}
+	
+	/**
+	*	Loads translations from a file. This can be overriden, just as long as the 
+	*	local variable 'translations' is an associative array with test function names
+	*	as the key
+	*/
+	function loadTranslations($domain) {
+		$csv = fopen(dirname(__FILE__) .'/guidelines/translations/'. $domain .'.txt', 'r');
+		if ($csv) {
+		    while ($translation = fgetcsv($csv)) {
+				$this->translations[$translation[0]] = $translation[1];
+			}
+		}
+	}
+	/**
+	*	Returns the translation for a test name.
+	*	@param string $test The function name of the test
+	*/
+	function getTranslation($testname) {
+		$translation = ($this->translations[$testname])
+						? $this->translations[$testname]
+						: $testname;
+		return $translation;
+	}
 	/**
 	*	Iteates through each test string, makes a new test object, and runs it against the current DOM
 	*/
 	function run($arg = null) {
-		foreach($this->tests as $testname => $options) {
+		foreach($this->tests as $testname) {
 			if(class_exists($testname) && $this->dom) {
 				$$testname = new $testname($this->dom, $this->css, $this->path);
 				$this->report[$testname] = $$testname->getReport();	
