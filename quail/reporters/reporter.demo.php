@@ -23,7 +23,7 @@ class reportDemo extends quailReporter {
 		$problems = $this->guideline->getReport();
 		if(is_array($problems)) {
 			foreach($problems as $testname => $test) {
-				if(!isset($this->options->display_level) || $this->options->display_level >= $test['severity']) {
+				if(!isset($this->options->display_level) || $this->options->display_level >= $test['severity'] && is_array($test)) {
 					foreach($test as $k => $problem) {
 						if($problem->element) {
 							$existing = $problem->element->getAttribute('style');
