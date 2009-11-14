@@ -1,0 +1,212 @@
+"imgHasAlt","All img elements have an alt attribute.","All img elements must have an alt attribute.",1
+"imgAltIsDifferent","Alt text is not the same as the filename unless author has confirmed it is correct.","img element cannot have alt attribute value that is the same as its src attribute.",1
+"imgAltIsTooLong","Image Alt text is short.","Image Alt text is short or user must confirm that Alt text is as short as possible.",1
+"imgNonDecorativeHasAlt","Non-Decorative images must have Alt text.","img element cannot have alt attribute value of null ("""") if WIDTH and HEIGHT attribute values are both greater than 25.",2
+"imgImportantNoSpacerAlt","Important images should not have spacer Alt text.","img element cannot have alt attribute value of whitespace if WIDTH and HEIGHT attribute values are both greater than 25.",1
+"imgAltNotPlaceHolder","Alt text for all img elements is not placeholder text unless author has confirmed it is correct.","img element cannot have alt attribute value of ""nbsp"" or ""spacer"".",1
+"imgAltNotEmptyInAnchor","Alt text for all img elements used as source anchors is not empty when there is no other text in the anchor.","img element cannot have alt attribute value of null or whitespace if the img element is contained by an A element and there is no other link text.",1
+"imgHasLongDesc","A long description is used for each img element that does not have Alt text conveying the same information as the image.","img element must contain a longdesc attribute.",1
+"imgNeedsLongDescWDlink","All img elements that have a longdesc attribute also have an associated 'd-link'.","img element that contains a longdesc attribute must have a following d-link. A d-link must consist of an A element that contains only the text ""d"" or ""D"". The A element must have an href attribute that is a valid URL and is the same as the img element's longdesc attribute. The d-link must immediately follow the img element, separated only by whitespace.",1
+"imgGifNoFlicker","All img elements have associated images that do not flicker.","This error is generated for all img elements that contain a src attribute value that ends with "".gif"" (case insensitive). and have a width and height larger than 25.",1
+"imgAltIsSameInText","Alt text for all img elements contains all text in the image unless the image text is decorative or appears elsewhere in the document.","This error is generated for all img elements that have a width and height greater than 50.",3
+"imgWithMapHasUseMap","All img elements with an ismap attribute have a valid usemap attribute.","img element may not contain an ismap attribute.",1
+"imgMapAreasHaveDuplicateLink","All links in all client side image-maps are duplicated within the document.","img element must not contain a usemap attribute unless all links in the MAP are duplicated within the document. The MAP element is referred by the USEMAP element's usemap attribute. Links within MAP are referred by area elements href attribute contained by MAP element. [Editor's Note - can duplicate links appear anywhere within content or must they be part of a link group?]",1
+"imgNotReferredToByColorAlone","For all img elements, text does not refer to the image by color alone.","This error is generated for all img elements that have a width and height greater than 100.",3
+"imgAltIdentifiesLinkDestination","Alt text for all img elements used as source anchors identifies the destination of the link.","img element that is contained by an a (anchor) element must have Alt text that identifies the link destination.",3
+"imgAltEmptyForDecorativeImages","Alt text for all img elements is the empty string ("""") if the image is decorative.","Decorative images must have empty string ("""") Alt text.",3
+"aLinksToSoundFilesNeedTranscripts","Sound file must have a text transcript.","a (anchor) element cannot contain an href attribute value that ends with any of the following (all case insensitive): .wav, .snd, .mp3, .iff, .svx, .sam, .smp, .vce, .vox, .pcm, .aif.",3
+"aLinksDontOpenNewWindow","Anchor should not open new window without warning.","a (anchor) element must not contain a target attribute unless the target attribute value is either _self, _top, or _parent.",1
+"aLinksMakeSenseOutOfContext","Link text is meaningful when read out of context.","All a (anchor) elements that contains any text will generate this error.",3
+"aLinksToMultiMediaRequireTranscript","Links to multimedia require a text transcript.","a (anchor) element must not contain an href attribute value that ends with (case insensitive): .wmv, .mpg, .mov, .ram, .aif.",3
+"appletsDoneUseColorAlone","applet should not use color alone.","This error is generated for all applet elements.",3
+"appletsDoNotFlicker","All applets do not flicker.","This error is generated for all applet elements.",3
+"appletContainsTextEquivalentInAlt","applet contains a text equivalent in the alt attribute of the applet.","Use the alt attribute to label an applet.",2
+"appletContainsTextEquivalent","applet contains a text equivalent in the body of the applet.","This error is generated for all applet elements.",1
+"appletUIMustBeAccessible","applet user interface must be accessible.","This error is generated for all applet elements.",3
+"blinkIsNotUsed","blink element is not used.","This error is generated for all blink elements.",1
+"skipToContentLinkProvided","A ""skip to content"" link appears on all pages with blocks of material prior to the main document.","Provide a mechanism to bypass blocks of material that are repeated on multiple Web units.",2
+"doctypeProvided","HTML content has a valid doctype declaration.","Each document must contain a valid doctype declaration.",1
+"objectDoesNotFlicker","All objects do not flicker.","This error is generated for all object elements.",3
+"framesHaveATitle","All frames have a title attribute.","Each frame element must have a title attribute.",1
+"frameTitlesDescribeFunction","All frame titles identify the purpose or function of the frame.","frame title must describe the purpose or function of the frame.",3
+"frameSrcIsAccessible","The source for each frame is accessible content.","frame content should be accessible, like HTML, not just an image.",3
+"frameRelationshipsMustBeDescribed","Relationship between frames must be described.","If frameset element contains 3 or more frame elements then frameset element must contain a longdesc attribute that is a valid URL.",2
+"framesetMustHaveNoFramesSection","frameset must have a noframes section.","frameset element must contain a noframes section.",1
+"noframesSectionMustHaveTextEquivalent","NOFRAMES section must contain text equivalent of FRAMES section.","This error is generated for each NOFRAMES element.",2
+"headerH1","The header following an h1 is h1 or h2.","The following header must be equal, one level greater or any level less.",3
+"headerH2","The header following an h2 is h1, h2 or h3.","The following header must be equal, one level greater or any level less.",3
+"headerH3","The header following an h3 is h1, h2, h3 or h4.","The following header must be equal, one level greater or any level less.",3
+"headerH4","The header following an h4 is h1, h2, h3, h4 or h5.","The following header must be equal, one level greater or any level less.",3
+"headerH4","The header following an h5 is h6 or any header less than h6.","The following header must be equal, one level greater or any level less.",3
+"headerH1Format","All h1 elements are not used for formatting.","h1 may be used for formatting. Use the proper markup.",3
+"headerH2Format","All h2 elements are not used for formatting.","h2 may be used for formatting. Use the proper markup.",3
+"headerH3Format","All h3 elements are not used for formatting.","h3 may be used for formatting. Use the proper markup.",3
+"headerH4Format","All h4 elements are not used for formatting.","h4 may be used for formatting. Use the proper markup.",3
+"headerH5Format","All h5 elements are not used for formatting.","h5 may be used for formatting. Use the proper markup.",3
+"headerH6Format","All h6 elements are not used for formatting.","h6 may be used for formatting. Use the proper markup.",3
+"documentLangNotIdentified","Document has required lang attribute(s).","html element must contain a lang attribute.",1
+"documentLangIsISO639Standard","Document has valid language code.","html element must have a lang attribute value of valid 2 or 3 letter language code according to ISO specification 639.",1
+"documentHasTitleElement","Document contains a title element.","title element must be present in head section of document.",1
+"documentTitleNotEmpty","title contains text.","title element content cannot be empty or whitespace.",1
+"documentTitleIsShort","title is short.","title element content must be less than 150 characters (English).",2
+"documentTitleIsNotPlaceholder","title is not placeholder text.","title element content can not be any one of (case insensitive) \""the title\"", \""title\"", \""this is the title\"".",1
+"documentTitleDescribesDocument","title describes the document.","This error is generated for each title element.",3
+"inputDoesNotUseColorAlone","input should not use color alone.","All input elements, except those with a type of ""hidden"", will generate this error.",3
+"inputTextHasLabel","All input elements, type of ""text"", have an explicitly associated label.","input element that contains a type attribute value of ""text"" must have an associated label element. An associated label is one in which the for attribute value of the label element is the same as the id attribute value of the input element.",1
+"inputImageHasAlt","All input elements with a type attribute value of ""image"" have an alt attribute.","input element with type of ""image"" must have an alt attribute.",1
+"inputImageAltIdentifiesPurpose","Alt text for all input elements with a type attribute value of ""image"" identifies the purpose or function of the image.","input element with type of ""image"" must have Alt text that identifies the purpose or function of the image.",3
+"inputImageAltIsShort","Alt text for all input elements with a type attribute value of ""image"" is less than 100 characters (English) or the user has confirmed that the Alt text is as short as possible.","input elements must have alt attribute value of less than 100 characters (English).",1
+"inputImageAltIsNotFileName","Image used in input element - Alt text should not be the same as the filename.","input elements cannot have alt attribute values that are the same as their src attribute values.",1
+"inputImageAltIsNotPlaceholder","Image used in input element - Alt text should not be placeholder text.","input elements cannot have alt attribute values that are (case insensitive) (exactly) \""image\"", (exactly) \""photo\"" or (anywhere) \""bytes\"".",1
+"inputTextHasValue","input element, type of ""text"", must have default text.","input elements that have a type attribute value of ""text"" must also contain a value attribute that contains text.",1
+"areaHasAltValue","All area elements have an alt attribute.","area elements must contain a alt attribute.",1
+"areaAltIdentifiesDestination","Alt text for all area elements identifies the link destination.","Alt text for area element must describe the link destination.",3
+"areaLinksToSoundFile","area link to sound file must have text transcript.","area elements must not contain href attribute values that end with (all case insensitive) .wav, .snd, .mp3, .iff, .svx, .sam, .smp, .vce, .vox, .pcm, .aif",3
+"areaDontOpenNewWindow","area should not open new window without warning.","area element, target attribute values must contain any one of (case insensitive) _self, _top, _parent.",1
+"marqueeIsNotUsed","marquee element is not used.","This error will be generated for each marquee element.",1
+"menuNotUsedToFormatText","menu items should not be used to format text.","menu element must contain one LI element.",3
+"documentAutoRedirectNotUsed","Auto-redirect must not be used.","meta elements that contain a http-equiv attribute with a value of ""refresh"" cannot contain a content attribute with a value of (start, case insensitive) ""http://"".",1
+"documentMetaNotUsedWithTimeout","Meta refresh is not used with a time-out.","meta elements that contain a http-equiv attribute with a value of ""refresh"" cannot contain a content attribute with a value of any number greater than zero.",1
+"objectDoesNotUseColorAlone","object must not use color alone.","This error is generated for every applet element.",3
+"objectTextUpdatesWhenObjectChanges","Text equivalents for object should be updated if object changes.","If an object element contains a codebase attribute then the codebase attribute value must be null or whitespace.",3
+"objectContentUsableWhenDisabled","Content must be usable when object are disabled.","If an object element contains a codebase attribute then the codebase attribute value must be null or whitespace.",3
+"objectInterfaceIsAccessible","object user interface must be accessible.","If an object element contains a codebase attribute then the codebase attribute value must be null or whitespace.",3
+"objectLinkToMultimediaHasTextTranscript","object link to multimedia file must have text transcript.","object element cannot contain type attribute value of ""video"".",3
+"objectMustHaveTitle","object must have a title.","object element must contain a title attribute.",1
+"objectMustHaveValidTitle","object must have a valid title.","object element must not have a title attribute with value of null or whitespace.",1
+"objectMustContainText","All objects contain a text equivalent of the object.","object element must contain a text equivalent for the object in case the object can't be rendered.",1
+"listNotUsedForFormatting","List items must not be used to format text.","OL element should not contain only one LI element.",3
+"pNotUsedAsHeader","All p elements are not used as headers.","All p element content must not be marked with either b, i, u, strong, font, em.",1
+"scriptsDoNotUseColorAlone","Color alone should not be used in the script.","This error will be generated for all script elements.",3
+"scriptsDoNotFlicker","script should not cause screen flicker.","This error will be generated for all script elements.",3
+"scriptContentAccessibleWithScriptsTurnedOff","Content must be accessible when script is disabled.","This error will be generated for all script elements.",3
+"scriptUIMustBeAccessible","User interface for script must be accessible.","This error will be generated for all script elements.",3
+"scriptInBodyMustHaveNoscript","script must have a noscript section.","script elements that occur within the body must be followed by a noscript section.",1
+"selectHasAssociatedLabel","All select elements have an explicitly associated label.","select element must have an associated label element. A label element is associated with the select element if the for attribute value of the label is the same as the id attribute of the select element.",1
+"selectDoesNotChangeContext","All select elements do not cause an extreme change in context.","select element cannot contain onchange attribute.",1
+"textareaHasAssociatedLabel","All textarea elements have an explicitly associated label.","All textarea elements must have an explicitly associated label.",1
+"textareaLabelPositionedClose","All textarea elements have a label that is positioned close to control.","textarea element must have an associated label element that is positioned close to it.",2
+"cssDocumentMakesSenseStyleTurnedOff","Document must be readable when stylesheets are not applied.","This error will be generated for each link element that has a rel attribute with a value of ""stylesheet"".",3
+"documentAbbrIsUsed","Abbreviations must be marked with abbr element.","If body element content is greater than 10 characters (English) this error will be generated.",2
+"documentAcronymsHaveElement","Acronyms must be marked with acronym element.","If body element content is greater than 10 characters (English) then this error will be generated.",2
+"blockquoteNotUsedForIndentation","blockquote must not be used for indentation.","This error is generated if any blockquote element is missing a cite attribute.",2
+"scriptOnclickRequiresOnKeypress","All onclick event handlers have an associated onkeypress event handler.","Any element that contains an onclick attribute must also contain an onkeypress attribute.",1
+"scriptOndblclickRequiresOnKeypress","All ondblclick event handlers have corresponding keyboard-specific functions.","Any element that contains an ondblclick  attribute will generate this error.",1
+"scriptOnmousedownRequiresOnKeypress","All onmousedown event handlers have an associated onkeydown event handler.","Any element that contains an onmousedown attribute must also contain an onkeydown attribute.",1
+"scriptOnmousemove","All onmousemove event handlers have corresponding keyboard-specific functions.","Any element that contains an onmousemove attribute will generate this error.",1
+"scriptOnmouseoutHasOnmouseblur","All onmouseout event handlers have an associated onblur event handler.","Any element that contains an onmouseout attribute must also contain an onblur attribute.",1
+"scriptOnmouseoverHasOnfocus","All onmouseover event handlers have an associated onfocus event handler.","Any element that contains an onmouseover attribute must also contain an onfocus attribute.",1
+"scriptOnmouseupHasOnkeyup","All onmouseup event handlers have an associated onkeyup event handler.","Any element that contains an onmouseup attribute must also contain an onkeyup attribute.",1
+"documentContentReadableWithoutStylesheets","Content must be readable when stylesheets are not applied.","The first occurrence of any element that contains a style attribute will generate this error.",3
+"documentWordsNotInLanguageAreMarked","Words and phrases not in the document's primary language are marked.","If the body element contains more than 10 characters (English) then this error will be generated.",3
+"tableComplexHasSummary","All complex data tables have a summary.","The summary is useful when the table has a complex structure (for example, when there are several sets of row or column headers, or when there are multiple groups of columns or rows). The summary may also be helpful for simple data tables that contain many columns or rows of data.",1
+"tableSummaryIsEmpty","All data table summaries contain text.","table element cannot contain an empty summary attribute if it's a data table.",1
+"tableSummaryIsSufficient","All data table summaries are greater than 10 printable characters (English).","table element, summary attribute value must be greater than 10 characters (English) if it's a data table.",3
+"tableLayoutHasNoSummary","All layout tables have an empty summary attribute or no summary attribute.","The table element, summary attribute for all layout tables contains no printable characters or is absent.",1
+"tableLayoutHasNoCaption","All layout tables do not contain caption elements.","table element content cannot contain a caption element if it's a layout table.",1
+"boldIsNotUsed","b (bold) element is not used.","This error will be generated for all B elements.",1
+"iIsNotUsed","i (italic) element is not used.","This error will be generated for all i elements.",1
+"passwordHasLabel","All input elements, type of ""password"", have an explicitly associated label.","input element that contains a type attribute value of ""password"" must have an associated label element. An associated label is one in which the for attribute value of the label element is the same as the id attribute value of the input element.",1
+"checkboxHasLabel","All input elements, type of ""checkbox"", have an explicitly associated label.","input element that contains a type attribute value of ""checkbox"" must have an associated label element. An associated label is one in which the for attribute value of the label element is the same as the id attribute value of the input element.",1
+"fileHasLabel","All input elements, type of ""file"", have an explicitly associated label.","input element that contains a type attribute value of ""file"" must have an associated label element. An associated label is one in which the for attribute value of the label element is the same as the id attribute value of the input element.",1
+"radioHasLabel","All input elements, type of ""radio"", have an explicitly associated label.","input element that contains a type attribute value of ""radio"" must have an associated label element. An associated label is one in which the for attribute value of the label element is the same as the id attribute value of the input element.",1
+"passwordLabelIsNearby","All input elements, type of ""password"", have a label that is positioned close to the control.","input element with a type attribute value of ""password"" must have an associated label element positioned close to it.",2
+"checkboxLabelIsNearby","All input elements, type of ""checkbox"", have a label that is positioned close to the control.","input element with a type attribute value of ""checkbox"" must have an associated label element positioned close to it.",2
+"fileLabelIsNearby","All input elements, type of ""file"", have a label that is positioned close to the control.","input element with a type attribute value of ""file"" must have an associated label element positioned close to it.",2
+"radioLabelIsNearby","All input elements, type of ""radio"", have a label that is positioned close to the control.","input element with a type attribute value of ""radio"" must have an associated label element positioned close to it.",2
+"inputTextValueNotEmpty","input control, type of ""text"", must have valid default text.","input element with a type of ""text"" cannot contain a VALUE attribute that is empty or whitespace.",1
+"objectWithClassIDHasNoText","Text equivalents for object should be updated if object changes.","If object element contains a CLASSid attribute and any text then this error will be generated.",1
+"objectUIMustBeAccessible","Content must be usable when objects are disabled.","If object element contains a CLASSid attribute and any text then this error will be generated.",3
+"blockquoteUseForQuotations","Use the blockquote element to mark up block quotations.","If body element content is greater than 10 characters (English) then this error will be generated.",2
+"imageMapServerSide","All active areas in all server-side image maps have duplicate text links in the document.","Any img element that contains ismap attribute will generate this error.",1
+"tableLayoutMakesSenseLinearized","All layout tables make sense when linearized.","This error is generated for all layout tables.  If the table contains th elements then it is a data table. If the table does not contain th elements then it is a layout table.",3
+"aLinksAreSeperatedByPrintableCharacters","Include non-link, printable characters (surrounded by spaces) between adjacent links.","Adjacent links must be separated by printable characters. [Editor's Note - Define adjacent link? Printable characters always?]",1
+"imgWithMathShouldHaveMathEquivalent","All img elements with images containing math expressions have equivalent MathML markup.","This error is generated for all img elements that have a width and height greater than 100.",3
+"tableDataShouldHaveTh","All data tables contain th elements.","Data tables must have th elements while layout tables can not have th elements.",1
+"tableLayoutDataShouldNotHaveTh","All layout tables do not contain th elements.","Data tables must have th elements while layout tables can not have th elements.",3
+"inputTextHasTabIndex","All input elements, type of ""text"", have a valid tab index.","input element that contains a type attribute value of ""text"" must have a tabindex attribute.",1
+"inputRadioHasTabIndex","All input elements, type of ""radio"", have a valid tab index.","input element that contains a type attribute value of ""radio"" must have a tabindex attribute.",1
+"inputPasswordHasTabIndex","All input elements, type of ""password"", have a valid tab index.","input element that contains a type attribute value of ""password"" must have a tabindex attribute.",1
+"inputCheckboxHasTabIndex","All input elements, type of ""checkbox"", have a valid tab index.","input element that contains a type attribute value of ""checkbox"" must have a tabindex attribute.",1
+"inputFileHasTabIndex","All input elements, type of ""file"", have a valid tab index.","input element that contains a type attribute value of ""file"" must have a tabindex attribute.",1
+"addressForAuthor","Content must have an address for author.","address element must be present.",1
+"addressForAuthorMustBeValid","address of page author must be valid.","This error will be generated for each address element. [Editor's Note: What is a valid address?]",2
+"linkUsedToDescribeNavigation","Document uses link element to describe navigation if it is within a collection.","The link element can provide metadata about the position of an HTML page within a set of Web units or can assist in locating content with a set of Web units.",1
+"linkUsedForAlternateContent","Document should use LINK for alternate content.","head element must contain a link element with a rel attribute value that equals ""alternate"" and a href attribute value that is a valid URL.",3
+"tableUsesCaption","All data tables contain a caption unless the table is identified within the document.","Tables must be identified by a caption unless they are identified within the document.",1
+"tableUsesAbbreviationForHeader","Long table header labels require terse substitutes.","th element content must be less than 20 characters (English) if th element does not contain abbr attribute.",3
+"tableHeaderLabelMustBeTerse","Substitutes for table header labels must be terse.","abbr attribute value on th element must be less than 20 characters (English).",2
+"preShouldNotBeUsedForTabularLayout","pre element should not be used to create tabular layout.","This error is generated for each pre element.",3
+"imgShouldNotHaveTitle","All img elements do not contain a title attribute.","img element must not contain the title attribute.",1
+"objectShouldHaveLongDescription","object may require a long description.","This error is generated for every object element.",3
+"emoticonsExcessiveUse","Excessive use of emoticons.","This error is generated if 4 or more emoticons are detected. [Editor's Note - how are emoticons detected?]",1
+"embedHasAssociatedNoEmbed","All embed elements have an associated noembed element that contains a text equivalent to the embed element.","Provide a text equivalent for the embed element.",1
+"noembedHasEquivalentContent","noembed must have equivalent content.","This error is generated for each noembed element.",3
+"embedMustHaveAltAttribute","embed must have alt attribute.","embed element must have an alt attribute.",1
+"embedMustNotHaveEmptyAlt","embed must not have empty Alt text.","embed element cannot have alt attribute value of null ("""") or whitespace.",1
+"iframeMustNotHaveLongdesc","iframe must not use longdesc.","Iframe element cannot contain a longdesc attribute.",1
+"radioMarkedWithFieldgroupAndLegend","All radio button groups are marked using fieldset and legend elements.","form element content must contain both fieldset and legend elements if there are related radio buttons.",1
+"selectWithOptionsHasOptgroup","All select elements containing a large number options also contain optgroup elements.","select element content that contains 4 or more option elements must contain at least 2 optgroup elements.",2
+"aSuspiciousLinkText","Suspicious link text.","a (anchor) element cannot contain any of the following text (English): \""click here\"", \""more\"".",1
+"aMustContainText","Each source anchor contains text.","a (anchor) element must contain text. The text may occur in the anchor text or in the title attribute of the anchor or in the Alt text of an image used within the anchor.",1
+"aImgAltNotRepetative","Alt text for all img elements used as source anchors is different from the link text.","If an image occurs within a link, the Alt text should be different from the link text.",1
+"basefontIsNotUsed","basefont must not be used.","This error is generated for all basefont elements.",1
+"fontIsNotUsed","font must not be used.","This error is generated for all font elements.",1
+"aAdjacentWithSameResourceShouldBeCombined","Adjacent links with same resource must be combined.","If 2 adjacent links have the same destination then this error will be generated.",1
+"aMustNotHaveJavascriptHref","Anchor must not use Javascript URL protocol.","Anchor elements must not have an href attribute value that starts with ""javascript:"".",1
+"bodyMustNotHaveBackground","Do not use background images.","The body element must not contain a background attribute.",1
+"objectMustHaveEmbed","Use the embed element within the object element.","Each object element must contain an embed element.",1
+"siteMap","Sites must have a site map.","Each site must have a site map.",3
+"documentIDsMustBeUnique","id attributes must be unique.","Each id attribute value must be unique.",1
+"labelDoesNotContainInput","All label elements do not contain input elements.","label elements should not contain input elements.",1
+"labelMustBeUnique","Each input element has only one associated label.","input element must have only one associated label element.",1
+"labelMustNotBeEmpty","Each label associated with an input element contains text.","Label must contain some text.",1
+"aMustHaveTitle","Anchor element must have a title attribute.","Each source a (anchor) element must have a title attribute.",1
+"aTitleDescribesDestination","The title attribute of all source a (anchor) elements describes the link destination.","Each source a (anchor) element must have a title attribute that describes the link destination.",3
+"inputImageAltNotRedundant","Alt text for all input elements with a type attribute value of ""image"" does not use the words ""submit"" or ""button"" (English).","Alt text for form submit buttons must not use the words ""submit"" or ""button"".",1
+"inputImageNotDecorative","Alt text for all input elements with a type attribute value of ""image"" contains all non decorative text in the image.","This error is generated for all input elements that have a type of ""image"".",3
+"areaAltRefersToText","Alt text for all area elements contains all non decorative text in the image area.","This error is generated for all area elements.",3
+"aLinkTextDoesNotBeginWithRedundantWord","Link text does not begin with \""link to\"" or \""go to\"" (English).","Alt text for images used as links should not begin with \""link to\"" or \""go to\"".",1
+"imgServerSideMapNotUsed","Server-side image maps are not used except when image map regions cannot be defined using an available geometric shape.","A server-side image map should only be used when a client-side image map can not be used.",1
+"legendDescribesListOfChoices","legend text describes the group of choices.","The legend must describe the group of choices.",3
+"legendTextNotEmpty","legend text is not empty or whitespace.","The legend must describe the group of choices.",1
+"legendTextNotPlaceholder","legend text is not placeholder text.","The legend must describe the group of choices.",1
+"frameTitlesNotEmpty","All frame titles are not empty.","frame title can't be empty.",1
+"frameTitlesNotPlaceholder","All frame titles do not contain placeholder text.","frame title should not contain placeholder text.",1
+"tableSummaryDescribesTable","All data table summaries describe navigation and structure of the table.","The table summary can't be garbage text.",3
+"bodyColorContrast","The luminosity contrast ratio between text and background color is at least 5:1.","The luminosity contrast ratio between text and background color is at least 5:1",3
+"bodyLinkColorContrast","The luminosity contrast ratio between link text and background color is at least 5:1.","The luminosity contrast ratio between link text and background color is at least 5:1",1
+"bodyActiveLinkColorContrast","The luminosity contrast ratio between active link text and background color is at least 5:1.","The luminosity contrast ratio between active link text and background color is at least 5:1",1
+"bodyVisitedLinkColorContrast","The luminosity contrast ratio between visited link text and background color is at least 5:1.","The luminosity contrast ratio between visited link text and background color is at least 5:1",1
+"documentStrictDocType","Strict doctype is declared.","A 'strict' doctype must be declared in the document. This can either be the HTML4.01 or XHTML 1.0 strict doctype.",1
+"documentColorWaiAlgorithim","The contrast between text and background colors is greater than WAI ERT color algorithm threshold.","The contrast between text and background color must be greater than the WAI ERT color algorithm threshold.",1
+"documentColorWaiLinkAlgorithim","The contrast between link text and background color is greater than WAI ERT color algorithm threshold.","The contrast between link text and background color must be greater than the WAI ERT color algorithm threshold.",1
+"documentColorWaiActiveLinkAlgorithim","The contrast between active link text and background color is greater than WAI ERT color algorithm threshold.","The contrast between active link text and background color must be greater than the WAI ERT color algorithm threshold.",1
+"documentColorWaiVisitedLinkAlgorithim","The contrast between visited link text and background color is greater than WAI ERT color algorithm threshold.","The contrast between visited link text and background color must be greater than the WAI ERT color algorithm threshold.",1
+"tableIsGrouped","Use thead to group repeated table headers, tfoot for repeated table footers, and tbody for other groups of rows.","TODO: Describe the use and benefits of row structure elements. Clearly explain when it is a good idea to use these.",2
+"tableUseColGroup","Use colgroup and col elements to group columns.","TODO: Describe the use and benefits of row structure elements. Clearly explain when it is a good idea to use these.",3
+"documentValidatesToDocType","Document validates to specification.","Document must validate to declared doctype.",1
+"framesetIsNotUsed","frameset element is not used.","This error is generated for all frameset elements.",1
+"frameIsNotUsed","frame element is not used.","This error is generated for all frame elements.",1
+"documentReadingDirection","The reading direction of all text is correctly marked.","The reading direction of all text is correctly marked.",2
+"aAdjacentWithSameResourceShouldBeCombined","There are no adjacent text and image links having the same destination.","This objective of this technique is to avoid unnecessary duplication that occurs when adjacent text and iconic versions of a link are contained in a document.",1
+"inputElementsDontHaveAlt","All input elements, except those with with a type attribute value of ""image"", do not have an alt attribute.","The input element is used to create many kinds of form controls. Although the HTML DTD permits the alt attribute on all of these, it should be used only on image submit buttons. User agent support for this attribute on other types of form controls is not well defined, and other mechanisms are used to label these controls.",1
+"tabularDataIsInTable","Table markup is used for all tabular information.","The objective of this technique is to present tabular information in a way that preserves relationships within the information even when users cannot see the table or the presentation format is changed.",2
+"tableCaptionIdentifiesTable","Table captions identify the table.","If the table has a caption then the caption must identify the table.",3
+"tableSummaryDoesNotDuplicateCaption","Table summaries do not duplicate the table captions.","The summary and the caption must be different. Caption identifies the table. Summary describes the table contents.",1
+"tableWithBothHeadersUseScope","Data tables that contain both row and column headers use the scope attribute to identify cells.","The scope attribute may be used to clarify the scope of any cell used as a header.",2
+"tableWithMoreHeadersUseID","Data tables that contain more than one row/column of headers use the id and headers attributes to identify cells.","id and headers attributes allow screen readers to speak the headers associated with each data cell when the relationships are too complex to be identified using the th element alone or the th element with the scope attribute.",2
+"formWithRequiredLabel","All form fields that are required are indicated to the user as required.","Ensure that the label for any interactive component within Web content makes the component's purpose clear.",3
+"inputCheckboxRequiresFieldset","All checkbox groups are marked using fieldset and legend elements.","form element content must contain both fieldset and legend elements if there are related checkbox buttons.",1
+"documentVisualListsAreMarkedUp","All visual lists are marked.","Create lists of related items using list elements appropriate for their purposes.",1
+"documentAllColorsAreSet","All text colors or no text colors are set.","If the author specifies that the text must be black, then it may override the settings of the user agent and render a page that has black text (specified by the author) on black background (that was set in the user agent).",1
+"appletProvidesMechanismToReturnToParent","applet provides a keyboard mechanism to return focus to the parent window.","Ensure that keyboard users do not become trapped in a subset of the content that can only be exited using a mouse or pointing device.",3
+"objectProvidesMechanismToReturnToParent","object provides a keyboard mechanism to return focus to the parent window.","Ensure that keyboard users do not become trapped in a subset of the content that can only be exited using a mouse or pointing device.",3
+"embedProvidesMechanismToReturnToParent","embed provides a keyboard mechanism to return focus to the parent window.","Ensure that keyboard users do not become trapped in a subset of the content that can only be exited using a mouse or pointing device.",3
+"headersUseToMarkSections","Each section of content is marked with a header element.","Using the heading elements, h and h1 - h6, to markup the beginning of each section in the content can assist in navigation.",2
+"inputSubmitHasTabIndex","All input elements, type of ""submit"", have a valid tab index.","input element that contains a type attribute value of ""submit"" must have a tabindex attribute.",1
+"tabIndexFollowsLogicalOrder","The tab order specified by tabindex attributes follows a logical order.","Provide a logical tab order when the default tab order does not suffice.",2
+"formHasGoodErrorMessage","All form submission error messages provide assistance in correcting the error.","Information about the nature and location of the input error is provided in text to enable the users to identify the problem.",3
+"formErrorMessageHelpsUser","Form submission data is presented to the user before final acceptance for all irreversable transactions.","Provide users with a way to ensure their input is correct before completing an irreversible transaction.",3
+"documentReadingDirection","All changes in text direction are marked using the dir attribute.","Identify changes in the text direction of text that includes nested directional runs by providing the dir attribute on inline elements. A nested directional run is a run of text that includes mixed directional text, for example, a paragraph in English containing a quoted Hebrew sentence which in turn includes a quotation in French.",2
+"formDeleteIsReversable","Information deleted using a web page can be recovered.","Help users with disabilities avoid serious consequences as the result of a mistake when performing an action that cannot be reversed.",3
