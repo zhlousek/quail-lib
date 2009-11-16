@@ -342,7 +342,16 @@ class quail {
 		return $test_class->getSeverity();
 	}
 	
-
+	/**
+	*
+	*
+	*/
+	function cleanup() {
+		unset($this->dom);
+		unset($this->css);
+		unset($this->guideline);
+		unset($this->reporter);
+	}
 }
 
 /**
@@ -599,6 +608,7 @@ class quailGuideline {
 			if(class_exists($testname) && $this->dom) {
 				$$testname = new $testname($this->dom, $this->css, $this->path);
 				$this->report[$testname] = $$testname->getReport();	
+				unset($$testname);
 			}
 			else {
 				$this->report[$testname] = false;
