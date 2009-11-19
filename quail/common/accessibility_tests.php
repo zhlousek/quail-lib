@@ -4170,6 +4170,7 @@ class skipToContentLinkProvided extends quailTest {
 		$first_link = $this->getAllElements('a');
 		if(!$first_link) {
 			$this->addReport(null, null, false);
+			return null;
 		}
 		$a = $first_link[0];
 		
