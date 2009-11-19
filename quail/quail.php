@@ -203,7 +203,7 @@ class quail {
 			array_pop($path);
 			$this->path = $path;
 		}
-		if($type == 'uri' || $this->uri) {
+		elseif($type == 'uri' || $this->uri) {
 			
 			$parts = explode('://', $this->uri);
 			$this->path[] = $parts[0] .':/';
@@ -337,7 +337,6 @@ class quail {
 	*	@reutrn object The severity level of the test
 	*/
 	function getTestSeverity($test) {
-		require_once('common/tests/'. $test .'.php');
 		$test_class = new $test($this->dom, $this->css, $this->path);
 		return $test_class->getSeverity();
 	}
@@ -404,11 +403,11 @@ class quailReporter {
 	*	@param string $path The current path
 	*/
 	function __construct(&$dom, &$css, &$guideline, $path = '') {
-		$this->dom = $dom;
-		$this->css = $css;
+		$this->dom = &$dom;
+		$this->css = &$css;
 		$this->path = $path;
 		$this->options = new stdClass;
-		$this->guideline = $guideline;
+		$this->guideline = &$guideline;
 	}
 	
 
@@ -559,9 +558,9 @@ class quailGuideline {
 	*/
 
 	function __construct(&$dom, &$css, &$path, $arg = null, $domain = 'en') {
-		$this->dom = $dom;
-		$this->css = $css;
-		$this->path = $path;
+		$this->dom = &$dom;
+		$this->css = &$css;
+		$this->path = &$path;
 		$this->loadTranslations($domain);
 		$this->run($arg);
 	}
