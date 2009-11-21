@@ -403,27 +403,31 @@ class addressForAuthorMustBeValid extends quailTest {
 
 	
 	function check() {
-		$this->includeValidate();
-		
-		foreach($this->getAllElements('address') as $address) {
-			if (Validate::email($address->nodeValue, array('check_domain' => $this->checkDomain)))
-				return true;
-			foreach($address->childNodes as $child) {
-				if($child->tagName == 'a' && substr(strtolower($child->getAttribute('href')), 0, 7) == 'mailto:') {
-					if(Validate::email(trim(str_replace('mailto:', '', $child->getAttribute('href'))), 
-						array('check_domain' => $this->checkDomain)))
-							return true;
-				
+		if($this->includeValidate()) {
+			
+			foreach($this->getAllElements('address') as $address) {
+				if (Validate::email($address->nodeValue, array('check_domain' => $this->checkDomain)))
+					return true;
+				foreach($address->childNodes as $child) {
+					if($child->tagName == 'a' && substr(strtolower($child->getAttribute('href')), 0, 7) == 'mailto:') {
+						if(Validate::email(trim(str_replace('mailto:', '', $child->getAttribute('href'))), 
+							array('check_domain' => $this->checkDomain)))
+								return true;
+					
+					}
 				}
 			}
+			$this->addReport(null, null, false);
 		}
-		$this->addReport(null, null, false);
 	}
 
 
 	function includeValidate() {
-		require_once('Validate.php');
-	
+		@include_once('Validate.php');
+		if(class_exists('Validate')) {
+			return true;
+		}
+		return false;
 	}
 }
 
@@ -1181,9 +1185,11 @@ class documentIDsMustBeUnique extends quailTest {
 			if($element->hasAttribute('id'))
 				$ids[$element->getAttribute('id')][] = $element;
 		}	
-		foreach($ids as $id) {
-			if(count($id) > 1)
-				$this->addReport($id[1]);
+		if(is_array($ids)) {
+			foreach($ids as $id) {
+				if(count($id) > 1)
+					$this->addReport($id[1]);
+			}
 		}
 	}
 }
@@ -2426,8 +2432,7 @@ class imgGifNoFlicker extends quailTest {
 		foreach($this->getAllElements('img') as $img) {
 			
 			if(substr($img->getAttribute('src'), -4, 4) == '.gif') {
-				
-				$file = @file_get_contents($this->getPath($img->getAttribute('src')));
+				$file = $this->getImageContent($this->getPath($img->getAttribute('src')));
 				if($file) {
 					  $file = bin2hex($file);
 					
@@ -2450,6 +2455,19 @@ class imgGifNoFlicker extends quailTest {
 			}
 		}
 	
+	}
+	
+	function getImageContent($image) {
+		if(strpos($image, '://') == false) {
+			return file_get_contents($image);
+		}
+		if(function_exists('curl')) {
+			$curl = new curl_init($image);
+			curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+			$result = curl_exec($curl);
+			return $result;
+		}
+		return false;
 	}
 }
 
@@ -3182,9 +3200,11 @@ class labelMustBeUnique extends quailTest {
 			if($label->hasAttribute('for'))
 				$labels[$label->getAttribute('for')][] = $label;
 		}
-		foreach($labels as $label) {
-			if(count($label) > 1)
-				$this->addReport($label[1]);
+		if(is_array($labels)) {
+			foreach($labels as $label) {
+				if(count($label) > 1)
+					$this->addReport($label[1]);
+			}
 		}
 	}
 }
