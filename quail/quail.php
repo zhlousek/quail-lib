@@ -103,6 +103,10 @@ class quail {
 					'cms_template' => array());
 	
 	/**
+	*
+	*/
+	var $is_valid = true;
+	/**
 	*	The class constructor
 	*	@param string $value Either the HTML string to check or the file/uri of the request
 	*	@param string $guideline The name of the guideline
@@ -129,7 +133,7 @@ class quail {
 	*/
 	function prepareDOM() {
 		$this->prepareValue();
-		@$this->dom->loadHTML($this->value);
+		$this->is_valid = @$this->dom->loadHTML($this->value);
 		$this->prepareBaseUrl($this->value, $this->type);
 	}
 	
@@ -275,9 +279,7 @@ class quail {
 	*	@return bool Whether the DOMDocument is valid
 	*/
 	function isValid() {
-		if(!$this->dom)
-			return false;
-		return true;
+		return $this->is_valid;
 	}
 	
 	
