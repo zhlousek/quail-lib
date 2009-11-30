@@ -3755,7 +3755,7 @@ class pNotUsedAsHeader extends quailTest {
 *  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=109
 **/
 
-class passwordHasLabel extends inputTextHasLabel {
+class passwordHasLabel extends inputHasLabel {
 
 	var $default_severity = QUAIL_TEST_SEVERE;
 
@@ -3763,7 +3763,7 @@ class passwordHasLabel extends inputTextHasLabel {
 	
 	var $type = 'password';
 	
-	var $no_type = true;
+	var $no_type = false;
 }
 
 
