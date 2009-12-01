@@ -403,32 +403,58 @@ class addressForAuthorMustBeValid extends quailTest {
 
 	
 	function check() {
-		if($this->includeValidate()) {
-			
-			foreach($this->getAllElements('address') as $address) {
-				if (Validate::email($address->nodeValue, array('check_domain' => $this->checkDomain)))
-					return true;
-				foreach($address->childNodes as $child) {
-					if($child->tagName == 'a' && substr(strtolower($child->getAttribute('href')), 0, 7) == 'mailto:') {
-						if(Validate::email(trim(str_replace('mailto:', '', $child->getAttribute('href'))), 
-							array('check_domain' => $this->checkDomain)))
-								return true;
-					
-					}
+		foreach($this->getAllElements('address') as $address) {
+			if ($this->validateEmailAddress($address->nodeValue, array('check_domain' => $this->checkDomain)))
+				return true;
+			foreach($address->childNodes as $child) {
+				if($child->tagName == 'a' && substr(strtolower($child->getAttribute('href')), 0, 7) == 'mailto:') {
+					if($this->validateEmailAddress(trim(str_replace('mailto:', '', $child->getAttribute('href'))), 
+						array('check_domain' => $this->checkDomain)))
+							return true;
+				
 				}
 			}
-			$this->addReport(null, null, false);
 		}
+		$this->addReport(null, null, false);
 	}
 
 
-	function includeValidate() {
-		@include_once('Validate.php');
-		if(class_exists('Validate')) {
-			return true;
-		}
-		return false;
+	function validateEmailAddress($email) {
+	  // First, we check that there's one @ symbol, 
+	  // and that the lengths are right.
+	  if (!ereg("^[^@]{1,64}@[^@]{1,255}$", $email)) {
+	    // Email invalid because wrong number of characters 
+	    // in one section or wrong number of @ symbols.
+	    return false;
+	  }
+	  // Split it into sections to make life easier
+	  $email_array = explode("@", $email);
+	  $local_array = explode(".", $email_array[0]);
+	  for ($i = 0; $i < sizeof($local_array); $i++) {
+	    if
+	(!ereg("^(([A-Za-z0-9!#$%&'*+/=?^_`{|}~-][A-Za-z0-9!#$%&'*+/=?^_`{|}~\.-]{0,63})|(\"[^(\\|\")]{0,62}\"))$",
+	$local_array[$i])) {
+	      return false;
+	    }
+	  }
+	  // Check if domain is IP. If not, 
+	  // it should be valid domain name
+	  if (!ereg("^\[?[0-9\.]+\]?$", $email_array[1])) {
+	    $domain_array = explode(".", $email_array[1]);
+	    if (sizeof($domain_array) < 2) {
+	        return false; // Not enough parts to domain
+	    }
+	    for ($i = 0; $i < sizeof($domain_array); $i++) {
+	      if
+	(!ereg("^(([A-Za-z0-9][A-Za-z0-9-]{0,61}[A-Za-z0-9])|([A-Za-z0-9]+))$",
+	$domain_array[$i])) {
+	        return false;
+	      }
+	    }
+	  }
+	  return true;
 	}
+
 }
 
 
@@ -1458,7 +1484,7 @@ class documentVisualListsAreMarkedUp extends quailTest {
 
 	var $default_severity = QUAIL_TEST_SEVERE;
 
-	var $list_cues = array('*', '<br>*', '¥', '&#8226');
+	var $list_cues = array('*', '<br>*', 'Â¥', '&#8226');
 	
 	function check() {
 		foreach($this->getAllElements(null, 'text') as $text) {
@@ -2459,7 +2485,7 @@ class imgGifNoFlicker extends quailTest {
 	
 	function getImageContent($image) {
 		if(strpos($image, '://') == false) {
-			return file_get_contents($image);
+			return @file_get_contents($image);
 		}
 		if(function_exists('curl')) {
 			$curl = new curl_init($image);
