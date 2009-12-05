@@ -1502,7 +1502,7 @@ class documentVisualListsAreMarkedUp extends quailTest {
 
 	var $default_severity = QUAIL_TEST_SEVERE;
 
-	var $list_cues = array('*', '<br>*', '¥', '&#8226');
+	var $list_cues = array('*', '<br>*', '•', '&#8226');
 	
 	function check() {
 		foreach($this->getAllElements(null, 'text') as $text) {
@@ -4206,7 +4206,9 @@ class selectWithOptionsHasOptgroup extends quailTest {
 class siteMap extends quailTest {
 
 	var $default_severity = QUAIL_TEST_SUGGESTION;
-
+	
+	var $cms = false;
+	
 	function check() {
 		foreach($this->getAllElements('a') as $a) {
 			if(strtolower(trim($a->nodeValue)) == 'site map')
@@ -4225,7 +4227,9 @@ class siteMap extends quailTest {
 **/
 
 class skipToContentLinkProvided extends quailTest {
-
+	
+	var $cms = false;
+	
 	var $default_severity = QUAIL_TEST_MODERATE;
 	
 	var $search_words = array('navigation', 'skip', 'content');
