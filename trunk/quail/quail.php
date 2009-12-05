@@ -96,11 +96,6 @@ class quail {
 	var $path = array();
 	
 	/**
-	*	@var bool Whether the library should run in CMS mode (used to disable tests that only work on a document-level)
-	*/
-	var $cms_mode = false;
-	
-	/**
 	*	@var array An array of additional CSS files to load (useful for CMS content)
 	*/
 	var $css_files;
@@ -165,23 +160,8 @@ class quail {
 		if($this->type == 'file' || $this->type == 'uri') {
 			$this->value = @file_get_contents($this->value);
 		}
-		if($this->options['cms_mode']) {
-			$this->prepareCMSTemplate();
-		}
 	}
 	
-	/**
-	*	Scrubs the file of the CMS template
-	*
-	*/
-	function prepareCMSTemplate() {
-		if(is_array($this->options['cms_template'])) {
-			foreach($this->options['cms_template'] as $type => $template_pattern) {
-				$this->value = preg_replace($template_pattern, '<!-- '. $type .' replaced -->', $this->value);
-			}
-		}
-	
-	}
 	
 	/**
 	*	Set global predefined options for QUAIL. First we check that the 
@@ -313,7 +293,7 @@ class quail {
 		if(!class_exists($classname)) {		
 			require_once('guidelines/'. $this->guideline_name .'.php');
 		}
-		$this->guideline = new $classname($this->dom, $this->css, $this->path, $options, $this->domain);
+		$this->guideline = new $classname($this->dom, $this->css, $this->path, $options, $this->domain, $this->options['cms_mode']);
 	}
 	
 	/**
@@ -566,6 +546,11 @@ class quailGuideline {
 	*	@var array An array of translations for all this guideline's tests
 	*/
 	var $translations;
+	
+	/**
+	*	@var bool Whether we are running in CMS mode
+	*/
+	var $cms_mode = false;
 	/**
 	*	@var string The translation domain
 	*/
@@ -576,10 +561,11 @@ class quailGuideline {
 	*	@param string $path The current path
 	*/
 
-	function __construct(&$dom, &$css, &$path, $arg = null, $domain = 'en') {
+	function __construct(&$dom, &$css, &$path, $arg = null, $domain = 'en', $cms_mode = false) {
 		$this->dom = &$dom;
 		$this->css = &$css;
 		$this->path = &$path;
+		$this->cms_mode = $cms_mode;
 		$this->loadTranslations($domain);
 		$this->run($arg);
 	}
@@ -625,7 +611,9 @@ class quailGuideline {
 			}
 			if(class_exists($testname) && $this->dom) {
 				$$testname = new $testname($this->dom, $this->css, $this->path);
-				$this->report[$testname] = $$testname->getReport();	
+				if(!$this->cms_mode || ($$testname->cms && $this->cms_mode)) {
+					$this->report[$testname] = $$testname->getReport();	
+				}
 				unset($$testname);
 			}
 			else {
