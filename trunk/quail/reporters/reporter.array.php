@@ -19,6 +19,10 @@
 */
 
 /**
+*	\defgroup reporters Reporters
+*/
+/*@{*/
+/**
 *	An array reporter that simply returns an unformatted and nested PHP array of 
 *	tests and report objects
 */
@@ -51,3 +55,4 @@ class reportArray extends quailReporter {
 		return $output;
 	}
 }
+/*@}*/
