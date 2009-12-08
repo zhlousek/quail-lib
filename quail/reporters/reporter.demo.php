@@ -19,6 +19,8 @@
 *	@author Kevin Miller <kemiller@csumb.edu>
 */
 
+/** \addtogroup reporters */
+/*@{*/
 /**
 *	Returns the entire document marked-up to highlight problems.
 */
@@ -151,3 +153,5 @@ class reportDemo extends quailReporter {
 		}
 
 }
+
+/*@}/

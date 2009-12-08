@@ -17,7 +17,8 @@
 *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 *	@author Kevin Miller <kemiller@csumb.edu>
 */
-
+/** \addtogroup reporters */
+/*@{*/
 /**
 *	A static reporter. Generates a list of errors which do not pass and their severity.
 *	This is just a demonstration of what you can do with a reporter.
@@ -59,3 +60,4 @@ class reportStatic extends quailReporter {
 		return $output;
 	}
 }
+/*@}*/
