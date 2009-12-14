@@ -21,9 +21,9 @@
 /**
 *	@var int A severe failure
 */	
-define(QUAIL_TEST_SEVERE, 1);
-define(QUAIL_TEST_MODERATE, 2);
-define(QUAIL_TEST_SUGGESTION, 3);
+define('QUAIL_TEST_SEVERE', 1);
+define('QUAIL_TEST_MODERATE', 2);
+define('QUAIL_TEST_SUGGESTION', 3);
 
 /**
 *
