@@ -26,7 +26,7 @@
  */
 
 
-class AllTestsGuideline extends quailGuideline{
+class AllGuideline extends quailGuideline{
 
 	var $tests = array(
 		'aAdjacentWithSameResourceShouldBeCombined',
