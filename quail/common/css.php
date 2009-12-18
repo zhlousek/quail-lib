@@ -259,10 +259,13 @@ class quailCSS {
 		if(count($codes) > 0) {
 			foreach($codes as $code) {
 				$code = trim($code);
-				list($codekey, $codevalue) = explode(":",$code,2);
-				if(strlen($codekey) > 0) {
-					$this->css[$key][trim($codekey)] = trim($codevalue);
-					$this->addIndexEntry($key, $codestr);
+				$explode = explode(":",$code,2);
+				if(count($explode) > 1) {
+					list($codekey, $codevalue) = $explode;
+					if(strlen($codekey) > 0) {
+						$this->css[$key][trim($codekey)] = trim($codevalue);
+						$this->addIndexEntry($key, $codestr);
+					}
 				}
 			}
 		}
