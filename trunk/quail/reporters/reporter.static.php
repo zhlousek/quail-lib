@@ -34,7 +34,8 @@ class reportStatic extends quailReporter {
 		foreach($this->guideline->getReport() as $testname => $test) {
 			if(count($test) > 0) {
 				$severity = $this->guideline->getSeverity($testname);
-				$output .= '<div><h3>'. $this->guideline->getTranslation($testname) .'</h3>';
+				$translation = $this->guideline->getTranslation($testname);
+				$output .= '<div><h3>'. $translation['title'] .'</h3><div>'. $translation['description'] .'</div>';
 				if(is_array($test)) {
 					foreach($test as $k => $problem) {
 						if(is_object($problem))
