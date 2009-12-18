@@ -587,10 +587,12 @@ class quailGuideline {
 		$csv = fopen(dirname(__FILE__) .'/guidelines/translations/'. $domain .'.txt', 'r');
 		if ($csv) {
 		    while ($translation = fgetcsv($csv)) {
-				$this->translations[$translation[0]] = array(
-					'title' => $translation[1],
-					'description' => $translation[2],
-					);
+				if(count($translation) == 4) {
+					$this->translations[$translation[0]] = array(
+						'title' => $translation[1],
+						'description' => $translation[2],
+						);
+				}
 			}
 		}
 	}
