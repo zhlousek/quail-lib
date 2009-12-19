@@ -383,7 +383,8 @@ class aTitleDescribesDestination extends quailTest {
 class addressForAuthor extends quailTest {
 
 	var $default_severity = QUAIL_TEST_SEVERE;
-
+	
+	var $cms = false;
 
 	function check() {
 		foreach($this->getAllElements('address') as $address) {
