@@ -4828,4 +4828,26 @@ class textareaLabelPositionedClose extends quailTagTest {
 	var $tag = 'textarea';
 }
 
+/**
+*  Inline SVG entries should contain a title element which describes the content of the SVG
+*/
+
+class svgContainsTitle extends quailTest {
+	
+	var $default_severity = QUAIL_TEST_SEVERE;
+	
+	function check() {
+		foreach($this->getAllElements('svg') as $svg) {
+			$title = false;
+			foreach($svg->childNodes as $child) {
+				if($child->tagName == 'title') {
+					$title = true;
+				}
+			}
+			if(!$title) {
+				$this->addReport($svg);
+			}
+		}
+	}
+}
 /*@}*/
