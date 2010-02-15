@@ -94,6 +94,7 @@ class quailCSS {
 			$css = $this->css_files;
 		}
 		else {
+			$css = array();
 			$header_styles = $this->dom->getElementsByTagName('style');
 			foreach($header_styles as $header_style) {
 				if($header_style->nodeValue) {
@@ -110,14 +111,11 @@ class quailCSS {
 				}
 			}
 		}
-		if(is_array($css)) {
-			foreach($css as $sheet) {
-				if($this->type == 'uri')
-					$this->loadUri($sheet);
-				if($this->type == 'file' || $this->type == 'string') 
-					$this->loadUri($sheet);
-			}
-			
+		foreach($css as $sheet) {
+			if($this->type == 'uri')
+				$this->loadUri($sheet);
+			if($this->type == 'file' || $this->type == 'string') 
+				$this->loadUri($sheet);
 		}
 		
 		$this->formatCSS();
@@ -132,7 +130,7 @@ class quailCSS {
 		foreach($this->css as $selector => $style) {	
 			$xpath = new DOMXPath($this->dom);
 			$entries = @$xpath->query($this->getXpath($selector));
-			if($entries->length) {
+			if($entries && $entries->length) {
 				foreach($entries as $entry) {
 					$this->buildIndexEntry($entry, $style);
 				}
@@ -151,7 +149,7 @@ class quailCSS {
 	*/
 	private function buildIndexEntry($entry, $style) {
 		
-		if(!is_array($this->dom_index[$entry->tagName])) {
+		if(!isset($this->dom_index[$entry->tagName])) {
 			$this->dom_index[$entry->tagName] = array();
 		}
 		$never_created = true;
@@ -159,7 +157,7 @@ class quailCSS {
 			if($index_entry['element'] == $entry) {
 				$never_created = false;
 				foreach($style as $key => $value) {
-					if(!$this->dom_index[$entry->tagName][$k]['style'][$key])
+					if(!isset($this->dom_index[$entry->tagName][$k]['style'][$key]))
 						$this->dom_index[$entry->tagName][$k]['style'][$key] = $value;
 				}
 			}
@@ -193,7 +191,7 @@ class quailCSS {
 	*
 	*/
 	private function getNodeStyle($element) {
-		if(is_array($this->dom_index[$element->tagName])) {
+		if(isset($this->dom_index[$element->tagName]) && is_array($this->dom_index[$element->tagName])) {
 			foreach($this->dom_index[$element->tagName] as $css_tag) {
 				if($element == $css_tag['element']) {
 					return $css_tag['style'];
@@ -210,7 +208,7 @@ class quailCSS {
 	*	@return array The array of the DOM element, altered if it was overruled through css inheritance
 	*/
 	private function walkUpTreeForInheritance($element, $style) {
-		while($element->parentNode->tagName) {
+		while(property_exists($element->parentNode, 'tagName')) {
 			$element = $element->parentNode;
 			$parent_style = $this->getNodeStyle($element);
 			
@@ -302,14 +300,16 @@ class quailCSS {
 		$parts = explode("}",$str);
 		if(count($parts) > 0) {
 			foreach($parts as $part) {
-				list($keystr,$codestr) = explode("{",$part);
-				$keys = explode(",",trim($keystr));
-				if(count($keys) > 0) {
-					foreach($keys as $key) {
-						if(strlen($key) > 0) {
-							$key = str_replace("\n", "", $key);
-							$key = str_replace("\\", "", $key);
-							$this->addSelector($key, trim($codestr));
+				if(strpos($part, '{') !== false) {
+					list($keystr,$codestr) = explode("{", $part);
+					$keys = explode(",",trim($keystr));
+					if(count($keys) > 0) {
+						foreach($keys as $key) {
+							if(strlen($key) > 0) {
+								$key = str_replace("\n", "", $key);
+								$key = str_replace("\\", "", $key);
+								$this->addSelector($key, trim($codestr));
+							}
 						}
 					}
 				}
