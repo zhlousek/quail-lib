@@ -31,6 +31,7 @@ class reportStatic extends quailReporter {
 	*	@return string A fully-formatted report
 	*/
 	function getReport() {
+		$output = '';
 		foreach($this->guideline->getReport() as $testname => $test) {
 			if(count($test) > 0) {
 				$severity = $this->guideline->getSeverity($testname);

@@ -45,11 +45,11 @@ class reportDemo extends quailReporter {
 			foreach($problems as $testname => $test) {
 				if(!isset($this->options->display_level) || $this->options->display_level >= $test['severity'] && is_array($test)) {
 					foreach($test as $k => $problem) {
-						if($problem->element) {
+						if(is_object($problem) && property_exists($problem, 'element') && is_object($problem->element)) {
 							$existing = $problem->element->getAttribute('style');
 							$problem->element->setAttribute('style', 
 								$existing .'; border: 2px solid red;');
-							if($this->options->image_url) {
+							if(isset($this->options->image_url)) {
 								$image = $this->dom->createElement('img');
 								$image = $problem->element->parentNode->insertBefore($image, $problem->element);
 								$image->setAttribute('alt', $testname);

@@ -188,6 +188,7 @@ class quailTest {
 	*
 	*/
 	function getElementsByAttribute($tag, $attribute, $unique = false) {
+		$results = array();
 		foreach($this->getAllElements($tag) as $element) {
 			if($element->hasAttribute($attribute)) {
 				if($unique)
