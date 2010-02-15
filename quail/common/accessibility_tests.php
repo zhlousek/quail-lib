@@ -45,13 +45,16 @@ class aAdjacentWithSameResourceShouldBeCombined extends quailTest {
 	
 	function check() {
 		foreach($this->getAllElements('a') as $a) {
-			if($this->propertyIsEqual($a->nextSibling, 'wholeText', '', true))
+			if(is_object($a->nextSibling) 
+			   && !$this->propertyIsEqual($a->nextSibling, 'wholeText', '', true)
+			   && property_exists($a->nextSibling, 'nextSibling'))
 				$next = $a->nextSibling->nextSibling;
 			else
 				$next = $a->nextSibling;
 			if($this->propertyIsEqual($next, 'tagName', 'a')) {
-				if($a->getAttribute('href') == $next->getAttribute('href'))
+				if($a->getAttribute('href') == $next->getAttribute('href')) {
 					$this->addReport($a);
+				}
 			}
 		}
 	}
@@ -128,10 +131,14 @@ class aLinksAreSeperatedByPrintableCharacters extends quailTest {
 	function check() {
 		foreach($this->getAllElements('a') as $a) {
 			if(property_exists($a, 'nextSibling') 
-			    && is_object($a->nextSibling) 
+			 	&& is_object($a->nextSibling)
 			    && property_exists($a->nextSibling, 'nextSibling') 
 				&& $this->propertyIsEqual($a->nextSibling->nextSibling, 'tagName', 'a') 
-				&& $this->propertyIsEqual($a->nextSibling, 'wholeText', '', true)) {
+				&& ($this->propertyIsEqual($a->nextSibling, 'wholeText', '', true)
+					|| !property_exists($a->nextSibling, 'wholeText')
+					|| $this->propertyIsEqual($a->nextSibling, 'nodeValue', '', true)
+					)
+				) {					
 					$this->addReport($a);
 			}
 		}
