@@ -53,7 +53,7 @@ class htmlElements {
 	
 	function getElementsByOption($option, $value = true) {
 		foreach(self::$html_elements as $k => $element) {
-			if($element[$option] == $value)
+			if(isset($element[$option]) && $element[$option] == $value)
 				$results[] = $k;
 		}
 		return $results;

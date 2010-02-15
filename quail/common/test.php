@@ -171,7 +171,7 @@ class quailTest {
 	*/
 	function elementHasChild($element, $child_tag) {
 		foreach($element->childNodes as $child) {
-			if($child->tagName == $child_tag)
+			if(property_exists($child, 'tagName') && $child->tagName == $child_tag)
 				return true;
 		}
 		return false;
@@ -206,15 +206,35 @@ class quailTest {
 	*/
 	function getNextElement($element) {
 		$parent = $element->parentNode;
-		
+		$next = false;
 		foreach($parent->childNodes as $child) {
 			if($next)
 				return $child;
 			if($child->isSameNode($element))
 				$next = true;
-			
 		}
 		return false;
+	}
+	
+	/**
+	*	To minimize notices, this compares an object's property to the valus
+	*	and returns true or false. False will also be returned if the object is 
+	*	not really an object, or if the property doesn't exist at all
+	**/
+	function propertyIsEqual($object, $property, $value, $trim = false, $lower = false) {
+		if(!is_object($object)) {
+			return false;
+		}
+		if(!property_exists($object, $property)) {
+			return false;
+		}
+		if($trim) {
+			$value = trim($value);
+		}
+		if($lower) {
+			$value = strtolower($value);
+		}
+		return ($object->$property == $value);
 	}
 	
 	/**
@@ -321,7 +341,7 @@ class quailHeaderTest extends quailTest {
 			$previous_number = intval(substr($current->tagName, -1, 1));
 			while($current) {
 				
-				if(in_array($current->tagName, $this->headers)) {
+				if(property_exists($current, 'tagName') && in_array($current->tagName, $this->headers)) {
 					$current_number = intval(substr($current->tagName, -1, 1));
 					if($current_number > ($previous_number + 1))
 						$this->addReport($current);
@@ -355,7 +375,7 @@ class quailTableTest extends quailTest {
 		if($table->tagName != 'table')
 			return false;
 		foreach($table->childNodes as $child) {
-			if($child->tagName == 'tr') {
+			if(property_exists($child, 'tagName') && $child->tagName == 'tr') {
 				$rows++;
 				if($first_row) {
 					foreach($child->childNodes as $column_child) {
@@ -381,13 +401,13 @@ class quailTableTest extends quailTest {
 		if($table->tagName != 'table') 
 			return false;
 		foreach($table->childNodes as $child) {
-			if($child->tagName == 'tr') {
+			if(property_exists($child, 'tagName') && $child->tagName == 'tr') {
 				foreach($child->childNodes as $row_child) {
-					if($row_child->tagName == 'th')
+					if(property_exists($row_child, 'tagName') && $row_child->tagName == 'th')
 						return true;
 				}
 			}
-			if($child->tagName == 'thead')
+			if(property_exists($child, 'tagName') && $child->tagName == 'thead')
 				return true;
 		}
 		return false;
@@ -428,16 +448,19 @@ class inputHasLabel extends quailTest {
 				$labels[$label->getAttribute('for')] = $label;
 			else {
 				foreach($label->childNodes as $child) {
-					if($child->tagName == $this->tag && ($child->getAttribute('type') == $this->type || $this->no_type))
-						$input_in_label[$child->getAttribute('name')] = $child;
+					if(property_exists($child, 'tagName') && 
+					   $child->tagName == $this->tag && 
+					   ($child->getAttribute('type') == $this->type || $this->no_type)) {
+							$input_in_label[$child->getAttribute('name')] = $child;
+					}
 				}
 			}
 		}
 		foreach($this->getAllElements($this->tag) as $input) {
 			if($input->getAttribute('type') == $this->type || $this->no_type) {
 				if(!$input->hasAttribute('title')) {
-					if(!$input_in_label[$input->getAttribute('name')]) {
-						if(!$labels[$input->getAttribute('id')] || trim($labels[$input->getAttribute('id')]->nodeValue) == '')
+					if(!isset($input_in_label[$input->getAttribute('name')])) {
+						if(!isset($labels[$input->getAttribute('id')]) || trim($labels[$input->getAttribute('id')]->nodeValue) == '')
 							$this->addReport($input);
 					}
 				
@@ -474,7 +497,7 @@ class inputTabIndex extends quailTest {
 	*/
 	function check() {
 		foreach($this->getAllElements($this->tag) as $element) {
-			if(($no_type || $element->getAttribute('type') == $this->type)
+			if(($element->getAttribute('type') == $this->type)
 					&& (!($element->hasAttribute('tabindex'))
 						 || !is_numeric($element->getAttribute('tabindex')))) 
 				$this->addReport($element);
@@ -692,6 +715,9 @@ class quailColorTest extends quailTest {
 	function getRGB($color) {
 		$color =  $this->convertColor($color);
 		$c = str_split($color, 2);
+		if(count($c) != 3) {
+			return false;
+		}
 		$results = array('r' => hexdec($c[0]), 'g' => hexdec($c[1]), 'b' => hexdec($c[2]));
 		return $results;
 	}
@@ -731,6 +757,9 @@ class quailColorTest extends quailTest {
 		//rgb values
 		if(strtolower(substr($color, 0, 3)) == 'rgb') {
 			$colors = explode(',', trim(str_replace('rgb(', '', $color), '()'));
+			if(!count($colors) != 3) {
+				return false;
+			}
 			$r = intval($colors[0]); 
 			$g = intval($colors[1]);
 		    $b = intval($colors[2]);

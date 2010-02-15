@@ -49,7 +49,7 @@ class aAdjacentWithSameResourceShouldBeCombined extends quailTest {
 				$next = $a->nextSibling->nextSibling;
 			else
 				$next = $a->nextSibling;
-			if($next->tagName == 'a') {
+			if($this->propertyIsEqual($next, 'tagName', 'a')) {
 				if($a->getAttribute('href') == $next->getAttribute('href'))
 					$this->addReport($a);
 			}
@@ -73,7 +73,7 @@ class aImgAltNotRepetative extends quailTest {
 	function check() {
 		foreach($this->getAllElements('a') as $a) {
 			foreach($a->childNodes as $child) {
-				if($child->tagName == 'img') {
+				if($this->propertyIsEqual($child, 'tagName', 'img')) {
 					if(trim($a->nodeValue) == trim($child->getAttribute('alt')))
 						$this->addReport($child);
 				}
@@ -127,8 +127,11 @@ class aLinksAreSeperatedByPrintableCharacters extends quailTest {
 
 	function check() {
 		foreach($this->getAllElements('a') as $a) {
-			if($a->nextSibling->nextSibling->tagName == 'a' && trim($a->nextSibling->wholeText) == '')
-				$this->addReport($a);
+			if(is_object($a->nextSibling->nextSibling) 
+				&& $this->propertyIsEqual($a->nextSibling->nextSibling, 'tagName', 'a') 
+				&& trim($a->nextSibling->wholeText) == '') {
+					$this->addReport($a);
+			}
 		}
 	}
 }
@@ -273,9 +276,9 @@ class aMustContainText extends quailTest {
 				$fail = true;
 				$child = true;
 				foreach($a->childNodes as $child) {
-					if($child->tagName == 'img' && trim($child->getAttribute('alt')) != '')
+					if($this->propertyIsEqual($child, 'tagName', 'img') && trim($child->getAttribute('alt')) != '')
 						$fail = false;
-					if($child->nodeValue)
+					if(property_exists($child, 'nodeValue'))
 						$fail = false;
 				}
 				if($fail)
@@ -389,7 +392,7 @@ class addressForAuthor extends quailTest {
 	function check() {
 		foreach($this->getAllElements('address') as $address) {
 			foreach($address->childNodes as $child) {
-				if($child->tagName == 'a')
+				if($this->propertyIsEqual($child, 'tagName', 'a'))
 						return true;
 			}
 		}
@@ -426,7 +429,8 @@ class addressForAuthorMustBeValid extends quailTest {
 			if ($this->validateEmailAddress($address->nodeValue, array('check_domain' => $this->checkDomain)))
 				return true;
 			foreach($address->childNodes as $child) {
-				if($child->tagName == 'a' && substr(strtolower($child->getAttribute('href')), 0, 7) == 'mailto:') {
+				if($this->propertyIsEqual($child, 'tagName', 'a') 
+				   && substr(strtolower($child->getAttribute('href')), 0, 7) == 'mailto:') {
 					if($this->validateEmailAddress(trim(str_replace('mailto:', '', $child->getAttribute('href'))), 
 						array('check_domain' => $this->checkDomain)))
 							return true;
@@ -944,8 +948,8 @@ class cssTextHasContrast extends quailColorTest {
 		$entries = $xpath->query('//*');
 		foreach($entries as $element) {
 			$style = $this->css->getStyle($element);
-			if(($style['background'] || $style['background-color']) && $style['color'] && $element->nodeValue) {
-				$background = ($style['background-color'])
+			if((isset($style['background']) || isset($style['background-color'])) && isset($style['color']) && $element->nodeValue) {
+				$background = (isset($style['background-color']))
 							   ? $style['background-color']
 							   : $style['background'];
 				if(!$background) {
@@ -1009,9 +1013,9 @@ class documentAbbrIsUsed extends quailTest {
 			if(count($words) > 1 && strtoupper($text->nodeValue) != $text->nodeValue) {
 				foreach($words as $word) {
 					$word = preg_replace("/[^a-zA-Zs]/", "", $word);
-					if(strtoupper($word) == $word && strlen($word) > 1 && !$predefined[strtoupper($word)])
+					if(strtoupper($word) == $word && strlen($word) > 1 && !isset($predefined[strtoupper($word)]))
 
-						if(!$already_reported[strtoupper($word)]) {
+						if(!isset($already_reported[strtoupper($word)])) {
 							$this->addReport($text, 'Word "'. $word .'" requires an <code>'. $this->acronym_tag .'</code> tag.');
 						}
 						$already_reported[strtoupper($word)] = true;
@@ -1533,7 +1537,16 @@ class documentWordsNotInLanguageAreMarked extends quailTest {
 
 	function check() {
 		$body = $this->getAllElements('body');
+		if(!isset($body[0])) {
+			return false;
+		}
 		$body = $body[0];
+		if(!is_object($body)) {
+			return false;
+		}
+		if(!property_exists($body, 'nodeValue')) {
+			return false;
+		}
 		$words = explode(' ', $body->nodeValue);
 
 		if(count($words) > 10)
@@ -1555,9 +1568,10 @@ class embedHasAssociatedNoEmbed extends quailTest {
 
 	function check() {
 		foreach($this->getAllElements('embed') as $embed) {
-			if($embed->firstChild->tagName != 'noembed' &&
-				$embed->nextSibling->tagName != 'noembed')
+			if(!$this->propertyIsEqual($embed->firstChild, 'tagName', 'noembed') 
+			   && !$this->propertyIsEqual($embed->nextSibling, 'tagName', 'noembed')) {
 					$this->addReport($embed);
+			}
 		
 		}
 	}
@@ -1669,7 +1683,7 @@ class emoticonsMissingAbbr extends quailTest {
 				$words = explode(' ', $element->nodeValue);
 				foreach($words as $word) {
 					if(in_array($word, $emoticons)) {
-						if(!$abbreviated[$word])
+						if(!isset($abbreviated[$word]))
 							$this->addReport($element);
 					}
 				}
@@ -2230,9 +2244,14 @@ class headersUseToMarkSections extends quailTest {
 		if(count($headers) == 0 && count($paragraphs) > 1)
 			$this->addReport(null, null, false);
 		foreach($paragraphs as $p) {
-			if(in_array($p->firstChild->tagName, $this->non_header_tags)
-			   || in_array($p->firstChild->nextSibling->tagName, $this->non_header_tags)
-			   || in_array($p->previousSibling->tagName, $this->non_header_tags))
+			
+			if((property_exists($p->firstChild, 'tagName') && in_array($p->firstChild->tagName, $this->non_header_tags))
+			   || (is_object($p->firstChild->nextSibling)
+			   			&& property_exists($p->firstChild->nextSibling, 'tagName') 
+			   			&& in_array($p->firstChild->nextSibling->tagName, $this->non_header_tags))
+			   || (is_object($p->previousSibling)
+			   			&& property_exists($p->previousSibling, 'tagName')
+			   			&& in_array($p->previousSibling->tagName, $this->non_header_tags)))
 				$this->addReport($p);
 		}
 	}
@@ -2332,8 +2351,10 @@ class imgAltIdentifiesLinkDestination extends quailTest {
 		foreach($this->getAllElements('a') as $a) {
 			if(!$a->nodeValue) {
 				foreach($a->childNodes as $child) {
-					if($child->tagName == 'img' && $child->hasAttribute('alt'))
+					if($this->propertyIsEqual($child, 'tagName', 'img') 
+					   && $child->hasAttribute('alt')) {
 						$this->addReport($child);
+					}
 				}
 			}
 		}
@@ -2421,7 +2442,7 @@ class imgAltNotEmptyInAnchor extends quailTest {
 		foreach($this->getAllElements('a') as $a) {
 			if(!$a->nodeValue && $a->childNodes) {
 				foreach($a->childNodes as $child) {
-					if($child->tagName == 'img'
+					if($this->propertyIsEqual($child, 'tagName', 'img')
 						&& trim($child->getAttribute('alt')) == '')
 							$this->addReport($child);
 				}
@@ -2625,6 +2646,7 @@ class imgMapAreasHaveDuplicateLink extends quailTest {
 	var $placeholders = array('nbsp', '&nbsp;', 'spacer', 'image', 'img', 'photo', ' ');
 	
 	function check() {
+		$all_links = array();
 		foreach($this->getAllElements('a') as $a) {
 			$all_links[$a->getAttribute('href')] = $a->getAttribute('href');
 		}
@@ -2638,14 +2660,12 @@ class imgMapAreasHaveDuplicateLink extends quailTest {
 				else
 					$key = $usemap;
 				foreach($maps[$key]->childNodes as $child) {
-					if($child->tagName == 'area') {
-						
-						if(!$all_links[$child->getAttribute('href')])
+					if($this->propertyIsEqual($child, 'tagName', 'area')) {
+						if(!isset($all_links[$child->getAttribute('href')])) {
 							$this->addReport($img);
+						}
 					}
 				}
-			
-			
 			}
 		}
 	
@@ -2670,11 +2690,12 @@ class imgNeedsLongDescWDlink extends quailTest {
 			if($img->hasAttribute('longdesc')) {
 				$next = $this->getNextElement($img);
 				
-				if($next->tagName != 'a') 
+				if(is_object($next) && $next->tagName != 'a') {
 					$this->addReport($img);
+				}
 				else {
-					
-					if(((strtolower($next->nodeValue) != '[d]' && strtolower($next->nodeValue) != 'd') )
+					if(((!$this->propertyIsEqual($next, 'nodeValue', '[d]', true, true) 
+							&& !$this->propertyIsEqual($next, 'nodeValue', 'd', true, true)) )
 						|| $next->getAttribute('href') != $img->getAttribute('longdesc')) {
 							$this->addReport($img);
 					}
@@ -2812,8 +2833,10 @@ class imgWithMathShouldHaveMathEquivalent extends quailTest {
 		foreach($this->getAllElements('img') as $img) {
 			if(($img->getAttribute('width') > 100 
 				|| $img->getAttribute('height') > 100 )
-				&& $img->nextSibling->tagName != 'math')
-					$this->addReport($img);
+				&& (is_object($img->nextSibling) 
+						&& $this->propertyIsEqual($img->nextSibling, 'tagName', 'math'))) {
+							$this->addReport($img);
+			}
 		
 		}
 	}
@@ -3272,7 +3295,8 @@ class labelMustNotBeEmpty extends quailTest {
 			if(trim($label->nodeValue) == '') {
 				$fail = true;
 				foreach($label->childNodes as $child) {
-					if($child->tagName == 'img' && trim($child->getAttribute('alt')) != '')
+					if($this->propertyIsEqual($child, 'tagName', 'img') 
+					   && trim($child->getAttribute('alt')) != '')
 						$fail = false;
 				}
 				if($fail)
@@ -3347,8 +3371,10 @@ class liDontUseImageForBullet extends quailTest {
 
 	function check() {
 		foreach($this->getAllElements('li') as $li) {
-			if(trim($li->nodeValue) != '' && $li->firstChild->tagName == 'img')
-				$this->addReport($li);
+			if(!$this->propertyIsEqual($li, 'nodeValue', '', true) 
+			   && $this->propertyIsEqual($li->firstChild, 'tagName', 'img')) {
+					$this->addReport($li);
+			}
 		}
 	
 	}
@@ -3370,7 +3396,7 @@ class linkUsedForAlternateContent extends quailTest {
 		$head = $this->getAllElements('head');
 		$head = $head[0];
 		foreach($head->childNodes as $child) {
-			if($child->tagName == 'link' && $child->getAttribute('rel') == 'alternate')
+			if($this->propertyIsEqual($child, 'tagName', 'link') && $child->getAttribute('rel') == 'alternate')
 				return true;
 		}
 		$this->addReport(null, null, false);
@@ -3396,7 +3422,7 @@ class linkUsedToDescribeNavigation extends quailTest {
 		$head = $head[0];
 		if($head->childNodes) {
 			foreach($head->childNodes as $child) {
-				if($child->tagName == 'link' && $child->getAttribute('rel') != 'stylesheet')
+				if($this->propertyIsEqual($child, 'tagName', 'link') && $child->getAttribute('rel') != 'stylesheet')
 					return true;
 			}
 			$this->addReport(null, null, false);
@@ -3420,8 +3446,9 @@ class listNotUsedForFormatting extends quailTest {
 		foreach($this->getAllElements(array('ul', 'ol')) as $list) {
 			$li_count = 0;
 			foreach($list->childNodes as $child) {
-				if($child->tagName == 'li')
+				if($this->propertyIsEqual($child, 'tagName', 'li')) {
 					$li_count++;
+				}
 			}
 			if($li_count < 2)
 				$this->addReport($list);
@@ -3462,8 +3489,9 @@ class menuNotUsedToFormatText extends quailTest {
 		foreach($this->getAllElements('menu') as $menu) {
 			$list_items = 0;
 			foreach($menu->childNodes as $child) {
-				if($child->tagName == 'li')
+				if($this->propertyIsEqual($child, 'tagName', 'li')) {
 					$list_items++;
+				}
 			}
 			if($list_items == 1)
 				$this->addReport($menu);
@@ -3786,8 +3814,9 @@ class pNotUsedAsHeader extends quailTest {
 	
 	function check() {
 		foreach($this->getAllElements('p') as $p) {
-			if(($p->nodeValue == $p->firstChild->nodeValue)
-				&& in_array($p->firstChild->tagName, $this->head_tags))
+			if(($p->nodeValue == $p->firstChild->nodeValue) &&
+			 	property_exists($p->firstChild, 'tagName') && 
+				in_array($p->firstChild->tagName, $this->head_tags))
 				$this->addReport($p);
 		}
 	}
@@ -3907,17 +3936,16 @@ class radioMarkedWithFieldgroupAndLegend extends quailTest {
 	var $default_severity = QUAIL_TEST_SEVERE;
 
 	function check() {
+		$radios = array();
 		foreach($this->getAllElements('input') as $input) {
 			if($input->getAttribute('type') == 'radio') {
 				$radios[$input->getAttribute('name')][] = $input;
 			}
 		}
-		if(is_array($radios)) {
-			foreach($radios as $radio) {
-				if(count($radio > 1)) {
-					if(!$this->getParent($radio[0], 'fieldset', 'body'))
-						$this->addReport($radio[0]);
-				}
+		foreach($radios as $radio) {
+			if(count($radio > 1)) {
+				if(!$this->getParent($radio[0], 'fieldset', 'body'))
+					$this->addReport($radio[0]);
 			}
 		}
 	}
@@ -3955,7 +3983,7 @@ class scriptInBodyMustHaveNoscript extends quailTest {
 
 	function check() {
 		foreach($this->getAllElements('script') as $script) {
-			if($script->nextSibling->tagName != 'noscript' 
+			if(is_object($script->nextSibling) && $script->nextSibling->tagName != 'noscript' 
 				&& $script->parentNode->tagName != 'head')
 					$this->addReport($script);
 		
@@ -4188,11 +4216,13 @@ class selectWithOptionsHasOptgroup extends quailTest {
 		foreach($this->getAllElements('select') as $select) {
 			$options = 0;
 			foreach($select->childNodes as $child) {
-				if($child->tagName == 'option')
+				if($this->propertyIsEqual($child, 'tagName', 'option')) {
 					$options++;
+				}
 			}
-			if($options >= 4)
+			if($options >= 4) {
 				$this->addReport($select);
+			}
 		}
 	}
 }
@@ -4374,9 +4404,9 @@ class tableHeaderLabelMustBeTerse extends quailTableTest {
 	function check() {
 		foreach($this->getAllElements('table') as $table) {
 			foreach($table->childNodes as $child) {
-				if($child->tagName == 'tr') {
+				if($this->propertyIsEqual($child, 'tagName', 'tr')) {
 					foreach($child->childNodes as $td) {
-						if($td->tagName == 'th') {
+						if($this->propertyIsEqual($td, 'tagName', 'th')) {
 							if(strlen($td->getAttribute('abbr')) > 20)
 								$this->addReport($td);
 						
@@ -4408,7 +4438,7 @@ class tableIsGrouped extends quailTest {
 					|| !$this->elementHasChild($table, 'tfoot')) {
 				$rows = 0;
 				foreach($table->childNodes as $child) {
-					if($child->tagName == 'tr')
+					if($this->propertyIsEqual($child, 'tagName', 'tr'))
 						$rows ++;
 				}
 				if($rows > 4)
@@ -4459,7 +4489,7 @@ class tableLayoutHasNoCaption extends quailTableTest {
 			if($this->elementHasChild($table, 'caption')) {
 				$first_row = true;
 				foreach($table->childNodes as $child) {
-					if($child->tagName == 'tr' && $first_row) {
+					if($this->propertyIsEqual($child, 'tagName', 'tr') && $first_row) {
 						if(!$this->elementHasChild($child, 'th'))
 							$this->addReport($table);
 						$first_row = false;
@@ -4488,7 +4518,7 @@ class tableLayoutHasNoSummary extends quailTableTest {
 			if($table->hasAttribute('summary') && strlen(trim($table->getAttribute('summary'))) > 1) {
 				$first_row = true;
 				foreach($table->childNodes as $child) {
-					if($child->tagName == 'tr' && $first_row) {
+					if($this->propertyIsEqual($child, 'tagName', 'tr') && $first_row) {
 						if(!$this->elementHasChild($child, 'th'))
 							$this->addReport($table);
 						$first_row = false;
@@ -4560,7 +4590,7 @@ class tableSummaryDoesNotDuplicateCaption extends quailTest {
 		foreach($this->getAllElements('table') as $table) {
 			if($this->elementHasChild($table, 'caption') && $table->hasAttribute('summary')) {
 				foreach($table->childNodes as $child) {
-					if($child->tagName == 'caption')
+					if($this->propertyIsEqual($child, 'tagName', 'caption'))
 						$caption = $child;
 				}
 				if(strtolower(trim($caption->nodeValue)) == 
@@ -4657,9 +4687,9 @@ class tableUsesAbbreviationForHeader extends quailTableTest {
 	function check() {
 		foreach($this->getAllElements('table') as $table) {
 			foreach($table->childNodes as $child) {
-				if($child->tagName == 'tr') {
+				if($this->propertyIsEqual($child, 'tagName', 'tr')) {
 					foreach($child->childNodes as $td) {
-						if($td->tagName == 'th') {
+						if($this->propertyIsEqual($td, 'tagName', 'th')) {
 							if(strlen($td->nodeValue) > 20 && !$td->hasAttribute('abbr'))
 								$this->addReport($table);
 						
@@ -4711,8 +4741,8 @@ class tableWithBothHeadersUseScope extends quailTest {
 		foreach($this->getAllElements('table') as $table) {
 			$fail = false;
 			foreach($table->childNodes as $child) {
-				if($child->tagName == 'tr') {
-					if($child->firstChild->tagName == 'td') {
+				if($this->propertyIsEqual($child, 'tagName', 'tr')) {
+					if($this->propertyIsEqual($child->firstChild, 'tagName', 'td')) {
 						if(!$child->firstChild->hasAttribute('scope'))
 							$fail = true;
 					}
@@ -4749,10 +4779,10 @@ class tableWithMoreHeadersUseID extends quailTableTest {
 				$row = 0;
 				$multi_headers = false;
 				foreach($table->childNodes as $child) {
-					if($child->tagName == 'tr') {
+					if($this->propertyIsEqual($child, 'tagName', 'tr')) {
 						$row ++;
 						foreach($child->childNodes as $cell) {
-							if($cell->tagName == 'th') {
+							if($this->propertyIsEqual($cell, 'tagName', 'th')) {
 								$th[] = $cell;
 								if($row > 1) 
 									$multi_headers = true;	
@@ -4840,7 +4870,7 @@ class svgContainsTitle extends quailTest {
 		foreach($this->getAllElements('svg') as $svg) {
 			$title = false;
 			foreach($svg->childNodes as $child) {
-				if($child->tagName == 'title') {
+				if($this->propertyIsEqual($child, 'tagName', 'title')) {
 					$title = true;
 				}
 			}

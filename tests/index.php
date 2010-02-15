@@ -1,10 +1,11 @@
 <?php
-
+//error_reporting(0);
 require_once('../quail/quail.php');
 require_once('simpletest/unit_tester.php');
 require_once('simpletest/reporter.php');
 require_once('cssTests.php');
 require_once('quailTests.php');
+
 class TestOfTests extends UnitTestCase {
  
  function getTest($file, $test) {
