@@ -154,5 +154,6 @@ class Wcag2aaGuideline extends quailGuideline{
 		'formHasGoodErrorMessage',
 		'formErrorMessageHelpsUser',
 		'formDeleteIsReversable',
+		'svgContainsTitle',
 	);
 }

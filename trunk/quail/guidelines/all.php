@@ -245,5 +245,6 @@ class AllGuideline extends quailGuideline{
 		'tabularDataIsInTable',
 		'textareaHasAssociatedLabel',
 		'textareaLabelPositionedClose',
+		'svgContainsTitle',
 	);
 }
