@@ -45,16 +45,13 @@ class aAdjacentWithSameResourceShouldBeCombined extends quailTest {
 	
 	function check() {
 		foreach($this->getAllElements('a') as $a) {
-			if(is_object($a->nextSibling) 
-			   && !$this->propertyIsEqual($a->nextSibling, 'wholeText', '', true)
-			   && property_exists($a->nextSibling, 'nextSibling'))
+			if($this->propertyIsEqual($a->nextSibling, 'wholeText', '', true))
 				$next = $a->nextSibling->nextSibling;
 			else
 				$next = $a->nextSibling;
 			if($this->propertyIsEqual($next, 'tagName', 'a')) {
-				if($a->getAttribute('href') == $next->getAttribute('href')) {
+				if($a->getAttribute('href') == $next->getAttribute('href'))
 					$this->addReport($a);
-				}
 			}
 		}
 	}
