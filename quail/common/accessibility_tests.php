@@ -3367,7 +3367,7 @@ class legendTextNotPlaceholder extends quailTest {
 
 class liDontUseImageForBullet extends quailTest {
 
-	var $default_severity = QUAIL_TEST_MODERATe;
+	var $default_severity = QUAIL_TEST_MODERATE;
 
 	function check() {
 		foreach($this->getAllElements('li') as $li) {
