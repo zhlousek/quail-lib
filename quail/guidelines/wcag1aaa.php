@@ -136,6 +136,7 @@ class Wcag1aaaGuideline extends quailGuideline{
 		'inputFileHasTabIndex',
 		'aLinksAreSeperatedByPrintableCharacters',
 		'skipToContentLinkProvided',
+		'svgContainsTitle',
 	);
 	
 }

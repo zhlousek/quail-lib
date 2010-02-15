@@ -111,5 +111,6 @@ class Wcag1aaGuideline extends quailGuideline{
 		'documentTitleIsShort',
 		'documentTitleIsNotPlaceholder',
 		'documentTitleDescribesDocument',
+		'svgContainsTitle',
 	);
 }

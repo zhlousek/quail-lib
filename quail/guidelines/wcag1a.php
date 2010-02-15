@@ -68,5 +68,6 @@ class Wcag1aGuideline extends quailGuideline{
 			'imgWithMapHasUseMap',
 			'framesHaveATitle',
 			'frameTitlesDescribeFunction',
+			'svgContainsTitle',
 	);
 }
