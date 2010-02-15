@@ -2833,8 +2833,7 @@ class imgWithMathShouldHaveMathEquivalent extends quailTest {
 		foreach($this->getAllElements('img') as $img) {
 			if(($img->getAttribute('width') > 100 
 				|| $img->getAttribute('height') > 100 )
-				&& (is_object($img->nextSibling) 
-						&& $this->propertyIsEqual($img->nextSibling, 'tagName', 'math'))) {
+				&& (!$this->propertyIsEqual($img->nextSibling, 'tagName', 'math'))) {
 							$this->addReport($img);
 			}
 		
@@ -3983,8 +3982,8 @@ class scriptInBodyMustHaveNoscript extends quailTest {
 
 	function check() {
 		foreach($this->getAllElements('script') as $script) {
-			if(is_object($script->nextSibling) && $script->nextSibling->tagName != 'noscript' 
-				&& $script->parentNode->tagName != 'head')
+			if(!$this->propertyIsEqual($script->nextSibling, 'tagName', 'noscript') 
+				&& !$this->propertyIsEqual($script->parentNode, 'tagName', 'head'))
 					$this->addReport($script);
 		
 		}
