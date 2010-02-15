@@ -229,13 +229,14 @@ class quailTest {
 		if(!property_exists($object, $property)) {
 			return false;
 		}
+		$property_value = $object->$property;
 		if($trim) {
-			$value = trim($value);
+			$property_value = trim($property_value);
 		}
 		if($lower) {
-			$value = strtolower($value);
+			$property_value = strtolower($property_value);
 		}
-		return ($object->$property == $value);
+		return ($property_value == $value);
 	}
 	
 	/**

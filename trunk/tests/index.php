@@ -1403,7 +1403,6 @@ class TestOfTests extends UnitTestCase {
   function test134_aLinksAreSeperatedByPrintableCharacters() {
 		$results = $this->getTest('134-1.html', 'aLinksAreSeperatedByPrintableCharacters');
 		$this->assertTrue($results[0]->element->tagName == 'a');  
-	
 		
 		$results = $this->getTest('134-2.html', 'aLinksAreSeperatedByPrintableCharacters');
 		$this->assertTrue(count($results) == 0); 
