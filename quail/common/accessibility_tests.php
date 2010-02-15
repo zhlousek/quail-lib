@@ -45,7 +45,7 @@ class aAdjacentWithSameResourceShouldBeCombined extends quailTest {
 	
 	function check() {
 		foreach($this->getAllElements('a') as $a) {
-			if(trim($a->nextSibling->wholeText) == '')
+			if($this->propertyIsEqual($a->nextSibling, 'wholeText', '', true))
 				$next = $a->nextSibling->nextSibling;
 			else
 				$next = $a->nextSibling;
@@ -99,7 +99,7 @@ class aLinkTextDoesNotBeginWithRedundantWord extends quailTest {
 	function check() {
 		foreach($this->getAllElements('a') as $a) {
 			if(!$a->nodeValue) {
-				if($a->firstChild->tagName == 'img') {
+				if(property_exists($a, 'firstChild') && $this->propertyIsEqual($a->firstChild, 'tagName', 'img')) {
 					$text = $a->firstChild->getAttribute('alt');
 				}
 			}
@@ -127,9 +127,11 @@ class aLinksAreSeperatedByPrintableCharacters extends quailTest {
 
 	function check() {
 		foreach($this->getAllElements('a') as $a) {
-			if(is_object($a->nextSibling->nextSibling) 
+			if(property_exists($a, 'nextSibling') 
+			    && is_object($a->nextSibling) 
+			    && property_exists($a->nextSibling, 'nextSibling') 
 				&& $this->propertyIsEqual($a->nextSibling->nextSibling, 'tagName', 'a') 
-				&& trim($a->nextSibling->wholeText) == '') {
+				&& $this->propertyIsEqual($a->nextSibling, 'wholeText', '', true)) {
 					$this->addReport($a);
 			}
 		}
@@ -3264,15 +3266,14 @@ class labelMustBeUnique extends quailTest {
 	var $default_severity = QUAIL_TEST_SEVERE;
 	
 	function check() {
+		$labels = array();
 		foreach($this->getAllElements('label') as $label) {
 			if($label->hasAttribute('for'))
 				$labels[$label->getAttribute('for')][] = $label;
 		}
-		if(is_array($labels)) {
-			foreach($labels as $label) {
-				if(count($label) > 1)
-					$this->addReport($label[1]);
-			}
+		foreach($labels as $label) {
+			if(count($label) > 1)
+				$this->addReport($label[1]);
 		}
 	}
 }

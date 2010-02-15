@@ -601,7 +601,7 @@ class quailGuideline {
 	*	@param string $test The function name of the test
 	*/
 	function getTranslation($testname) {
-		$translation = ($this->translations[$testname])
+		$translation = (isset($this->translations[$testname]))
 						? $this->translations[$testname]
 						: $testname;
 		return $translation;
@@ -641,6 +641,9 @@ class quailGuideline {
 	*	@return int The severity level
 	*/
 	function getSeverity($testname) {
-		return $this->tests[$testname]['severity'];
+		if(isset($this->tests[$testname]['severity'])) {
+			return $this->tests[$testname]['severity'];
+		}
+		return QUAIL_TEST_MODERATE;
 	}
 }
