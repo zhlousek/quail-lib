@@ -2661,14 +2661,18 @@ class imgMapAreasHaveDuplicateLink extends quailTest {
 		foreach($this->getAllElements('img') as $img) {
 			if($img->hasAttribute('usemap')) {
 				$usemap = $img->getAttribute('usemap');
-				if(substr($usemap, 0, 1) == '#')
+				if(substr($usemap, 0, 1) == '#') {
 					$key = substr($usemap, -(strlen($usemap) - 1), (strlen($usemap) - 1));
-				else
+				}
+				else {
 					$key = $usemap;
-				foreach($maps[$key]->childNodes as $child) {
-					if($this->propertyIsEqual($child, 'tagName', 'area')) {
-						if(!isset($all_links[$child->getAttribute('href')])) {
-							$this->addReport($img);
+				}
+				if(isset($maps[$key])) {
+					foreach($maps[$key]->childNodes as $child) {
+						if($this->propertyIsEqual($child, 'tagName', 'area')) {
+							if(!isset($all_links[$child->getAttribute('href')])) {
+								$this->addReport($img);
+							}
 						}
 					}
 				}
