@@ -2251,7 +2251,9 @@ class headersUseToMarkSections extends quailTest {
 			$this->addReport(null, null, false);
 		foreach($paragraphs as $p) {
 			
-			if((property_exists($p->firstChild, 'tagName') && in_array($p->firstChild->tagName, $this->non_header_tags))
+			if((is_object($p->firstChild) 
+						&& property_exists($p->firstChild, 'tagName') 
+						&& in_array($p->firstChild->tagName, $this->non_header_tags))
 			   || (is_object($p->firstChild->nextSibling)
 			   			&& property_exists($p->firstChild->nextSibling, 'tagName') 
 			   			&& in_array($p->firstChild->nextSibling->tagName, $this->non_header_tags))
@@ -3823,6 +3825,7 @@ class pNotUsedAsHeader extends quailTest {
 	function check() {
 		foreach($this->getAllElements('p') as $p) {
 			if(($p->nodeValue == $p->firstChild->nodeValue) &&
+				is_object($p->firstChild) &&
 			 	property_exists($p->firstChild, 'tagName') && 
 				in_array($p->firstChild->tagName, $this->head_tags))
 				$this->addReport($p);
