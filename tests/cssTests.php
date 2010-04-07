@@ -162,15 +162,6 @@ class TestOfCSSTests extends UnitTestCase {
 		$this->assertTrue($style['background-color'] != 'lime');
 	}
 
-	/**
-	*	Specificity
-	*/
-	function test_wcagCssSpecificity() {
-		$css = $this->getCSSObject('http://www.w3.org/Style/CSS/Test/CSS2.1/20100316/html4/specificity-001.htm');
-		$divs = $css->dom->getElementsByTagName('div');
-		$style = $css->getStyle($divs->item(0));
-		$this->assertTrue($style['color'] == 'green');
-	}
 }
 
 
