@@ -181,6 +181,58 @@ class quail {
 	}
 	
 	/**
+	*	Returns an absolute path from a relative one
+	*	@param string $absolute The absolute URL
+	*	@param string $relative The relative path
+	*	@return string A new path
+	*/
+
+	function getAbsolutePath($absolute, $relative) {		$relative_url = parse_url($relative);
+		if (isset($relative_url['scheme'])) {
+		    return $relative;
+		}
+		$absolute_url = parse_url($absolute);
+		if(isset($absolute_url['path'])) {
+			$path = dirname($absolute_url['path']); 
+		}
+		if ($relative{0} == '/') {
+		    $c_parts = array_filter(explode('/', $relative));
+		}
+		else {
+			$a_parts = array_filter(explode('/', $path));
+			$r_parts = array_filter(explode('/', $relative));
+			$c_parts = array_merge($a_parts, $r_parts);
+		foreach ($c_parts as $i => $part) {
+		    if ($part == '.') {
+		    	$c_parts[$i] = NULL;
+		    }
+		    if ($part == '..') {
+		    	$c_parts[$i - 1] = NULL;
+		    	$c_parts[$i] = NULL;
+		    }
+		}
+		$c_parts = array_filter($c_parts);
+		}
+		$path = implode('/', $c_parts);
+		$url = "";
+		if (isset($absolute_url['scheme'])) {
+			$url = $absolute_url['scheme'] .'://';
+		}
+		if (isset($absolute_url['user'])) {
+			$url .= $absolute_url['user'];
+			if ($absolute_url['pass']) {
+			    $url .= ':'. $absolute_url['user'];
+			}
+			$url .= '@';
+		}
+		if (isset($absolute_url['host'])) {
+			$url .= $absolute_url['host'] .'/';
+		}
+		$url .= $path;
+		return $url;
+	}
+
+	/**
 	*	Sets the URI if this is for a string or to change where 
 	*	QUAIL will look for resources like CSS files
 	*	@param string $uri The URI to set
@@ -567,7 +619,7 @@ class quailGuideline {
 		$this->path = &$path;
 		$this->cms_mode = $cms_mode;
 		$this->loadTranslations($domain);
-		$this->run($arg);
+		$this->run($arg, $domain);
 	}
 	
 	/**
@@ -609,13 +661,13 @@ class quailGuideline {
 	/**
 	*	Iteates through each test string, makes a new test object, and runs it against the current DOM
 	*/
-	function run($arg = null) {
+	function run($arg = null, $language = 'en') {
 		foreach($this->tests as $testname => $options) {
 			if(is_numeric($testname) && !is_array($options)) {
 				$testname = $options;
 			}
 			if(class_exists($testname) && $this->dom) {
-				$$testname = new $testname($this->dom, $this->css, $this->path);
+				$$testname = new $testname($this->dom, $this->css, $this->path, $language);
 				if(!$this->cms_mode || ($$testname->cms && $this->cms_mode)) {
 					$this->report[$testname] = $$testname->getReport();	
 				}

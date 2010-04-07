@@ -94,7 +94,9 @@ class aLinkTextDoesNotBeginWithRedundantWord extends quailTest {
 
 	var $default_severity = QUAIL_TEST_SEVERE;
 	
-	var $problem_words = array('link to', 'go to');
+	var $strings = array('en' => array('link to', 'go to'),
+						 'es' => array('enlaces a', 'ir a')
+						);
 	
 	function check() {
 		foreach($this->getAllElements('a') as $a) {
@@ -105,7 +107,7 @@ class aLinkTextDoesNotBeginWithRedundantWord extends quailTest {
 			}
 			else 
 				$text = $a->nodeValue;
-			foreach($this->problem_words as $word) {
+			foreach($this->translation() as $word) {
 				if(strpos(trim($text), $word) === 0)
 					$this->addReport($a);
 			}
@@ -347,13 +349,13 @@ class aSuspiciousLinkText extends quailTest {
 
 	var $default_severity = QUAIL_TEST_SEVERE;
 
-	var $suspicious = array(
-		'click here', 'click', 'more', 'here',
-	);
+	var $strings = array('en' => array('click here', 'click', 'more', 'here'),
+							'es' => array('clic aqu&iacute;', 'clic', 'haga clic', 'm&aacute;s', 'aqu&iacute;'),
+							);
 
 	function check() {
 		foreach($this->getAllElements('a') as $a) {
-			if(in_array(strtolower(trim($a->nodeValue)), $this->suspicious))
+			if(in_array(strtolower(trim($a->nodeValue)), $this->translation()))
 				$this->addReport($a);
 		}
 	
@@ -1774,12 +1776,14 @@ class formDeleteIsReversable extends quailTest {
 
 	var $default_severity = QUAIL_TEST_SUGGESTION;
 	
-	var $watch_words = array('delete', 'remove', 'erase');
+	var $strings = array('en' => array('delete', 'remove', 'erase'),
+							 'es' => array('borrar', 'eliminar', 'suprimir'),
+							);
 	
 	function check() {
 		foreach($this->getAllElements('input') as $input) {
 			if($input->getAttribute('type') == 'submit') {
-				foreach($this->watch_words as $word) {
+				foreach($this->translation() as $word) {
 					if(strpos(strtolower($input->getAttribute('value')), $word) !== false) 
 						$this->addReport($this->getParent($input, 'form', 'body'));
 				}				
@@ -1961,11 +1965,13 @@ class frameTitlesNotPlaceholder extends quailTest {
 
 	var $cms = false;
 	
-	var $placeholders = array('title', 'frame', 'frame title', 'the title');
+	var $strings = array('en' => array('title', 'frame', 'frame title', 'the title'),
+							  'es' => array('t&iacute;tulo', 'marco', 't&iacute;tulo del marco', 'el t&iacute;tulo'),
+							  );
 	
 	function check() {
 		foreach($this->getAllElements('frame') as $frame) {
-			if(in_array(trim($frame->getAttribute('title')), $this->placeholders))
+			if(in_array(trim(strtolower($frame->getAttribute('title'))), $this->translation()))
 				$this->addReport($frame);
 		}
 	}
@@ -2472,12 +2478,14 @@ class imgAltNotPlaceHolder extends quailTest {
 
 	var $default_severity = QUAIL_TEST_SEVERE;
 	
-	var $placeholders = array('nbsp', '&nbsp;', 'spacer', 'image', 'img', 'photo');
+	var $strings = array('en' => array('nbsp', '&nbsp;', 'spacer', 'image', 'img', 'photo'),
+							  'es' => array('nbsp', '&nbsp;', 'spacer', 'espacio', 'imagen', 'img', 'foto')
+							 );
 	
 	function check() {
 		foreach($this->getAllElements('img') as $img) {
 			if($img->hasAttribute('alt')) {
-				if(in_array($img->getAttribute('alt'), $this->placeholders) || ord($img->getAttribute('alt')) == 194) {
+				if(in_array($img->getAttribute('alt'), $this->translation()) || ord($img->getAttribute('alt')) == 194) {
 					$this->addReport($img);
 				}
 				elseif(preg_match("/^([0-9]*)(k|kb|mb|k bytes|k byte)?$/", strtolower($img->getAttribute('alt')))) {
@@ -2650,8 +2658,6 @@ class imgImportantNoSpacerAlt extends quailTest {
 class imgMapAreasHaveDuplicateLink extends quailTest {
 
 	var $default_severity = QUAIL_TEST_SEVERE;
-	
-	var $placeholders = array('nbsp', '&nbsp;', 'spacer', 'image', 'img', 'photo', ' ');
 	
 	function check() {
 		$all_links = array();
@@ -3004,16 +3010,14 @@ class inputImageAltIsNotFileName extends quailTest {
 *  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=60
 **/
 
-class inputImageAltIsNotPlaceholder extends quailTest {
+class inputImageAltIsNotPlaceholder extends imgAltNotPlaceHolder {
 
 	var $default_severity = QUAIL_TEST_SEVERE;
-	
-	var $placeholders = array('nbsp', '&nbsp;', 'input', 'spacer', 'image', 'img', 'photo', ' ');
 	
 	function check() {
 		foreach($this->getAllElements('input') as $input) {
 			if($input->getAttribute('type') == 'image') {
-				if(in_array($input->getAttribute('alt'), $this->placeholders) || ord($input->getAttribute('alt')) == 194) {
+				if(in_array($input->getAttribute('alt'), $this->translation()) || ord($input->getAttribute('alt')) == 194) {
 					$this->addReport($input);
 				}
 				elseif(preg_match("/^([0-9]*)(k|kb|mb|k bytes|k byte)?$/", strtolower($input->getAttribute('alt')))) {
@@ -3058,12 +3062,14 @@ class inputImageAltNotRedundant extends quailTest {
 
 	var $default_severity = QUAIL_TEST_SEVERE;
 
-	var $problem_words = array('submit', 'button');
+	var $strings = array('en' => array('submit', 'button'),
+							   'es' => array('enviar', 'botón'),
+							  );
 
 	function check() {
 		foreach($this->getAllElements('input') as $input) {
 			if($input->getAttribute('type') == 'image') {
-				foreach($this->problem_words as $word) {
+				foreach($this->translation() as $word) {
 					if(strpos($input->getAttribute('alt'), $word) !== false)
 							$this->addReport($input);
 				}
@@ -3364,11 +3370,13 @@ class legendTextNotPlaceholder extends quailTest {
 
 	var $default_severity = QUAIL_TEST_SEVERE;
 
-	var $placeholders = array('&nbsp;', ' ', 'legend');
+	var $strings = array('en' => array('&nbsp;', ' ', 'legend'),
+						 'es' => array('&nbsp;', ' ', 'relato'),
+						);
 	
 	function check() {
 		foreach($this->getAllElements('legend') as $legend) {
-			if(in_array(trim($legend->nodeValue), $this->placeholders))
+			if(in_array(trim($legend->nodeValue), $this->translation()))
 				$this->addReport($legend);
 		}
 	}
@@ -3713,14 +3721,32 @@ class objectMustHaveValidTitle extends quailTest {
 
 	var $default_severity = QUAIL_TEST_SEVERE;
 
-	var $placeholders = array('nbsp', '&nbsp;', 'object', 'an object', 'spacer', 'image', 'img', 'photo', ' ');
+	var $strings = array('en' => array('nbsp', 
+											'&nbsp;', 
+											'object', 
+											'an object', 
+											'spacer', 
+											'image', 
+											'img', 
+											'photo', 
+											' '),
+							  'es' => array('nbsp', 
+											'&nbsp;', 
+											'objeto', 
+											'un objeto', 
+											'espacio', 
+											'imagen', 
+											'img', 
+											'foto', 
+											' '),
+							 );
 
 	function check() {
 		foreach($this->getAllElements('object') as $object) {
 			if($object->hasAttribute('title')) {
 				if(trim($object->getAttribute('title')) == '')
 					$this->addReport($object);
-				elseif(!in_array(trim(strtolower($object->getAttribute('title'))), $this->placeholders))
+				elseif(!in_array(trim(strtolower($object->getAttribute('title'))), $this->translation()))
 					$this->addReport($object);
 			}
 		}
@@ -4275,7 +4301,9 @@ class skipToContentLinkProvided extends quailTest {
 	
 	var $default_severity = QUAIL_TEST_MODERATE;
 	
-	var $search_words = array('navigation', 'skip', 'content');
+	var $strings = array('en' => array('navigation', 'skip', 'content'),
+						 'es' => array('navegaci&oacute;n', 'saltar', 'contenido'),
+						);
 	
 	function check() {
 		$first_link = $this->getAllElements('a');
@@ -4288,13 +4316,13 @@ class skipToContentLinkProvided extends quailTest {
 		if(substr($a->getAttribute('href'), 0, 1) == '#') {
 			
 			$link_text = explode(' ', strtolower($a->nodeValue));
-			if(!in_array($this->search_words, $link_text)) {
+			if(!in_array($this->translation(), $link_text)) {
 				$report = true;
 				foreach($a->childNodes as $child) {
 					if(method_exists($child, 'hasAttribute')) {
 						if($child->hasAttribute('alt')) {
 							$alt = explode(' ', strtolower($child->getAttribute('alt') . $child->nodeValue));
-							foreach($this->search_words as $word) {
+							foreach($this->translation() as $word) {
 								if(in_array($word, $alt)) {
 									$report = false;
 								}
