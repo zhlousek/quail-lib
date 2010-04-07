@@ -62,15 +62,26 @@ class quailTest {
 	var $image_extensions = array('gif', 'jpg', 'png', 'jpeg', 'tiff', 'svn');
 	
 	/**
+	*	@var string The language domain
+	*/
+	var $lang = 'en';
+	
+	/**
+	*	@var array An array of translatable strings
+	*/
+	var $strings = array('en' => '');
+	
+	/**
 	*	The class constructor. We pass items by reference so we can alter the DOM if necessary
 	*	@param object $dom The DOMDocument object 
 	*	@param object $css The QuailCSS object
 	*	@param array $path The path of this request
 	*/
-	function __construct(&$dom, &$css, &$path) {
+	function __construct(&$dom, &$css, &$path, $language_domain = 'en') {
 		$this->dom = $dom;
 		$this->css = $css;
 		$this->path = $path;
+		$this->lang = $language_domain;
 		$this->report = array();
 		$this->check();
 	}
@@ -131,6 +142,21 @@ class quailTest {
 			return implode('/', $path) .'/'. implode('/', $file_path);
 
 	}	
+	
+	/**
+	*	Returns a translated variable. If the translation is unavailable, English is returned
+	*	Because tests only really have one string array, we can get all of this info locally
+	*	@return mixed The translation for the object
+	*/
+	function translation() {
+		if(isset($this->strings[$this->lang])) {
+			return $this->strings[$this->lang];
+		}
+		if(isset($this->strings['en'])) {
+			return $this->strings['en']; 
+		}
+		return false;
+	}
 	
 	/**
 	*	Helper method to find all the elements that fit a particular query

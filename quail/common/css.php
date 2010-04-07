@@ -18,6 +18,21 @@
 *	@author Kevin Miller <kemiller@csumb.edu>
 */
 
+/**
+* @file
+This class first parses all the CSS in the document and prepares
+an index of CSS styles to be used by accessibility tests to determine color and
+positioning.
+
+First, in loadCSS we get all the inline and linked style sheet information 
+	and merge it into a large CSS file string.
+
+Second, in formatCSS we slit all the CSS selectors up and for each one call 
+	addSelector, passing the key and the css code
+
+
+
+*/
 
 /**
 *	A helper class to parse the document's CSS so we can run accessibility
@@ -59,8 +74,7 @@ class quailCSS {
 	*	@var array An array broken into buckets of tag names that includes all DOM elements 
 	*		       which have a CSS style applied to them and their associated CSS style.
 	*/
-	var $dom_index;
-	
+	var $dom_index = array();
 	
 	/**
 	*	@var bool Whether or not we are running in CMS mode
@@ -83,7 +97,7 @@ class quailCSS {
 		$this->cms_mode = $cms_mode;
 		$this->css_files = $css_files;
 		$this->loadCSS();
-		$this->buildIndex();
+		$this->buildDomIndex();
 	}
 	
 	/**
@@ -104,8 +118,8 @@ class quailCSS {
 			$style_sheets = $this->dom->getElementsByTagName('link');
 			
 			foreach($style_sheets as $style) {
-				
-				if(strtolower($style->getAttribute('rel')) == 'stylesheet' &&
+				if($style->hasAttribute('rel') &&
+					strtolower($style->getAttribute('rel')) == 'stylesheet' &&
 					$style->getAttribute('media') != 'print') {
 						$css[] = $style->getAttribute('href');
 				}
@@ -117,26 +131,55 @@ class quailCSS {
 			if($this->type == 'file' || $this->type == 'string') 
 				$this->loadUri($sheet);
 		}
-		
+		$this->css_string = str_replace(':link', '', $this->css_string);
 		$this->formatCSS();
 	}
 	
 	/**
 	*	Walk through the entire DOM tree and build the CSS DOM Index
 	*/
-	private function buildIndex() {
+	private function buildDomIndex() {
 		if(!is_array($this->css))
 			return null;
 		foreach($this->css as $selector => $style) {	
 			$xpath = new DOMXPath($this->dom);
 			$entries = @$xpath->query($this->getXpath($selector));
+			print $selector .':'. $entries->length;
 			if($entries && $entries->length) {
 				foreach($entries as $entry) {
-					$this->buildIndexEntry($entry, $style);
+					$this->buildDomIndexEntry($entry, $style, $this->getSpecificity($selector));
 				}
 			}
 		}
 		
+	}
+	
+	/**
+	*	Grants a specificity count to the given selector. Higher specificity means it overrides other styles.
+	*/
+	function getSpecificity($selector) {
+		$selector = $this->parseSelector($selector);
+		if($selector[0][0] == ' ') {
+			unset($selector[0][0]);
+		}
+		$selector = $selector[0];
+		$specificity = 0;
+		foreach($selector as $part) {
+			switch(substr($part, 0, 1)) {
+				case '.':
+					$specificity += 10;
+				case '#':
+					$specificity += 100;
+				case ':':
+					$specificity++;
+				default:
+					$specificity++;
+			}
+			if(strpos($part, '[id=') != false) {
+				$specificity += 100;
+			}
+		}
+		return $specificity;
 	}
 	
 	/**
@@ -147,22 +190,28 @@ class quailCSS {
 	*	@param array $style An array of style information 
 	
 	*/
-	private function buildIndexEntry($entry, $style) {
-		
+	private function buildDomIndexEntry($entry, $style, $specificity) {
 		if(!isset($this->dom_index[$entry->tagName])) {
 			$this->dom_index[$entry->tagName] = array();
 		}
 		$never_created = true;
 		foreach($this->dom_index[$entry->tagName] as $k => $index_entry) {
-			if($index_entry['element'] == $entry) {
+			if($entry->isSameNode($index_entry['element'])) {
 				$never_created = false;
 				foreach($style as $key => $value) {
-					if(!isset($this->dom_index[$entry->tagName][$k]['style'][$key]))
-						$this->dom_index[$entry->tagName][$k]['style'][$key] = $value;
+					if(!isset($this->dom_index[$entry->tagName][$k]['style'][$key]) ||
+					   $this->dom_index[$entry->tagName][$k]['style'][$key]['specificity'] < $specificity) {
+									$this->dom_index[$entry->tagName][$k]['style'][$key] = array('value' => $value,
+																					 'specificity' => $specificity);
+					}
 				}
 			}
 		}
 		if($never_created) {
+			foreach($style as $k => $s) {
+				$style[$k] = array('value' => $s,
+								   'specificity' => $specificity);
+			}
 			$this->dom_index[$entry->tagName][] = array(
 				'element' => $entry,
 				'style' => $style);
@@ -175,10 +224,27 @@ class quailCSS {
 	*	@return array An array of style information (can be empty)
 	*/
 	public function getStyle($element) {
-		
+		if(!is_a($element, 'DOMElement')) {
+			return array();
+		}
 		$style = $this->getNodeStyle($element);
 		
-		return $this->walkUpTreeForInheritance($element, $style);
+		$style = $this->walkUpTreeForInheritance($element, $style);
+		
+		if($element->hasAttribute('style')) {
+			$inline_styles = explode(';', $element->getAttribute('style'));
+			foreach($inline_styles as $inline_style) {
+				$s = explode(':', $inline_style);
+				$style[$s[0]] = $s[1];
+			}
+		}
+		if(!is_array($style)) {
+			return array();
+		}
+		foreach($style as $k => $style_item) {
+			$style[$k] = $style_item['value'];
+		}
+		return $style;
 	}
 	
 	/**
@@ -193,7 +259,7 @@ class quailCSS {
 	private function getNodeStyle($element) {
 		if(isset($this->dom_index[$element->tagName]) && is_array($this->dom_index[$element->tagName])) {
 			foreach($this->dom_index[$element->tagName] as $css_tag) {
-				if($element == $css_tag['element']) {
+				if($element->isSameNode($css_tag['element'])) {
 					return $css_tag['style'];
 				}
 			}
@@ -209,19 +275,16 @@ class quailCSS {
 	*/
 	private function walkUpTreeForInheritance($element, $style) {
 		while(property_exists($element->parentNode, 'tagName')) {
-			$element = $element->parentNode;
-			$parent_style = $this->getNodeStyle($element);
+			$parent_style = $this->getNodeStyle($element->parentNode);
 			
 			if(is_array($parent_style)) {
 				foreach($parent_style as $k => $v) {
-					if(!isset($style[$k])) {
+					if(!isset($style[$k]) || $style[$k]['specificity'] < $v['specificity']) {
 						$style[$k] = $v;
 					}
 				}
-				/*if($element->hasAttribute('bgcolor') && !$style['background-color'] && !$style['background']) {
-					$style['background-color'] = $element->getAttribute('bgcolor');
-				}*/
 			}
+			$element = $element->parentNode;
 		}
 		return $style;
 	}
@@ -231,12 +294,12 @@ class quailCSS {
 	*	@param string $rel The URI of the CSS file
 	*/
 	private function loadUri($rel) {
-		
-		if(strpos($rel, 'http://') !== false || strpos($rel, 'https://') !== false)
-			$uri = $rel;
-		else
+		if($this->type == 'file') {
 			$uri = substr($this->uri, 0, strrpos($this->uri, '/')) .'/'.$rel;
-		
+		}
+		else {
+			$uri = quail::getAbsolutePath($this->uri, $rel);
+		}
 		$this->css_string .= @file_get_contents($uri);
 		
 	}
@@ -282,6 +345,9 @@ class quailCSS {
 		}
 		elseif(strpos($bucket, '.') !== false) {
 			$sup = 'class';
+		}
+		elseif(strpos($bucket, ':') !== false) {
+			$sup = 'psuedo';
 		}
 		else {
 			$sup = 'tag';
@@ -337,10 +403,12 @@ class quailCSS {
 	
 			elseif(substr($q, 0, 1) == '.') 
 				$xpath .= '[ @class = "'. str_replace('.', '', $q) .'" ]';
+			elseif(substr($q, 0, 1) == '[') 
+				$xpath .= str_replace('[id', '[ @ id', $q);
 			else
 				$xpath .= trim($q);
 		}
-		return str_replace('//[ @', '//*[ @', $xpath);
+		return str_replace('//[', '//*[', str_replace('//[ @', '//*[ @', $xpath));
 	}
 	
 	/**
