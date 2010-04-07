@@ -1,47 +1,178 @@
 <?php
 
 
+/**
+*	@link http://www.w3.org/Style/CSS/Test/CSS3/Selectors/current/html/index.html
+*/
 
 class TestOfCSSTests extends UnitTestCase {
- 
- function getTest($file, $test) {
- 		$filename = 'testfiles/css/'. $file;
-        $quail = new quail($filename, 'wcag1a', 'file');
 
-		$quail->runCheck();
-		return $quail->getTest($test); 	
- }
- 
- function test_cssTextHasContrast() {
-   $results = $this->getTest('cssContrast.html', 'cssTextHasContrast');
-   $this->assertTrue($results[0]->element->tagName == 'p');
- }
- 
- function test_complexCssTextHasContrast() {
-   $results = $this->getTest('cssContrast2.html', 'cssTextHasContrast');
-  
-   $this->assertTrue($results[0]->element->tagName == 'p');
- }
- 
- function test_cssTextContrastWithColorConversion() {
-	$results = $this->getTest('cssContrast3.html', 'cssTextHasContrast');
-	$this->assertTrue($results[0]->element->tagName == 'div');
+	function getCSSObject($url) {
+		$dom = new DOMDocument();
+		@$dom->loadHTML(file_get_contents($url));
+		$uri = $url;
+		$type = 'uri';
+		$path = '/';
+		return new quailCSS($dom, $uri, $type, $path);
+	} 
 	
- }
+//	function test_wcagCss1() {
+//		$css = $this->getCSSObject('http://www.w3.org/Style/CSS/Test/CSS3/Selectors/current/html/tests/css3-modsel-1.html');
+//		$paragraph = $css->dom->getElementsByTagName('p');
+//		$style = $css->getStyle($paragraph->item(0));
+//		$this->assertTrue($style['background-color'] == 'lime');
+//		foreach($css->dom->getElementsByTagName('li') as $li) {
+//			$style = $css->getStyle($li);
+//			$this->assertTrue($style['background-color'] == 'lime');			
+//		}
+//	}
+//	
+//	
+//	function test_wcagCss2() {
+//		$css = $this->getCSSObject('http://www.w3.org/Style/CSS/Test/CSS3/Selectors/current/html/tests/css3-modsel-2.html');
+//		$paragraph = $css->dom->getElementsByTagName('address');
+//		$style = $css->getStyle($paragraph->item(0));
+//		$this->assertTrue($style['background-color'] == 'lime');
+//	}
+//	
+//	function test_wcagCss3() {
+//		$css = $this->getCSSObject('http://www.w3.org/Style/CSS/Test/CSS3/Selectors/current/html/tests/css3-modsel-3a.html');
+//		$paragraph = $css->dom->getElementsByTagName('p');
+//		$style = $css->getStyle($paragraph->item(0));
+//		$this->assertTrue($style['color'] == 'lime');
+//		$li = $css->dom->getElementsByTagName('li');
+//		$style = $css->getStyle($li->item(0));
+//		$this->assertTrue($style['color'] == 'lime');
+//	}
+//
+//	function test_wcagCss4() {
+//		$css = $this->getCSSObject('http://www.w3.org/Style/CSS/Test/CSS3/Selectors/current/html/tests/css3-modsel-4.html');
+//		$paragraph = $css->dom->getElementsByTagName('p');
+//		$style = $css->getStyle($paragraph->item(0));
+//		$this->assertTrue($style['background-color'] == 'lime');
+//	}
+//
+//
+//	function test_wcagCss7b() {
+//		$css = $this->getCSSObject('http://www.w3.org/Style/CSS/Test/CSS3/Selectors/current/html/tests/css3-modsel-7b.html');
+//		$paragraph = $css->dom->getElementsByTagName('p');
+//		$style = $css->getStyle($paragraph->item(0));
+//		$this->assertTrue($style['background'] == 'lime');
+//	}
+//
+//	function test_wcagCss13() {
+//		$css = $this->getCSSObject('http://www.w3.org/Style/CSS/Test/CSS3/Selectors/current/html/tests/css3-modsel-13.html');
+//		foreach($css->dom->getElementsByTagName('li') as $li) {
+//			$style = $css->getStyle($li);
+//			$this->assertTrue($style['background-color'] == 'lime');
+//		}
+//	}
+//
+//	function test_wcagCss14b() {
+//		$css = $this->getCSSObject('http://www.w3.org/Style/CSS/Test/CSS3/Selectors/current/html/tests/css3-modsel-14b.html');
+//		$paragraph = $css->dom->getElementsByTagName('p');
+//		$style = $css->getStyle($paragraph->item(0));
+//		$this->assertTrue($style['background'] == 'green');
+//		$this->assertTrue($style['color'] == 'white');
+//		$style = $css->getStyle($paragraph->item(1));
+//		$this->assertTrue($style['background'] == 'green');
+//	}
+//
+//	function test_wcagCss14c() {
+//		$css = $this->getCSSObject('http://www.w3.org/Style/CSS/Test/CSS3/Selectors/current/html/tests/css3-modsel-14c.html');
+//		$paragraph = $css->dom->getElementsByTagName('p');
+//		$div = $css->dom->getElementsByTagName('div');
+//		$style = $css->getStyle($div->item(0));
+//		$this->assertTrue($style['background'] == 'green');
+//		$address = $css->dom->getElementsByTagName('address');
+//		$style = $css->getStyle($div->item(0));
+//		$this->assertTrue($style['background'] == 'green');
+//	}
+//	
+//	function test_wcagCss14d() {
+//		$css = $this->getCSSObject('http://www.w3.org/Style/CSS/Test/CSS3/Selectors/current/html/tests/css3-modsel-14d.html');
+//		$paragraph = $css->dom->getElementsByTagName('p');
+//		$style = $css->getStyle($paragraph->item(0));
+//		$this->assertTrue($style['background'] == 'green');
+//		$this->assertTrue($style['color'] == 'white');
+//	}	
+//
+//	function test_wcagCss14e() {
+//		$css = $this->getCSSObject('http://www.w3.org/Style/CSS/Test/CSS3/Selectors/current/html/tests/css3-modsel-14e.html');
+//		$paragraph = $css->dom->getElementsByTagName('p');
+//		$style = $css->getStyle($paragraph->item(0));
+//		$this->assertTrue($style['background'] == 'green');
+//		$this->assertTrue($style['color'] == 'white');
+//		$div = $css->dom->getElementsByTagName('div');
+//		$address = $css->dom->getElementsByTagName('address');
+//	}
+//
+//	function test_wcagCss15() {
+//		$css = $this->getCSSObject('http://www.w3.org/Style/CSS/Test/CSS3/Selectors/current/html/tests/css3-modsel-15.html');
+//		foreach($css->dom->getElementsByTagName('li') as $li) {
+//			$style = $css->getStyle($li);
+//			$this->assertTrue($style['background-color'] == 'lime');
+//		}
+//	}
+//
+//	function test_wcagCss15b() {
+//		$css = $this->getCSSObject('http://www.w3.org/Style/CSS/Test/CSS3/Selectors/current/html/tests/css3-modsel-15b.html');
+//		$paragraph = $css->dom->getElementsByTagName('p');
+//		$style = $css->getStyle($paragraph->item(0));
+//		$this->assertTrue($style['background'] == 'green');
+//		$this->assertTrue($style['color'] == 'white');
+//		$div = $css->dom->getElementsByTagName('div');
+//		$style = $css->getStyle($div->item(0));
+//		$this->assertTrue($style['background'] == 'green');
+//
+//	}
+//	
+//	/**
+//	*	We are skipping pseudo classes
+//	*/
+//	function test_wcagCss43() {
+//		$css = $this->getCSSObject('http://www.w3.org/Style/CSS/Test/CSS3/Selectors/current/html/tests/css3-modsel-43.html');
+//		$paragraphs = $css->dom->getElementsByTagName('p');
+//		$style = $css->getStyle($paragraphs->item(0));
+//		$this->assertTrue($style['background-color'] == 'lime');
+//		$style = $css->getStyle($paragraphs->item(1));
+//		$this->assertTrue($style['background-color'] == 'lime');
+//		$style = $css->getStyle($paragraphs->item(2));
+//		$this->assertTrue($style['background-color'] != 'lime');
+//	}
+//
+//	function test_wcagCss43b() {
+//		$css = $this->getCSSObject('http://www.w3.org/Style/CSS/Test/CSS3/Selectors/current/html/tests/css3-modsel-43b.html');
+//		$paragraphs = $css->dom->getElementsByTagName('p');
+//		$style = $css->getStyle($paragraphs->item(0));
+//		$this->assertTrue($style['background-color'] != 'lime');
+//		$style = $css->getStyle($paragraphs->item(1));
+//		$this->assertTrue($style['background-color'] != 'lime');
+//		$style = $css->getStyle($paragraphs->item(2));
+//		$this->assertTrue($style['background-color'] == 'lime');
+//	}
+//	
+//	/**
+//	*	Child combinator (#44)
+//	*/
+//	function test_wcagCss44() {
+//		$css = $this->getCSSObject('http://www.w3.org/Style/CSS/Test/CSS3/Selectors/current/html/tests/css3-modsel-44.html');
+//		$paragraphs = $css->dom->getElementsByTagName('p');
+//		$style = $css->getStyle($paragraphs->item(2));
+//		$this->assertTrue($style['background-color'] != 'lime');
+//	}
 
- function test_cssTextContrastWithComplexBackground() {
-	$results = $this->getTest('cssContrast4.html', 'cssTextHasContrast');
-	$this->assertTrue($results[0]->element->tagName == 'pre');
-	
- }
-  function test_cssTextContrastWithInlineAndIncludedFiles() {
-	$results = $this->getTest('cssContrast5.html', 'cssTextHasContrast');
-	$this->assertTrue($results[0]->element->tagName == 'pre');
-	
- }
+	/**
+	*	Specificity
+	*/
+	function test_wcagCssSpecificity() {
+		$css = $this->getCSSObject('http://www.w3.org/Style/CSS/Test/CSS2.1/20100316/html4/specificity-001.htm');
+		$divs = $css->dom->getElementsByTagName('div');
+		$style = $css->getStyle($divs->item(0));
+		$this->assertTrue($style['color'] == 'green');
+	}
 }
 
 
 $tests = &new TestOfCSSTests();
 $tests->run(new HtmlReporter());
-//die();
