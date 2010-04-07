@@ -144,7 +144,6 @@ class quailCSS {
 		foreach($this->css as $selector => $style) {	
 			$xpath = new DOMXPath($this->dom);
 			$entries = @$xpath->query($this->getXpath($selector));
-			print $selector .':'. $entries->length;
 			if($entries && $entries->length) {
 				foreach($entries as $entry) {
 					$this->buildDomIndexEntry($entry, $style, $this->getSpecificity($selector));
