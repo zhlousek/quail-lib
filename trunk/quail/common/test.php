@@ -76,6 +76,8 @@ class quailTest {
 	*	@param object $dom The DOMDocument object 
 	*	@param object $css The QuailCSS object
 	*	@param array $path The path of this request
+	*	@param string $language_domain The langauge domain to user
+	*	@param mixed $options Any additional options passed by QUAIL.
 	*/
 	function __construct(&$dom, &$css, &$path, $language_domain = 'en') {
 		$this->dom = $dom;
