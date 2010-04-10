@@ -226,7 +226,11 @@ class quail {
 			$url .= '@';
 		}
 		if (isset($absolute_url['host'])) {
-			$url .= $absolute_url['host'] .'/';
+			$url .= $absolute_url['host'];
+			if(isset($absolute_url['port'])) {
+				$url .= ':'. $absolute_url['port'];
+			}
+			$url .= '/';
 		}
 		$url .= $path;
 		return $url;
