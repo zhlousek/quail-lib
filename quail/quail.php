@@ -567,7 +567,9 @@ class quailReportItem {
 			return false;
 		}
 		foreach($this->element->attributes as $attribute) {
-			$result_element->setAttribute($attribute->name, $attribute->value);
+			if($attribute->name != 'quail_style_index') {
+				$result_element->setAttribute($attribute->name, $attribute->value);
+			}
 		}
 		foreach($extra_attributes as $name => $value) {
 			$result_element->setAttribute($name, $value);
