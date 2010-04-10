@@ -950,7 +950,11 @@ class cssDocumentMakesSenseStyleTurnedOff extends quailTest {
 class cssTextHasContrast extends quailColorTest {
 
 	var $default_severity = QUAIL_TEST_SEVERE;
-
+	
+	var $default_background = '#ffffff';
+	
+	var $default_color = '#000000';
+	
 	function check() {
 		$xpath = new DOMXPath($this->dom);
 		$entries = $xpath->query('//*');
@@ -961,7 +965,7 @@ class cssTextHasContrast extends quailColorTest {
 							   ? $style['background-color']
 							   : $style['background'];
 				if(!$background) {
-					$background = '#ffffff';
+					$background = $this->default_background;
 				}
 				$luminosity = $this->getLuminosity(
 								$style['color'],
