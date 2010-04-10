@@ -189,7 +189,13 @@ class quail {
 
 	function getAbsolutePath($absolute, $relative) {		
 	    if(substr($relative, 0, 2) == '//') {
-	    	return 'http:'. $relative;
+	    	if($this->uri) {
+	    		$current = parse_url($this->uri);
+	    	}
+	    	else {
+	    		$current = array('scheme' => 'http');
+	    	}
+	    	return $current['scheme'] .':'. $relative;
 	    }
 	    $relative_url = parse_url($relative);
 		if (isset($relative_url['scheme'])) {
