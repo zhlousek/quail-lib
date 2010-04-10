@@ -27,10 +27,12 @@ positioning.
 First, in loadCSS we get all the inline and linked style sheet information 
 	and merge it into a large CSS file string.
 
-Second, in formatCSS we slit all the CSS selectors up and for each one call 
-	addSelector, passing the key and the css code
+Second, in setStyles we use XPath queries to find all the DOM elements which are
+effected by CSS styles and then build up an index in style_index of all the CSS
+styles keyed by an attriute we attach to all DOM objects to lookup the style quickly.
 
-
+Most of the second step is to get around the problem where XPath DOMNodeList objects
+are only marginally referential to the original elements and cannot be altered directly.
 
 */
 
