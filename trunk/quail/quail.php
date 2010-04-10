@@ -187,7 +187,11 @@ class quail {
 	*	@return string A new path
 	*/
 
-	function getAbsolutePath($absolute, $relative) {		$relative_url = parse_url($relative);
+	function getAbsolutePath($absolute, $relative) {		
+	    if(substr($relative, 0, 2) == '//') {
+	    	return 'http:'. $relative;
+	    }
+	    $relative_url = parse_url($relative);
 		if (isset($relative_url['scheme'])) {
 		    return $relative;
 		}
