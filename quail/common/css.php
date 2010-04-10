@@ -49,11 +49,6 @@ class quailCSS {
 	*	@var string The URI of the current document
 	*/
 	var $uri;
-
-	/**
-	*	@var array An array of all the named elements in the CSS file so we can find them
-	*/	
-	var $css_index;
 	
 	/**
 	*	@var string The type of request (inherited from the main QUAIL object)
@@ -71,15 +66,13 @@ class quailCSS {
 	var $css_string;
 	
 	/**
-	*	@var array An array broken into buckets of tag names that includes all DOM elements 
-	*		       which have a CSS style applied to them and their associated CSS style.
-	*/
-	var $dom_index = array();
-	
-	/**
 	*	@var bool Whether or not we are running in CMS mode
 	*/
 	var $cms_mode;
+	
+	var $style_index = array();
+	
+	var $next_index = 0;
 	
 	/**
 	*	Class constructor. We are just building and importing variables here and then loading the CSS
@@ -96,14 +89,57 @@ class quailCSS {
 		$this->path = $path;
 		$this->cms_mode = $cms_mode;
 		$this->css_files = $css_files;
-		$this->loadCSS();
-		$this->buildDomIndex();
+	}
+	
+	
+	/**
+	*	Sets all the styles from the CSS index into the style_index variable.
+	*	To do this, because DOMNodeList doesn't return real elements, we are actually
+	*	setting and attribute on all nodes that references back to a style index we maintain
+	*	in the CSS class itself
+	*/
+	private function setStyles() {
+		foreach($this->css as $selector => $style) {
+			$xpath = new DOMXPath($this->dom);
+			$entries = @$xpath->query($this->getXpath($selector));
+			foreach($entries as $e) {
+				if(!$e->hasAttribute('quail_style_index')) {
+					$e->setAttribute('quail_style_index', $this->next_index);
+					$this->next_index++;
+				}
+				$this->addCSSToElement($e, $style, $this->getSpecificity($selector));
+			}
+		}
+		foreach($this->style_index as $k => $style) {
+			foreach($style as $i => $values) {
+				$this->style_index[$k][$i] = $values['value'];
+			}
+		}
+	}
+	
+	/**
+	*	Adds the provided CSS to the element's style entry in style_index. We first
+	*	check the specificity against the items already in the index.
+	*	@param object $element The DOMNode/DOMElement object
+	*	@param array $style The provided CSS Style
+	*	@param int $specificity The specificity total for the CSS selector
+	*/
+	private function addCSSToElement($element, $style, $specificity) {
+		foreach($style as $name => $value) {
+			if(!$this->style_index[$element->getAttribute('quail_style_index')][$name] ||
+			    $this->style_index[$element->getAttribute('quail_style_index')][$name]['specificity'] < $specificity) {
+				$this->style_index[$element->getAttribute('quail_style_index')][$name] = array(
+					'value' => $value,
+					'specificity' => $specificity,
+				);
+		   }
+		}
 	}
 	
 	/**
 	*	Loads all the CSS files from the document using LINK elements or @import commands
 	*/
-	function loadCSS() {
+	private function loadCSS() {
 		if(count($this->css_files) > 0) {
 			$css = $this->css_files;
 		}
@@ -136,27 +172,11 @@ class quailCSS {
 	}
 	
 	/**
-	*	Walk through the entire DOM tree and build the CSS DOM Index
+	*	Returns a specificity count to the given selector. 
+	*	Higher specificity means it overrides other styles.
+	*	@param string selector The CSS Selector
 	*/
-	private function buildDomIndex() {
-		if(!is_array($this->css))
-			return null;
-		foreach($this->css as $selector => $style) {	
-			$xpath = new DOMXPath($this->dom);
-			$entries = @$xpath->query($this->getXpath($selector));
-			if($entries && $entries->length) {
-				foreach($entries as $entry) {
-					$this->buildDomIndexEntry($entry, $style, $this->getSpecificity($selector));
-				}
-			}
-		}
-		
-	}
-	
-	/**
-	*	Grants a specificity count to the given selector. Higher specificity means it overrides other styles.
-	*/
-	function getSpecificity($selector) {
+	public function getSpecificity($selector) {
 		$selector = $this->parseSelector($selector);
 		if($selector[0][0] == ' ') {
 			unset($selector[0][0]);
@@ -164,7 +184,7 @@ class quailCSS {
 		$selector = $selector[0];
 		$specificity = 0;
 		foreach($selector as $part) {
-			switch(substr($part, 0, 1)) {
+			switch(substr(str_replace('*', '', $part), 0, 1)) {
 				case '.':
 					$specificity += 10;
 				case '#':
@@ -182,52 +202,22 @@ class quailCSS {
 	}
 	
 	/**
-	*	Adds an index entry to the CSS index by checking that the
-	*	tag bucket has been created, and if not, makes it, then
-	*	adds styles as appropriate
-	*	@param object $entry The DOMNode element that applies to this style
-	*	@param array $style An array of style information 
-	
-	*/
-	private function buildDomIndexEntry($entry, $style, $specificity) {
-		if(!isset($this->dom_index[$entry->tagName])) {
-			$this->dom_index[$entry->tagName] = array();
-		}
-		$never_created = true;
-		foreach($this->dom_index[$entry->tagName] as $k => $index_entry) {
-			if($entry->isSameNode($index_entry['element'])) {
-				$never_created = false;
-				foreach($style as $key => $value) {
-					if(!isset($this->dom_index[$entry->tagName][$k]['style'][$key]) ||
-					   $this->dom_index[$entry->tagName][$k]['style'][$key]['specificity'] < $specificity) {
-									$this->dom_index[$entry->tagName][$k]['style'][$key] = array('value' => $value,
-																					 'specificity' => $specificity);
-					}
-				}
-			}
-		}
-		if($never_created) {
-			foreach($style as $k => $s) {
-				$style[$k] = array('value' => $s,
-								   'specificity' => $specificity);
-			}
-			$this->dom_index[$entry->tagName][] = array(
-				'element' => $entry,
-				'style' => $style);
-		}
-	}
-	
-	/**
 	*	Interface method for tests to call to lookup the style information for a given DOMNode
 	*	@param object $element A DOMElement/DOMNode object
 	*	@return array An array of style information (can be empty)
 	*/
 	public function getStyle($element) {
+		//To prevent having to parse CSS unless the info is needed,
+		//we check here if CSS has been set, and if not, run off the parsing
+		//now.
+		if(!$this->css) {
+			$this->loadCSS();
+			$this->setStyles();
+		}
 		if(!is_a($element, 'DOMElement')) {
 			return array();
 		}
 		$style = $this->getNodeStyle($element);
-		
 		$style = $this->walkUpTreeForInheritance($element, $style);
 		
 		if($element->hasAttribute('style')) {
@@ -240,10 +230,34 @@ class quailCSS {
 		if(!is_array($style)) {
 			return array();
 		}
-		foreach($style as $k => $style_item) {
-			$style[$k] = $style_item['value'];
-		}
 		return $style;
+	}
+	
+	/**
+	*	Adds a selector to the CSS index
+	*	@param string $key The CSS selector
+	*	@param string $codestr The CSS Style code string
+	*/
+	
+	private function addSelector($key, $codestr) {
+		$key = strtolower($key);
+		$codestr = strtolower($codestr);
+		if(!isset($this->css[$key])) {
+			$this->css[$key] = array();
+		}
+		$codes = explode(";",$codestr);
+		if(count($codes) > 0) {
+			foreach($codes as $code) {
+				$code = trim($code);
+				$explode = explode(":",$code,2);
+				if(count($explode) > 1) {
+					list($codekey, $codevalue) = $explode;
+					if(strlen($codekey) > 0) {
+						$this->css[$key][trim($codekey)] = trim($codevalue);
+					}
+				}
+			}
+		}
 	}
 	
 	/**
@@ -256,13 +270,10 @@ class quailCSS {
 	*
 	*/
 	private function getNodeStyle($element) {
-		if(isset($this->dom_index[$element->tagName]) && is_array($this->dom_index[$element->tagName])) {
-			foreach($this->dom_index[$element->tagName] as $css_tag) {
-				if($element->isSameNode($css_tag['element'])) {
-					return $css_tag['style'];
-				}
-			}
+		if($element->hasAttribute('quail_style_index')) {
+			return $this->style_index[$element->getAttribute('quail_style_index')];
 		}
+		return array();
 	}
 	
 	/**
@@ -303,57 +314,6 @@ class quailCSS {
 		
 	}
 	
-	/**
-	*	Adds a CSS element to the current index
-	*	@param string $key The CSS key for the element
-	*	@param string $codestr The styles for the CSS Element
-	*/
-	private function addSelector($key, $codestr) {
-		$key = strtolower($key);
-		$codestr = strtolower($codestr);
-		if(!isset($this->css[$key])) {
-			$this->css[$key] = array();
-		}
-		$codes = explode(";",$codestr);
-		$this->addIndexEntry($key, $codes);
-		if(count($codes) > 0) {
-			foreach($codes as $code) {
-				$code = trim($code);
-				$explode = explode(":",$code,2);
-				if(count($explode) > 1) {
-					list($codekey, $codevalue) = $explode;
-					if(strlen($codekey) > 0) {
-						$this->css[$key][trim($codekey)] = trim($codevalue);
-						$this->addIndexEntry($key, $codestr);
-					}
-				}
-			}
-		}
-	}
-
-	/**
-	*	Adds an index entry for the given key
-	*	@param string $key The CSS key
-	*/	
-	private function addIndexEntry($selector, $style) {
-		$select = $this->parseSelector($selector);
-
-		$bucket = $select[0][count($select[0]) - 1];
-		if(strpos($bucket, '#') !== false) {
-			$sup = 'id';
-		}
-		elseif(strpos($bucket, '.') !== false) {
-			$sup = 'class';
-		}
-		elseif(strpos($bucket, ':') !== false) {
-			$sup = 'psuedo';
-		}
-		else {
-			$sup = 'tag';
-		}
-		$this->css_index[$sup][$bucket][$selector] = array('selector' => $select, 'style' => $style);
-	}
-
 	/**
 	* 	Formats the CSS to be ready to import into an array of styles
 	*	@return bool Whether there were elements imported or not
