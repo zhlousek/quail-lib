@@ -683,7 +683,7 @@ class quailGuideline {
 				$testname = $options;
 			}
 			if(class_exists($testname) && $this->dom) {
-				$$testname = new $testname($this->dom, $this->css, $this->path, $language);
+				$$testname = new $testname($this->dom, $this->css, $this->path, $language, $arg);
 				if(!$this->cms_mode || ($$testname->cms && $this->cms_mode)) {
 					$this->report[$testname] = $$testname->getReport();	
 				}

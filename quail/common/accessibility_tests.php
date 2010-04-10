@@ -956,6 +956,9 @@ class cssTextHasContrast extends quailColorTest {
 	var $default_color = '#000000';
 	
 	function check() {
+		if(isset($this->options['css_background'])) {
+			$this->default_background = $this->options['css_background'];
+		}
 		$xpath = new DOMXPath($this->dom);
 		$entries = $xpath->query('//*');
 		foreach($entries as $element) {
@@ -964,7 +967,7 @@ class cssTextHasContrast extends quailColorTest {
 				$background = (isset($style['background-color']))
 							   ? $style['background-color']
 							   : $style['background'];
-				if(!$background) {
+				if(!$background || $this->options['css_only_use_default']) {
 					$background = $this->default_background;
 				}
 				$luminosity = $this->getLuminosity(
@@ -972,7 +975,7 @@ class cssTextHasContrast extends quailColorTest {
 								$background
 								);
 				if($luminosity < 5) {
-					$this->addReport($element, 'background: '. $background .' fore: '. $style['color'] . ' lum: '. $luminosity, false);
+					$this->addReport($element, 'background: '. $background .' fore: '. $style['color'] . ' lum: '. $luminosity);
 				}
 			}
 		}	
