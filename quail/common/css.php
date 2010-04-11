@@ -164,13 +164,26 @@ class quailCSS {
 			}
 		}
 		foreach($css as $sheet) {
-			if($this->type == 'uri')
-				$this->loadUri($sheet);
-			if($this->type == 'file' || $this->type == 'string') 
-				$this->loadUri($sheet);
+			$this->loadUri($sheet);
 		}
+		$this->loadImportedFiles();
 		$this->css_string = str_replace(':link', '', $this->css_string);
 		$this->formatCSS();
+	}
+	
+	/**
+	*	Imports files from the CSS file using @import commands
+	*/
+	private function loadImportedFiles() {
+		$matches = array();
+		preg_match_all('/@import (.*?);/i', $this->css_string, $matches);
+		if(count($matches[1]) == 0) {
+			return null;
+		}
+		foreach($matches[1] as $match) {
+			$this->loadUri(trim(str_replace('url', '', $match), '"\')('));
+		}
+		preg_replace('/@import (.*?);/i', '', $this->css_string);
 	}
 	
 	/**
@@ -242,6 +255,9 @@ class quailCSS {
 	*/
 	
 	private function addSelector($key, $codestr) {
+		if(strpos($key, '@import') !== false) {
+			return null;
+		}
 		$key = strtolower($key);
 		$codestr = strtolower($codestr);
 		if(!isset($this->css[$key])) {
@@ -291,7 +307,7 @@ class quailCSS {
 			
 			if(is_array($parent_style)) {
 				foreach($parent_style as $k => $v) {
-					if(!isset($style[$k]) || $style[$k]['specificity'] < $v['specificity']) {
+					if(!isset($style[$k]) || $style[$k]['value'] == 'inherit') {
 						$style[$k] = $v;
 					}
 				}
