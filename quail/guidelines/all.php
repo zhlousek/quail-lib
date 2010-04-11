@@ -246,5 +246,6 @@ class AllGuideline extends quailGuideline{
 		'textareaHasAssociatedLabel',
 		'textareaLabelPositionedClose',
 		'svgContainsTitle',
+		'cssTextHasContrast',
 	);
 }
