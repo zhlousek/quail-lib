@@ -21,6 +21,7 @@
 		<select id="reporter" name="reporter">
 			<option value="static">Static Reporter</option>
 			<option value="demo">Demonstration Reporter</option>
+			<option value="xml">XML</option>
 			<option value="array">Array</option>
 		</select>
 	</p>
