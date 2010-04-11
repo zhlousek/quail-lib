@@ -162,6 +162,15 @@ class TestOfCSSTests extends UnitTestCase {
 		$this->assertTrue($style['background-color'] != 'lime');
 	}
 
+	/**
+	*	Color text
+	*/
+	function test_wcagCssColorText301() {
+		$css = $this->getCSSObject('http://www.w3.org/Style/CSS/Test/CSS3/Color/current/html4/t0301-color-text-a.htm');
+		$paragraphs = $css->dom->getElementsByTagName('p');
+		$style = $css->getStyle($paragraphs->item(0));
+		$this->assertTrue($style['color'] == 'green');
+	}
 }
 
 

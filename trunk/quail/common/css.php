@@ -72,8 +72,19 @@ class quailCSS {
 	*/
 	var $cms_mode;
 	
+	/**
+	*	@var array An array of all the strings which means the current style inherts from above
+	*/
+	var $inheritance_strings = array('inherit', 'currentColor');
+	
+	/**
+	*	@var array An array of all the styles keyed by the new attribute quail_style_index
+	*/
 	var $style_index = array();
 	
+	/**
+	*	@var int The next index ID to be applied to a node to lookup later in style_index
+	*/
 	var $next_index = 0;
 	
 	/**
@@ -307,7 +318,7 @@ class quailCSS {
 			
 			if(is_array($parent_style)) {
 				foreach($parent_style as $k => $v) {
-					if(!isset($style[$k]) || $style[$k]['value'] == 'inherit') {
+					if(!isset($style[$k]) || in_array($style[$k]['value'], $this->inheritance_strings)) {
 						$style[$k] = $v;
 					}
 				}
