@@ -115,12 +115,14 @@ class quailCSS {
 		foreach($this->css as $selector => $style) {
 			$xpath = new DOMXPath($this->dom);
 			$entries = @$xpath->query($this->getXpath($selector));
-			foreach($entries as $e) {
-				if(!$e->hasAttribute('quail_style_index')) {
-					$e->setAttribute('quail_style_index', $this->next_index);
-					$this->next_index++;
+			if($entries->length) {
+				foreach($entries as $e) {
+					if(!$e->hasAttribute('quail_style_index')) {
+						$e->setAttribute('quail_style_index', $this->next_index);
+						$this->next_index++;
+					}
+					$this->addCSSToElement($e, $style, $this->getSpecificity($selector));
 				}
-				$this->addCSSToElement($e, $style, $this->getSpecificity($selector));
 			}
 		}
 		foreach($this->style_index as $k => $style) {
