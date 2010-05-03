@@ -4926,4 +4926,14 @@ class svgContainsTitle extends quailTest {
 		}
 	}
 }
+
+/**
+*	HTML5 video tags have captions. There's unfortunately no way to test for captions yet...
+*/
+
+class videoProvidesCaptions extends quailTagTest {
+
+	var $tag = 'video';
+}
+
 /*@}*/
