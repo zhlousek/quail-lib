@@ -229,3 +229,4 @@
 "formDeleteIsReversable","Deleting items using a form should be reversable","<p>Check that, if a form has the option to delete an item, that the user has a chance to either reverse the delete process, or is asked for confirmation before the item is deleted. This is not something that can be checked through automated testing and requires manual confirmation.</p>","3"
 "svgContainsTitle", "Inline SVG should use Title elements","<p>Any inline SVG image should have an embedded <code>title</code> element","1"
 "cssTextHasContrast","All elements should have appropriate color contrast","<p>For users who have color blindness, all text or other elements should have a color contrast of 5:1.</p>","1"
+"videoProvidesCaptions","All video tags must provide captions","<p>All HTML5 video tags must provide captions.</p>","2"

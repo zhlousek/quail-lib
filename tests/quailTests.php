@@ -45,6 +45,12 @@ class TestOfQuailTests extends UnitTestCase {
 	$this->assertTrue($results[0]->element->tagName == 'pre');
 	
  }
+  function test_videoProvidesCaptions() {
+	$results = $this->getTest('videoTestFail.html', 'videoProvidesCaptions');
+	$this->assertTrue($results[0]->element->tagName == 'video');
+	
+ }
+
 }
 
 $tests = &new TestOfQuailTests();

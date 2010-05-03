@@ -79,11 +79,12 @@ class quailTest {
 	*	@param string $language_domain The langauge domain to user
 	*	@param mixed $options Any additional options passed by QUAIL.
 	*/
-	function __construct(&$dom, &$css, &$path, $language_domain = 'en') {
+	function __construct(&$dom, &$css, &$path, $language_domain = 'en', $options = null) {
 		$this->dom = $dom;
 		$this->css = $css;
 		$this->path = $path;
 		$this->lang = $language_domain;
+		$this->options = $options;
 		$this->report = array();
 		$this->check();
 	}
