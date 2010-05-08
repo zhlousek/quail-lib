@@ -776,7 +776,7 @@ class blockquoteNotUsedForIndentation extends quailTest {
 
 class blockquoteUseForQuotations extends quailTest {
 
-	var $default_severity = QUAIL_TEST_MODERATE;
+	var $default_severity = QUAIL_TEST_SUGGESTION;
 
 	function check() {
 		$body = $this->getAllelements('body');
