@@ -88,6 +88,11 @@ class quailCSS {
 	var $next_index = 0;
 	
 	/**
+	*	@var array A list of all the elements which support deprecated styles such as 'background' or 'bgcolor'
+	*/
+	var $deprecated_style_elements = array('body', 'table', 'tr', 'td', 'th');
+	
+	/**
 	*	Class constructor. We are just building and importing variables here and then loading the CSS
 	*	@param object $dom The DOMDocument object
 	*	@param string $uri The URI of the request
@@ -140,15 +145,18 @@ class quailCSS {
 	*	@param int $specificity The specificity total for the CSS selector
 	*/
 	private function addCSSToElement($element, $style, $specificity) {
+		$index_id = $element->getAttribute('quail_style_index');
 		foreach($style as $name => $value) {
-			if(!$this->style_index[$element->getAttribute('quail_style_index')][$name] ||
-			    $this->style_index[$element->getAttribute('quail_style_index')][$name]['specificity'] < $specificity) {
-				$this->style_index[$element->getAttribute('quail_style_index')][$name] = array(
+			if(!$this->style_index[$index_id][$name] ||
+			    $this->style_index[$index_id][$name]['specificity'] < $specificity) 
+			{
+				$this->style_index[$index_id][$name] = array(
 					'value' => $value,
 					'specificity' => $specificity,
 				);
 		   }
 		}
+
 	}
 	
 	/**
@@ -301,10 +309,15 @@ class quailCSS {
 	*
 	*/
 	private function getNodeStyle($element) {
+		$style = array();
 		if($element->hasAttribute('quail_style_index')) {
-			return $this->style_index[$element->getAttribute('quail_style_index')];
+			$style = $this->style_index[$element->getAttribute('quail_style_index')];
 		}
-		return array();
+		// To support the deprecated 'bgcolor' attribute 
+		if($element->hasAttribute('bgcolor') &&  in_array($element->tagName, $this->deprecated_style_elements)) {
+			$style['background-color'] = $element->getAttribute('bgcolor');
+		}
+		return $style;
 	}
 	
 	/**
