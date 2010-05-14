@@ -1245,11 +1245,12 @@ class documentIDsMustBeUnique extends quailTest {
 	function check() {
 		$xpath = new DOMXPath($this->dom);
 		$entries = $xpath->query('//*');
+		$ids = array();
 		foreach($entries as $element) {
 			if($element->hasAttribute('id'))
 				$ids[$element->getAttribute('id')][] = $element;
 		}	
-		if(is_array($ids)) {
+		if(count($ids) > 0) {
 			foreach($ids as $id) {
 				if(count($id) > 1)
 					$this->addReport($id[1]);
