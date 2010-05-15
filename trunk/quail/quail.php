@@ -619,9 +619,13 @@ class quailGuideline {
 	*	@var bool Whether we are running in CMS mode
 	*/
 	var $cms_mode = false;
+	
 	/**
-	*	@var string The translation domain
+	*	@var array An array of all the severity levels for every test
 	*/
+	
+	var $severity = array(); 
+	
 	/**
 	*	The class constructor
 	*	@param object $dom The current DOMDocument object
@@ -675,7 +679,7 @@ class quailGuideline {
 		return $translation;
 	}
 	/**
-	*	Iteates through each test string, makes a new test object, and runs it against the current DOM
+	*	Iterates through each test string, makes a new test object, and runs it against the current DOM
 	*/
 	function run($arg = null, $language = 'en') {
 		foreach($this->tests as $testname => $options) {
@@ -687,6 +691,7 @@ class quailGuideline {
 				if(!$this->cms_mode || ($$testname->cms && $this->cms_mode)) {
 					$this->report[$testname] = $$testname->getReport();	
 				}
+				$this->severity[$testname] = $$testname->default_severity;
 				unset($$testname);
 			}
 			else {
@@ -711,6 +716,9 @@ class quailGuideline {
 	function getSeverity($testname) {
 		if(isset($this->tests[$testname]['severity'])) {
 			return $this->tests[$testname]['severity'];
+		}
+		if(isset($this->severity[$testname])) {
+			return $this->severity[$testname];
 		}
 		return QUAIL_TEST_MODERATE;
 	}
