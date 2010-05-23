@@ -3844,15 +3844,23 @@ class pNotUsedAsHeader extends quailTest {
 
 	var $default_severity = QUAIL_TEST_SEVERE;
 
-	var $head_tags = array('strong', 'span', 'em', 'font', 'i', 'b', 'u');
+	var $head_tags = array('strong', 'em', 'font', 'i', 'b', 'u');
 	
 	function check() {
 		foreach($this->getAllElements('p') as $p) {
 			if(($p->nodeValue == $p->firstChild->nodeValue) &&
 				is_object($p->firstChild) &&
 			 	property_exists($p->firstChild, 'tagName') && 
-				in_array($p->firstChild->tagName, $this->head_tags))
-				$this->addReport($p);
+				in_array($p->firstChild->tagName, $this->head_tags)) {
+					$this->addReport($p);
+					
+			}
+			else {
+				$style = $this->css->getStyle($p);
+				if($style['font-weight'] == 'bold') {
+					$this->addReport($p);
+				}
+			}
 		}
 	}
 }
