@@ -2487,8 +2487,8 @@ class imgAltNotPlaceHolder extends quailTest {
 	var $default_severity = QUAIL_TEST_SEVERE;
 	
 	var $strings = array('en' => array('nbsp', '&nbsp;', 'spacer', 'image', 'img', 'photo'),
-							  'es' => array('nbsp', '&nbsp;', 'spacer', 'espacio', 'imagen', 'img', 'foto')
-							 );
+						 'es' => array('nbsp', '&nbsp;', 'spacer', 'espacio', 'imagen', 'img', 'foto')
+						 );
 	
 	function check() {
 		foreach($this->getAllElements('img') as $img) {
@@ -2574,17 +2574,7 @@ class imgGifNoFlicker extends quailTest {
 class imgHasAlt extends quailTest {
 
 	var $default_severity = QUAIL_TEST_SEVERE;
-	
-	/**
-	*	@var int The OAC test Number
-	*/
-	var $oac_test = 1;
 
-	/**
-	*	@var int The test severity
-	*/	
-	var $severity = QUAIL_TEST_SEVERE;
-	
 	/**
 	*	The check method of this test. We are iterating through all img
 	*	elements and tagging any without an ALT attribute.
