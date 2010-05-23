@@ -2630,10 +2630,10 @@ class imgImportantNoSpacerAlt extends quailTest {
 				if($img->getAttribute('width') > 25 || $img->getAttribute('height') > 25) {
 					$this->addReport($img);
 				}
-				elseif(function_exists('gd_info') && (!$img->hasAttribute('width') || !$img->hasAttribute('height'))) {
+				elseif(function_exists('gd_info') && (!$img->hasAttribute('width') || !$img->hasAttribute('height'))) {			
 					$img_file = @getimagesize($this->getPath($img->getAttribute('src')));
 					if($img_file) {
-						if($img_file[0] > 25 || $img_file[0] > 25)
+						if($img_file[0] > 25 || $img_file[1] > 25)
 							$this->addReport($img);
 					}
 				}
