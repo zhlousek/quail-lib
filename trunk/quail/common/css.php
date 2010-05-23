@@ -132,7 +132,7 @@ class quailCSS {
 		}
 		foreach($this->style_index as $k => $style) {
 			foreach($style as $i => $values) {
-				$this->style_index[$k][$i] = $values['value'];
+				$this->style_index[$k][$i] = trim(strtolower($values['value']));
 			}
 		}
 	}
@@ -151,7 +151,7 @@ class quailCSS {
 			    $this->style_index[$index_id][$name]['specificity'] < $specificity) 
 			{
 				$this->style_index[$index_id][$name] = array(
-					'value' => $value,
+					'value' => trim(strtolower($value)),
 					'specificity' => $specificity,
 				);
 		   }
@@ -260,7 +260,7 @@ class quailCSS {
 			$inline_styles = explode(';', $element->getAttribute('style'));
 			foreach($inline_styles as $inline_style) {
 				$s = explode(':', $inline_style);
-				$style[$s[0]] = $s[1];
+				$style[$s[0]] = trim(strtolower($s[1]));
 			}
 		}
 		if(!is_array($style)) {
