@@ -61,6 +61,9 @@ class TestOfTests extends UnitTestCase {
 		
 		$results = $this->getTest('5-2.html', 'imgImportantNoSpacerAlt');
 		$this->assertTrue(count($results) == 0);
+
+		$results = $this->getTest('5-3.html', 'imgImportantNoSpacerAlt');
+		$this->assertTrue($results[0]->element->getAttribute('src') == 'big-fail.png');
  }
 
  //6
