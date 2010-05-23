@@ -776,15 +776,15 @@ class blockquoteNotUsedForIndentation extends quailTest {
 
 class blockquoteUseForQuotations extends quailTest {
 
-	var $default_severity = QUAIL_TEST_SUGGESTION;
+	var $default_severity = QUAIL_TEST_MODERATE;
 
 	function check() {
-		$body = $this->getAllelements('body');
-		$body = $body[0];
-		if(!$body) return false;
-		if(strlen($body->nodeValue) > 10)
-			$this->addReport(null, null, false);
-	
+		foreach($this->getAllElements('p') as $paragraph) {
+			if(in_array(substr(trim($paragraph->nodeValue), 0, 1), array('"', "'")) &&
+			   in_array(substr(trim($paragraph->nodeValue), -1, 1), array('"', "'"))) {
+				$this->addReport($paragraph);
+			}
+		}
 	}
 
 }

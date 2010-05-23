@@ -1375,7 +1375,7 @@ class TestOfTests extends UnitTestCase {
   //131
   function test131_blockquoteUseForQuotations() {
 		$results = $this->getTest('131-1.html', 'blockquoteUseForQuotations');
-		$this->assertTrue($results[0]->pass === false);  
+		$this->assertTrue($results[0]->element->tagName == 'p');  
 	
 		
 		$results = $this->getTest('131-2.html', 'blockquoteUseForQuotations');
