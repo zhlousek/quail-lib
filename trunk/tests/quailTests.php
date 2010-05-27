@@ -50,6 +50,15 @@ class TestOfQuailTests extends UnitTestCase {
 	$this->assertTrue($results[0]->element->tagName == 'video');
 	
  }
+ 
+ function test_videosEmbeddedOrLinkedNeedCaptions() {
+ 	$results = $this->getTest('videosEmbeddedOrLinkedNeedCaptions-fail.html', 'videosEmbeddedOrLinkedNeedCaptions');
+	$this->assertTrue($results[0]->element->tagName == 'a');
+
+ 	$results = $this->getTest('videosEmbeddedOrLinkedNeedCaptions-pass.html', 'videosEmbeddedOrLinkedNeedCaptions');
+	$this->assertTrue(count($results[0]) == 0);
+
+ }
 
 }
 

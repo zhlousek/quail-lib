@@ -67,6 +67,11 @@ class quailTest {
 	var $lang = 'en';
 	
 	/**
+	*	@var array Services this test will be using
+	*/
+	var $services = array();
+	
+	/**
 	*	@var array An array of translatable strings
 	*/
 	var $strings = array('en' => '');
@@ -86,7 +91,23 @@ class quailTest {
 		$this->lang = $language_domain;
 		$this->options = $options;
 		$this->report = array();
+		$this->loadServices();
 		$this->check();
+	}
+	
+	/**
+	*	If this test requires services, it loads the associated files and creates a new
+	*	service instance locally.
+	*/
+	
+	function loadServices() {
+		foreach($this->services as $service => $file_name) {
+			if(!class_exists($service .'Service')) {
+				require_once('services/'. $file_name .'.php');
+			}
+			$service_name = $service .'Service';
+			$this->services[$service] = new $service_name();
+		}
 	}
 	
 	/**

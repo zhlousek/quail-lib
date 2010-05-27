@@ -4931,8 +4931,39 @@ class svgContainsTitle extends quailTest {
 */
 
 class videoProvidesCaptions extends quailTagTest {
-
+	
+	var $default_severity = QUAIL_TEST_SUGGESTION;
+	
 	var $tag = 'video';
+}
+
+/**
+*	Links to YouTube videos must have a caption
+*/
+class videosEmbeddedOrLinkedNeedCaptions extends quailTest {
+	
+	var $default_severity = QUAIL_TEST_SEVERE;
+	
+	var $services = array(
+					'youtube' => 'media/youtube',
+	);
+	
+	function check() {
+		foreach($this->getAllElements(array('a', 'embed')) as $video) {
+			$attr = ($video->tagName == 'a')
+					 ? 'href'
+					 : 'src';
+
+			if($video->hasAttribute($attr)) {
+				foreach($this->services as $service) {
+					if($service->captionsMissing($video->getAttribute($attr))) {
+						$this->addReport($video);
+					}
+				}
+			}
+		}
+	}
+	
 }
 
 /*@}*/
