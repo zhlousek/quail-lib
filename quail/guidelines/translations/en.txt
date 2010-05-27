@@ -230,3 +230,4 @@
 "svgContainsTitle", "Inline SVG should use Title elements","<p>Any inline SVG image should have an embedded <code>title</code> element","1"
 "cssTextHasContrast","All elements should have appropriate color contrast","<p>For users who have color blindness, all text or other elements should have a color contrast of 5:1.</p>","1"
 "videoProvidesCaptions","All video tags must provide captions","<p>All HTML5 video tags must provide captions.</p>","2"
+"videosEmbeddedOrLinkedNeedCaptions","All linked or embedded videos need captions","<p>Any video hosted or otherwise which is linked or embedded must have a caption.</p>","1"
