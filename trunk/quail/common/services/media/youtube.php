@@ -1,10 +1,12 @@
 <?php
 
+require_once('mediaService.php');
+
 /**
 *  Media service for YouTube. This absracts out YouTube's API calls
 *
 */
-class youtubeService {
+class youtubeService extends mediaService {
 	
 	/**
 	*	@var array An array of regular expressions to extract the YouTube item code
