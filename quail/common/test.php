@@ -67,7 +67,8 @@ class quailTest {
 	var $lang = 'en';
 	
 	/**
-	*	@var array Services this test will be using
+	*	@var array Services this test will be using. Services are loaded and then 
+	*			   a class is built to replace the service name in this array.
 	*/
 	var $services = array();
 	
