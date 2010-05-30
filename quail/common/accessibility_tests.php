@@ -1838,11 +1838,25 @@ class formHasGoodErrorMessage extends quailTagTest {
 *  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=199
 **/
 
-class formWithRequiredLabel extends quailTagTest {
+class formWithRequiredLabel extends quailTest {
 
-	var $default_severity = QUAIL_TEST_SUGGESTION;
+	var $default_severity = QUAIL_TEST_MODERATE;
 
-	var $tag = 'form';
+	function check() {
+		foreach($this->getAllElements('label') as $label) {
+			if(strpos($label->nodeValue, '*') !== false) {
+				if($input = $this->dom->getElementById($label->getAttribute('for'))) {
+					if(!$input->hasAttribute('aria-required') || 
+					   strtolower($input->getAttribute('aria-required')) != 'true') {
+						 $this->addReport($label);
+					}
+				}
+				else {
+					$this->addReport($label);
+				}
+			}
+		}
+	}
 }
 
 
