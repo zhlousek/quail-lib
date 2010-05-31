@@ -247,5 +247,7 @@ class AllGuideline extends quailGuideline{
 		'textareaLabelPositionedClose',
 		'svgContainsTitle',
 		'cssTextHasContrast',
+		'videoProvidesCaptions',
+		'videosEmbeddedOrLinkedNeedCaptions',
 	);
 }
