@@ -2243,6 +2243,12 @@ class TestOfTests extends UnitTestCase {
 
 		$results = $this->getTest('246-3.html', 'formWithRequiredLabel');
 		$this->assertTrue(count($results) == 0);   
+
+		$results = $this->getTest('246-4.html', 'formWithRequiredLabel');
+		$this->assertTrue($results[0]->element->tagName == 'form'); 
+
+		$results = $this->getTest('246-5.html', 'formWithRequiredLabel');
+		$this->assertTrue($results[0]->element->tagName == 'form'); 
   } 
 
   //247

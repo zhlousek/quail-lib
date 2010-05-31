@@ -229,6 +229,26 @@ class quailTest {
 	}
 	
 	/**
+	*	Returns the first ancestor reached of a tag, or false if it hits
+	*	the document root or a given tag.
+	*	@param object $element A DOMElement object
+	*	@param string $ancestor_tag The name of the tag we are looking for
+	*	@param string $limit_tag Where to stop searching
+	*/
+	function getElementAncestor($element, $ancestor_tag, $limit_tag = 'body') {
+		while(property_exists($element, 'parentNode')) {
+			if($element->parentNode->tagName == $ancestor_tag) {
+				return $element->parentNode;
+			}
+			if($element->parentNode->tagName == $limit_tag) {
+				return false;
+			}
+			$element = $element->parentNode;
+		}
+		return false;
+	}
+	
+	/**
 	*	Finds all the elements with a given tag name that has
 	*	an attribute
 	*	@param string $tag The tag name to search for

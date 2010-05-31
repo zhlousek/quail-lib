@@ -1841,9 +1841,13 @@ class formHasGoodErrorMessage extends quailTagTest {
 class formWithRequiredLabel extends quailTest {
 
 	var $default_severity = QUAIL_TEST_MODERATE;
-
+	
+	var $suspect_styles = array('font-weight', 'color');
+	
 	function check() {
+		$labels = array();
 		foreach($this->getAllElements('label') as $label) {
+			$labels[] = $label;
 			if(strpos($label->nodeValue, '*') !== false) {
 				if($input = $this->dom->getElementById($label->getAttribute('for'))) {
 					if(!$input->hasAttribute('aria-required') || 
@@ -1853,6 +1857,28 @@ class formWithRequiredLabel extends quailTest {
 				}
 				else {
 					$this->addReport($label);
+				}
+			}
+		}
+		$styles = array();
+		foreach($labels as $k => $label) {
+			//Now we check through all the labels and see if any are 
+			//colored different than the others
+			$styles[$k] = $this->css->getStyle($label);
+			if($this->elementHasChild($label, 'strong') || $this->elementHasChild($label, 'b')) {
+				$styles[$k]['font-weight'] = 'bold';
+			}
+			if($k) {
+				foreach($this->suspect_styles as $style) {
+					if($styles[$k][$style] != $styles[($k - 1)][$style]) {
+						$form = $this->getElementAncestor($label, 'form');
+						if($form) {
+							$this->addReport($form);
+						}
+						else {
+							$this->addReport($label);
+						}
+					}
 				}
 			}
 		}
