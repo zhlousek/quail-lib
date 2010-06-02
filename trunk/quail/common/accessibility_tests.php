@@ -5006,4 +5006,27 @@ class videosEmbeddedOrLinkedNeedCaptions extends quailTest {
 	
 }
 
+/**
+*	Checks that a document is written clearly to a minimum of a 60 on the 
+*	Flesch Reading Ease score (9.9 max grade level).
+*/
+class documentIsWrittenClearly extends quailTest {
+	
+	var $default_severity = QUAIL_TEST_MODERATE;
+	
+	var $services = array(
+		'readability' => 'readability/readability',
+	);
+	
+	function check() {
+		$readability = $this->services['readability'];
+		foreach($this->getAllElements(null, 'text') as $element) {
+			if($readability->flesch_kincaid_reading_ease(strip_tags($element->nodeValue)) < 60) {
+				$this->addReport($element);
+			}
+		}
+	}
+	
+}
+
 /*@}*/

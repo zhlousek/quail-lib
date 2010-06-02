@@ -231,3 +231,4 @@
 "cssTextHasContrast","All elements should have appropriate color contrast","<p>For users who have color blindness, all text or other elements should have a color contrast of 5:1.</p>","1"
 "videoProvidesCaptions","All video tags must provide captions","<p>All HTML5 video tags must provide captions.</p>","2"
 "videosEmbeddedOrLinkedNeedCaptions","All linked or embedded videos need captions","<p>Any video hosted or otherwise which is linked or embedded must have a caption.</p>","1"
+"documentIsWrittenClearly","The document should be written to the target audience and read clearly","<p>If a document is beyond a 10th grade level, then a summary or other guide should also be provided to guide the user through the content.</p>","2"
