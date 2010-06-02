@@ -1,3 +1,9 @@
+PLEASE NOTE:
+
+There are included libraries in the directory quail/common/services which might have different (but compatible) licenses than the one covered in this file. Current licenses include:
+	*The current BSD:
+		*services/readability/php-text-statistics
+
 GNU GENERAL PUBLIC LICENSE
 
 Version 3, 29 June 2007
