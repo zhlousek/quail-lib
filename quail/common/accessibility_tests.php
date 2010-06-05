@@ -25,19 +25,16 @@
 
 
 /**
-*  OAC # 155
 *  Adjacent links with same resource must be combined.
 *  If 2 adjacent links have the same destination then this error will be generated.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=155
-**/
+*/
 
 
 /**
-*  OAC # 192
 *  There are no adjacent text and image links having the same destination.
 *  This objective of this technique is to avoid unnecessary duplication that occurs when adjacent text and iconic versions of a link are contained in a document.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=192
-**/
+*	@link http://quail-lib.org/test-info/aAdjacentWithSameResourceShouldBeCombined
+*/
 
 class aAdjacentWithSameResourceShouldBeCombined extends quailTest {
 	
@@ -59,11 +56,10 @@ class aAdjacentWithSameResourceShouldBeCombined extends quailTest {
 
 
 /**
-*  OAC # 152
 *  Alt text for all img elements used as source anchors is different from the link text.
 *  If an image occurs within a link, the Alt text should be different from the link text.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=152
-**/
+*	@link http://quail-lib.org/test-info/aImgAltNotRepetative
+*/
 
 class aImgAltNotRepetative extends quailTest {
 
@@ -84,11 +80,10 @@ class aImgAltNotRepetative extends quailTest {
 
 
 /**
-*  OAC # 169
 *  Link text does not begin with \"link to\"" or \""go to\"" (English)."
 *  Alt text for images used as links should not begin with \"link to\"" or \""go to\""."
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=169
-**/
+*	@link http://quail-lib.org/test-info/aLinkTextDoesNotBeginWithRedundantWord
+*/
 
 class aLinkTextDoesNotBeginWithRedundantWord extends quailTest {
 
@@ -117,11 +112,10 @@ class aLinkTextDoesNotBeginWithRedundantWord extends quailTest {
 
 
 /**
-*  OAC # 123
 *  Include non-link, printable characters (surrounded by spaces) between adjacent links.
 *  Adjacent links must be separated by printable characters. [Editor's Note - Define adjacent link? Printable characters always?]
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=123
-**/
+*	@link http://quail-lib.org/test-info/aLinksAreSeperatedByPrintableCharacters
+*/
 
 class aLinksAreSeperatedByPrintableCharacters extends quailTest {
 
@@ -147,11 +141,10 @@ class aLinksAreSeperatedByPrintableCharacters extends quailTest {
 
 
 /**
-*  OAC # 18
 *  Anchor should not open new window without warning.
 *  a (anchor) element must not contain a target attribute unless the target attribute value is either _self, _top, or _parent.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=18
-**/
+*	@link http://quail-lib.org/test-info/aLinksDontOpenNewWindow
+*/
 
 class aLinksDontOpenNewWindow extends quailTest {
 
@@ -172,11 +165,10 @@ class aLinksDontOpenNewWindow extends quailTest {
 
 
 /**
-*  OAC # 19
 *  Link text is meaningful when read out of context.
 *  All a (anchor) elements that contains any text will generate this error.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=19
-**/
+*	@link http://quail-lib.org/test-info/aLinksMakeSenseOutOfContext
+*/
 
 class aLinksMakeSenseOutOfContext extends quailTest {
 
@@ -195,11 +187,10 @@ class aLinksMakeSenseOutOfContext extends quailTest {
 
 
 /**
-*  OAC # 20
 *  Links to multimedia require a text transcript.
 *  a (anchor) element must not contain an href attribute value that ends with (case insensitive): .wmv, .mpg, .mov, .ram, .aif.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=20
-**/
+*	@link http://quail-lib.org/test-info/aLinksToMultiMediaRequireTranscript
+*/
 
 class aLinksToMultiMediaRequireTranscript extends quailTest {
 
@@ -222,11 +213,10 @@ class aLinksToMultiMediaRequireTranscript extends quailTest {
 
 
 /**
-*  OAC # 17
 *  Sound file must have a text transcript.
 *  a (anchor) element cannot contain an href attribute value that ends with any of the following (all case insensitive): .wav, .snd, .mp3, .iff, .svx, .sam, .smp, .vce, .vox, .pcm, .aif.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=17
-**/
+*	@link http://quail-lib.org/test-info/aLinksToSoundFilesNeedTranscripts
+*/
 
 class aLinksToSoundFilesNeedTranscripts extends quailTest {
 
@@ -267,11 +257,10 @@ class aMultimediaTextAlternative extends quailTest {
 
 
 /**
-*  OAC # 151
 *  Each source anchor contains text.
 *  a (anchor) element must contain text. The text may occur in the anchor text or in the title attribute of the anchor or in the Alt text of an image used within the anchor.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=151
-**/
+*	@link http://quail-lib.org/test-info/aMustContainText
+*/
 
 class aMustContainText extends quailTest {
 
@@ -298,11 +287,10 @@ class aMustContainText extends quailTest {
 
 
 /**
-*  OAC # 164
 *  Anchor element must have a title attribute.
 *  Each source a (anchor) element must have a title attribute.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=164
-**/
+*	@link http://quail-lib.org/test-info/aMustHaveTitle
+*/
 
 class aMustHaveTitle extends quailTest {
 
@@ -319,11 +307,10 @@ class aMustHaveTitle extends quailTest {
 
 
 /**
-*  OAC # 156
 *  Anchor must not use Javascript URL protocol.
 *  Anchor elements must not have an href attribute value that starts with "javascript:".
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=156
-**/
+*	@link http://quail-lib.org/test-info/aMustNotHaveJavascriptHref
+*/
 
 class aMustNotHaveJavascriptHref extends quailTest {
 
@@ -339,11 +326,10 @@ class aMustNotHaveJavascriptHref extends quailTest {
 
 
 /**
-*  OAC # 150
 *  Suspicious link text.
 *  a (anchor) element cannot contain any of the following text (English): \"click here\""
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=150
-**/
+*	@link http://quail-lib.org/test-info/aSuspiciousLinkText
+*/
 
 class aSuspiciousLinkText extends quailTest {
 
@@ -364,11 +350,10 @@ class aSuspiciousLinkText extends quailTest {
 
 
 /**
-*  OAC # 165
 *  The title attribute of all source a (anchor) elements describes the link destination.
 *  Each source a (anchor) element must have a title attribute that describes the link destination.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=165
-**/
+*	@link http://quail-lib.org/test-info/aTitleDescribesDestination
+*/
 
 class aTitleDescribesDestination extends quailTest {
 
@@ -385,11 +370,10 @@ class aTitleDescribesDestination extends quailTest {
 
 
 /**
-*  OAC # 132
 *  Content must have an address for author.
 *  address element must be present.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=132
-**/
+*	@link http://quail-lib.org/test-info/addressForAuthor
+*/
 
 class addressForAuthor extends quailTest {
 
@@ -411,19 +395,16 @@ class addressForAuthor extends quailTest {
 
 
 /**
-*  OAC # 132
 *  Content must have an address for author.
 *  address element must be present.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=132
-**/
+*/
 
 
 /**
-*  OAC # 133
 *  address of page author must be valid.
 *  This error will be generated for each address element. [Editor's Note: What is a valid address?]
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=133
-**/
+*	@link http://quail-lib.org/test-info/addressForAuthorMustBeValid
+*/
 
 class addressForAuthorMustBeValid extends quailTest {
 
@@ -490,11 +471,10 @@ class addressForAuthorMustBeValid extends quailTest {
 
 
 /**
-*  OAC # 24
 *  applet contains a text equivalent in the body of the applet.
 *  This error is generated for all applet elements.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=24
-**/
+*	@link http://quail-lib.org/test-info/appletContainsTextEquivalent
+*/
 
 class appletContainsTextEquivalent extends quailTest {
 
@@ -512,19 +492,16 @@ class appletContainsTextEquivalent extends quailTest {
 
 
 /**
-*  OAC # 23
 *  applet contains a text equivalent in the alt attribute of the applet.
 *  Use the alt attribute to label an applet.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=23
-**/
+*/
 
 
 /**
-*  OAC # 24
 *  applet contains a text equivalent in the body of the applet.
 *  This error is generated for all applet elements.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=24
-**/
+*	@link http://quail-lib.org/test-info/appletContainsTextEquivalentInAlt
+*/
 
 class appletContainsTextEquivalentInAlt extends quailTest {
 
@@ -543,11 +520,10 @@ class appletContainsTextEquivalentInAlt extends quailTest {
 
 
 /**
-*  OAC # 203
 *  applet provides a keyboard mechanism to return focus to the parent window.
 *  Ensure that keyboard users do not become trapped in a subset of the content that can only be exited using a mouse or pointing device.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=203
-**/
+*	@link http://quail-lib.org/test-info/appletProvidesMechanismToReturnToParent
+*/
 
 class appletProvidesMechanismToReturnToParent extends quailTagTest {
 
@@ -567,11 +543,10 @@ class appletTextEquivalentsGetUpdated extends quailTagTest {
 
 
 /**
-*  OAC # 25
 *  applet user interface must be accessible.
 *  This error is generated for all applet elements.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=25
-**/
+*	@link http://quail-lib.org/test-info/appletUIMustBeAccessible
+*/
 
 class appletUIMustBeAccessible extends quailTagTest {
 
@@ -582,11 +557,10 @@ class appletUIMustBeAccessible extends quailTagTest {
 
 
 /**
-*  OAC # 22
 *  All applets do not flicker.
 *  This error is generated for all applet elements.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=22
-**/
+*	@link http://quail-lib.org/test-info/appletsDoNotFlicker
+*/
 
 class appletsDoNotFlicker extends quailTagTest {
 
@@ -598,11 +572,10 @@ class appletsDoNotFlicker extends quailTagTest {
 
 
 /**
-*  OAC # 21
 *  applet should not use color alone.
 *  This error is generated for all applet elements.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=21
-**/
+*	@link http://quail-lib.org/test-info/appletsDoneUseColorAlone
+*/
 
 class appletsDoneUseColorAlone extends quailTagTest {
 
@@ -613,11 +586,10 @@ class appletsDoneUseColorAlone extends quailTagTest {
 
 
 /**
-*  OAC # 63
 *  Alt text for all area elements identifies the link destination.
 *  Alt text for area element must describe the link destination.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=63
-**/
+*	@link http://quail-lib.org/test-info/areaAltIdentifiesDestination
+*/
 
 class areaAltIdentifiesDestination extends quailTagTest {
 
@@ -629,11 +601,10 @@ class areaAltIdentifiesDestination extends quailTagTest {
 
 
 /**
-*  OAC # 168
 *  Alt text for all area elements contains all non decorative text in the image area.
 *  This error is generated for all area elements.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=168
-**/
+*	@link http://quail-lib.org/test-info/areaAltRefersToText
+*/
 
 class areaAltRefersToText extends quailTagTest {
 
@@ -643,11 +614,10 @@ class areaAltRefersToText extends quailTagTest {
 
 
 /**
-*  OAC # 65
 *  area should not open new window without warning.
 *  area element, target attribute values must contain any one of (case insensitive) _self, _top, _parent.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=65
-**/
+*	@link http://quail-lib.org/test-info/areaDontOpenNewWindow
+*/
 
 class areaDontOpenNewWindow extends quailTest {
 
@@ -668,11 +638,10 @@ class areaDontOpenNewWindow extends quailTest {
 
 
 /**
-*  OAC # 62
 *  All area elements have an alt attribute.
 *  area elements must contain a alt attribute.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=62
-**/
+*	@link http://quail-lib.org/test-info/areaHasAltValue
+*/
 
 class areaHasAltValue extends quailTest {
 
@@ -689,11 +658,10 @@ class areaHasAltValue extends quailTest {
 
 
 /**
-*  OAC # 64
 *  area link to sound file must have text transcript.
 *  area elements must not contain href attribute values that end with (all case insensitive) .wav, .snd, .mp3, .iff, .svx, .sam, .smp, .vce, .vox, .pcm, .aif
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=64
-**/
+*	@link http://quail-lib.org/test-info/areaLinksToSoundFile
+*/
 
 class areaLinksToSoundFile extends quailTest {
 
@@ -716,11 +684,10 @@ class areaLinksToSoundFile extends quailTest {
 
 
 /**
-*  OAC # 153
 *  basefont must not be used.
 *  This error is generated for all basefont elements.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=153
-**/
+*	@link http://quail-lib.org/test-info/basefontIsNotUsed
+*/
 
 class basefontIsNotUsed extends quailTagTest {
 
@@ -732,11 +699,10 @@ class basefontIsNotUsed extends quailTagTest {
 
 
 /**
-*  OAC # 26
 *  blink element is not used.
 *  This error is generated for all blink elements.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=26
-**/
+*	@link http://quail-lib.org/test-info/blinkIsNotUsed
+*/
 
 class blinkIsNotUsed extends quailTagTest {
 
@@ -748,11 +714,10 @@ class blinkIsNotUsed extends quailTagTest {
 
 
 /**
-*  OAC # 92
 *  blockquote must not be used for indentation.
 *  This error is generated if any blockquote element is missing a cite attribute.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=92
-**/
+*	@link http://quail-lib.org/test-info/blockquoteNotUsedForIndentation
+*/
 
 class blockquoteNotUsedForIndentation extends quailTest {
 
@@ -768,11 +733,10 @@ class blockquoteNotUsedForIndentation extends quailTest {
 
 
 /**
-*  OAC # 120
 *  Use the blockquote element to mark up block quotations.
 *  If body element content is greater than 10 characters (English) then this error will be generated.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=120
-**/
+*	@link http://quail-lib.org/test-info/blockquoteUseForQuotations
+*/
 
 class blockquoteUseForQuotations extends quailTest {
 
@@ -791,11 +755,10 @@ class blockquoteUseForQuotations extends quailTest {
 
 
 /**
-*  OAC # 179
 *  The luminosity contrast ratio between active link text and background color is at least 5:1.
 *  The luminosity contrast ratio between active link text and background color is at least 5:1
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=179
-**/
+*	@link http://quail-lib.org/test-info/bodyActiveLinkColorContrast
+*/
 
 class bodyActiveLinkColorContrast extends bodyColorContrast {
 
@@ -810,11 +773,10 @@ class bodyActiveLinkColorContrast extends bodyColorContrast {
 
 
 /**
-*  OAC # 178
 *  The luminosity contrast ratio between link text and background color is at least 5:1.
 *  The luminosity contrast ratio between link text and background color is at least 5:1
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=178
-**/
+*	@link http://quail-lib.org/test-info/bodyLinkColorContrast
+*/
 
 class bodyLinkColorContrast extends bodyColorContrast {
 
@@ -827,11 +789,10 @@ class bodyLinkColorContrast extends bodyColorContrast {
 
 
 /**
-*  OAC # 157
 *  Do not use background images.
 *  The body element must not contain a background attribute.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=157
-**/
+*	@link http://quail-lib.org/test-info/bodyMustNotHaveBackground
+*/
 
 class bodyMustNotHaveBackground extends quailTest {
 
@@ -851,11 +812,10 @@ class bodyMustNotHaveBackground extends quailTest {
 
 
 /**
-*  OAC # 180
 *  The luminosity contrast ratio between visited link text and background color is at least 5:1.
 *  The luminosity contrast ratio between visited link text and background color is at least 5:1
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=180
-**/
+*	@link http://quail-lib.org/test-info/bodyVisitedLinkColorContrast
+*/
 
 class bodyVisitedLinkColorContrast extends bodyColorContrast {
 
@@ -868,11 +828,10 @@ class bodyVisitedLinkColorContrast extends bodyColorContrast {
 
 
 /**
-*  OAC # 107
 *  b (bold) element is not used.
 *  This error will be generated for all B elements.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=107
-**/
+*	@link http://quail-lib.org/test-info/boldIsNotUsed
+*/
 
 class boldIsNotUsed extends quailTagTest {
 
@@ -883,11 +842,10 @@ class boldIsNotUsed extends quailTagTest {
 
 
 /**
-*  OAC # 110
 *  All input elements, type of "checkbox", have an explicitly associated label.
 *  input element that contains a type attribute value of "checkbox" must have an associated label element. An associated label is one in which the for attribute value of the label element is the same as the id attribute value of the input element.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=110
-**/
+*	@link http://quail-lib.org/test-info/checkboxHasLabel
+*/
 
 class checkboxHasLabel extends inputHasLabel {
 
@@ -902,11 +860,10 @@ class checkboxHasLabel extends inputHasLabel {
 
 
 /**
-*  OAC # 114
 *  All input elements, type of "checkbox", have a label that is positioned close to the control.
 *  input element with a type attribute value of "checkbox" must have an associated label element positioned close to it.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=114
-**/
+*	@link http://quail-lib.org/test-info/checkboxLabelIsNearby
+*/
 
 class checkboxLabelIsNearby extends quailTest {
 
@@ -923,11 +880,10 @@ class checkboxLabelIsNearby extends quailTest {
 
 
 /**
-*  OAC # 89
 *  Document must be readable when stylesheets are not applied.
 *  This error will be generated for each link element that has a rel attribute with a value of "stylesheet".
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=89
-**/
+*	@link http://quail-lib.org/test-info/cssDocumentMakesSenseStyleTurnedOff
+*/
 
 class cssDocumentMakesSenseStyleTurnedOff extends quailTest {
 
@@ -946,7 +902,9 @@ class cssDocumentMakesSenseStyleTurnedOff extends quailTest {
 /**
 *	Checks that all color and background elements has stufficient contrast.
 *
+*	@link http://quail-lib.org/test-info/cssTextHasContrast
 */
+
 class cssTextHasContrast extends quailColorTest {
 
 	var $default_severity = QUAIL_TEST_SEVERE;
@@ -986,11 +944,10 @@ class cssTextHasContrast extends quailColorTest {
 
 
 /**
-*  OAC # 28
 *  HTML content has a valid doctype declaration.
 *  Each document must contain a valid doctype declaration.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=28
-**/
+*	@link http://quail-lib.org/test-info/doctypeProvided
+*/
 
 class doctypeProvided extends quailTest {
 
@@ -1005,11 +962,10 @@ class doctypeProvided extends quailTest {
 
 
 /**
-*  OAC # 90
 *  Abbreviations must be marked with abbr element.
 *  If body element content is greater than 10 characters (English) this error will be generated.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=90
-**/
+*	@link http://quail-lib.org/test-info/documentAbbrIsUsed
+*/
 
 class documentAbbrIsUsed extends quailTest {
 
@@ -1044,11 +1000,10 @@ class documentAbbrIsUsed extends quailTest {
 
 
 /**
-*  OAC # 91
 *  Acronyms must be marked with acronym element.
 *  If body element content is greater than 10 characters (English) then this error will be generated.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=91
-**/
+*	@link http://quail-lib.org/test-info/documentAcronymsHaveElement
+*/
 
 class documentAcronymsHaveElement extends documentAbbrIsUsed {
 
@@ -1060,11 +1015,10 @@ class documentAcronymsHaveElement extends documentAbbrIsUsed {
 
 
 /**
-*  OAC # 202
 *  All text colors or no text colors are set.
 *  If the author specifies that the text must be black, then it may override the settings of the user agent and render a page that has black text (specified by the author) on black background (that was set in the user agent).
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=202
-**/
+*	@link http://quail-lib.org/test-info/documentAllColorsAreSet
+*/
 
 class documentAllColorsAreSet extends quailTest {
 
@@ -1092,11 +1046,10 @@ class documentAllColorsAreSet extends quailTest {
 
 
 /**
-*  OAC # 68
 *  Auto-redirect must not be used.
 *  meta elements that contain a http-equiv attribute with a value of "refresh" cannot contain a content attribute with a value of (start, case insensitive) "http://".
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=68
-**/
+*	@link http://quail-lib.org/test-info/documentAutoRedirectNotUsed
+*/
 
 class documentAutoRedirectNotUsed extends quailTest {
 
@@ -1115,11 +1068,10 @@ class documentAutoRedirectNotUsed extends quailTest {
 
 
 /**
-*  OAC # 184
 *  The contrast between active link text and background color is greater than WAI ERT color algorithm threshold.
 *  The contrast between active link text and background color must be greater than the WAI ERT color algorithm threshold.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=184
-**/
+*	@link http://quail-lib.org/test-info/documentColorWaiActiveLinkAlgorithim
+*/
 
 class documentColorWaiActiveLinkAlgorithim extends bodyWaiErtColorContrast {
 
@@ -1132,11 +1084,10 @@ class documentColorWaiActiveLinkAlgorithim extends bodyWaiErtColorContrast {
 
 
 /**
-*  OAC # 182
 *  The contrast between text and background colors is greater than WAI ERT color algorithm threshold.
 *  The contrast between text and background color must be greater than the WAI ERT color algorithm threshold.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=182
-**/
+*	@link http://quail-lib.org/test-info/documentColorWaiAlgorithim
+*/
 
 class documentColorWaiAlgorithim extends bodyWaiErtColorContrast {
 
@@ -1148,11 +1099,10 @@ class documentColorWaiAlgorithim extends bodyWaiErtColorContrast {
 
 
 /**
-*  OAC # 183
 *  The contrast between link text and background color is greater than WAI ERT color algorithm threshold.
 *  The contrast between link text and background color must be greater than the WAI ERT color algorithm threshold.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=183
-**/
+*	@link http://quail-lib.org/test-info/documentColorWaiLinkAlgorithim
+*/
 
 class documentColorWaiLinkAlgorithim extends bodyWaiErtColorContrast {
 
@@ -1165,11 +1115,10 @@ class documentColorWaiLinkAlgorithim extends bodyWaiErtColorContrast {
 
 
 /**
-*  OAC # 185
 *  The contrast between visited link text and background color is greater than WAI ERT color algorithm threshold.
 *  The contrast between visited link text and background color must be greater than the WAI ERT color algorithm threshold.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=185
-**/
+*	@link http://quail-lib.org/test-info/documentColorWaiVisitedLinkAlgorithim
+*/
 
 class documentColorWaiVisitedLinkAlgorithim extends bodyWaiErtColorContrast {
 
@@ -1182,11 +1131,10 @@ class documentColorWaiVisitedLinkAlgorithim extends bodyWaiErtColorContrast {
 
 
 /**
-*  OAC # 100
 *  Content must be readable when stylesheets are not applied.
 *  The first occurrence of any element that contains a style attribute will generate this error.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=100
-**/
+*	@link http://quail-lib.org/test-info/documentContentReadableWithoutStylesheets
+*/
 
 class documentContentReadableWithoutStylesheets extends quailTest {
 
@@ -1207,11 +1155,10 @@ class documentContentReadableWithoutStylesheets extends quailTest {
 
 
 /**
-*  OAC # 49
 *  Document contains a title element.
 *  title element must be present in head section of document.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=49
-**/
+*	@link http://quail-lib.org/test-info/documentHasTitleElement
+*/
 
 class documentHasTitleElement extends quailTest {
 
@@ -1230,11 +1177,10 @@ class documentHasTitleElement extends quailTest {
 
 
 /**
-*  OAC # 160
 *  id attributes must be unique.
 *  Each id attribute value must be unique.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=160
-**/
+*	@link http://quail-lib.org/test-info/documentIDsMustBeUnique
+*/
 
 class documentIDsMustBeUnique extends quailTest {
 
@@ -1261,11 +1207,10 @@ class documentIDsMustBeUnique extends quailTest {
 
 
 /**
-*  OAC # 48
 *  Document has valid language code.
 *  html element must have a lang attribute value of valid 2 or 3 letter language code according to ISO specification 639.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=48
-**/
+*	@link http://quail-lib.org/test-info/documentLangIsISO639Standard
+*/
 
 class documentLangIsISO639Standard extends quailTest {
 
@@ -1289,11 +1234,10 @@ class documentLangIsISO639Standard extends quailTest {
 
 
 /**
-*  OAC # 47
 *  Document has required lang attribute(s).
 *  html element must contain a lang attribute.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=47
-**/
+*	@link http://quail-lib.org/test-info/documentLangNotIdentified
+*/
 
 class documentLangNotIdentified extends quailTest {
 
@@ -1314,11 +1258,10 @@ class documentLangNotIdentified extends quailTest {
 
 
 /**
-*  OAC # 69
 *  Meta refresh is not used with a time-out.
 *  meta elements that contain a http-equiv attribute with a value of "refresh" cannot contain a content attribute with a value of any number greater than zero.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=69
-**/
+*	@link http://quail-lib.org/test-info/documentMetaNotUsedWithTimeout
+*/
 
 class documentMetaNotUsedWithTimeout extends quailTest {
 
@@ -1337,19 +1280,16 @@ class documentMetaNotUsedWithTimeout extends quailTest {
 
 
 /**
-*  OAC # 191
 *  The reading direction of all text is correctly marked.
 *  The reading direction of all text is correctly marked.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=191
-**/
+*/
 
 
 /**
-*  OAC # 211
 *  All changes in text direction are marked using the dir attribute.
 *  Identify changes in the text direction of text that includes nested directional runs by providing the dir attribute on inline elements. A nested directional run is a run of text that includes mixed directional text, for example, a paragraph in English containing a quoted Hebrew sentence which in turn includes a quotation in French.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=211
-**/
+*	@link http://quail-lib.org/test-info/documentReadingDirection
+*/
 
 class documentReadingDirection extends quailTest {
 
@@ -1374,11 +1314,10 @@ class documentReadingDirection extends quailTest {
 
 
 /**
-*  OAC # 181
 *  Strict doctype is declared.
 *  A 'strict' doctype must be declared in the document. This can either be the HTML4.01 or XHTML 1.0 strict doctype.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=181
-**/
+*	@link http://quail-lib.org/test-info/documentStrictDocType
+*/
 
 class documentStrictDocType extends quailTest {
 
@@ -1395,11 +1334,10 @@ class documentStrictDocType extends quailTest {
 
 
 /**
-*  OAC # 53
 *  title describes the document.
 *  This error is generated for each title element.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=53
-**/
+*	@link http://quail-lib.org/test-info/documentTitleDescribesDocument
+*/
 
 class documentTitleDescribesDocument extends quailTest {
 
@@ -1419,11 +1357,10 @@ class documentTitleDescribesDocument extends quailTest {
 
 
 /**
-*  OAC # 52
 *  title is not placeholder text.
 *  title element content can not be any one of (case insensitive) \"the title\""
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=52
-**/
+*	@link http://quail-lib.org/test-info/documentTitleIsNotPlaceholder
+*/
 
 class documentTitleIsNotPlaceholder extends quailTest {
 
@@ -1444,11 +1381,10 @@ class documentTitleIsNotPlaceholder extends quailTest {
 
 
 /**
-*  OAC # 51
 *  title is short.
 *  title element content must be less than 150 characters (English).
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=51
-**/
+*	@link http://quail-lib.org/test-info/documentTitleIsShort
+*/
 
 class documentTitleIsShort extends quailTest {
 
@@ -1469,11 +1405,10 @@ class documentTitleIsShort extends quailTest {
 
 
 /**
-*  OAC # 50
 *  title contains text.
 *  title element content cannot be empty or whitespace.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=50
-**/
+*	@link http://quail-lib.org/test-info/documentTitleNotEmpty
+*/
 
 class documentTitleNotEmpty extends quailTest {
 
@@ -1494,11 +1429,10 @@ class documentTitleNotEmpty extends quailTest {
 
 
 /**
-*  OAC # 188
 *  Document validates to specification.
 *  Document must validate to declared doctype.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=188
-**/
+*	@link http://quail-lib.org/test-info/documentValidatesToDocType
+*/
 
 class documentValidatesToDocType extends quailTest {
 
@@ -1514,11 +1448,10 @@ class documentValidatesToDocType extends quailTest {
 
 
 /**
-*  OAC # 201
 *  All visual lists are marked.
 *  Create lists of related items using list elements appropriate for their purposes.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=201
-**/
+*	@link http://quail-lib.org/test-info/documentVisualListsAreMarkedUp
+*/
 
 class documentVisualListsAreMarkedUp extends quailTest {
 
@@ -1541,11 +1474,10 @@ class documentVisualListsAreMarkedUp extends quailTest {
 
 
 /**
-*  OAC # 101
 *  Words and phrases not in the document's primary language are marked.
 *  If the body element contains more than 10 characters (English) then this error will be generated.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=101
-**/
+*	@link http://quail-lib.org/test-info/documentWordsNotInLanguageAreMarked
+*/
 
 class documentWordsNotInLanguageAreMarked extends quailTest {
 
@@ -1572,11 +1504,10 @@ class documentWordsNotInLanguageAreMarked extends quailTest {
 
 
 /**
-*  OAC # 143
 *  All embed elements have an associated noembed element that contains a text equivalent to the embed element.
 *  Provide a text equivalent for the embed element.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=143
-**/
+*	@link http://quail-lib.org/test-info/embedHasAssociatedNoEmbed
+*/
 
 class embedHasAssociatedNoEmbed extends quailTest {
 
@@ -1595,11 +1526,10 @@ class embedHasAssociatedNoEmbed extends quailTest {
 
 
 /**
-*  OAC # 145
 *  embed must have alt attribute.
 *  embed element must have an alt attribute.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=145
-**/
+*	@link http://quail-lib.org/test-info/embedMustHaveAltAttribute
+*/
 
 class embedMustHaveAltAttribute extends quailTest {
 
@@ -1616,11 +1546,10 @@ class embedMustHaveAltAttribute extends quailTest {
 
 
 /**
-*  OAC # 146
 *  embed must not have empty Alt text.
 *  embed element cannot have alt attribute value of null ("") or whitespace.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=146
-**/
+*	@link http://quail-lib.org/test-info/embedMustNotHaveEmptyAlt
+*/
 
 class embedMustNotHaveEmptyAlt extends quailTest {
 
@@ -1637,11 +1566,10 @@ class embedMustNotHaveEmptyAlt extends quailTest {
 
 
 /**
-*  OAC # 205
 *  embed provides a keyboard mechanism to return focus to the parent window.
 *  Ensure that keyboard users do not become trapped in a subset of the content that can only be exited using a mouse or pointing device.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=205
-**/
+*	@link http://quail-lib.org/test-info/embedProvidesMechanismToReturnToParent
+*/
 
 class embedProvidesMechanismToReturnToParent extends quailTagTest {
 
@@ -1652,11 +1580,10 @@ class embedProvidesMechanismToReturnToParent extends quailTagTest {
 
 
 /**
-*  OAC # 142
 *  Excessive use of emoticons.
 *  This error is generated if 4 or more emoticons are detected. [Editor's Note - how are emoticons detected?]
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=142
-**/
+*	@link http://quail-lib.org/test-info/emoticonsExcessiveUse
+*/
 
 class emoticonsExcessiveUse extends quailTest {
 
@@ -1712,11 +1639,10 @@ class emoticonsMissingAbbr extends quailTest {
 
 
 /**
-*  OAC # 111
 *  All input elements, type of "file", have an explicitly associated label.
 *  input element that contains a type attribute value of "file" must have an associated label element. An associated label is one in which the for attribute value of the label element is the same as the id attribute value of the input element.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=111
-**/
+*	@link http://quail-lib.org/test-info/fileHasLabel
+*/
 
 class fileHasLabel extends inputHasLabel {
 
@@ -1731,11 +1657,10 @@ class fileHasLabel extends inputHasLabel {
 
 
 /**
-*  OAC # 115
 *  All input elements, type of "file", have a label that is positioned close to the control.
 *  input element with a type attribute value of "file" must have an associated label element positioned close to it.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=115
-**/
+*	@link http://quail-lib.org/test-info/fileLabelIsNearby
+*/
 
 class fileLabelIsNearby extends quailTest {
 
@@ -1752,11 +1677,10 @@ class fileLabelIsNearby extends quailTest {
 
 
 /**
-*  OAC # 154
 *  font must not be used.
 *  This error is generated for all font elements.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=154
-**/
+*	@link http://quail-lib.org/test-info/fontIsNotUsed
+*/
 
 class fontIsNotUsed extends quailTagTest {
 
@@ -1774,11 +1698,10 @@ class formAllowsCheckIfIrreversable extends quailTagTest {
 
 
 /**
-*  OAC # 212
 *  Information deleted using a web page can be recovered.
 *  Help users with disabilities avoid serious consequences as the result of a mistake when performing an action that cannot be reversed.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=212
-**/
+*	@link http://quail-lib.org/test-info/formDeleteIsReversable
+*/
 
 class formDeleteIsReversable extends quailTest {
 
@@ -1802,11 +1725,10 @@ class formDeleteIsReversable extends quailTest {
 
 
 /**
-*  OAC # 210
 *  Form submission data is presented to the user before final acceptance for all irreversable transactions.
 *  Provide users with a way to ensure their input is correct before completing an irreversible transaction.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=210
-**/
+*	@link http://quail-lib.org/test-info/formErrorMessageHelpsUser
+*/
 
 class formErrorMessageHelpsUser extends quailTagTest {
 
@@ -1817,11 +1739,10 @@ class formErrorMessageHelpsUser extends quailTagTest {
 
 
 /**
-*  OAC # 209
 *  All form submission error messages provide assistance in correcting the error.
 *  Information about the nature and location of the input error is provided in text to enable the users to identify the problem.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=209
-**/
+*	@link http://quail-lib.org/test-info/formHasGoodErrorMessage
+*/
 
 class formHasGoodErrorMessage extends quailTagTest {
 
@@ -1832,11 +1753,10 @@ class formHasGoodErrorMessage extends quailTagTest {
 
 
 /**
-*  OAC # 199
 *  All form fields that are required are indicated to the user as required.
 *  Ensure that the label for any interactive component within Web content makes the component's purpose clear.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=199
-**/
+*	@link http://quail-lib.org/test-info/formWithRequiredLabel
+*/
 
 class formWithRequiredLabel extends quailTest {
 
@@ -1887,11 +1807,10 @@ class formWithRequiredLabel extends quailTest {
 
 
 /**
-*  OAC # 190
 *  frame element is not used.
 *  This error is generated for all frame elements.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=190
-**/
+*	@link http://quail-lib.org/test-info/frameIsNotUsed
+*/
 
 class frameIsNotUsed extends quailTagTest {
 
@@ -1904,11 +1823,10 @@ class frameIsNotUsed extends quailTagTest {
 }
 
 /**
-*  OAC # 33
 *  Relationship between frames must be described.
 *  If frameset element contains 3 or more frame elements then frameset element must contain a longdesc attribute that is a valid URL.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=33
-**/
+*	@link http://quail-lib.org/test-info/frameRelationshipsMustBeDescribed
+*/
 
 class frameRelationshipsMustBeDescribed extends quailTest {
 
@@ -1929,11 +1847,10 @@ class frameRelationshipsMustBeDescribed extends quailTest {
 
 
 /**
-*  OAC # 32
 *  The source for each frame is accessible content.
 *  frame content should be accessible, like HTML, not just an image.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=32
-**/
+*	@link http://quail-lib.org/test-info/frameSrcIsAccessible
+*/
 
 class frameSrcIsAccessible extends quailTest {
 
@@ -1956,11 +1873,10 @@ class frameSrcIsAccessible extends quailTest {
 
 
 /**
-*  OAC # 31
 *  All frame titles identify the purpose or function of the frame.
 *  frame title must describe the purpose or function of the frame.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=31
-**/
+*	@link http://quail-lib.org/test-info/frameTitlesDescribeFunction
+*/
 
 class frameTitlesDescribeFunction extends quailTest {
 
@@ -1979,11 +1895,10 @@ class frameTitlesDescribeFunction extends quailTest {
 
 
 /**
-*  OAC # 174
 *  All frame titles are not empty.
 *  frame title can't be empty.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=174
-**/
+*	@link http://quail-lib.org/test-info/frameTitlesNotEmpty
+*/
 
 class frameTitlesNotEmpty extends quailTest {
 
@@ -2001,11 +1916,10 @@ class frameTitlesNotEmpty extends quailTest {
 
 
 /**
-*  OAC # 175
 *  All frame titles do not contain placeholder text.
 *  frame title should not contain placeholder text.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=175
-**/
+*	@link http://quail-lib.org/test-info/frameTitlesNotPlaceholder
+*/
 
 class frameTitlesNotPlaceholder extends quailTest {
 
@@ -2028,11 +1942,10 @@ class frameTitlesNotPlaceholder extends quailTest {
 
 
 /**
-*  OAC # 30
 *  All frames have a title attribute.
 *  Each frame element must have a title attribute.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=30
-**/
+*	@link http://quail-lib.org/test-info/framesHaveATitle
+*/
 
 class framesHaveATitle extends quailTest {
 
@@ -2051,11 +1964,10 @@ class framesHaveATitle extends quailTest {
 
 
 /**
-*  OAC # 189
 *  frameset element is not used.
 *  This error is generated for all frameset elements.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=189
-**/
+*	@link http://quail-lib.org/test-info/framesetIsNotUsed
+*/
 
 class framesetIsNotUsed extends quailTagTest {
 
@@ -2068,11 +1980,10 @@ class framesetIsNotUsed extends quailTagTest {
 
 
 /**
-*  OAC # 34
 *  frameset must have a noframes section.
 *  frameset element must contain a noframes section.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=34
-**/
+*	@link http://quail-lib.org/test-info/framesetMustHaveNoFramesSection
+*/
 
 class framesetMustHaveNoFramesSection extends quailTest {
 
@@ -2091,11 +2002,10 @@ class framesetMustHaveNoFramesSection extends quailTest {
 
 
 /**
-*  OAC # 36
 *  The header following an h1 is h1 or h2.
 *  The following header must be equal, one level greater or any level less.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=36
-**/
+*	@link http://quail-lib.org/test-info/headerH1
+*/
 
 class headerH1 extends quailHeaderTest {
 	
@@ -2105,19 +2015,16 @@ class headerH1 extends quailHeaderTest {
 
 
 /**
-*  OAC # 36
 *  The header following an h1 is h1 or h2.
 *  The following header must be equal, one level greater or any level less.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=36
-**/
+*/
 
 
 /**
-*  OAC # 41
 *  All h1 elements are not used for formatting.
 *  h1 may be used for formatting. Use the proper markup.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=41
-**/
+*	@link http://quail-lib.org/test-info/headerH1Format
+*/
 
 class headerH1Format extends quailTagTest{
 
@@ -2128,11 +2035,10 @@ class headerH1Format extends quailTagTest{
 
 
 /**
-*  OAC # 37
 *  The header following an h2 is h1, h2 or h3.
 *  The following header must be equal, one level greater or any level less.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=37
-**/
+*	@link http://quail-lib.org/test-info/headerH2
+*/
 
 class headerH2 extends quailHeaderTest {
 	
@@ -2142,19 +2048,16 @@ class headerH2 extends quailHeaderTest {
 
 
 /**
-*  OAC # 37
 *  The header following an h2 is h1, h2 or h3.
 *  The following header must be equal, one level greater or any level less.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=37
-**/
+*/
 
 
 /**
-*  OAC # 42
 *  All h2 elements are not used for formatting.
 *  h2 may be used for formatting. Use the proper markup.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=42
-**/
+*	@link http://quail-lib.org/test-info/headerH2Format
+*/
 
 class headerH2Format extends quailTagTest{
 
@@ -2164,11 +2067,10 @@ class headerH2Format extends quailTagTest{
 
 
 /**
-*  OAC # 38
 *  The header following an h3 is h1, h2, h3 or h4.
 *  The following header must be equal, one level greater or any level less.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=38
-**/
+*	@link http://quail-lib.org/test-info/headerH3
+*/
 
 class headerH3 extends quailHeaderTest {
 	
@@ -2178,19 +2080,16 @@ class headerH3 extends quailHeaderTest {
 
 
 /**
-*  OAC # 38
 *  The header following an h3 is h1, h2, h3 or h4.
 *  The following header must be equal, one level greater or any level less.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=38
-**/
+*/
 
 
 /**
-*  OAC # 43
 *  All h3 elements are not used for formatting.
 *  h3 may be used for formatting. Use the proper markup.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=43
-**/
+*	@link http://quail-lib.org/test-info/headerH3Format
+*/
 
 class headerH3Format extends quailTagTest{
 
@@ -2200,19 +2099,16 @@ class headerH3Format extends quailTagTest{
 
 
 /**
-*  OAC # 39
 *  The header following an h4 is h1, h2, h3, h4 or h5.
 *  The following header must be equal, one level greater or any level less.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=39
-**/
+*/
 
 
 /**
-*  OAC # 40
 *  The header following an h5 is h6 or any header less than h6.
 *  The following header must be equal, one level greater or any level less.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=40
-**/
+*	@link http://quail-lib.org/test-info/headerH4
+*/
 
 class headerH4 extends quailHeaderTest {
 	
@@ -2222,27 +2118,22 @@ class headerH4 extends quailHeaderTest {
 
 
 /**
-*  OAC # 39
 *  The header following an h4 is h1, h2, h3, h4 or h5.
 *  The following header must be equal, one level greater or any level less.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=39
-**/
+*/
 
 
 /**
-*  OAC # 40
 *  The header following an h5 is h6 or any header less than h6.
 *  The following header must be equal, one level greater or any level less.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=40
-**/
+*/
 
 
 /**
-*  OAC # 44
 *  All h4 elements are not used for formatting.
 *  h4 may be used for formatting. Use the proper markup.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=44
-**/
+*	@link http://quail-lib.org/test-info/headerH4Format
+*/
 
 class headerH4Format extends quailTagTest{
 
@@ -2258,11 +2149,10 @@ class headerH5 extends quailHeaderTest {
 
 
 /**
-*  OAC # 45
 *  All h5 elements are not used for formatting.
 *  h5 may be used for formatting. Use the proper markup.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=45
-**/
+*	@link http://quail-lib.org/test-info/headerH5Format
+*/
 
 class headerH5Format extends quailTagTest{
 
@@ -2272,11 +2162,10 @@ class headerH5Format extends quailTagTest{
 
 
 /**
-*  OAC # 46
 *  All h6 elements are not used for formatting.
 *  h6 may be used for formatting. Use the proper markup.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=46
-**/
+*	@link http://quail-lib.org/test-info/headerH6Format
+*/
 
 class headerH6Format extends quailTagTest{
 
@@ -2286,11 +2175,10 @@ class headerH6Format extends quailTagTest{
 
 
 /**
-*  OAC # 206
 *  Each section of content is marked with a header element.
 *  Using the heading elements, h and h1 - h6, to markup the beginning of each section in the content can assist in navigation.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=206
-**/
+*	@link http://quail-lib.org/test-info/headersUseToMarkSections
+*/
 
 class headersUseToMarkSections extends quailTest {
 
@@ -2321,11 +2209,10 @@ class headersUseToMarkSections extends quailTest {
 
 
 /**
-*  OAC # 108
 *  i (italic) element is not used.
 *  This error will be generated for all i elements.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=108
-**/
+*	@link http://quail-lib.org/test-info/iIsNotUsed
+*/
 
 class iIsNotUsed extends quailTagTest {
 
@@ -2336,11 +2223,10 @@ class iIsNotUsed extends quailTagTest {
 
 
 /**
-*  OAC # 147
 *  iframe must not use longdesc.
 *  Iframe element cannot contain a longdesc attribute.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=147
-**/
+*	@link http://quail-lib.org/test-info/iframeMustNotHaveLongdesc
+*/
 
 class iframeMustNotHaveLongdesc extends quailTest {
 
@@ -2357,11 +2243,10 @@ class iframeMustNotHaveLongdesc extends quailTest {
 
 
 /**
-*  OAC # 121
 *  All active areas in all server-side image maps have duplicate text links in the document.
 *  Any img element that contains ismap attribute will generate this error.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=121
-**/
+*	@link http://quail-lib.org/test-info/imageMapServerSide
+*/
 
 class imageMapServerSide extends quailTest {
 
@@ -2378,11 +2263,10 @@ class imageMapServerSide extends quailTest {
 
 
 /**
-*  OAC # 16
 *  Alt text for all img elements is the empty string ("") if the image is decorative.
 *  Decorative images must have empty string ("") Alt text.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=16
-**/
+*	@link http://quail-lib.org/test-info/imgAltEmptyForDecorativeImages
+*/
 
 class imgAltEmptyForDecorativeImages extends quailTest {
 
@@ -2399,11 +2283,10 @@ class imgAltEmptyForDecorativeImages extends quailTest {
 
 
 /**
-*  OAC # 15
 *  Alt text for all img elements used as source anchors identifies the destination of the link.
 *  img element that is contained by an a (anchor) element must have Alt text that identifies the link destination.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=15
-**/
+*	@link http://quail-lib.org/test-info/imgAltIdentifiesLinkDestination
+*/
 
 class imgAltIdentifiesLinkDestination extends quailTest {
 
@@ -2429,8 +2312,8 @@ class imgAltIdentifiesLinkDestination extends quailTest {
 *  OAC # 2
 *  Alt text is not the same as the filename unless author has confirmed it is correct.
 *  img element cannot have alt attribute value that is the same as its src attribute.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=2
-**/
+*	@link http://quail-lib.org/test-info/imgAltIsDifferent
+*/
 
 class imgAltIsDifferent extends quailTest {
 
@@ -2448,11 +2331,10 @@ class imgAltIsDifferent extends quailTest {
 
 
 /**
-*  OAC # 11
 *  Alt text for all img elements contains all text in the image unless the image text is decorative or appears elsewhere in the document.
 *  This error is generated for all img elements that have a width and height greater than 50.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=11
-**/
+*	@link http://quail-lib.org/test-info/imgAltIsSameInText
+*/
 
 class imgAltIsSameInText extends quailTest {
 
@@ -2472,8 +2354,8 @@ class imgAltIsSameInText extends quailTest {
 *  OAC # 3
 *  Image Alt text is short.
 *  Image Alt text is short or user must confirm that Alt text is as short as possible.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=3
-**/
+*	@link http://quail-lib.org/test-info/imgAltIsTooLong
+*/
 
 class imgAltIsTooLong extends quailTest {
 
@@ -2493,8 +2375,8 @@ class imgAltIsTooLong extends quailTest {
 *  OAC # 7
 *  Alt text for all img elements used as source anchors is not empty when there is no other text in the anchor.
 *  img element cannot have alt attribute value of null or whitespace if the img element is contained by an A element and there is no other link text.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=7
-**/
+*	@link http://quail-lib.org/test-info/imgAltNotEmptyInAnchor
+*/
 
 class imgAltNotEmptyInAnchor extends quailTest {
 
@@ -2519,8 +2401,8 @@ class imgAltNotEmptyInAnchor extends quailTest {
 *  OAC # 6
 *  Alt text for all img elements is not placeholder text unless author has confirmed it is correct.
 *  img element cannot have alt attribute value of "nbsp" or "spacer".
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=6
-**/
+*	@link http://quail-lib.org/test-info/imgAltNotPlaceHolder
+*/
 
 class imgAltNotPlaceHolder extends quailTest {
 
@@ -2547,11 +2429,10 @@ class imgAltNotPlaceHolder extends quailTest {
 
 
 /**
-*  OAC # 10
 *  All img elements have associated images that do not flicker.
 *  This error is generated for all img elements that contain a src attribute value that ends with ".gif" (case insensitive). and have a width and height larger than 25.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=10
-**/
+*	@link http://quail-lib.org/test-info/imgGifNoFlicker
+*/
 
 class imgGifNoFlicker extends quailTest {
 
@@ -2608,8 +2489,8 @@ class imgGifNoFlicker extends quailTest {
 *  OAC # 1
 *  All img elements have an alt attribute.
 *  All img elements must have an alt attribute.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=1
-**/
+*	@link http://quail-lib.org/test-info/imgHasAlt
+*/
 
 class imgHasAlt extends quailTest {
 
@@ -2618,6 +2499,7 @@ class imgHasAlt extends quailTest {
 	/**
 	*	The check method of this test. We are iterating through all img
 	*	elements and tagging any without an ALT attribute.
+*	@link http://quail-lib.org/test-info/as
 	*/
 	function check() {
 		foreach($this->getAllElements('img') as $img) {
@@ -2633,8 +2515,8 @@ class imgHasAlt extends quailTest {
 *  OAC # 8
 *  A long description is used for each img element that does not have Alt text conveying the same information as the image.
 *  img element must contain a longdesc attribute.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=8
-**/
+*	@link http://quail-lib.org/test-info/imgHasLongDesc
+*/
 
 class imgHasLongDesc extends quailTest {
 
@@ -2657,8 +2539,8 @@ class imgHasLongDesc extends quailTest {
 *  OAC # 5
 *  Important images should not have spacer Alt text.
 *  img element cannot have alt attribute value of whitespace if WIDTH and HEIGHT attribute values are both greater than 25.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=5
-**/
+*	@link http://quail-lib.org/test-info/imgImportantNoSpacerAlt
+*/
 
 class imgImportantNoSpacerAlt extends quailTest {
 
@@ -2687,11 +2569,10 @@ class imgImportantNoSpacerAlt extends quailTest {
 
 
 /**
-*  OAC # 13
 *  All links in all client side image-maps are duplicated within the document.
 *  img element must not contain a usemap attribute unless all links in the MAP are duplicated within the document. The MAP element is referred by the USEMAP element's usemap attribute. Links within MAP are referred by area elements href attribute contained by MAP element. [Editor's Note - can duplicate links appear anywhere within content or must they be part of a link group?]
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=13
-**/
+*	@link http://quail-lib.org/test-info/imgMapAreasHaveDuplicateLink
+*/
 
 class imgMapAreasHaveDuplicateLink extends quailTest {
 
@@ -2734,8 +2615,8 @@ class imgMapAreasHaveDuplicateLink extends quailTest {
 *  OAC # 9
 *  All img elements that have a longdesc attribute also have an associated 'd-link'.
 *  img element that contains a longdesc attribute must have a following d-link. A d-link must consist of an A element that contains only the text "d" or "D". The A element must have an href attribute that is a valid URL and is the same as the img element's longdesc attribute. The d-link must immediately follow the img element, separated only by whitespace.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=9
-**/
+*	@link http://quail-lib.org/test-info/imgNeedsLongDescWDlink
+*/
 
 class imgNeedsLongDescWDlink extends quailTest {
 
@@ -2769,8 +2650,8 @@ class imgNeedsLongDescWDlink extends quailTest {
 *  OAC # 4
 *  Non-Decorative images must have Alt text.
 *  img element cannot have alt attribute value of null ("") if WIDTH and HEIGHT attribute values are both greater than 25.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=4
-**/
+*	@link http://quail-lib.org/test-info/imgNonDecorativeHasAlt
+*/
 
 class imgNonDecorativeHasAlt extends quailTest {
 
@@ -2791,11 +2672,10 @@ class imgNonDecorativeHasAlt extends quailTest {
 
 
 /**
-*  OAC # 14
 *  For all img elements, text does not refer to the image by color alone.
 *  This error is generated for all img elements that have a width and height greater than 100.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=14
-**/
+*	@link http://quail-lib.org/test-info/imgNotReferredToByColorAlone
+*/
 
 class imgNotReferredToByColorAlone extends quailTest {
 
@@ -2812,11 +2692,10 @@ class imgNotReferredToByColorAlone extends quailTest {
 
 
 /**
-*  OAC # 170
 *  Server-side image maps are not used except when image map regions cannot be defined using an available geometric shape.
 *  A server-side image map should only be used when a client-side image map can not be used.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=170
-**/
+*	@link http://quail-lib.org/test-info/imgServerSideMapNotUsed
+*/
 
 class imgServerSideMapNotUsed extends quailTest {
 
@@ -2832,11 +2711,10 @@ class imgServerSideMapNotUsed extends quailTest {
 
 
 /**
-*  OAC # 140
 *  All img elements do not contain a title attribute.
 *  img element must not contain the title attribute.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=140
-**/
+*	@link http://quail-lib.org/test-info/imgShouldNotHaveTitle
+*/
 
 class imgShouldNotHaveTitle extends quailTest {
 
@@ -2854,11 +2732,10 @@ class imgShouldNotHaveTitle extends quailTest {
 
 
 /**
-*  OAC # 12
 *  All img elements with an ismap attribute have a valid usemap attribute.
 *  img element may not contain an ismap attribute.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=12
-**/
+*	@link http://quail-lib.org/test-info/imgWithMapHasUseMap
+*/
 
 class imgWithMapHasUseMap extends quailTest {
 
@@ -2875,11 +2752,10 @@ class imgWithMapHasUseMap extends quailTest {
 
 
 /**
-*  OAC # 124
 *  All img elements with images containing math expressions have equivalent MathML markup.
 *  This error is generated for all img elements that have a width and height greater than 100.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=124
-**/
+*	@link http://quail-lib.org/test-info/imgWithMathShouldHaveMathEquivalent
+*/
 
 class imgWithMathShouldHaveMathEquivalent extends quailTest {
 
@@ -2899,11 +2775,10 @@ class imgWithMathShouldHaveMathEquivalent extends quailTest {
 
 
 /**
-*  OAC # 130
 *  All input elements, type of "checkbox", have a valid tab index.
 *  input element that contains a type attribute value of "checkbox" must have a tabindex attribute.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=130
-**/
+*	@link http://quail-lib.org/test-info/inputCheckboxHasTabIndex
+*/
 
 class inputCheckboxHasTabIndex extends inputTabIndex {
 
@@ -2915,11 +2790,10 @@ class inputCheckboxHasTabIndex extends inputTabIndex {
 
 
 /**
-*  OAC # 200
 *  All checkbox groups are marked using fieldset and legend elements.
 *  form element content must contain both fieldset and legend elements if there are related checkbox buttons.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=200
-**/
+*	@link http://quail-lib.org/test-info/inputCheckboxRequiresFieldset
+*/
 
 class inputCheckboxRequiresFieldset extends quailTest {
 
@@ -2939,11 +2813,10 @@ class inputCheckboxRequiresFieldset extends quailTest {
 
 
 /**
-*  OAC # 54
 *  input should not use color alone.
 *  All input elements, except those with a type of "hidden", will generate this error.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=54
-**/
+*	@link http://quail-lib.org/test-info/inputDoesNotUseColorAlone
+*/
 
 class inputDoesNotUseColorAlone extends quailTest {
 
@@ -2960,11 +2833,10 @@ class inputDoesNotUseColorAlone extends quailTest {
 
 
 /**
-*  OAC # 193
 *  All input elements, except those with with a type attribute value of "image", do not have an alt attribute.
 *  The input element is used to create many kinds of form controls. Although the HTML DTD permits the alt attribute on all of these, it should be used only on image submit buttons. User agent support for this attribute on other types of form controls is not well defined, and other mechanisms are used to label these controls.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=193
-**/
+*	@link http://quail-lib.org/test-info/inputElementsDontHaveAlt
+*/
 
 class inputElementsDontHaveAlt extends quailTest {
 
@@ -2980,11 +2852,10 @@ class inputElementsDontHaveAlt extends quailTest {
 
 
 /**
-*  OAC # 131
 *  All input elements, type of "file", have a valid tab index.
 *  input element that contains a type attribute value of "file" must have a tabindex attribute.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=131
-**/
+*	@link http://quail-lib.org/test-info/inputFileHasTabIndex
+*/
 
 class inputFileHasTabIndex extends inputTabIndex {
 
@@ -2997,11 +2868,10 @@ class inputFileHasTabIndex extends inputTabIndex {
 
 
 /**
-*  OAC # 57
 *  Alt text for all input elements with a type attribute value of "image" identifies the purpose or function of the image.
 *  input element with type of "image" must have Alt text that identifies the purpose or function of the image.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=57
-**/
+*	@link http://quail-lib.org/test-info/inputImageAltIdentifiesPurpose
+*/
 
 class inputImageAltIdentifiesPurpose extends quailTest {
 
@@ -3019,11 +2889,10 @@ class inputImageAltIdentifiesPurpose extends quailTest {
 
 
 /**
-*  OAC # 59
 *  Image used in input element - Alt text should not be the same as the filename.
 *  input elements cannot have alt attribute values that are the same as their src attribute values.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=59
-**/
+*	@link http://quail-lib.org/test-info/inputImageAltIsNotFileName
+*/
 
 class inputImageAltIsNotFileName extends quailTest {
 
@@ -3042,11 +2911,10 @@ class inputImageAltIsNotFileName extends quailTest {
 
 
 /**
-*  OAC # 60
 *  Image used in input element - Alt text should not be placeholder text.
 *  input elements cannot have alt attribute values that are (case insensitive) (exactly) \"image\""
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=60
-**/
+*	@link http://quail-lib.org/test-info/inputImageAltIsNotPlaceholder
+*/
 
 class inputImageAltIsNotPlaceholder extends imgAltNotPlaceHolder {
 
@@ -3069,11 +2937,10 @@ class inputImageAltIsNotPlaceholder extends imgAltNotPlaceHolder {
 
 
 /**
-*  OAC # 58
 *  Alt text for all input elements with a type attribute value of "image" is less than 100 characters (English) or the user has confirmed that the Alt text is as short as possible.
 *  input elements must have alt attribute value of less than 100 characters (English).
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=58
-**/
+*	@link http://quail-lib.org/test-info/inputImageAltIsShort
+*/
 
 class inputImageAltIsShort extends quailTest {
 
@@ -3090,18 +2957,17 @@ class inputImageAltIsShort extends quailTest {
 
 
 /**
-*  OAC # 166
 *  Alt text for all input elements with a type attribute value of "image" does not use the words "submit" or "button" (English).
 *  Alt text for form submit buttons must not use the words "submit" or "button".
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=166
-**/
+*	@link http://quail-lib.org/test-info/inputImageAltNotRedundant
+*/
 
 class inputImageAltNotRedundant extends quailTest {
 
 	var $default_severity = QUAIL_TEST_SEVERE;
 
 	var $strings = array('en' => array('submit', 'button'),
-							   'es' => array('enviar', 'botón'),
+							   'es' => array('enviar', 'bot&oacute;n'),
 							  );
 
 	function check() {
@@ -3118,11 +2984,10 @@ class inputImageAltNotRedundant extends quailTest {
 
 
 /**
-*  OAC # 56
 *  All input elements with a type attribute value of "image" have an alt attribute.
 *  input element with type of "image" must have an alt attribute.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=56
-**/
+*	@link http://quail-lib.org/test-info/inputImageHasAlt
+*/
 
 class inputImageHasAlt extends quailTest {
 
@@ -3140,11 +3005,10 @@ class inputImageHasAlt extends quailTest {
 
 
 /**
-*  OAC # 167
 *  Alt text for all input elements with a type attribute value of "image" contains all non decorative text in the image.
 *  This error is generated for all input elements that have a type of "image".
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=167
-**/
+*	@link http://quail-lib.org/test-info/inputImageNotDecorative
+*/
 
 class inputImageNotDecorative extends quailTest {
 
@@ -3160,11 +3024,10 @@ class inputImageNotDecorative extends quailTest {
 
 
 /**
-*  OAC # 129
 *  All input elements, type of "password", have a valid tab index.
 *  input element that contains a type attribute value of "password" must have a tabindex attribute.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=129
-**/
+*	@link http://quail-lib.org/test-info/inputPasswordHasTabIndex
+*/
 
 class inputPasswordHasTabIndex extends inputTabIndex {
 
@@ -3176,11 +3039,10 @@ class inputPasswordHasTabIndex extends inputTabIndex {
 
 
 /**
-*  OAC # 128
 *  All input elements, type of "radio", have a valid tab index.
 *  input element that contains a type attribute value of "radio" must have a tabindex attribute.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=128
-**/
+*	@link http://quail-lib.org/test-info/inputRadioHasTabIndex
+*/
 
 class inputRadioHasTabIndex extends inputTabIndex {
 
@@ -3192,11 +3054,10 @@ class inputRadioHasTabIndex extends inputTabIndex {
 
 
 /**
-*  OAC # 207
 *  All input elements, type of "submit", have a valid tab index.
 *  input element that contains a type attribute value of "submit" must have a tabindex attribute.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=207
-**/
+*	@link http://quail-lib.org/test-info/inputSubmitHasTabIndex
+*/
 
 class inputSubmitHasTabIndex extends inputTabIndex {
 
@@ -3208,11 +3069,10 @@ class inputSubmitHasTabIndex extends inputTabIndex {
 
 
 /**
-*  OAC # 55
 *  All input elements, type of "text", have an explicitly associated label.
 *  input element that contains a type attribute value of "text" must have an associated label element. An associated label is one in which the for attribute value of the label element is the same as the id attribute value of the input element.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=55
-**/
+*	@link http://quail-lib.org/test-info/inputTextHasLabel
+*/
 
 class inputTextHasLabel extends inputHasLabel {
 
@@ -3227,11 +3087,10 @@ class inputTextHasLabel extends inputHasLabel {
 
 
 /**
-*  OAC # 127
 *  All input elements, type of "text", have a valid tab index.
 *  input element that contains a type attribute value of "text" must have a tabindex attribute.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=127
-**/
+*	@link http://quail-lib.org/test-info/inputTextHasTabIndex
+*/
 
 class inputTextHasTabIndex extends inputTabIndex {
 
@@ -3245,11 +3104,10 @@ class inputTextHasTabIndex extends inputTabIndex {
 
 
 /**
-*  OAC # 61
 *  input element, type of "text", must have default text.
 *  input elements that have a type attribute value of "text" must also contain a value attribute that contains text.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=61
-**/
+*	@link http://quail-lib.org/test-info/inputTextHasValue
+*/
 
 class inputTextHasValue extends quailTest {
 
@@ -3268,11 +3126,10 @@ class inputTextHasValue extends quailTest {
 
 
 /**
-*  OAC # 117
 *  input control, type of "text", must have valid default text.
 *  input element with a type of "text" cannot contain a VALUE attribute that is empty or whitespace.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=117
-**/
+*	@link http://quail-lib.org/test-info/inputTextValueNotEmpty
+*/
 
 class inputTextValueNotEmpty extends quailTest {
 
@@ -3289,11 +3146,10 @@ class inputTextValueNotEmpty extends quailTest {
 
 
 /**
-*  OAC # 161
 *  All label elements do not contain input elements.
 *  label elements should not contain input elements.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=161
-**/
+*	@link http://quail-lib.org/test-info/labelDoesNotContainInput
+*/
 
 class labelDoesNotContainInput extends quailTest {
 
@@ -3309,11 +3165,10 @@ class labelDoesNotContainInput extends quailTest {
 
 
 /**
-*  OAC # 162
 *  Each input element has only one associated label.
 *  input element must have only one associated label element.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=162
-**/
+*	@link http://quail-lib.org/test-info/labelMustBeUnique
+*/
 
 class labelMustBeUnique extends quailTest {
 
@@ -3334,11 +3189,10 @@ class labelMustBeUnique extends quailTest {
 
 
 /**
-*  OAC # 163
 *  Each label associated with an input element contains text.
 *  Label must contain some text.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=163
-**/
+*	@link http://quail-lib.org/test-info/labelMustNotBeEmpty
+*/
 
 class labelMustNotBeEmpty extends quailTest {
 
@@ -3363,11 +3217,10 @@ class labelMustNotBeEmpty extends quailTest {
 
 
 /**
-*  OAC # 171
 *  legend text describes the group of choices.
 *  The legend must describe the group of choices.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=171
-**/
+*	@link http://quail-lib.org/test-info/legendDescribesListOfChoices
+*/
 
 class legendDescribesListOfChoices extends quailTagTest {
 
@@ -3378,11 +3231,10 @@ class legendDescribesListOfChoices extends quailTagTest {
 
 
 /**
-*  OAC # 172
 *  legend text is not empty or whitespace.
 *  The legend must describe the group of choices.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=172
-**/
+*	@link http://quail-lib.org/test-info/legendTextNotEmpty
+*/
 
 class legendTextNotEmpty extends quailTest {
 
@@ -3398,11 +3250,10 @@ class legendTextNotEmpty extends quailTest {
 
 
 /**
-*  OAC # 173
 *  legend text is not placeholder text.
 *  The legend must describe the group of choices.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=173
-**/
+*	@link http://quail-lib.org/test-info/legendTextNotPlaceholder
+*/
 
 class legendTextNotPlaceholder extends quailTest {
 
@@ -3438,11 +3289,10 @@ class liDontUseImageForBullet extends quailTest {
 
 
 /**
-*  OAC # 135
 *  Document should use LINK for alternate content.
 *  head element must contain a link element with a rel attribute value that equals "alternate" and a href attribute value that is a valid URL.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=135
-**/
+*	@link http://quail-lib.org/test-info/linkUsedForAlternateContent
+*/
 
 class linkUsedForAlternateContent extends quailTest {
 
@@ -3463,11 +3313,10 @@ class linkUsedForAlternateContent extends quailTest {
 
 
 /**
-*  OAC # 134
 *  Document uses link element to describe navigation if it is within a collection.
 *  The link element can provide metadata about the position of an HTML page within a set of Web units or can assist in locating content with a set of Web units.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=134
-**/
+*	@link http://quail-lib.org/test-info/linkUsedToDescribeNavigation
+*/
 
 class linkUsedToDescribeNavigation extends quailTest {
 
@@ -3488,11 +3337,10 @@ class linkUsedToDescribeNavigation extends quailTest {
 
 
 /**
-*  OAC # 78
 *  List items must not be used to format text.
 *  OL element should not contain only one LI element.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=78
-**/
+*	@link http://quail-lib.org/test-info/listNotUsedForFormatting
+*/
 
 class listNotUsedForFormatting extends quailTest {
 
@@ -3515,11 +3363,10 @@ class listNotUsedForFormatting extends quailTest {
 
 
 /**
-*  OAC # 66
 *  marquee element is not used.
 *  This error will be generated for each marquee element.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=66
-**/
+*	@link http://quail-lib.org/test-info/marqueeIsNotUsed
+*/
 
 class marqueeIsNotUsed extends quailTagTest {
 
@@ -3531,11 +3378,10 @@ class marqueeIsNotUsed extends quailTagTest {
 
 
 /**
-*  OAC # 67
 *  menu items should not be used to format text.
 *  menu element must contain one LI element.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=67
-**/
+*	@link http://quail-lib.org/test-info/menuNotUsedToFormatText
+*/
 
 class menuNotUsedToFormatText extends quailTest {
 
@@ -3558,11 +3404,10 @@ class menuNotUsedToFormatText extends quailTest {
 
 
 /**
-*  OAC # 144
 *  noembed must have equivalent content.
 *  This error is generated for each noembed element.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=144
-**/
+*	@link http://quail-lib.org/test-info/noembedHasEquivalentContent
+*/
 
 class noembedHasEquivalentContent extends quailTagTest {
 
@@ -3574,11 +3419,10 @@ class noembedHasEquivalentContent extends quailTagTest {
 
 
 /**
-*  OAC # 35
 *  NOFRAMES section must contain text equivalent of FRAMES section.
 *  This error is generated for each NOFRAMES element.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=35
-**/
+*	@link http://quail-lib.org/test-info/noframesSectionMustHaveTextEquivalent
+*/
 
 class noframesSectionMustHaveTextEquivalent extends quailTest {
 
@@ -3599,11 +3443,10 @@ class noframesSectionMustHaveTextEquivalent extends quailTest {
 
 
 /**
-*  OAC # 72
 *  Content must be usable when object are disabled.
 *  If an object element contains a codebase attribute then the codebase attribute value must be null or whitespace.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=72
-**/
+*	@link http://quail-lib.org/test-info/objectContentUsableWhenDisabled
+*/
 
 class objectContentUsableWhenDisabled extends quailTagTest {
 
@@ -3615,11 +3458,10 @@ class objectContentUsableWhenDisabled extends quailTagTest {
 
 
 /**
-*  OAC # 29
 *  All objects do not flicker.
 *  This error is generated for all object elements.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=29
-**/
+*	@link http://quail-lib.org/test-info/objectDoesNotFlicker
+*/
 
 class objectDoesNotFlicker extends quailTagTest {
 
@@ -3631,11 +3473,10 @@ class objectDoesNotFlicker extends quailTagTest {
 
 
 /**
-*  OAC # 70
 *  object must not use color alone.
 *  This error is generated for every applet element.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=70
-**/
+*	@link http://quail-lib.org/test-info/objectDoesNotUseColorAlone
+*/
 
 class objectDoesNotUseColorAlone extends quailTagTest {
 
@@ -3646,11 +3487,10 @@ class objectDoesNotUseColorAlone extends quailTagTest {
 
 
 /**
-*  OAC # 73
 *  object user interface must be accessible.
 *  If an object element contains a codebase attribute then the codebase attribute value must be null or whitespace.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=73
-**/
+*	@link http://quail-lib.org/test-info/objectInterfaceIsAccessible
+*/
 
 class objectInterfaceIsAccessible extends quailTagTest {
 
@@ -3662,11 +3502,10 @@ class objectInterfaceIsAccessible extends quailTagTest {
 
 
 /**
-*  OAC # 74
 *  object link to multimedia file must have text transcript.
 *  object element cannot contain type attribute value of "video".
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=74
-**/
+*	@link http://quail-lib.org/test-info/objectLinkToMultimediaHasTextTranscript
+*/
 
 class objectLinkToMultimediaHasTextTranscript extends quailTest {
 
@@ -3684,11 +3523,10 @@ class objectLinkToMultimediaHasTextTranscript extends quailTest {
 
 
 /**
-*  OAC # 77
 *  All objects contain a text equivalent of the object.
 *  object element must contain a text equivalent for the object in case the object can't be rendered.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=77
-**/
+*	@link http://quail-lib.org/test-info/objectMustContainText
+*/
 
 class objectMustContainText extends quailTest {
 
@@ -3705,11 +3543,10 @@ class objectMustContainText extends quailTest {
 
 
 /**
-*  OAC # 158
 *  Use the embed element within the object element.
 *  Each object element must contain an embed element.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=158
-**/
+*	@link http://quail-lib.org/test-info/objectMustHaveEmbed
+*/
 
 class objectMustHaveEmbed extends quailTest {
 
@@ -3725,11 +3562,10 @@ class objectMustHaveEmbed extends quailTest {
 
 
 /**
-*  OAC # 75
 *  object must have a title.
 *  object element must contain a title attribute.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=75
-**/
+*	@link http://quail-lib.org/test-info/objectMustHaveTitle
+*/
 
 class objectMustHaveTitle extends quailTest {
 
@@ -3749,11 +3585,10 @@ class objectMustHaveTitle extends quailTest {
 
 
 /**
-*  OAC # 76
 *  object must have a valid title.
 *  object element must not have a title attribute with value of null or whitespace.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=76
-**/
+*	@link http://quail-lib.org/test-info/objectMustHaveValidTitle
+*/
 
 class objectMustHaveValidTitle extends quailTest {
 
@@ -3794,11 +3629,10 @@ class objectMustHaveValidTitle extends quailTest {
 
 
 /**
-*  OAC # 204
 *  object provides a keyboard mechanism to return focus to the parent window.
 *  Ensure that keyboard users do not become trapped in a subset of the content that can only be exited using a mouse or pointing device.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=204
-**/
+*	@link http://quail-lib.org/test-info/objectProvidesMechanismToReturnToParent
+*/
 
 class objectProvidesMechanismToReturnToParent extends quailTagTest {
 
@@ -3808,11 +3642,10 @@ class objectProvidesMechanismToReturnToParent extends quailTagTest {
 
 
 /**
-*  OAC # 141
 *  object may require a long description.
 *  This error is generated for every object element.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=141
-**/
+*	@link http://quail-lib.org/test-info/objectShouldHaveLongDescription
+*/
 
 class objectShouldHaveLongDescription extends quailTagTest {
 
@@ -3823,11 +3656,10 @@ class objectShouldHaveLongDescription extends quailTagTest {
 
 
 /**
-*  OAC # 71
 *  Text equivalents for object should be updated if object changes.
 *  If an object element contains a codebase attribute then the codebase attribute value must be null or whitespace.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=71
-**/
+*	@link http://quail-lib.org/test-info/objectTextUpdatesWhenObjectChanges
+*/
 
 class objectTextUpdatesWhenObjectChanges extends quailTagTest {
 
@@ -3838,11 +3670,10 @@ class objectTextUpdatesWhenObjectChanges extends quailTagTest {
 
 
 /**
-*  OAC # 119
 *  Content must be usable when objects are disabled.
 *  If object element contains a CLASSid attribute and any text then this error will be generated.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=119
-**/
+*	@link http://quail-lib.org/test-info/objectUIMustBeAccessible
+*/
 
 class objectUIMustBeAccessible extends quailTagTest {
 
@@ -3853,11 +3684,10 @@ class objectUIMustBeAccessible extends quailTagTest {
 
 
 /**
-*  OAC # 118
 *  Text equivalents for object should be updated if object changes.
 *  If object element contains a CLASSid attribute and any text then this error will be generated.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=118
-**/
+*	@link http://quail-lib.org/test-info/objectWithClassIDHasNoText
+*/
 
 class objectWithClassIDHasNoText extends quailTest {
 
@@ -3874,11 +3704,10 @@ class objectWithClassIDHasNoText extends quailTest {
 
 
 /**
-*  OAC # 79
 *  All p elements are not used as headers.
 *  All p element content must not be marked with either b, i, u, strong, font, em.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=79
-**/
+*	@link http://quail-lib.org/test-info/pNotUsedAsHeader
+*/
 
 class pNotUsedAsHeader extends quailTest {
 
@@ -3907,11 +3736,10 @@ class pNotUsedAsHeader extends quailTest {
 
 
 /**
-*  OAC # 109
 *  All input elements, type of "password", have an explicitly associated label.
 *  input element that contains a type attribute value of "password" must have an associated label element. An associated label is one in which the for attribute value of the label element is the same as the id attribute value of the input element.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=109
-**/
+*	@link http://quail-lib.org/test-info/passwordHasLabel
+*/
 
 class passwordHasLabel extends inputHasLabel {
 
@@ -3926,11 +3754,10 @@ class passwordHasLabel extends inputHasLabel {
 
 
 /**
-*  OAC # 113
 *  All input elements, type of "password", have a label that is positioned close to the control.
 *  input element with a type attribute value of "password" must have an associated label element positioned close to it.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=113
-**/
+*	@link http://quail-lib.org/test-info/passwordLabelIsNearby
+*/
 
 class passwordLabelIsNearby extends quailTest {
 
@@ -3947,11 +3774,10 @@ class passwordLabelIsNearby extends quailTest {
 
 
 /**
-*  OAC # 139
 *  pre element should not be used to create tabular layout.
 *  This error is generated for each pre element.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=139
-**/
+*	@link http://quail-lib.org/test-info/preShouldNotBeUsedForTabularLayout
+*/
 
 class preShouldNotBeUsedForTabularLayout extends quailTest {
 
@@ -3969,11 +3795,10 @@ class preShouldNotBeUsedForTabularLayout extends quailTest {
 
 
 /**
-*  OAC # 112
 *  All input elements, type of "radio", have an explicitly associated label.
 *  input element that contains a type attribute value of "radio" must have an associated label element. An associated label is one in which the for attribute value of the label element is the same as the id attribute value of the input element.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=112
-**/
+*	@link http://quail-lib.org/test-info/radioHasLabel
+*/
 
 class radioHasLabel extends inputHasLabel {
 
@@ -3988,11 +3813,10 @@ class radioHasLabel extends inputHasLabel {
 
 
 /**
-*  OAC # 116
 *  All input elements, type of "radio", have a label that is positioned close to the control.
 *  input element with a type attribute value of "radio" must have an associated label element positioned close to it.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=116
-**/
+*	@link http://quail-lib.org/test-info/radioLabelIsNearby
+*/
 
 class radioLabelIsNearby extends quailTest {
 
@@ -4008,11 +3832,10 @@ class radioLabelIsNearby extends quailTest {
 
 
 /**
-*  OAC # 148
 *  All radio button groups are marked using fieldset and legend elements.
 *  form element content must contain both fieldset and legend elements if there are related radio buttons.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=148
-**/
+*	@link http://quail-lib.org/test-info/radioMarkedWithFieldgroupAndLegend
+*/
 
 class radioMarkedWithFieldgroupAndLegend extends quailTest {
 
@@ -4039,11 +3862,10 @@ class radioMarkedWithFieldgroupAndLegend extends quailTest {
 */
 
 /**
-*  OAC # 82
 *  Content must be accessible when script is disabled.
 *  This error will be generated for all script elements.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=82
-**/
+*	@link http://quail-lib.org/test-info/scriptContentAccessibleWithScriptsTurnedOff
+*/
 
 class scriptContentAccessibleWithScriptsTurnedOff extends quailTagTest {
 
@@ -4054,11 +3876,10 @@ class scriptContentAccessibleWithScriptsTurnedOff extends quailTagTest {
 
 
 /**
-*  OAC # 84
 *  script must have a noscript section.
 *  script elements that occur within the body must be followed by a noscript section.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=84
-**/
+*	@link http://quail-lib.org/test-info/scriptInBodyMustHaveNoscript
+*/
 
 class scriptInBodyMustHaveNoscript extends quailTest {
 
@@ -4077,11 +3898,10 @@ class scriptInBodyMustHaveNoscript extends quailTest {
 
 
 /**
-*  OAC # 93
 *  All onclick event handlers have an associated onkeypress event handler.
 *  Any element that contains an onclick attribute must also contain an onkeypress attribute.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=93
-**/
+*	@link http://quail-lib.org/test-info/scriptOnclickRequiresOnKeypress
+*/
 
 class scriptOnclickRequiresOnKeypress extends quailTest {
 
@@ -4102,11 +3922,10 @@ class scriptOnclickRequiresOnKeypress extends quailTest {
 
 
 /**
-*  OAC # 94
 *  All ondblclick event handlers have corresponding keyboard-specific functions.
 *  Any element that contains an ondblclick  attribute will generate this error.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=94
-**/
+*	@link http://quail-lib.org/test-info/scriptOndblclickRequiresOnKeypress
+*/
 
 class scriptOndblclickRequiresOnKeypress extends scriptOnclickRequiresOnKeypress {
 
@@ -4115,11 +3934,10 @@ class scriptOndblclickRequiresOnKeypress extends scriptOnclickRequiresOnKeypress
 
 
 /**
-*  OAC # 95
 *  All onmousedown event handlers have an associated onkeydown event handler.
 *  Any element that contains an onmousedown attribute must also contain an onkeydown attribute.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=95
-**/
+*	@link http://quail-lib.org/test-info/scriptOnmousedownRequiresOnKeypress
+*/
 
 class scriptOnmousedownRequiresOnKeypress extends scriptOnclickRequiresOnKeypress {
 
@@ -4130,11 +3948,10 @@ class scriptOnmousedownRequiresOnKeypress extends scriptOnclickRequiresOnKeypres
 
 
 /**
-*  OAC # 96
 *  All onmousemove event handlers have corresponding keyboard-specific functions.
 *  Any element that contains an onmousemove attribute will generate this error.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=96
-**/
+*	@link http://quail-lib.org/test-info/scriptOnmousemove
+*/
 
 class scriptOnmousemove extends quailTest {
 
@@ -4155,11 +3972,10 @@ class scriptOnmousemove extends quailTest {
 
 
 /**
-*  OAC # 97
 *  All onmouseout event handlers have an associated onblur event handler.
 *  Any element that contains an onmouseout attribute must also contain an onblur attribute.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=97
-**/
+*	@link http://quail-lib.org/test-info/scriptOnmouseoutHasOnmouseblur
+*/
 
 class scriptOnmouseoutHasOnmouseblur extends scriptOnclickRequiresOnKeypress {
 
@@ -4171,11 +3987,10 @@ class scriptOnmouseoutHasOnmouseblur extends scriptOnclickRequiresOnKeypress {
 
 
 /**
-*  OAC # 98
 *  All onmouseover event handlers have an associated onfocus event handler.
 *  Any element that contains an onmouseover attribute must also contain an onfocus attribute.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=98
-**/
+*	@link http://quail-lib.org/test-info/scriptOnmouseoverHasOnfocus
+*/
 
 class scriptOnmouseoverHasOnfocus extends scriptOnclickRequiresOnKeypress {
 
@@ -4187,11 +4002,10 @@ class scriptOnmouseoverHasOnfocus extends scriptOnclickRequiresOnKeypress {
 
 
 /**
-*  OAC # 99
 *  All onmouseup event handlers have an associated onkeyup event handler.
 *  Any element that contains an onmouseup attribute must also contain an onkeyup attribute.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=99
-**/
+*	@link http://quail-lib.org/test-info/scriptOnmouseupHasOnkeyup
+*/
 
 class scriptOnmouseupHasOnkeyup extends scriptOnclickRequiresOnKeypress {
 
@@ -4202,11 +4016,10 @@ class scriptOnmouseupHasOnkeyup extends scriptOnclickRequiresOnKeypress {
 
 
 /**
-*  OAC # 83
 *  User interface for script must be accessible.
 *  This error will be generated for all script elements.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=83
-**/
+*	@link http://quail-lib.org/test-info/scriptUIMustBeAccessible
+*/
 
 class scriptUIMustBeAccessible extends quailTagTest {
 
@@ -4217,11 +4030,10 @@ class scriptUIMustBeAccessible extends quailTagTest {
 
 
 /**
-*  OAC # 81
 *  script should not cause screen flicker.
 *  This error will be generated for all script elements.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=81
-**/
+*	@link http://quail-lib.org/test-info/scriptsDoNotFlicker
+*/
 
 class scriptsDoNotFlicker extends quailTagTest {
 
@@ -4232,11 +4044,10 @@ class scriptsDoNotFlicker extends quailTagTest {
 
 
 /**
-*  OAC # 80
 *  Color alone should not be used in the script.
 *  This error will be generated for all script elements.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=80
-**/
+*	@link http://quail-lib.org/test-info/scriptsDoNotUseColorAlone
+*/
 
 class scriptsDoNotUseColorAlone extends quailTagTest {
 
@@ -4247,11 +4058,10 @@ class scriptsDoNotUseColorAlone extends quailTagTest {
 
 
 /**
-*  OAC # 86
 *  All select elements do not cause an extreme change in context.
 *  select element cannot contain onchange attribute.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=86
-**/
+*	@link http://quail-lib.org/test-info/selectDoesNotChangeContext
+*/
 
 class selectDoesNotChangeContext extends quailTest {
 
@@ -4268,11 +4078,10 @@ class selectDoesNotChangeContext extends quailTest {
 
 
 /**
-*  OAC # 85
 *  All select elements have an explicitly associated label.
 *  select element must have an associated label element. A label element is associated with the select element if the for attribute value of the label is the same as the id attribute of the select element.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=85
-**/
+*	@link http://quail-lib.org/test-info/selectHasAssociatedLabel
+*/
 
 class selectHasAssociatedLabel extends inputHasLabel {
 
@@ -4285,11 +4094,10 @@ class selectHasAssociatedLabel extends inputHasLabel {
 
 
 /**
-*  OAC # 149
 *  All select elements containing a large number options also contain optgroup elements.
 *  select element content that contains 4 or more option elements must contain at least 2 optgroup elements.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=149
-**/
+*	@link http://quail-lib.org/test-info/selectWithOptionsHasOptgroup
+*/
 
 class selectWithOptionsHasOptgroup extends quailTest {
 
@@ -4312,11 +4120,10 @@ class selectWithOptionsHasOptgroup extends quailTest {
 
 
 /**
-*  OAC # 159
 *  Sites must have a site map.
 *  Each site must have a site map.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=159
-**/
+*	@link http://quail-lib.org/test-info/siteMap
+*/
 
 class siteMap extends quailTest {
 
@@ -4335,11 +4142,10 @@ class siteMap extends quailTest {
 
 
 /**
-*  OAC # 27
 *  A "skip to content" link appears on all pages with blocks of material prior to the main document.
 *  Provide a mechanism to bypass blocks of material that are repeated on multiple Web units.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=27
-**/
+*	@link http://quail-lib.org/test-info/skipToContentLinkProvided
+*/
 
 class skipToContentLinkProvided extends quailTest {
 	
@@ -4391,11 +4197,10 @@ class skipToContentLinkProvided extends quailTest {
 
 
 /**
-*  OAC # 208
 *  The tab order specified by tabindex attributes follows a logical order.
 *  Provide a logical tab order when the default tab order does not suffice.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=208
-**/
+*	@link http://quail-lib.org/test-info/tabIndexFollowsLogicalOrder
+*/
 
 class tabIndexFollowsLogicalOrder extends quailTest {
 
@@ -4414,11 +4219,10 @@ class tabIndexFollowsLogicalOrder extends quailTest {
 
 
 /**
-*  OAC # 195
 *  Table captions identify the table.
 *  If the table has a caption then the caption must identify the table.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=195
-**/
+*	@link http://quail-lib.org/test-info/tableCaptionIdentifiesTable
+*/
 
 class tableCaptionIdentifiesTable extends quailTagTest {
 
@@ -4429,11 +4233,10 @@ class tableCaptionIdentifiesTable extends quailTagTest {
 
 
 /**
-*  OAC # 102
 *  All complex data tables have a summary.
 *  The summary is useful when the table has a complex structure (for example, when there are several sets of row or column headers, or when there are multiple groups of columns or rows). The summary may also be helpful for simple data tables that contain many columns or rows of data.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=102
-**/
+*	@link http://quail-lib.org/test-info/tableComplexHasSummary
+*/
 
 class tableComplexHasSummary extends quailTableTest {
 
@@ -4453,11 +4256,10 @@ class tableComplexHasSummary extends quailTableTest {
 
 
 /**
-*  OAC # 125
 *  All data tables contain th elements.
 *  Data tables must have th elements while layout tables can not have th elements.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=125
-**/
+*	@link http://quail-lib.org/test-info/tableDataShouldHaveTh
+*/
 
 class tableDataShouldHaveTh extends quailTableTest {
 
@@ -4476,11 +4278,10 @@ class tableDataShouldHaveTh extends quailTableTest {
 
 
 /**
-*  OAC # 138
 *  Substitutes for table header labels must be terse.
 *  abbr attribute value on th element must be less than 20 characters (English).
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=138
-**/
+*	@link http://quail-lib.org/test-info/tableHeaderLabelMustBeTerse
+*/
 
 class tableHeaderLabelMustBeTerse extends quailTableTest {
 
@@ -4507,10 +4308,9 @@ class tableHeaderLabelMustBeTerse extends quailTableTest {
 
 
 /**
-*  OAC # 186
 *  Use thead to group repeated table headers, tfoot for repeated table footers, and tbody for other groups of rows.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=186
-**/
+*	@link http://quail-lib.org/test-info/tableIsGrouped
+*/
 
 class tableIsGrouped extends quailTest {
 
@@ -4536,11 +4336,10 @@ class tableIsGrouped extends quailTest {
 
 
 /**
-*  OAC # 126
 *  All layout tables do not contain th elements.
 *  Data tables must have th elements while layout tables can not have th elements.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=126
-**/
+*	@link http://quail-lib.org/test-info/tableLayoutDataShouldNotHaveTh
+*/
 
 class tableLayoutDataShouldNotHaveTh extends quailTableTest {
 
@@ -4559,11 +4358,10 @@ class tableLayoutDataShouldNotHaveTh extends quailTableTest {
 
 
 /**
-*  OAC # 106
 *  All layout tables do not contain caption elements.
 *  table element content cannot contain a caption element if it's a layout table.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=106
-**/
+*	@link http://quail-lib.org/test-info/tableLayoutHasNoCaption
+*/
 
 class tableLayoutHasNoCaption extends quailTableTest {
 
@@ -4588,11 +4386,10 @@ class tableLayoutHasNoCaption extends quailTableTest {
 
 
 /**
-*  OAC # 105
 *  All layout tables have an empty summary attribute or no summary attribute.
 *  The table element, summary attribute for all layout tables contains no printable characters or is absent.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=105
-**/
+*	@link http://quail-lib.org/test-info/tableLayoutHasNoSummary
+*/
 
 class tableLayoutHasNoSummary extends quailTableTest {
 
@@ -4617,11 +4414,10 @@ class tableLayoutHasNoSummary extends quailTableTest {
 
 
 /**
-*  OAC # 122
 *  All layout tables make sense when linearized.
 *  This error is generated for all layout tables.  If the table contains th elements then it is a data table. If the table does not contain th elements then it is a layout table.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=122
-**/
+*	@link http://quail-lib.org/test-info/tableLayoutMakesSenseLinearized
+*/
 
 class tableLayoutMakesSenseLinearized extends quailTableTest {
 
@@ -4640,11 +4436,10 @@ class tableLayoutMakesSenseLinearized extends quailTableTest {
 
 
 /**
-*  OAC # 176
 *  All data table summaries describe navigation and structure of the table.
 *  The table summary can't be garbage text.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=176
-**/
+*	@link http://quail-lib.org/test-info/tableSummaryDescribesTable
+*/
 
 class tableSummaryDescribesTable extends quailTest {
 
@@ -4661,11 +4456,10 @@ class tableSummaryDescribesTable extends quailTest {
 
 
 /**
-*  OAC # 196
 *  Table summaries do not duplicate the table captions.
 *  The summary and the caption must be different. Caption identifies the table. Summary describes the table contents.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=196
-**/
+*	@link http://quail-lib.org/test-info/tableSummaryDoesNotDuplicateCaption
+*/
 
 class tableSummaryDoesNotDuplicateCaption extends quailTest {
 
@@ -4689,11 +4483,10 @@ class tableSummaryDoesNotDuplicateCaption extends quailTest {
 
 
 /**
-*  OAC # 103
 *  All data table summaries contain text.
 *  table element cannot contain an empty summary attribute if it's a data table.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=103
-**/
+*	@link http://quail-lib.org/test-info/tableSummaryIsEmpty
+*/
 
 class tableSummaryIsEmpty extends quailTableTest {
 
@@ -4713,11 +4506,10 @@ class tableSummaryIsEmpty extends quailTableTest {
 
 
 /**
-*  OAC # 104
 *  All data table summaries are greater than 10 printable characters (English).
 *  table element, summary attribute value must be greater than 10 characters (English) if it's a data table.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=104
-**/
+*	@link http://quail-lib.org/test-info/tableSummaryIsSufficient
+*/
 
 class tableSummaryIsSufficient extends quailTableTest {
 
@@ -4737,10 +4529,9 @@ class tableSummaryIsSufficient extends quailTableTest {
 
 
 /**
-*  OAC # 187
 *  Use colgroup and col elements to group columns.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=187
-**/
+*	@link http://quail-lib.org/test-info/tableUseColGroup
+*/
 
 class tableUseColGroup extends quailTableTest {
 
@@ -4759,11 +4550,10 @@ class tableUseColGroup extends quailTableTest {
 
 
 /**
-*  OAC # 137
 *  Long table header labels require terse substitutes.
 *  th element content must be less than 20 characters (English) if th element does not contain abbr attribute.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=137
-**/
+*	@link http://quail-lib.org/test-info/tableUsesAbbreviationForHeader
+*/
 
 class tableUsesAbbreviationForHeader extends quailTableTest {
 
@@ -4790,11 +4580,10 @@ class tableUsesAbbreviationForHeader extends quailTableTest {
 
 
 /**
-*  OAC # 136
 *  All data tables contain a caption unless the table is identified within the document.
 *  Tables must be identified by a caption unless they are identified within the document.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=136
-**/
+*	@link http://quail-lib.org/test-info/tableUsesCaption
+*/
 
 class tableUsesCaption extends quailTableTest {
 
@@ -4812,11 +4601,10 @@ class tableUsesCaption extends quailTableTest {
 
 
 /**
-*  OAC # 197
 *  Data tables that contain both row and column headers use the scope attribute to identify cells.
 *  The scope attribute may be used to clarify the scope of any cell used as a header.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=197
-**/
+*	@link http://quail-lib.org/test-info/tableWithBothHeadersUseScope
+*/
 
 class tableWithBothHeadersUseScope extends quailTest {
 
@@ -4847,11 +4635,10 @@ class tableWithBothHeadersUseScope extends quailTest {
 
 
 /**
-*  OAC # 198
 *  Data tables that contain more than one row/column of headers use the id and headers attributes to identify cells.
 *  id and headers attributes allow screen readers to speak the headers associated with each data cell when the relationships are too complex to be identified using the th element alone or the th element with the scope attribute.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=198
-**/
+*	@link http://quail-lib.org/test-info/tableWithMoreHeadersUseID
+*/
 
 class tableWithMoreHeadersUseID extends quailTableTest {
 
@@ -4893,11 +4680,10 @@ class tableWithMoreHeadersUseID extends quailTableTest {
 
 
 /**
-*  OAC # 194
 *  Table markup is used for all tabular information.
 *  The objective of this technique is to present tabular information in a way that preserves relationships within the information even when users cannot see the table or the presentation format is changed.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=194
-**/
+*	@link http://quail-lib.org/test-info/tabularDataIsInTable
+*/
 
 class tabularDataIsInTable extends quailTest {
 
@@ -4913,11 +4699,10 @@ class tabularDataIsInTable extends quailTest {
 
 
 /**
-*  OAC # 87
 *  All textarea elements have an explicitly associated label.
 *  All textarea elements must have an explicitly associated label.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=87
-**/
+*	@link http://quail-lib.org/test-info/textareaHasAssociatedLabel
+*/
 
 class textareaHasAssociatedLabel extends inputHasLabel {
 
@@ -4930,11 +4715,10 @@ class textareaHasAssociatedLabel extends inputHasLabel {
 
 
 /**
-*  OAC # 88
 *  All textarea elements have a label that is positioned close to control.
 *  textarea element must have an associated label element that is positioned close to it.
-*  @link http://checker.atrc.utoronto.ca/servlet/ShowCheck?lang=eng&check=88
-**/
+*	@link http://quail-lib.org/test-info/textareaLabelPositionedClose
+*/
 
 class textareaLabelPositionedClose extends quailTagTest {
 
@@ -4945,6 +4729,7 @@ class textareaLabelPositionedClose extends quailTagTest {
 
 /**
 *  Inline SVG entries should contain a title element which describes the content of the SVG
+*	@link http://quail-lib.org/test-info/svgContainsTitle
 */
 
 class svgContainsTitle extends quailTest {
@@ -4968,6 +4753,7 @@ class svgContainsTitle extends quailTest {
 
 /**
 *	HTML5 video tags have captions. There's unfortunately no way to test for captions yet...
+*	@link http://quail-lib.org/test-info/videoProvidesCaptions
 */
 
 class videoProvidesCaptions extends quailTagTest {
@@ -4979,7 +4765,9 @@ class videoProvidesCaptions extends quailTagTest {
 
 /**
 *	Links to YouTube videos must have a caption
+*	@link http://quail-lib.org/test-info/videosEmbeddedOrLinkedNeedCaptions
 */
+
 class videosEmbeddedOrLinkedNeedCaptions extends quailTest {
 	
 	var $default_severity = QUAIL_TEST_SEVERE;
@@ -5009,7 +4797,9 @@ class videosEmbeddedOrLinkedNeedCaptions extends quailTest {
 /**
 *	Checks that a document is written clearly to a minimum of a 60 on the 
 *	Flesch Reading Ease score (9.9 max grade level).
+*	@link http://quail-lib.org/test-info/documentIsWrittenClearly
 */
+
 class documentIsWrittenClearly extends quailTest {
 	
 	var $default_severity = QUAIL_TEST_MODERATE;
