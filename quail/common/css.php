@@ -117,6 +117,9 @@ class quailCSS {
 	*	in the CSS class itself
 	*/
 	private function setStyles() {
+		if(!is_array($this->css)) {
+			return null;
+		}
 		foreach($this->css as $selector => $style) {
 			$xpath = new DOMXPath($this->dom);
 			$entries = @$xpath->query($this->getXpath($selector));
