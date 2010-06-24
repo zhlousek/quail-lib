@@ -67,6 +67,9 @@ class TestOfQuailTests extends UnitTestCase {
 	
 		$results = $this->getTest('documentIsWrittenClearly-pass.html', 'documentIsWrittenClearly');
 		$this->assertTrue(count($results[0]) == 0);
+
+		$results = $this->getTest('documentIsWrittenClearly-pass-2.html', 'documentIsWrittenClearly');
+		$this->assertTrue(count($results[0]) == 0);
 	
 	} 
 
