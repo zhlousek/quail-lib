@@ -4811,8 +4811,11 @@ class documentIsWrittenClearly extends quailTest {
 	function check() {
 		$readability = $this->services['readability'];
 		foreach($this->getAllElements(null, 'text') as $element) {
-			if($readability->flesch_kincaid_reading_ease(strip_tags($element->nodeValue)) < 60) {
-				$this->addReport($element);
+			$text = strip_tags($element->nodeValue);
+			if(str_word_count($text) > 25) {
+				if($readability->flesch_kincaid_reading_ease($text) < 60) {
+					$this->addReport($element);
+				}
 			}
 		}
 	}
