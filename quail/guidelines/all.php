@@ -31,16 +31,16 @@ class AllGuideline extends quailGuideline{
 	var $tests = array();
 	
 	/**
-	*	We are overriding the parent constructor to load
-	*	a list of all classes whihc extend quailTest.
+	*	We are overriding the parent run method to load
+	*	a list of all classes which extend quailTest.
 	*/
-	function __construct(&$dom, &$css, &$path, $arg = null, $domain = 'en', $cms_mode = false) {
+	function run($arg = null, $language = 'en') {
 		foreach(get_declared_classes() as $classname) {
 			$parents = class_parents($classname);
-			if(isset($parents['quailTest'])) {
+			if(isset($parents['quailTest']) && substr($classname, 0, 5) != 'quail') {
 				$this->tests[] = $classname;
 			}
 		}
-		parent::__construct();
+		parent::run($arg, $language);
 	}
 }
