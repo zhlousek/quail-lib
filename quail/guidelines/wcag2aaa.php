@@ -158,5 +158,6 @@ class Wcag2aaaGuideline extends quailGuideline{
 		'formDeleteIsReversable',
 		'svgContainsTitle',
 		'documentIsWrittenClearly',
+		'cssTextHasContrast',
 	);
 }

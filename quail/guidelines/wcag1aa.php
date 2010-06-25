@@ -112,5 +112,6 @@ class Wcag1aaGuideline extends quailGuideline{
 		'documentTitleIsNotPlaceholder',
 		'documentTitleDescribesDocument',
 		'svgContainsTitle',
+		'cssTextHasContrast',
 	);
 }

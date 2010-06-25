@@ -137,6 +137,7 @@ class Wcag1aaaGuideline extends quailGuideline{
 		'aLinksAreSeperatedByPrintableCharacters',
 		'skipToContentLinkProvided',
 		'svgContainsTitle',
+		'cssTextHasContrast',
 	);
 	
 }
