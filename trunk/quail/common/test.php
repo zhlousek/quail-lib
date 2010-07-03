@@ -190,6 +190,7 @@ class quailTest {
 	*	@param string $options The kind of option to select an element by (see htmlElements)
 	*	@param string $value The value of the above option
 	*	@return array An array of elements that fit the description
+	*	@todo this should cache results in a static variable, as many of these can be iterated over again
 	*/
 	function getAllElements($tags = null, $options = false, $value = true) {
 		if(!is_array($tags))

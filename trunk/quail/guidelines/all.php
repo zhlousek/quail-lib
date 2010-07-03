@@ -18,16 +18,20 @@
 *	@author Kevin Miller <kemiller@csumb.edu>
 */
 
+/** \addtogroup guidelines */
+/*@{*/
+
 /**
  * A list of all tests. This is useful for other services that need to provide
  * lists of all available tests.
  *
- * @package
  */
 
-
 class AllGuideline extends quailGuideline{
-
+	
+	/**
+	*	@var array An array of test class names which will be called for this guideline
+	*/
 	var $tests = array();
 	
 	/**
@@ -44,3 +48,4 @@ class AllGuideline extends quailGuideline{
 		parent::run($arg, $language);
 	}
 }
+/*@}*/

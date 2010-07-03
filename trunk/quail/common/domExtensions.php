@@ -18,6 +18,11 @@
 *	@author Kevin Miller <kemiller@csumb.edu>
 */
 
+/**
+*	An older attempt at using dom element exteions to introduce
+*	finding the styling of an element.
+*	@deprecated
+*/
 class QuailDOMElement extends DOMElement {
 
 	var $css_style;

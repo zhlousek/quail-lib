@@ -18,15 +18,18 @@
 *	@author Kevin Miller <kemiller@csumb.edu>
 */
 
+
+/** \addtogroup guidelines */
+/*@{*/
+
 /**
  * Section 508 Guideline
- *
- * @package
  */
-
-
 class Section508Guideline extends quailGuideline{
 
+	/**
+	*	@var array An array of test class names which will be called for this guideline
+	*/
 	var $tests = array(
 		'imgHasAlt',
 		'imgAltIsDifferent',
@@ -79,3 +82,4 @@ class Section508Guideline extends quailGuideline{
 		'documentMetaNotUsedWithTimeout',
 	);
 }
+/*@}*/

@@ -48,6 +48,9 @@ class reportCodeHighlight extends quailReporter {
 						if(is_object($problem) 
 						   && property_exists($problem, 'element') 
 						   && is_object($problem->element)) {
+							//Wrap each error with a "wrapper" node who's tag name is the severity
+							//level class. We'll fix this later and change them back to 'span' elements
+							//after we have converted the HTML code to entities.
 							$severity_wrapper = $this->dom->createElement($this->classnames[$test['severity']]);
 							$severity_wrapper->setAttribute('class', $this->classnames[$test['severity']] .' '. $testname);
 							$severity_wrapper->setAttribute('test', $testname);

@@ -18,8 +18,17 @@
 *	@author Kevin Miller <kemiller@csumb.edu>
 */
 
+/** \addtogroup guidelines */
+/*@{*/
+
+/**
+*	WCAG 1.0 Level A Guideline
+*/
 class Wcag1aGuideline extends quailGuideline{
-	
+
+	/**
+	*	@var array An array of test class names which will be called for this guideline
+	*/	
 	var $tests = array(
 			'imgHasAlt',
 			'imgNonDecorativeHasAlt',
@@ -71,3 +80,4 @@ class Wcag1aGuideline extends quailGuideline{
 			'svgContainsTitle',
 	);
 }
+/*@}*/

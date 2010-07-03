@@ -18,8 +18,18 @@
 *	@author Kevin Miller <kemiller@csumb.edu>
 */
 
+
+/** \addtogroup guidelines */
+/*@{*/
+
+/**
+*	WCAG 2.0 Level AAA Guideline
+*/
 class Wcag2aaaGuideline extends quailGuideline{
-	
+
+	/**
+	*	@var array An array of test class names which will be called for this guideline
+	*/	
 	var $tests = array(
 		'imgHasAlt',
 		'imgAltIsDifferent',
@@ -161,3 +171,4 @@ class Wcag2aaaGuideline extends quailGuideline{
 		'cssTextHasContrast',
 	);
 }
+/*@}*/
