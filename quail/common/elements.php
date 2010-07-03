@@ -17,8 +17,19 @@
 *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 *	@author Kevin Miller <kemiller@csumb.edu>
 */
-class htmlElements {
 
+/**
+*	This is a helper class which organizes all the HTML
+*	tags into groups for finding, for example, all elements
+*	which can possibly hold text that will be rendered on screen.
+*
+*/
+class htmlElements {
+	
+	/**
+	*	@var array An array of HTML tag names and their attributes
+	*	@todo add HTML5 elements here
+	*/
 	static $html_elements = array(
 		'img' 	 => array('text' => false),
 		'p' 	 => array('text' => true),
@@ -51,6 +62,13 @@ class htmlElements {
 		
 	);
 	
+	/**
+	*	Retrieves elements by an option.
+	*	@param string $option The option to search fore
+	*	@param bool $value Whether the option should be true or false
+	*	@return array An array of HTML tag names
+	*	@todo this should cache results in a static variable, as many of these can be iterated over again
+	*/
 	function getElementsByOption($option, $value = true) {
 		foreach(self::$html_elements as $k => $element) {
 			if(isset($element[$option]) && $element[$option] == $value)
