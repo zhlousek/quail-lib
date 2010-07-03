@@ -269,7 +269,8 @@ class aMustContainText extends quailTest {
 	function check() {
 		foreach($this->getAllElements('a') as $a) {
 			if((!$a->nodeValue || trim(html_entity_decode($a->nodeValue)) == '')
-				&& !$a->hasAttribute('title')) {
+				&& !$a->hasAttribute('title')
+				&& $this->isNotAnchor($a)) {
 				$fail = true;
 				$child = true;
 				foreach($a->childNodes as $child) {
@@ -282,6 +283,16 @@ class aMustContainText extends quailTest {
 					$this->addReport($a);
 			}
 		}
+	}
+	
+	/**
+	*	Returns if a link is not a candidate to be an anchor (which does
+	*	not need text)
+	*	@param object The element link in question
+	*	@return bool Whether is is a link (TRUE) or an anchor (FALSE)
+	*/
+	function isNotAnchor($a) {
+		return (!($a->hasAttribute('name') && !$a->hasAttribute('href')));
 	}
 }
 
