@@ -1,5 +1,5 @@
 <?php
-
+error_reporting(E_WARNING);
 require_once('../quail/quail.php');
 require_once('simpletest/unit_tester.php');
 require_once('simpletest/reporter.php');
@@ -1731,6 +1731,9 @@ class TestOfTests extends UnitTestCase {
 		$results = $this->getTest('174-4.html', 'aMustContainText');
 		$this->assertTrue(count($results) == 0); 
 
+		$results = $this->getTest('174-5.html', 'aMustContainText');
+		$this->assertTrue(count($results) == 0); 
+
   }   
 
   
@@ -2325,6 +2328,9 @@ class TestOfTests extends UnitTestCase {
 		$this->assertTrue($results[0]->element->tagName == 'p');     
 
 		$results = $this->getTest('261-2.html', 'headersUseToMarkSections');
+		$this->assertTrue(count($results) == 0 );
+		
+		$results = $this->getTest('261-3.html', 'headersUseToMarkSections');
 		$this->assertTrue(count($results) == 0 );
    } 
    //skipped 262-263
