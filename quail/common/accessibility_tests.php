@@ -38,6 +38,9 @@
 
 class aAdjacentWithSameResourceShouldBeCombined extends quailTest {
 	
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 	
 	function check() {
@@ -63,6 +66,9 @@ class aAdjacentWithSameResourceShouldBeCombined extends quailTest {
 
 class aImgAltNotRepetative extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 
 
@@ -87,6 +93,9 @@ class aImgAltNotRepetative extends quailTest {
 
 class aLinkTextDoesNotBeginWithRedundantWord extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 	
 	var $strings = array('en' => array('link to', 'go to'),
@@ -119,6 +128,9 @@ class aLinkTextDoesNotBeginWithRedundantWord extends quailTest {
 
 class aLinksAreSeperatedByPrintableCharacters extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 
 	function check() {
@@ -148,6 +160,9 @@ class aLinksAreSeperatedByPrintableCharacters extends quailTest {
 
 class aLinksDontOpenNewWindow extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 	
 	var $allowed_targets = array('_self', '_parent', '_top');
@@ -172,6 +187,9 @@ class aLinksDontOpenNewWindow extends quailTest {
 
 class aLinksMakeSenseOutOfContext extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SUGGESTION;
 	
 	var $allowed_targets = array('_self', '_parent', '_top');
@@ -194,6 +212,9 @@ class aLinksMakeSenseOutOfContext extends quailTest {
 
 class aLinksToMultiMediaRequireTranscript extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SUGGESTION;
 	
 	var $extensions = array('wmv', 'mpg', 'mov', 'ram', 'aif');
@@ -220,6 +241,9 @@ class aLinksToMultiMediaRequireTranscript extends quailTest {
 
 class aLinksToSoundFilesNeedTranscripts extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SUGGESTION;
 	
 	var $extensions = array('wav', 'snd', 'mp3', 'iff', 'svx', 'sam', 'smp', 'vce', 'vox', 'pcm', 'aif');
@@ -239,6 +263,9 @@ class aLinksToSoundFilesNeedTranscripts extends quailTest {
 
 class aMultimediaTextAlternative extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SUGGESTION;
 	
 	var $extensions = array('wmv', 'wav',  'mpg', 'mov', 'ram', 'aif');
@@ -264,6 +291,9 @@ class aMultimediaTextAlternative extends quailTest {
 
 class aMustContainText extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 
 	function check() {
@@ -305,6 +335,9 @@ class aMustContainText extends quailTest {
 
 class aMustHaveTitle extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 
 	function check() {
@@ -325,6 +358,9 @@ class aMustHaveTitle extends quailTest {
 
 class aMustNotHaveJavascriptHref extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 
 	function check() {
@@ -344,6 +380,9 @@ class aMustNotHaveJavascriptHref extends quailTest {
 
 class aSuspiciousLinkText extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 
 	var $strings = array('en' => array('click here', 'click', 'more', 'here'),
@@ -368,6 +407,9 @@ class aSuspiciousLinkText extends quailTest {
 
 class aTitleDescribesDestination extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SUGGESTION;
 
 	function check() {
@@ -388,6 +430,9 @@ class aTitleDescribesDestination extends quailTest {
 
 class addressForAuthor extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 	
 	var $cms = false;
@@ -419,6 +464,9 @@ class addressForAuthor extends quailTest {
 
 class addressForAuthorMustBeValid extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_MODERATE;
 	
 	var $checkDomain = true;
@@ -489,6 +537,9 @@ class addressForAuthorMustBeValid extends quailTest {
 
 class appletContainsTextEquivalent extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 	
 	function check() {
@@ -516,6 +567,9 @@ class appletContainsTextEquivalent extends quailTest {
 
 class appletContainsTextEquivalentInAlt extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_MODERATE;
 
 	
@@ -538,16 +592,28 @@ class appletContainsTextEquivalentInAlt extends quailTest {
 
 class appletProvidesMechanismToReturnToParent extends quailTagTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SUGGESTION;
 
 
+	/**
+	*	@var string $tag The tag this test will fire on
+	*/
 	var $tag = 'applet';
 }
 
 class appletTextEquivalentsGetUpdated extends quailTagTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SUGGESTION;
 
+	/**
+	*	@var string $tag The tag this test will fire on
+	*/
 	var $tag = 'applet';
 
 }
@@ -561,8 +627,14 @@ class appletTextEquivalentsGetUpdated extends quailTagTest {
 
 class appletUIMustBeAccessible extends quailTagTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SUGGESTION;
 
+	/**
+	*	@var string $tag The tag this test will fire on
+	*/
 	var $tag = 'applet';
 }
 
@@ -575,8 +647,14 @@ class appletUIMustBeAccessible extends quailTagTest {
 
 class appletsDoNotFlicker extends quailTagTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SUGGESTION;
 
+	/**
+	*	@var string $tag The tag this test will fire on
+	*/
 	var $tag = 'applet';
 
 }
@@ -590,8 +668,14 @@ class appletsDoNotFlicker extends quailTagTest {
 
 class appletsDoneUseColorAlone extends quailTagTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SUGGESTION;
 
+	/**
+	*	@var string $tag The tag this test will fire on
+	*/
 	var $tag = 'applet';
 }
 
@@ -604,8 +688,14 @@ class appletsDoneUseColorAlone extends quailTagTest {
 
 class areaAltIdentifiesDestination extends quailTagTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SUGGESTION;
 
+	/**
+	*	@var string $tag The tag this test will fire on
+	*/
 	var $tag = 'area';
 
 }
@@ -619,7 +709,13 @@ class areaAltIdentifiesDestination extends quailTagTest {
 
 class areaAltRefersToText extends quailTagTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SUGGESTION;
+	/**
+	*	@var string $tag The tag this test will fire on
+	*/
 	var $tag = 'area';
 }
 
@@ -632,6 +728,9 @@ class areaAltRefersToText extends quailTagTest {
 
 class areaDontOpenNewWindow extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 	
 	var $allowed_targets = array('_self', '_parent', '_top');
@@ -656,6 +755,9 @@ class areaDontOpenNewWindow extends quailTest {
 
 class areaHasAltValue extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 
 	function check() {
@@ -676,6 +778,9 @@ class areaHasAltValue extends quailTest {
 
 class areaLinksToSoundFile extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SUGGESTION;
 	
 	var $extensions = array('wav', 'snd', 'mp3', 'iff', 'svx', 'sam', 'smp', 'vce', 'vox', 'pcm', 'aif');
@@ -702,8 +807,14 @@ class areaLinksToSoundFile extends quailTest {
 
 class basefontIsNotUsed extends quailTagTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 
+	/**
+	*	@var string $tag The tag this test will fire on
+	*/
 	var $tag = 'basefont';
 }
 
@@ -717,8 +828,14 @@ class basefontIsNotUsed extends quailTagTest {
 
 class blinkIsNotUsed extends quailTagTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 
+	/**
+	*	@var string $tag The tag this test will fire on
+	*/
 	var $tag = 'blink';
 
 }
@@ -732,6 +849,9 @@ class blinkIsNotUsed extends quailTagTest {
 
 class blockquoteNotUsedForIndentation extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_MODERATE;
 
 	function check() {
@@ -751,6 +871,9 @@ class blockquoteNotUsedForIndentation extends quailTest {
 
 class blockquoteUseForQuotations extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_MODERATE;
 
 	function check() {
@@ -773,6 +896,9 @@ class blockquoteUseForQuotations extends quailTest {
 
 class bodyActiveLinkColorContrast extends bodyColorContrast {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 
 	var $cms = false;
@@ -791,6 +917,9 @@ class bodyActiveLinkColorContrast extends bodyColorContrast {
 
 class bodyLinkColorContrast extends bodyColorContrast {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 
 	var $cms = false;
@@ -807,6 +936,9 @@ class bodyLinkColorContrast extends bodyColorContrast {
 
 class bodyMustNotHaveBackground extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 
 	var $cms = false;
@@ -830,6 +962,9 @@ class bodyMustNotHaveBackground extends quailTest {
 
 class bodyVisitedLinkColorContrast extends bodyColorContrast {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 
 	var $cms = false;
@@ -846,8 +981,14 @@ class bodyVisitedLinkColorContrast extends bodyColorContrast {
 
 class boldIsNotUsed extends quailTagTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 
+	/**
+	*	@var string $tag The tag this test will fire on
+	*/
 	var $tag = 'bold';
 }
 
@@ -860,12 +1001,24 @@ class boldIsNotUsed extends quailTagTest {
 
 class checkboxHasLabel extends inputHasLabel {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 
+	/**
+	*	@var string $tag The tag this test will fire on
+	*/
 	var $tag = 'input';
 	
+	/**
+	*	@var string $type The type of input we're looking for
+	*/
 	var $type = 'checkbox';
 	
+	/**
+	*	@var bool $no_type We are not looking at the type of input here
+	*/
 	var $no_type = false;
 }
 
@@ -878,6 +1031,9 @@ class checkboxHasLabel extends inputHasLabel {
 
 class checkboxLabelIsNearby extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_MODERATE;
 
 	function check() {
@@ -898,6 +1054,9 @@ class checkboxLabelIsNearby extends quailTest {
 
 class cssDocumentMakesSenseStyleTurnedOff extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SUGGESTION;
 
 	function check() {
@@ -918,6 +1077,9 @@ class cssDocumentMakesSenseStyleTurnedOff extends quailTest {
 
 class cssTextHasContrast extends quailColorTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 	
 	var $default_background = '#ffffff';
@@ -962,6 +1124,9 @@ class cssTextHasContrast extends quailColorTest {
 
 class doctypeProvided extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 
 	function check() {
@@ -980,6 +1145,9 @@ class doctypeProvided extends quailTest {
 
 class documentAbbrIsUsed extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_MODERATE;
 	
 	var $acronym_tag = 'abbr';
@@ -1018,6 +1186,9 @@ class documentAbbrIsUsed extends quailTest {
 
 class documentAcronymsHaveElement extends documentAbbrIsUsed {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_MODERATE;
 
 
@@ -1033,6 +1204,9 @@ class documentAcronymsHaveElement extends documentAbbrIsUsed {
 
 class documentAllColorsAreSet extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 
 	var $cms = false;
@@ -1064,6 +1238,9 @@ class documentAllColorsAreSet extends quailTest {
 
 class documentAutoRedirectNotUsed extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 
 	var $cms = false;
@@ -1086,6 +1263,9 @@ class documentAutoRedirectNotUsed extends quailTest {
 
 class documentColorWaiActiveLinkAlgorithim extends bodyWaiErtColorContrast {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 
 	var $cms = false;
@@ -1102,6 +1282,9 @@ class documentColorWaiActiveLinkAlgorithim extends bodyWaiErtColorContrast {
 
 class documentColorWaiAlgorithim extends bodyWaiErtColorContrast {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 
 	var $cms = false;
@@ -1117,6 +1300,9 @@ class documentColorWaiAlgorithim extends bodyWaiErtColorContrast {
 
 class documentColorWaiLinkAlgorithim extends bodyWaiErtColorContrast {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 
 	var $cms = false;
@@ -1133,6 +1319,9 @@ class documentColorWaiLinkAlgorithim extends bodyWaiErtColorContrast {
 
 class documentColorWaiVisitedLinkAlgorithim extends bodyWaiErtColorContrast {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 
 	var $cms = false;
@@ -1149,6 +1338,9 @@ class documentColorWaiVisitedLinkAlgorithim extends bodyWaiErtColorContrast {
 
 class documentContentReadableWithoutStylesheets extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SUGGESTION;
 
 	var $cms = false;
@@ -1173,6 +1365,9 @@ class documentContentReadableWithoutStylesheets extends quailTest {
 
 class documentHasTitleElement extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 
 	var $cms = false;
@@ -1195,6 +1390,9 @@ class documentHasTitleElement extends quailTest {
 
 class documentIDsMustBeUnique extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 
 	var $cms = false;
@@ -1225,6 +1423,9 @@ class documentIDsMustBeUnique extends quailTest {
 
 class documentLangIsISO639Standard extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 
 	var $cms = false;
@@ -1252,6 +1453,9 @@ class documentLangIsISO639Standard extends quailTest {
 
 class documentLangNotIdentified extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 
 	var $cms = false;
@@ -1276,6 +1480,9 @@ class documentLangNotIdentified extends quailTest {
 
 class documentMetaNotUsedWithTimeout extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 
 	var $cms = false;
@@ -1305,6 +1512,9 @@ class documentMetaNotUsedWithTimeout extends quailTest {
 class documentReadingDirection extends quailTest {
 
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_MODERATE;
 
 	var $cms = false;
@@ -1332,6 +1542,9 @@ class documentReadingDirection extends quailTest {
 
 class documentStrictDocType extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 
 	var $cms = false;
@@ -1352,6 +1565,9 @@ class documentStrictDocType extends quailTest {
 
 class documentTitleDescribesDocument extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SUGGESTION;
 
 	var $cms = false;
@@ -1375,6 +1591,9 @@ class documentTitleDescribesDocument extends quailTest {
 
 class documentTitleIsNotPlaceholder extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 
 	var $cms = false;
@@ -1399,6 +1618,9 @@ class documentTitleIsNotPlaceholder extends quailTest {
 
 class documentTitleIsShort extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_MODERATE;
 
 	var $cms = false;
@@ -1423,6 +1645,9 @@ class documentTitleIsShort extends quailTest {
 
 class documentTitleNotEmpty extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 
 	var $cms = false;
@@ -1447,6 +1672,9 @@ class documentTitleNotEmpty extends quailTest {
 
 class documentValidatesToDocType extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 
 	var $cms = false;
@@ -1466,6 +1694,9 @@ class documentValidatesToDocType extends quailTest {
 
 class documentVisualListsAreMarkedUp extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 
 	var $list_cues = array('*', '<br>*', '•', '&#8226');
@@ -1492,6 +1723,9 @@ class documentVisualListsAreMarkedUp extends quailTest {
 
 class documentWordsNotInLanguageAreMarked extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SUGGESTION;
 
 	function check() {
@@ -1522,6 +1756,9 @@ class documentWordsNotInLanguageAreMarked extends quailTest {
 
 class embedHasAssociatedNoEmbed extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 
 	function check() {
@@ -1544,6 +1781,9 @@ class embedHasAssociatedNoEmbed extends quailTest {
 
 class embedMustHaveAltAttribute extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 
 	function check() {
@@ -1564,6 +1804,9 @@ class embedMustHaveAltAttribute extends quailTest {
 
 class embedMustNotHaveEmptyAlt extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 
 	function check() {
@@ -1584,8 +1827,14 @@ class embedMustNotHaveEmptyAlt extends quailTest {
 
 class embedProvidesMechanismToReturnToParent extends quailTagTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SUGGESTION;
 
+	/**
+	*	@var string $tag The tag this test will fire on
+	*/
 	var $tag = 'embed';
 }
 
@@ -1598,6 +1847,9 @@ class embedProvidesMechanismToReturnToParent extends quailTagTest {
 
 class emoticonsExcessiveUse extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 
 	function check() {
@@ -1624,6 +1876,9 @@ class emoticonsExcessiveUse extends quailTest {
 
 class emoticonsMissingAbbr extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 
 	function check() {
@@ -1657,12 +1912,27 @@ class emoticonsMissingAbbr extends quailTest {
 
 class fileHasLabel extends inputHasLabel {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 
+	/**
+	*	@var string $tag The tag this test will fire on
+	*/
 	var $tag = 'input';
 	
+	/**
+	*	@var string $type The type of input we're looking for
+	*/
 	var $type = 'file';
 	
+	/**
+	*	@var bool $no_type We are not looking at the type of input here
+	*/
+	/**
+	*	@var bool $no_type We are not looking at the type of input here
+	*/
 	var $no_type = false;
 }
 
@@ -1675,6 +1945,9 @@ class fileHasLabel extends inputHasLabel {
 
 class fileLabelIsNearby extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_MODERATE;
 
 	function check() {
@@ -1695,15 +1968,27 @@ class fileLabelIsNearby extends quailTest {
 
 class fontIsNotUsed extends quailTagTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 	
+	/**
+	*	@var string $tag The tag this test will fire on
+	*/
 	var $tag = 'font';
 }
 
 class formAllowsCheckIfIrreversable extends quailTagTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SUGGESTION;
 
+	/**
+	*	@var string $tag The tag this test will fire on
+	*/
 	var $tag = 'form';
 }
 
@@ -1716,6 +2001,9 @@ class formAllowsCheckIfIrreversable extends quailTagTest {
 
 class formDeleteIsReversable extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SUGGESTION;
 	
 	var $strings = array('en' => array('delete', 'remove', 'erase'),
@@ -1743,8 +2031,14 @@ class formDeleteIsReversable extends quailTest {
 
 class formErrorMessageHelpsUser extends quailTagTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SUGGESTION;
 
+	/**
+	*	@var string $tag The tag this test will fire on
+	*/
 	var $tag = 'form';
 }
 
@@ -1757,8 +2051,14 @@ class formErrorMessageHelpsUser extends quailTagTest {
 
 class formHasGoodErrorMessage extends quailTagTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SUGGESTION;
 
+	/**
+	*	@var string $tag The tag this test will fire on
+	*/
 	var $tag = 'form';
 }	
 
@@ -1771,6 +2071,9 @@ class formHasGoodErrorMessage extends quailTagTest {
 
 class formWithRequiredLabel extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_MODERATE;
 	
 	var $suspect_styles = array('font-weight', 'color');
@@ -1825,8 +2128,14 @@ class formWithRequiredLabel extends quailTest {
 
 class frameIsNotUsed extends quailTagTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 
+	/**
+	*	@var string $tag The tag this test will fire on
+	*/
 	var $tag = 'frame';
 
 	var $cms = false;
@@ -1841,6 +2150,9 @@ class frameIsNotUsed extends quailTagTest {
 
 class frameRelationshipsMustBeDescribed extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_MODERATE;
 
 	var $cms = false;
@@ -1865,6 +2177,9 @@ class frameRelationshipsMustBeDescribed extends quailTest {
 
 class frameSrcIsAccessible extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SUGGESTION;
 
 	var $cms = false;
@@ -1891,6 +2206,9 @@ class frameSrcIsAccessible extends quailTest {
 
 class frameTitlesDescribeFunction extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SUGGESTION;	
 
 	var $cms = false;
@@ -1913,6 +2231,9 @@ class frameTitlesDescribeFunction extends quailTest {
 
 class frameTitlesNotEmpty extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 
 	var $cms = false;
@@ -1934,6 +2255,9 @@ class frameTitlesNotEmpty extends quailTest {
 
 class frameTitlesNotPlaceholder extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 
 	var $cms = false;
@@ -1960,6 +2284,9 @@ class frameTitlesNotPlaceholder extends quailTest {
 
 class framesHaveATitle extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;	
 	
 	var $cms = false;
@@ -1982,10 +2309,16 @@ class framesHaveATitle extends quailTest {
 
 class framesetIsNotUsed extends quailTagTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 
 	var $cms = false;
 	
+	/**
+	*	@var string $tag The tag this test will fire on
+	*/
 	var $tag = 'frameset';
 }
 
@@ -1998,6 +2331,9 @@ class framesetIsNotUsed extends quailTagTest {
 
 class framesetMustHaveNoFramesSection extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 
 	var $cms = false;
@@ -2020,6 +2356,9 @@ class framesetMustHaveNoFramesSection extends quailTest {
 
 class headerH1 extends quailHeaderTest {
 	
+	/**
+	*	@var string $tag The tag this test will fire on
+	*/
 	var $tag = 'h1';
 	
 }
@@ -2039,8 +2378,14 @@ class headerH1 extends quailHeaderTest {
 
 class headerH1Format extends quailTagTest{
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SUGGESTION;
 
+	/**
+	*	@var string $tag The tag this test will fire on
+	*/
 	var $tag = 'h1';
 }
 
@@ -2053,6 +2398,9 @@ class headerH1Format extends quailTagTest{
 
 class headerH2 extends quailHeaderTest {
 	
+	/**
+	*	@var string $tag The tag this test will fire on
+	*/
 	var $tag = 'h2';
 	
 }
@@ -2072,7 +2420,13 @@ class headerH2 extends quailHeaderTest {
 
 class headerH2Format extends quailTagTest{
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SUGGESTION;
+	/**
+	*	@var string $tag The tag this test will fire on
+	*/
 	var $tag = 'h2';
 }
 
@@ -2085,6 +2439,9 @@ class headerH2Format extends quailTagTest{
 
 class headerH3 extends quailHeaderTest {
 	
+	/**
+	*	@var string $tag The tag this test will fire on
+	*/
 	var $tag = 'h3';
 	
 }
@@ -2104,7 +2461,13 @@ class headerH3 extends quailHeaderTest {
 
 class headerH3Format extends quailTagTest{
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SUGGESTION;
+	/**
+	*	@var string $tag The tag this test will fire on
+	*/
 	var $tag = 'h3';
 }
 
@@ -2123,6 +2486,9 @@ class headerH3Format extends quailTagTest{
 
 class headerH4 extends quailHeaderTest {
 	
+	/**
+	*	@var string $tag The tag this test will fire on
+	*/
 	var $tag = 'h4';
 	
 }
@@ -2148,12 +2514,21 @@ class headerH4 extends quailHeaderTest {
 
 class headerH4Format extends quailTagTest{
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SUGGESTION;
+	/**
+	*	@var string $tag The tag this test will fire on
+	*/
 	var $tag = 'h4';
 }
 
 class headerH5 extends quailHeaderTest {
 	
+	/**
+	*	@var string $tag The tag this test will fire on
+	*/
 	var $tag = 'h5';
 	
 }
@@ -2167,7 +2542,13 @@ class headerH5 extends quailHeaderTest {
 
 class headerH5Format extends quailTagTest{
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SUGGESTION;
+	/**
+	*	@var string $tag The tag this test will fire on
+	*/
 	var $tag = 'h5';
 }
 
@@ -2180,7 +2561,13 @@ class headerH5Format extends quailTagTest{
 
 class headerH6Format extends quailTagTest{
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SUGGESTION;
+	/**
+	*	@var string $tag The tag this test will fire on
+	*/
 	var $tag = 'h6';
 }
 
@@ -2193,6 +2580,9 @@ class headerH6Format extends quailTagTest{
 
 class headersUseToMarkSections extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_MODERATE;
 	
 	var $non_header_tags = array('strong', 'b', 'em', 'i');
@@ -2229,8 +2619,14 @@ class headersUseToMarkSections extends quailTest {
 
 class iIsNotUsed extends quailTagTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 
+	/**
+	*	@var string $tag The tag this test will fire on
+	*/
 	var $tag = 'i';
 }
 
@@ -2243,6 +2639,9 @@ class iIsNotUsed extends quailTagTest {
 
 class iframeMustNotHaveLongdesc extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 
 	function check() {
@@ -2263,6 +2662,9 @@ class iframeMustNotHaveLongdesc extends quailTest {
 
 class imageMapServerSide extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 
 	function check() {
@@ -2283,6 +2685,9 @@ class imageMapServerSide extends quailTest {
 
 class imgAltEmptyForDecorativeImages extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SUGGESTION;
 
 	function check() {
@@ -2303,6 +2708,9 @@ class imgAltEmptyForDecorativeImages extends quailTest {
 
 class imgAltIdentifiesLinkDestination extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SUGGESTION;
 	
 	function check() {
@@ -2330,6 +2738,9 @@ class imgAltIdentifiesLinkDestination extends quailTest {
 
 class imgAltIsDifferent extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 
 	function check() {
@@ -2351,6 +2762,9 @@ class imgAltIsDifferent extends quailTest {
 
 class imgAltIsSameInText extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SUGGESTION;
 	
 	function check() {
@@ -2372,6 +2786,9 @@ class imgAltIsSameInText extends quailTest {
 
 class imgAltIsTooLong extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 
 	function check() {
@@ -2393,6 +2810,9 @@ class imgAltIsTooLong extends quailTest {
 
 class imgAltNotEmptyInAnchor extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 
 	function check() {
@@ -2419,6 +2839,9 @@ class imgAltNotEmptyInAnchor extends quailTest {
 
 class imgAltNotPlaceHolder extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 	
 	var $strings = array('en' => array('nbsp', '&nbsp;', 'spacer', 'image', 'img', 'photo'),
@@ -2453,6 +2876,9 @@ class imgAltNotPlaceHolder extends quailTest {
 
 class imgGifNoFlicker extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 	
 	var $gif_control_extension = "/21f904[0-9a-f]{2}([0-9a-f]{4})[0-9a-f]{2}00/";
@@ -2511,6 +2937,9 @@ class imgGifNoFlicker extends quailTest {
 
 class imgHasAlt extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 
 	/**
@@ -2537,6 +2966,9 @@ class imgHasAlt extends quailTest {
 
 class imgHasLongDesc extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 
 	function check() {
@@ -2561,6 +2993,9 @@ class imgHasLongDesc extends quailTest {
 
 class imgImportantNoSpacerAlt extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 
 	function check() {
@@ -2593,6 +3028,9 @@ class imgImportantNoSpacerAlt extends quailTest {
 
 class imgMapAreasHaveDuplicateLink extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 	
 	function check() {
@@ -2637,6 +3075,9 @@ class imgMapAreasHaveDuplicateLink extends quailTest {
 
 class imgNeedsLongDescWDlink extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 
 	function check() {
@@ -2672,6 +3113,9 @@ class imgNeedsLongDescWDlink extends quailTest {
 
 class imgNonDecorativeHasAlt extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_MODERATE;
 
 	function check() {
@@ -2696,6 +3140,9 @@ class imgNonDecorativeHasAlt extends quailTest {
 
 class imgNotReferredToByColorAlone extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SUGGESTION;
 	
 	function check() {
@@ -2716,6 +3163,9 @@ class imgNotReferredToByColorAlone extends quailTest {
 
 class imgServerSideMapNotUsed extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 
 	function check() {
@@ -2735,6 +3185,9 @@ class imgServerSideMapNotUsed extends quailTest {
 
 class imgShouldNotHaveTitle extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 
 	function check() {
@@ -2756,6 +3209,9 @@ class imgShouldNotHaveTitle extends quailTest {
 
 class imgWithMapHasUseMap extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 	
 	function check() {
@@ -2776,6 +3232,9 @@ class imgWithMapHasUseMap extends quailTest {
 
 class imgWithMathShouldHaveMathEquivalent extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SUGGESTION;
 
 	function check() {
@@ -2799,9 +3258,18 @@ class imgWithMathShouldHaveMathEquivalent extends quailTest {
 
 class inputCheckboxHasTabIndex extends inputTabIndex {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
+	/**
+	*	@var string $tag The tag this test will fire on
+	*/
 	var $tag = 'input';
 	
+	/**
+	*	@var string $type The type of input we're looking for
+	*/
 	var $type = 'checkbox';
 }
 
@@ -2814,6 +3282,9 @@ class inputCheckboxHasTabIndex extends inputTabIndex {
 
 class inputCheckboxRequiresFieldset extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 
 	function check() {
@@ -2837,6 +3308,9 @@ class inputCheckboxRequiresFieldset extends quailTest {
 
 class inputDoesNotUseColorAlone extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SUGGESTION;
 
 	function check() {
@@ -2857,6 +3331,9 @@ class inputDoesNotUseColorAlone extends quailTest {
 
 class inputElementsDontHaveAlt extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 
 	function check() {
@@ -2876,9 +3353,18 @@ class inputElementsDontHaveAlt extends quailTest {
 
 class inputFileHasTabIndex extends inputTabIndex {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
+	/**
+	*	@var string $tag The tag this test will fire on
+	*/
 	var $tag = 'input';
 	
+	/**
+	*	@var string $type The type of input we're looking for
+	*/
 	var $type = 'file';
 }
 
@@ -2892,6 +3378,9 @@ class inputFileHasTabIndex extends inputTabIndex {
 
 class inputImageAltIdentifiesPurpose extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SUGGESTION;
 
 	function check() {
@@ -2913,6 +3402,9 @@ class inputImageAltIdentifiesPurpose extends quailTest {
 
 class inputImageAltIsNotFileName extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 
 	function check() {
@@ -2935,6 +3427,9 @@ class inputImageAltIsNotFileName extends quailTest {
 
 class inputImageAltIsNotPlaceholder extends imgAltNotPlaceHolder {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 	
 	function check() {
@@ -2961,6 +3456,9 @@ class inputImageAltIsNotPlaceholder extends imgAltNotPlaceHolder {
 
 class inputImageAltIsShort extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 
 	function check() {
@@ -2981,6 +3479,9 @@ class inputImageAltIsShort extends quailTest {
 
 class inputImageAltNotRedundant extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 
 	var $strings = array('en' => array('submit', 'button'),
@@ -3008,6 +3509,9 @@ class inputImageAltNotRedundant extends quailTest {
 
 class inputImageHasAlt extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 
 	function check() {
@@ -3029,6 +3533,9 @@ class inputImageHasAlt extends quailTest {
 
 class inputImageNotDecorative extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SUGGESTION;
 
 	function check() {
@@ -3048,9 +3555,18 @@ class inputImageNotDecorative extends quailTest {
 
 class inputPasswordHasTabIndex extends inputTabIndex {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
+	/**
+	*	@var string $tag The tag this test will fire on
+	*/
 	var $tag = 'input';
 	
+	/**
+	*	@var string $type The type of input we're looking for
+	*/
 	var $type = 'password';
 }
 
@@ -3063,9 +3579,18 @@ class inputPasswordHasTabIndex extends inputTabIndex {
 
 class inputRadioHasTabIndex extends inputTabIndex {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
+	/**
+	*	@var string $tag The tag this test will fire on
+	*/
 	var $tag = 'input';
 	
+	/**
+	*	@var string $type The type of input we're looking for
+	*/
 	var $type = 'radio';
 }
 
@@ -3078,9 +3603,18 @@ class inputRadioHasTabIndex extends inputTabIndex {
 
 class inputSubmitHasTabIndex extends inputTabIndex {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
+	/**
+	*	@var string $tag The tag this test will fire on
+	*/
 	var $tag = 'input';
 	
+	/**
+	*	@var string $type The type of input we're looking for
+	*/
 	var $type = 'submit';
 }
 
@@ -3093,12 +3627,24 @@ class inputSubmitHasTabIndex extends inputTabIndex {
 
 class inputTextHasLabel extends inputHasLabel {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 	
+	/**
+	*	@var string $tag The tag this test will fire on
+	*/
 	var $tag = 'input';
 	
+	/**
+	*	@var string $type The type of input we're looking for
+	*/
 	var $type = 'text';
 	
+	/**
+	*	@var bool $no_type We are not looking at the type of input here
+	*/
 	var $no_type = false;
 }
 
@@ -3111,10 +3657,19 @@ class inputTextHasLabel extends inputHasLabel {
 
 class inputTextHasTabIndex extends inputTabIndex {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 
+	/**
+	*	@var string $tag The tag this test will fire on
+	*/
 	var $tag = 'input';
 	
+	/**
+	*	@var string $type The type of input we're looking for
+	*/
 	var $type = 'text';
 }
 
@@ -3128,6 +3683,9 @@ class inputTextHasTabIndex extends inputTabIndex {
 
 class inputTextHasValue extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 	
 
@@ -3150,6 +3708,9 @@ class inputTextHasValue extends quailTest {
 
 class inputTextValueNotEmpty extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 	
 	function check() {
@@ -3170,6 +3731,9 @@ class inputTextValueNotEmpty extends quailTest {
 
 class labelDoesNotContainInput extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 
 	function check() {
@@ -3189,6 +3753,9 @@ class labelDoesNotContainInput extends quailTest {
 
 class labelMustBeUnique extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 	
 	function check() {
@@ -3213,6 +3780,9 @@ class labelMustBeUnique extends quailTest {
 
 class labelMustNotBeEmpty extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 
 	function check() {
@@ -3241,8 +3811,14 @@ class labelMustNotBeEmpty extends quailTest {
 
 class legendDescribesListOfChoices extends quailTagTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SUGGESTION;
 
+	/**
+	*	@var string $tag The tag this test will fire on
+	*/
 	var $tag = 'legend';
 }
 
@@ -3255,6 +3831,9 @@ class legendDescribesListOfChoices extends quailTagTest {
 
 class legendTextNotEmpty extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 
 	function check() {
@@ -3274,6 +3853,9 @@ class legendTextNotEmpty extends quailTest {
 
 class legendTextNotPlaceholder extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 
 	var $strings = array('en' => array('&nbsp;', ' ', 'legend'),
@@ -3291,6 +3873,9 @@ class legendTextNotPlaceholder extends quailTest {
 
 class liDontUseImageForBullet extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_MODERATE;
 
 	function check() {
@@ -3313,6 +3898,9 @@ class liDontUseImageForBullet extends quailTest {
 
 class linkUsedForAlternateContent extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SUGGESTION;
 
 	function check() {
@@ -3339,6 +3927,9 @@ class linkUsedForAlternateContent extends quailTest {
 
 class linkUsedToDescribeNavigation extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 
 	function check() {
@@ -3363,6 +3954,9 @@ class linkUsedToDescribeNavigation extends quailTest {
 
 class listNotUsedForFormatting extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SUGGESTION;
 
 	function check() {
@@ -3389,8 +3983,14 @@ class listNotUsedForFormatting extends quailTest {
 
 class marqueeIsNotUsed extends quailTagTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 	
+	/**
+	*	@var string $tag The tag this test will fire on
+	*/
 	var $tag = 'marquee';
 
 }
@@ -3404,6 +4004,9 @@ class marqueeIsNotUsed extends quailTagTest {
 
 class menuNotUsedToFormatText extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SUGGESTION;
 
 	function check() {
@@ -3430,8 +4033,14 @@ class menuNotUsedToFormatText extends quailTest {
 
 class noembedHasEquivalentContent extends quailTagTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SUGGESTION;
 
+	/**
+	*	@var string $tag The tag this test will fire on
+	*/
 	var $tag = 'noembed';
 }
 
@@ -3445,6 +4054,9 @@ class noembedHasEquivalentContent extends quailTagTest {
 
 class noframesSectionMustHaveTextEquivalent extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_MODERATE;
 	
 	
@@ -3469,8 +4081,14 @@ class noframesSectionMustHaveTextEquivalent extends quailTest {
 
 class objectContentUsableWhenDisabled extends quailTagTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SUGGESTION;
 
+	/**
+	*	@var string $tag The tag this test will fire on
+	*/
 	var $tag = 'object';
 }
 
@@ -3484,8 +4102,14 @@ class objectContentUsableWhenDisabled extends quailTagTest {
 
 class objectDoesNotFlicker extends quailTagTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SUGGESTION;
 
+	/**
+	*	@var string $tag The tag this test will fire on
+	*/
 	var $tag = 'object';
 
 }
@@ -3499,8 +4123,14 @@ class objectDoesNotFlicker extends quailTagTest {
 
 class objectDoesNotUseColorAlone extends quailTagTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SUGGESTION;
 
+	/**
+	*	@var string $tag The tag this test will fire on
+	*/
 	var $tag = 'object';
 }
 
@@ -3513,8 +4143,14 @@ class objectDoesNotUseColorAlone extends quailTagTest {
 
 class objectInterfaceIsAccessible extends quailTagTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SUGGESTION;
 
+	/**
+	*	@var string $tag The tag this test will fire on
+	*/
 	var $tag = 'object';
 }
 
@@ -3528,6 +4164,9 @@ class objectInterfaceIsAccessible extends quailTagTest {
 
 class objectLinkToMultimediaHasTextTranscript extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SUGGESTION;
 
 	function check() {
@@ -3549,6 +4188,9 @@ class objectLinkToMultimediaHasTextTranscript extends quailTest {
 
 class objectMustContainText extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 
 	function check() {
@@ -3569,6 +4211,9 @@ class objectMustContainText extends quailTest {
 
 class objectMustHaveEmbed extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 
 	function check() {
@@ -3588,6 +4233,9 @@ class objectMustHaveEmbed extends quailTest {
 
 class objectMustHaveTitle extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 
 	function check() {
@@ -3611,6 +4259,9 @@ class objectMustHaveTitle extends quailTest {
 
 class objectMustHaveValidTitle extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 
 	var $strings = array('en' => array('nbsp', 
@@ -3655,7 +4306,13 @@ class objectMustHaveValidTitle extends quailTest {
 
 class objectProvidesMechanismToReturnToParent extends quailTagTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SUGGESTION;
+	/**
+	*	@var string $tag The tag this test will fire on
+	*/
 	var $tag = 'object';
 }
 
@@ -3668,8 +4325,14 @@ class objectProvidesMechanismToReturnToParent extends quailTagTest {
 
 class objectShouldHaveLongDescription extends quailTagTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SUGGESTION;
 
+	/**
+	*	@var string $tag The tag this test will fire on
+	*/
 	var $tag = 'object';
 }
 
@@ -3682,8 +4345,14 @@ class objectShouldHaveLongDescription extends quailTagTest {
 
 class objectTextUpdatesWhenObjectChanges extends quailTagTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SUGGESTION;
 
+	/**
+	*	@var string $tag The tag this test will fire on
+	*/
 	var $tag = 'object';
 }
 
@@ -3696,8 +4365,14 @@ class objectTextUpdatesWhenObjectChanges extends quailTagTest {
 
 class objectUIMustBeAccessible extends quailTagTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SUGGESTION;
 
+	/**
+	*	@var string $tag The tag this test will fire on
+	*/
 	var $tag = 'object';
 }
 
@@ -3710,6 +4385,9 @@ class objectUIMustBeAccessible extends quailTagTest {
 
 class objectWithClassIDHasNoText extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 
 	function check() {
@@ -3730,6 +4408,9 @@ class objectWithClassIDHasNoText extends quailTest {
 
 class pNotUsedAsHeader extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 
 	var $head_tags = array('strong', 'em', 'font', 'i', 'b', 'u');
@@ -3762,12 +4443,24 @@ class pNotUsedAsHeader extends quailTest {
 
 class passwordHasLabel extends inputHasLabel {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 
+	/**
+	*	@var string $tag The tag this test will fire on
+	*/
 	var $tag = 'input';
 	
+	/**
+	*	@var string $type The type of input we're looking for
+	*/
 	var $type = 'password';
 	
+	/**
+	*	@var bool $no_type We are not looking at the type of input here
+	*/
 	var $no_type = false;
 }
 
@@ -3780,6 +4473,9 @@ class passwordHasLabel extends inputHasLabel {
 
 class passwordLabelIsNearby extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_MODERATE;
 
 	function check() {
@@ -3800,6 +4496,9 @@ class passwordLabelIsNearby extends quailTest {
 
 class preShouldNotBeUsedForTabularLayout extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SUGGESTION;
 
 	function check() {
@@ -3821,12 +4520,24 @@ class preShouldNotBeUsedForTabularLayout extends quailTest {
 
 class radioHasLabel extends inputHasLabel {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 
+	/**
+	*	@var string $tag The tag this test will fire on
+	*/
 	var $tag = 'input';
 	
+	/**
+	*	@var string $type The type of input we're looking for
+	*/
 	var $type = 'radio';
 	
+	/**
+	*	@var bool $no_type We are not looking at the type of input here
+	*/
 	var $no_type = false;
 }
 
@@ -3858,6 +4569,9 @@ class radioLabelIsNearby extends quailTest {
 
 class radioMarkedWithFieldgroupAndLegend extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 
 	function check() {
@@ -3888,8 +4602,14 @@ class radioMarkedWithFieldgroupAndLegend extends quailTest {
 
 class scriptContentAccessibleWithScriptsTurnedOff extends quailTagTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SUGGESTION;
 
+	/**
+	*	@var string $tag The tag this test will fire on
+	*/
 	var $tag = 'script';
 }
 
@@ -3902,6 +4622,9 @@ class scriptContentAccessibleWithScriptsTurnedOff extends quailTagTest {
 
 class scriptInBodyMustHaveNoscript extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 
 	function check() {
@@ -3924,6 +4647,9 @@ class scriptInBodyMustHaveNoscript extends quailTest {
 
 class scriptOnclickRequiresOnKeypress extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 
 	var $click_value = 'onclick';
@@ -3974,6 +4700,9 @@ class scriptOnmousedownRequiresOnKeypress extends scriptOnclickRequiresOnKeypres
 
 class scriptOnmousemove extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 
 	var $click_value = 'onmousemove';
@@ -4042,8 +4771,14 @@ class scriptOnmouseupHasOnkeyup extends scriptOnclickRequiresOnKeypress {
 
 class scriptUIMustBeAccessible extends quailTagTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SUGGESTION;
 
+	/**
+	*	@var string $tag The tag this test will fire on
+	*/
 	var $tag = 'script';
 }
 
@@ -4056,8 +4791,14 @@ class scriptUIMustBeAccessible extends quailTagTest {
 
 class scriptsDoNotFlicker extends quailTagTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SUGGESTION;
 
+	/**
+	*	@var string $tag The tag this test will fire on
+	*/
 	var $tag = 'script';
 }
 
@@ -4070,8 +4811,14 @@ class scriptsDoNotFlicker extends quailTagTest {
 
 class scriptsDoNotUseColorAlone extends quailTagTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SUGGESTION;
 
+	/**
+	*	@var string $tag The tag this test will fire on
+	*/
 	var $tag = 'script';
 }
 
@@ -4084,6 +4831,9 @@ class scriptsDoNotUseColorAlone extends quailTagTest {
 
 class selectDoesNotChangeContext extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 
 	function check() {
@@ -4104,10 +4854,19 @@ class selectDoesNotChangeContext extends quailTest {
 
 class selectHasAssociatedLabel extends inputHasLabel {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 
+	/**
+	*	@var string $tag The tag this test will fire on
+	*/
 	var $tag = 'select';
-	
+
+	/**
+	*	@var bool $no_type We are looking at a type-specific input element
+	*/
 	var $no_type = true;
 }
 
@@ -4120,6 +4879,9 @@ class selectHasAssociatedLabel extends inputHasLabel {
 
 class selectWithOptionsHasOptgroup extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_MODERATE;
 
 	function check() {
@@ -4146,6 +4908,9 @@ class selectWithOptionsHasOptgroup extends quailTest {
 
 class siteMap extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SUGGESTION;
 	
 	var $cms = false;
@@ -4170,6 +4935,9 @@ class skipToContentLinkProvided extends quailTest {
 	
 	var $cms = false;
 	
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_MODERATE;
 	
 	var $strings = array('en' => array('navigation', 'skip', 'content'),
@@ -4223,6 +4991,9 @@ class skipToContentLinkProvided extends quailTest {
 
 class tabIndexFollowsLogicalOrder extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_MODERATE;
 	
 	function check() {
@@ -4245,8 +5016,14 @@ class tabIndexFollowsLogicalOrder extends quailTest {
 
 class tableCaptionIdentifiesTable extends quailTagTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SUGGESTION;
 
+	/**
+	*	@var string $tag The tag this test will fire on
+	*/
 	var $tag = 'caption';
 }
 
@@ -4259,6 +5036,9 @@ class tableCaptionIdentifiesTable extends quailTagTest {
 
 class tableComplexHasSummary extends quailTableTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 
 	function check() {
@@ -4282,6 +5062,9 @@ class tableComplexHasSummary extends quailTableTest {
 
 class tableDataShouldHaveTh extends quailTableTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 
 	function check() {
@@ -4304,6 +5087,9 @@ class tableDataShouldHaveTh extends quailTableTest {
 
 class tableHeaderLabelMustBeTerse extends quailTableTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_MODERATE;
 
 	function check() {
@@ -4333,6 +5119,9 @@ class tableHeaderLabelMustBeTerse extends quailTableTest {
 
 class tableIsGrouped extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_MODERATE;
 
 	function check() {
@@ -4362,6 +5151,9 @@ class tableIsGrouped extends quailTest {
 
 class tableLayoutDataShouldNotHaveTh extends quailTableTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SUGGESTION;
 
 	function check() {
@@ -4384,6 +5176,9 @@ class tableLayoutDataShouldNotHaveTh extends quailTableTest {
 
 class tableLayoutHasNoCaption extends quailTableTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 
 	function check() {
@@ -4412,6 +5207,9 @@ class tableLayoutHasNoCaption extends quailTableTest {
 
 class tableLayoutHasNoSummary extends quailTableTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 
 	function check() {
@@ -4440,6 +5238,9 @@ class tableLayoutHasNoSummary extends quailTableTest {
 
 class tableLayoutMakesSenseLinearized extends quailTableTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SUGGESTION;
 
 	function check() {
@@ -4462,6 +5263,9 @@ class tableLayoutMakesSenseLinearized extends quailTableTest {
 
 class tableSummaryDescribesTable extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SUGGESTION;
 
 	function check() {
@@ -4482,6 +5286,9 @@ class tableSummaryDescribesTable extends quailTest {
 
 class tableSummaryDoesNotDuplicateCaption extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 
 	function check() {
@@ -4509,6 +5316,9 @@ class tableSummaryDoesNotDuplicateCaption extends quailTest {
 
 class tableSummaryIsEmpty extends quailTableTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 
 	function check() {
@@ -4532,6 +5342,9 @@ class tableSummaryIsEmpty extends quailTableTest {
 
 class tableSummaryIsSufficient extends quailTableTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SUGGESTION;
 
 	function check() {
@@ -4554,6 +5367,9 @@ class tableSummaryIsSufficient extends quailTableTest {
 
 class tableUseColGroup extends quailTableTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SUGGESTION;
 
 	function check() {
@@ -4576,6 +5392,9 @@ class tableUseColGroup extends quailTableTest {
 
 class tableUsesAbbreviationForHeader extends quailTableTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SUGGESTION;
 
 	function check() {
@@ -4606,6 +5425,9 @@ class tableUsesAbbreviationForHeader extends quailTableTest {
 
 class tableUsesCaption extends quailTableTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 
 	function check() {
@@ -4627,6 +5449,9 @@ class tableUsesCaption extends quailTableTest {
 
 class tableWithBothHeadersUseScope extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_MODERATE;
 
 	function check() {
@@ -4660,7 +5485,10 @@ class tableWithBothHeadersUseScope extends quailTest {
 */
 
 class tableWithMoreHeadersUseID extends quailTableTest {
-
+	
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_MODERATE;
 
 	function check() {
@@ -4706,6 +5534,9 @@ class tableWithMoreHeadersUseID extends quailTableTest {
 
 class tabularDataIsInTable extends quailTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_MODERATE;
 
 	function check() {
@@ -4725,10 +5556,19 @@ class tabularDataIsInTable extends quailTest {
 
 class textareaHasAssociatedLabel extends inputHasLabel {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 
+	/**
+	*	@var string $tag The tag this test will fire on
+	*/
 	var $tag = 'textarea';
 	
+	/**
+	*	@var bool $no_type We are looking at a type-specific input element
+	*/
 	var $no_type = true;
 }
 
@@ -4741,8 +5581,14 @@ class textareaHasAssociatedLabel extends inputHasLabel {
 
 class textareaLabelPositionedClose extends quailTagTest {
 
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_MODERATE;
 
+	/**
+	*	@var string $tag The tag this test will fire on
+	*/
 	var $tag = 'textarea';
 }
 
@@ -4753,6 +5599,9 @@ class textareaLabelPositionedClose extends quailTagTest {
 
 class svgContainsTitle extends quailTest {
 	
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
 	
 	function check() {
@@ -4777,8 +5626,14 @@ class svgContainsTitle extends quailTest {
 
 class videoProvidesCaptions extends quailTagTest {
 	
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SUGGESTION;
 	
+	/**
+	*	@var string $tag The tag this test will fire on
+	*/
 	var $tag = 'video';
 }
 
@@ -4789,8 +5644,15 @@ class videoProvidesCaptions extends quailTagTest {
 
 class videosEmbeddedOrLinkedNeedCaptions extends quailTest {
 	
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_SEVERE;
-	
+
+	/**
+	*	@var array $services The services that this test will need. We're using
+	*	the youtube library.
+	*/
 	var $services = array(
 					'youtube' => 'media/youtube',
 	);
@@ -4821,8 +5683,15 @@ class videosEmbeddedOrLinkedNeedCaptions extends quailTest {
 
 class documentIsWrittenClearly extends quailTest {
 	
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
 	var $default_severity = QUAIL_TEST_MODERATE;
 	
+	/**
+	*	@var array $services The services that this test will need. We're using
+	*	the readability library.
+	*/
 	var $services = array(
 		'readability' => 'readability/readability',
 	);
