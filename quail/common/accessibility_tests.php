@@ -2428,11 +2428,15 @@ class imgAltNotPlaceHolder extends quailTest {
 	function check() {
 		foreach($this->getAllElements('img') as $img) {
 			if($img->hasAttribute('alt')) {
-				if(in_array($img->getAttribute('alt'), $this->translation()) || ord($img->getAttribute('alt')) == 194) {
-					$this->addReport($img);
-				}
-				elseif(preg_match("/^([0-9]*)(k|kb|mb|k bytes|k byte)?$/", strtolower($img->getAttribute('alt')))) {
-					$this->addReport($img);
+				if(strlen($img->getAttribute('alt')) > 0) {
+					if(in_array($img->getAttribute('alt'), $this->translation()) 
+					   || ord($img->getAttribute('alt')) == 194) {
+						$this->addReport($img);
+					}
+					elseif(preg_match("/^([0-9]*)(k|kb|mb|k bytes|k byte)?$/", 
+							strtolower($img->getAttribute('alt')))) {
+						$this->addReport($img);
+					}
 				}
 			}
 		}

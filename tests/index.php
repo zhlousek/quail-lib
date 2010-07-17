@@ -85,6 +85,9 @@ class TestOfTests extends UnitTestCase {
 		
 		$results = $this->getTest('6-6.html', 'imgAltNotPlaceHolder');
 		$this->assertTrue($results[0]->element->getAttribute('src') == 'rex.jpg');
+		
+		$results = $this->getTest('6-7.html', 'imgAltNotPlaceHolder');
+		$this->assertTrue(count($results) == 0);
  }
  
  //7
