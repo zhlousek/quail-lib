@@ -54,6 +54,9 @@ class quailTest {
 	*/
 	var $report;
 	
+	/**
+	*	@var int The fallback severity level for all tests
+	*/
 	var $default_severity = QUAIL_TEST_SUGGESTION;
 	
 	/**
@@ -95,6 +98,8 @@ class quailTest {
 		$this->loadServices();
 		$this->check();
 	}
+	
+	//abstract function check();
 	
 	/**
 	*	If this test requires services, it loads the associated files and creates a new
@@ -293,6 +298,11 @@ class quailTest {
 	*	To minimize notices, this compares an object's property to the valus
 	*	and returns true or false. False will also be returned if the object is 
 	*	not really an object, or if the property doesn't exist at all
+	*	@param object $object The object too look at
+	*	@param string $property The name of the property
+	*	@param mixed $value The value to check against
+	*	@param bool $trim Whether the property value should be trimmed
+	*	@param book $lower Whether the property value should be compared on lower case
 	**/
 	function propertyIsEqual($object, $property, $value, $trim = false, $lower = false) {
 		if(!is_object($object)) {
@@ -304,9 +314,11 @@ class quailTest {
 		$property_value = $object->$property;
 		if($trim) {
 			$property_value = trim($property_value);
+			$value = trim($value);
 		}
 		if($lower) {
 			$property_value = strtolower($property_value);
+			$value = strtolower($value);
 		}
 		return ($property_value == $value);
 	}
@@ -358,6 +370,7 @@ class quailTest {
 	    fclose($fh);
 	    return $count > 1;
 	}
+	
 }
 
 /**
