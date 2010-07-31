@@ -151,10 +151,11 @@ class quailCSS {
 		$index_id = $element->getAttribute('quail_style_index');
 		foreach($style as $name => $value) {
 			if(!$this->style_index[$index_id][$name] ||
-			    $this->style_index[$index_id][$name]['specificity'] < $specificity) 
+			    $this->style_index[$index_id][$name]['specificity'] < $specificity
+			    || strpos($value, '!important') !== false) 
 			{
 				$this->style_index[$index_id][$name] = array(
-					'value' => trim(strtolower($value)),
+					'value' => str_replace('!important', '', trim(strtolower($value))),
 					'specificity' => $specificity,
 				);
 		   }
