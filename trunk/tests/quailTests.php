@@ -73,6 +73,18 @@ class TestOfQuailTests extends UnitTestCase {
 	
 	} 
 
+	function test_headersHaveText() {
+		$results = $this->getTest('headersHaveText-fail.html', 'headersHaveText');
+		$this->assertTrue($results[0]->element->tagName == 'h2');
+
+		$results = $this->getTest('headersHaveText-fail2.html', 'headersHaveText');
+		$this->assertTrue($results[0]->element->tagName == 'h2');
+	
+		$results = $this->getTest('headersHaveText-pass.html', 'headersHaveText');
+		$this->assertTrue(count($results[0]) == 0);
+	
+	} 
+
 }
 
 $tests = &new TestOfQuailTests();
