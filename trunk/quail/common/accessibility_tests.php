@@ -3113,8 +3113,10 @@ class imgHasLongDesc extends quailTest {
 	function check() {
 		foreach($this->getAllElements('img') as $img) {
 			if($img->hasAttribute('longdesc')) {
-				$this->addReport($img);
-					
+				if(trim(strtolower($img->getAttribute('longdesc'))) == 
+					trim(strtolower($img->getAttribute('alt')))) {
+						$this->addReport($img);
+				}
 			}
 		}
 	
