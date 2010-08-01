@@ -101,8 +101,20 @@ class TestOfTests extends UnitTestCase {
 
  //8
  function test8_imgHasLongDesc() {
-		$results = $this->getTest('8-2.html', 'imgHasLongDesc');
+		$results = $this->getTest('8-1.html', 'imgHasLongDesc');
 		$this->assertTrue($results[0]->element->getAttribute('src') == 'chart.gif');
+
+		$results = $this->getTest('8-2.html', 'imgHasLongDesc');
+		$this->assertTrue(count($results) == 0);
+
+		$results = $this->getTest('8-3.html', 'imgHasLongDesc');
+		//$this->assertTrue($results[0]->element->getAttribute('src') == 'chart.gif');
+
+		$results = $this->getTest('8-4.html', 'imgHasLongDesc');
+		$this->assertTrue(count($results) == 0);
+
+		$results = $this->getTest('8-5.html', 'imgHasLongDesc');
+		$this->assertTrue(count($results) == 0);
  }
 
  //9
