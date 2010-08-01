@@ -140,6 +140,7 @@ class Wcag2aGuideline extends quailGuideline{
 		'formWithRequiredLabel',
 		'documentIDsMustBeUnique',
 		'svgContainsTitle',
+		'headersHaveText',
 	);
 }
 /*@}*/
