@@ -169,6 +169,7 @@ class Wcag2aaaGuideline extends quailGuideline{
 		'svgContainsTitle',
 		'documentIsWrittenClearly',
 		'cssTextHasContrast',
+		'headersHaveText',
 	);
 }
 /*@}*/

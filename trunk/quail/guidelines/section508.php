@@ -80,6 +80,7 @@ class Section508Guideline extends quailGuideline{
 		'skipToContentLinkProvided',
 		'documentAutoRedirectNotUsed',
 		'documentMetaNotUsedWithTimeout',
+		'headersHaveText',
 	);
 }
 /*@}*/
