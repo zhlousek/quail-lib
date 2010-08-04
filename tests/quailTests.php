@@ -57,7 +57,7 @@ class TestOfQuailTests extends UnitTestCase {
 	
 		$results = $this->getTest('videosEmbeddedOrLinkedNeedCaptions-pass.html', 
 								  'videosEmbeddedOrLinkedNeedCaptions');
-		$this->assertTrue(count($results[0]) == 0);
+		$this->assertTrue(count($results) == 0);
 	
 	}
 	
@@ -66,10 +66,10 @@ class TestOfQuailTests extends UnitTestCase {
 		$this->assertTrue($results[0]->element->tagName == 'p');
 	
 		$results = $this->getTest('documentIsWrittenClearly-pass.html', 'documentIsWrittenClearly');
-		$this->assertTrue(count($results[0]) == 0);
+		$this->assertTrue(count($results) == 0);
 
 		$results = $this->getTest('documentIsWrittenClearly-pass-2.html', 'documentIsWrittenClearly');
-		$this->assertTrue(count($results[0]) == 0);
+		$this->assertTrue(count($results) == 0);
 	
 	} 
 
@@ -81,8 +81,22 @@ class TestOfQuailTests extends UnitTestCase {
 		$this->assertTrue($results[0]->element->tagName == 'h2');
 	
 		$results = $this->getTest('headersHaveText-pass.html', 'headersHaveText');
-		$this->assertTrue(count($results[0]) == 0);
+		$this->assertTrue(count($results) == 0);
 	
+	} 
+
+	function test_labelsShouldNotBeEmpty() {
+		$results = $this->getTest('labelsShouldNotBeEmpty-fail.html', 'labelsShouldNotBeEmpty');
+		$this->assertTrue($results[0]->element->tagName == 'label');
+
+		$results = $this->getTest('labelsShouldNotBeEmpty-fail2.html', 'labelsShouldNotBeEmpty');
+		$this->assertTrue($results[0]->element->tagName == 'label');
+	
+		$results = $this->getTest('labelsShouldNotBeEmpty-pass.html', 'labelsShouldNotBeEmpty');
+		$this->assertTrue(count($results) == 0);
+
+		$results = $this->getTest('labelsShouldNotBeEmpty-pass2.html', 'labelsShouldNotBeEmpty');
+		$this->assertTrue(count($results) == 0);	
 	} 
 
 }

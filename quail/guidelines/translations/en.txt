@@ -233,3 +233,4 @@
 "videosEmbeddedOrLinkedNeedCaptions","All linked or embedded videos need captions","<p>Any video hosted or otherwise which is linked or embedded must have a caption.</p>","1"
 "documentIsWrittenClearly","The document should be written to the target audience and read clearly","<p>If a document is beyond a 10th grade level, then a summary or other guide should also be provided to guide the user through the content.</p>","2"
 "headersHaveText","All headers should contain readable text","<p>Users with screen readers use headings like the tabs <em>h1</em> to navigate the structure of a page. All headings should contain either text, or images with appropriate <em>alt</em> attributes.</p>","1"
+"labelsShouldNotBeEmpty","All labels should contain readable text","<p>All <em>label</em> elements should contain readable text.</p>","1"
