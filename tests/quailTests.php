@@ -84,6 +84,21 @@ class TestOfQuailTests extends UnitTestCase {
 		$this->assertTrue(count($results) == 0);
 	
 	} 
+	
+	function test_labelsAreAssignedToAnInput() {
+		$results = $this->getTest('labelsAreAssignedToAnInput-fail.html', 'labelsAreAssignedToAnInput');
+		$this->assertTrue($results[0]->element->tagName == 'label');
+
+		$results = $this->getTest('labelsAreAssignedToAnInput-fail2.html', 'labelsAreAssignedToAnInput');
+		$this->assertTrue($results[0]->element->tagName == 'label');
+
+		$results = $this->getTest('labelsAreAssignedToAnInput-fail3.html', 'labelsAreAssignedToAnInput');
+		$this->assertTrue($results[0]->element->tagName == 'label');
+	
+		$results = $this->getTest('labelsAreAssignedToAnInput-pass.html', 'labelsAreAssignedToAnInput');
+		$this->assertTrue(count($results) == 0);
+	
+	} 
 
 }
 

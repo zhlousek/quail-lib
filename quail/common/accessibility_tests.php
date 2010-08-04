@@ -5919,5 +5919,31 @@ class headersHaveText extends quailTest {
 	}
 }
 
+/**
+*	All labels should be associated with an input element. If not, these are considered 'orphans'
+*	because they have no or the wrong "for" attribute
+*	@link http://quail-lib.org/test-info/labelsAreAssignedToAnInput
+*/
 
+class labelsAreAssignedToAnInput extends quailTest {
+	
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
+	var $default_severity = QUAIL_TEST_SEVERE;
+	
+		/**
+	*	The main check function. This is called by the parent class to actually check content
+	*/
+	function check() {
+		foreach($this->getAllElements('label') as $label) {
+			if(!$label->hasAttribute('for') || !$input = $this->dom->getElementById($label->getAttribute('for'))) {
+				$this->addReport($label);
+			}
+			if(!in_array($input->tagName, array('input', 'select', 'textarea'))) {
+				$this->addReport($label);
+			}
+		}
+	}
+}
 /*@}*/
