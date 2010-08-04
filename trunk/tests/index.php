@@ -5,7 +5,7 @@ require_once('simpletest/unit_tester.php');
 require_once('simpletest/reporter.php');
 require_once('cssTests.php');
 require_once('quailTests.php');
-
+//die();
 class TestOfTests extends UnitTestCase {
  
  function getTest($file, $test) {

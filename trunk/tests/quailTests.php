@@ -85,20 +85,6 @@ class TestOfQuailTests extends UnitTestCase {
 	
 	} 
 
-	function test_labelsShouldNotBeEmpty() {
-		$results = $this->getTest('labelsShouldNotBeEmpty-fail.html', 'labelsShouldNotBeEmpty');
-		$this->assertTrue($results[0]->element->tagName == 'label');
-
-		$results = $this->getTest('labelsShouldNotBeEmpty-fail2.html', 'labelsShouldNotBeEmpty');
-		$this->assertTrue($results[0]->element->tagName == 'label');
-	
-		$results = $this->getTest('labelsShouldNotBeEmpty-pass.html', 'labelsShouldNotBeEmpty');
-		$this->assertTrue(count($results) == 0);
-
-		$results = $this->getTest('labelsShouldNotBeEmpty-pass2.html', 'labelsShouldNotBeEmpty');
-		$this->assertTrue(count($results) == 0);	
-	} 
-
 }
 
 $tests = &new TestOfQuailTests();
