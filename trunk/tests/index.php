@@ -1741,7 +1741,7 @@ class TestOfTests extends UnitTestCase {
 		$this->assertTrue(count($results) == 0); 
 
 		$results = $this->getTest('174-3.html', 'aMustContainText');
-		$this->assertTrue(count($results) == 0); 
+		$this->assertTrue($results[0]->element->tagName == 'a');  
 
 		$results = $this->getTest('174-4.html', 'aMustContainText');
 		$this->assertTrue(count($results) == 0); 
