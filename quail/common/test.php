@@ -375,14 +375,21 @@ class quailTest {
 	*	@return bool TRUE if contains readable text, FALSE if otherwise
 	*/
 	function elementContainsReadableText($element) {
-		if(trim($element->nodeValue) != '' || 
-			($element->hasAttribute('alt') && trim($element->getAttribute('alt')) != '')) {
+		if(is_a($element, 'DOMText')) {
+			if(trim($element->wholeText) != '') {
 				return true;
+			}
 		}
-		if($element->hasChildNodes()) {
-			foreach($element->childNodes as $child) {
-				if($this->elementContainsReadableText($child)) {
+		else {
+			if(trim($element->nodeValue) != '' || 
+				($element->hasAttribute('alt') && trim($element->getAttribute('alt')) != '')) {
 					return true;
+			}
+			if(method_exists($element, 'hasChildNodes') && $element->hasChildNodes()) {
+				foreach($element->childNodes as $child) {
+					if($this->elementContainsReadableText($child)) {
+						return true;
+					}
 				}
 			}
 		}
