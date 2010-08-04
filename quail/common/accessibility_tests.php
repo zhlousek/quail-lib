@@ -5902,18 +5902,9 @@ class headersHaveText extends quailTest {
 	*	The main check function. This is called by the parent class to actually check content
 	*/
 	function check() {
-		foreach($this->getAllElements(array('h1', 'h2', 'h3', 'h4', 'h5', 'h6')) as $header) {
-			if(!$header->nodeValue) {
-				$fail = true;
-				foreach($header->childNodes as $child) {
-					if($this->propertyIsEqual($child, 'tagName', 'img') 
-					   && ($child->hasAttribute('alt') || trim($child->getAttribute('alt')) != '')) {
-						$fail = false;
-					}
-				}
-				if($fail) {
-					$this->addReport($header);
-				}
+		foreach($this->getAllElements(null, 'header', true) as $header) {
+			if(!$this->elementContainsReadableText($header)) {
+				$this->addReport($header);
 			}
 		}
 	}
@@ -5946,4 +5937,5 @@ class labelsAreAssignedToAnInput extends quailTest {
 		}
 	}
 }
+
 /*@}*/
