@@ -348,9 +348,6 @@ class quailTest {
 	*	Returns if a GIF files is animated or not
 	*	@url http://us.php.net/manual/en/function.imagecreatefromgif.php#88005
 	*/
-	/*function imageIsAnimated($filename) {
-	    return (bool)preg_match('#(\x00\x21\xF9\x04.{4}\x00\x2C.*){2,}#s', file_get_contents($filename));
-	}*/
 	function imageIsAnimated($filename) {
 	    if(!($fh = @fopen($filename, 'rb')))
 	        return false;
@@ -369,6 +366,27 @@ class quailTest {
 	   
 	    fclose($fh);
 	    return $count > 1;
+	}
+	
+	/**
+	*	Returns if there are any printable/readable characters within an element.
+	*	This finds both node values or images with alt text.
+	*	@param object $element The given element to look at
+	*	@return bool TRUE if contains readable text, FALSE if otherwise
+	*/
+	function elementContainsReadableText($element) {
+		if(trim($element->nodeValue) != '' || 
+			($element->hasAttribute('alt') && trim($element->getAttribute('alt')) != '')) {
+				return true;
+		}
+		if($element->hasChildNodes()) {
+			foreach($element->childNodes as $child) {
+				if($this->elementContainsReadableText($child)) {
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 	
 }

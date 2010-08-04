@@ -5938,4 +5938,27 @@ class headersHaveText extends quailTest {
 	}
 }
 
+/**
+*	Labels for form inputs should not be empty and should contain readable text
+*	@link http://quail-lib.org/test-info/labelsShouldNotBeEmpty
+*/
+class labelsShouldNotBeEmpty extends quailTest {
+	
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
+	var $default_severity = QUAIL_TEST_SEVERE;
+	
+	/**
+	*	The main check function. This is called by the parent class to actually check content
+	*/
+	function check() {
+		foreach($this->getAllElements('label') as $label) {
+			if(!$this->elementContainsReadableText($label)) {
+				$this->addReport($label);
+			}
+		}
+	}	
+}
+
 /*@}*/
