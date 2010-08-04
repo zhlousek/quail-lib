@@ -326,19 +326,8 @@ class aMustContainText extends quailTest {
 	*/
 	function check() {
 		foreach($this->getAllElements('a') as $a) {
-			if((!$a->nodeValue || trim(html_entity_decode($a->nodeValue)) == '')
-				&& !$a->hasAttribute('title')
-				&& $this->isNotAnchor($a)) {
-				$fail = true;
-				$child = true;
-				foreach($a->childNodes as $child) {
-					if($this->propertyIsEqual($child, 'tagName', 'img') && trim($child->getAttribute('alt')) != '')
-						$fail = false;
-					if(property_exists($child, 'nodeValue'))
-						$fail = false;
-				}
-				if($fail)
-					$this->addReport($a);
+			if(!$this->elementContainsReadableText($a) && ($a->hasAttribute('href'))) {
+				$this->addReport($a);
 			}
 		}
 	}
