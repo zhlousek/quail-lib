@@ -24,6 +24,7 @@
 define('QUAIL_TEST_SEVERE', 1);
 define('QUAIL_TEST_MODERATE', 2);
 define('QUAIL_TEST_SUGGESTION', 3);
+define('QUAIL_LIB_VERSION', 038);
 
 /**
 *
@@ -115,9 +116,11 @@ class quail {
 					'cms_template' => array());
 	
 	/**
-	*
+	*	@var bool An indicator if the DOMDocument loaded. If not, this means that the 
+	*			  HTML given to it was so munged it wouldn't even load.
 	*/
 	var $is_valid = true;
+	
 	/**
 	*	The class constructor
 	*	@param string $value Either the HTML string to check or the file/uri of the request
