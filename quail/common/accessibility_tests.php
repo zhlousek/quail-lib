@@ -2900,8 +2900,8 @@ class imgAltIsSameInText extends quailTest {
 }
 
 /**
-*  Image Alt text is short.
-*  Image Alt text is short or user must confirm that Alt text is as short as possible.
+*  Image Alt text is long.
+*  Image Alt text is long or user must confirm that Alt text is as short as possible.
 *	@link http://quail-lib.org/test-info/imgAltIsTooLong
 */
 class imgAltIsTooLong extends quailTest {
@@ -5935,6 +5935,37 @@ class labelsAreAssignedToAnInput extends quailTest {
 				$this->addReport($label);
 			}
 		}
+	}
+}
+
+/**
+*	ALT text on images should not be redundant across the page. Please check that all
+*	images have alt text which is unique to the image.
+*	@link http://quail-lib.org/test-info/imgAltTextNotRedundant
+*/
+class imgAltTextNotRedundant extends quailTest {
+	
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
+	var $default_severity = QUAIL_TEST_SEVERE;
+	
+	/**
+	*	The main check function. This is called by the parent class to actually check content
+	*/
+	function check() {
+		$alt = array();
+		foreach($this->getAllElements('img') as $img) { 
+			if($img->hasAttribute('src') && $img->hasAttribute('alt')) {
+				if(isset($alt[strtolower(trim($img->getAttribute('alt')))]) &&
+					$alt[strtolower(trim($img->getAttribute('alt')))] != 
+					strtolower(trim($img->getAttribute('src')))) {
+						$this->addReport($img);
+				}
+				$alt[strtolower(trim($img->getAttribute('alt')))] = strtolower(trim($img->getAttribute('src')));
+			}
+		}
+		unset($alt);
 	}
 }
 
