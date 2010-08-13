@@ -108,6 +108,15 @@ class TestOfQuailTests extends UnitTestCase {
 		$this->assertTrue(count($results) == 0);
 	
 	} 
+
+	function test_selectJumpMenus() {
+		$results = $this->getTest('selectJumpMenus-fail.html', 'selectJumpMenus');
+		$this->assertTrue($results[0]->element->tagName == 'img');
+
+		$results = $this->getTest('selectJumpMenus-pass.html', 'selectJumpMenus');
+		$this->assertTrue(count($results) == 0);
+	
+	} 
 }
 
 $tests = &new TestOfQuailTests();
