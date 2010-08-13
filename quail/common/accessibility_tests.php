@@ -5969,4 +5969,25 @@ class imgAltTextNotRedundant extends quailTest {
 	}
 }
 
+/**
+*	Jump menus that consist of a single form element should not be used
+*	@link http://quail-lib.org/test-info/selectJumpMenus
+*/
+class selectJumpMenus extends quailTest {
+	
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
+	var $default_severity = QUAIL_TEST_SEVERE;
+	
+	/**
+	*	The main check function. This is called by the parent class to actually check content
+	*/
+	function check() {
+		foreach($this->getAllElements('select') as $select) {
+			
+		}
+	}
+}
+
 /*@}*/
