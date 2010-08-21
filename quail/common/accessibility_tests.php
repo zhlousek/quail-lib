@@ -5978,14 +5978,28 @@ class selectJumpMenus extends quailTest {
 	/**
 	*	@var int $default_severity The default severity code for this test.
 	*/
-	var $default_severity = QUAIL_TEST_SEVERE;
+	var $default_severity = QUAIL_TEST_MODERATE;
 	
 	/**
 	*	The main check function. This is called by the parent class to actually check content
 	*/
 	function check() {
 		foreach($this->getAllElements('select') as $select) {
-			
+			$parent = $this->getParent($select, 'form', 'body');
+			$fail = true;
+			if($parent) {
+				foreach($this->getAllElements('input') as $input) {
+					if($input->hasAttribute('type') && $input->getAttribute('type') == 'submit') {
+						$parent_input = $this->getParent($input, 'form', 'body');
+						if($parent_input->isSameNode($parent)) {
+							$fail = false;
+						}
+					}
+				}
+			}
+			if($fail) {
+				$this->addReport($select);
+			}
 		}
 	}
 }
