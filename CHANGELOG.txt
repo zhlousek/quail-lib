@@ -1,9 +1,0 @@
-Current Development Phase:
---Fixed issue where imgAltNotPlaceholder was firing on empty alt text
---Fixed bug in aMustContainText which returned result on anchors that were not links
---Fixed bug where headersUseToMarkSection was firing on any paragraph which contained the target elements
-
-Version 0.3.8
---Fixed bug in CSS module which would force iterating over the CSS array even if it was empty
-
----Everything before this was from beyond the edge of time... check the SVN log!
