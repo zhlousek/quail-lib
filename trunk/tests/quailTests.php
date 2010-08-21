@@ -117,6 +117,17 @@ class TestOfQuailTests extends UnitTestCase {
 		$this->assertTrue(count($results) == 0);
 	
 	} 
+	
+	function test_textIsNotSmall() {
+		$results = $this->getTest('textIsNotSmall-fail.html', 'textIsNotSmall');
+		$this->assertTrue($results[0]->element->tagName == 'p');
+
+		$results = $this->getTest('textIsNotSmall-pass.html', 'textIsNotSmall');
+		$this->assertTrue(count($results) == 0);
+
+		$results = $this->getTest('textIsNotSmall-fail2.html', 'textIsNotSmall');
+		$this->assertTrue($results[0]->element->tagName == 'p');	
+	}
 }
 
 $tests = &new TestOfQuailTests();

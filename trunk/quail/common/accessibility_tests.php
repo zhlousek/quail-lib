@@ -6004,4 +6004,39 @@ class selectJumpMenus extends quailTest {
 	}
 }
 
+
+/**
+*	Text size is not less than 10px small
+*	@link http://quail-lib.org/test-info/textIsNotSmall
+*/
+class textIsNotSmall extends quailTest {
+	
+	/**
+	*	@var int $default_severity The default severity code for this test.
+	*/
+	var $default_severity = QUAIL_TEST_MODERATE;
+	
+	/**
+	*	The main check function. This is called by the parent class to actually check content
+	*/
+	function check() {
+		foreach($this->getAllElements(null, 'text', true) as $text) {
+			$style = $this->css->getStyle($text);
+			if(isset($style['font-size'])) {
+				if(substr($style['font-size'], -2, 2) == 'px') {
+					if(intval($style['font-size']) < 10) {
+						$this->addReport($text);
+					}
+				}
+				if(substr($style['font-size'], -2, 2) == 'em') {
+					if(floatval($style['font-size']) < .63) {
+						$this->addReport($text);
+					}
+				}
+			}
+		}
+	}
+
+}
+
 /*@}*/
