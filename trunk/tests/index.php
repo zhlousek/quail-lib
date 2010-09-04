@@ -1052,6 +1052,10 @@ class TestOfTests extends UnitTestCase {
 
 		$results = $this->getTest('98-3.html', 'documentAbbrIsUsed');
 		$this->assertTrue(count($results) == 0);
+
+		$results = $this->getTest('98-4.html', 'documentAbbrIsUsed');
+		$this->assertTrue(count($results) == 0);
+
   }
 
   //99
