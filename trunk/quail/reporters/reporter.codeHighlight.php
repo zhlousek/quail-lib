@@ -56,7 +56,9 @@ class reportCodeHighlight extends quailReporter {
 							$severity_wrapper->setAttribute('test', $testname);
 							$severity_wrapper->appendChild($problem->element->cloneNode(TRUE));
 							$parent = $problem->element->parentNode;
-							$parent->replaceChild($severity_wrapper, $problem->element);
+							if(is_object($parent)) {
+								$parent->replaceChild($severity_wrapper, $problem->element);
+							}
 						}
 					}
 				}
