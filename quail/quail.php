@@ -24,7 +24,7 @@
 define('QUAIL_TEST_SEVERE', 1);
 define('QUAIL_TEST_MODERATE', 2);
 define('QUAIL_TEST_SUGGESTION', 3);
-define('QUAIL_LIB_VERSION', 038);
+define('QUAIL_LIB_VERSION', 041);
 
 /**
 *
