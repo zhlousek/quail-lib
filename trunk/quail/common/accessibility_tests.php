@@ -4543,17 +4543,19 @@ class pNotUsedAsHeader extends quailTest {
 	*/
 	function check() {
 		foreach($this->getAllElements('p') as $p) {
-			if(($p->nodeValue == $p->firstChild->nodeValue) &&
-				is_object($p->firstChild) &&
-			 	property_exists($p->firstChild, 'tagName') && 
-				in_array($p->firstChild->tagName, $this->head_tags)) {
-					$this->addReport($p);
-					
-			}
-			else {
-				$style = $this->css->getStyle($p);
-				if($style['font-weight'] == 'bold') {
-					$this->addReport($p);
+			if(!$this->getParent($p, 'td', 'body')) {
+				if(($p->nodeValue == $p->firstChild->nodeValue) &&
+					is_object($p->firstChild) &&
+				 	property_exists($p->firstChild, 'tagName') && 
+					in_array($p->firstChild->tagName, $this->head_tags)) {
+						$this->addReport($p);
+						
+				}
+				else {
+					$style = $this->css->getStyle($p);
+					if($style['font-weight'] == 'bold') {
+						$this->addReport($p);
+					}
 				}
 			}
 		}

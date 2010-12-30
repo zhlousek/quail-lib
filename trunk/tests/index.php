@@ -923,6 +923,9 @@ class TestOfTests extends UnitTestCase {
 		$results = $this->getTest('82-9.html', 'pNotUsedAsHeader');
 		$this->assertTrue(count($results) == 0);
 
+		$results = $this->getTest('82-10.html', 'pNotUsedAsHeader');
+		$this->assertTrue(count($results) == 0);
+
   }
   
   //86
